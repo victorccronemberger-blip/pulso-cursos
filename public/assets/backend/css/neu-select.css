@@ -1,0 +1,404 @@
+/* =============================================================================
+   neu-select.css — Neumorphic Dropdown Library Styles
+   Version 1.3.0 — includes multi-select tag styles
+   ============================================================================= */
+
+/* ── Hide raw select instantly before JS loads — prevents any flash ── */
+select.neu-select,
+select.neu-select-multi {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}
+
+/* ── All form groups start invisible ── */
+.fpb-7 {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+/* ── Animate in when JS adds ns-ready ── */
+.fpb-7.ns-ready {
+    animation: nsFieldIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes nsFieldIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Wrapper ── */
+.ns-wrapper {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ── Trigger ── */
+.ns-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--borderColor, #e5e7eb);
+    border-radius: 12px;
+    padding: 12px 18px;
+    background: var(--whiteColor, #ffffff);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grayColor, #6b7280);
+    cursor: pointer;
+    outline: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+    transition:
+        box-shadow 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+        background 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* multi trigger needs wrap for tags */
+.ns-multi .ns-trigger {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-height: 46px;
+    padding: 8px 44px 8px 12px;
+    gap: 6px;
+}
+
+.ns-trigger:focus,
+.ns-trigger:focus-visible {
+    outline: none !important;
+}
+
+.ns-trigger:hover {
+    border-color: var(--borderColor, #e5e7eb);
+}
+
+/* open — sinks inward */
+.ns-open .ns-trigger {
+    border-color: var(--borderColor, #e5e7eb);
+    border-radius: 12px;
+    transform: translateY(1px);
+    box-shadow:
+        inset 6px 6px 14px rgba(155, 155, 155, 0.18),
+        inset -6px -6px 14px rgba(255, 255, 255, 0.80),
+        inset 2px 2px 6px rgba(117, 117, 117, 0.12),
+        inset -2px -2px 6px rgba(255, 255, 255, 0.60);
+}
+
+/* ── Single trigger text ── */
+.ns-trigger-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ns-open .ns-trigger-text {
+    transform: translateX(4px);
+}
+
+.ns-placeholder {
+    color: var(--grayColor, #9ca3af);
+    opacity: 0.55;
+}
+
+/* ── Arrow ── */
+.ns-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--grayColor, #9ca3af);
+    flex-shrink: 0;
+    margin-left: 10px;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* arrow fixed to right for multi */
+.ns-multi .ns-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+}
+
+.ns-open .ns-arrow {
+    transform: rotate(180deg);
+}
+
+.ns-multi.ns-open .ns-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* ── Multi tags container ── */
+.ns-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex: 1;
+    align-items: center;
+    min-height: 24px;
+}
+
+/* ── Tag pill ── */
+.ns-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--skinColor, #6366f1);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 8px 3px 10px;
+    border-radius:5px;
+    line-height: 18px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    animation: nsTagIn 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes nsTagIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ── Tag remove button ── */
+.ns-tag-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+}
+
+.ns-tag-remove:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Dropdown — appended to body ── */
+.ns-dropdown {
+    position: absolute;
+    z-index: 999999;
+    background: var(--whiteColor, #ffffff);
+    border: 1px solid var(--borderColor, #e5e7eb);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow:
+        6px 6px 16px rgba(155, 155, 155, 0.15),
+        -6px -6px 16px rgba(255, 255, 255, 0.90);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+        opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        visibility 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.ns-dropdown--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.ns-dropdown--above {
+    transform: translateY(8px);
+}
+
+.ns-dropdown--above.ns-dropdown--visible {
+    transform: translateY(0);
+}
+
+/* ── Search wrapper ── */
+.ns-search-wrapper {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.ns-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--grayColor, #9ca3af);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* ── Search input ── */
+.ns-search {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--borderColor, #e5e7eb);
+    border-radius: 8px;
+    padding: 9px 12px 9px 34px;
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grayColor, #6b7280);
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: inherit;
+    transition: border-color 0.4s ease;
+}
+
+.ns-search:focus {
+    outline: none !important;
+    border-color: var(--skinColor, #6366f1);
+}
+
+.ns-search::placeholder {
+    color: var(--grayColor, #9ca3af);
+    opacity: 0.55;
+}
+
+/* ── Options list ── */
+.ns-options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--borderColor, #e5e7eb) transparent;
+}
+
+.ns-options::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ns-options::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ns-options::-webkit-scrollbar-thumb {
+    background: var(--borderColor, #e5e7eb);
+    border-radius: 4px;
+}
+
+/* ── Option ── */
+.ns-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--grayColor, #6b7280);
+    cursor: pointer;
+    margin-bottom: 2px;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.ns-option:last-child {
+    margin-bottom: 0;
+}
+
+.ns-option:hover,
+.ns-option--focused {
+    background: var(--skinColor, #6366f1);
+    color: #ffffff;
+}
+
+.ns-option--selected {
+    background: #f2f3f5;
+    color: var(--skinColor, #6366f1);
+    font-weight: 500;
+}
+
+.ns-option--selected:hover,
+.ns-option--selected.ns-option--focused {
+    background: var(--skinColor, #6366f1);
+    color: #ffffff;
+}
+
+.ns-option--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ── Multi checkbox indicator ── */
+.ns-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid currentColor;
+    border-radius: 4px;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.ns-option--selected .ns-check {
+    opacity: 1;
+    background: var(--skinColor, #6366f1);
+    border-color: var(--skinColor, #6366f1);
+    color: #ffffff;
+}
+
+.ns-option--selected:hover .ns-check,
+.ns-option--selected.ns-option--focused .ns-check {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--skinColor, #6366f1);
+}
+
+/* ── Search highlight ── */
+.ns-mark {
+    background: transparent;
+    color: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* ── No results ── */
+.ns-no-results {
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--grayColor, #9ca3af);
+    opacity: 0.7;
+}

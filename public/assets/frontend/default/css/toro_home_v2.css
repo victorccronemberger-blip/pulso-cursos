@@ -1,0 +1,826 @@
+/* ============================================================
+   HOME V2 — Academia de Certificações Financeiras
+   Identidade: Terminal financeiro + seriedade institucional
+   ============================================================ */
+
+:root {
+    /* Paleta inspirada em terminais Bloomberg */
+    --pf-midnight: #0A1628;
+    --pf-navy: #1E3A5F;
+    --pf-terminal: #00D9A3;
+    --pf-alert: #FF6B35;
+    --pf-paper: #F8F9FA;
+    --pf-slate: #6C757D;
+    --pf-border: #E9ECEF;
+    
+    /* Tipografia */
+    --pf-font-display: "Space Grotesk", "Inter", sans-serif;
+    --pf-font-body: "IBM Plex Sans", "Inter", sans-serif;
+    --pf-font-mono: "JetBrains Mono", "Courier New", monospace;
+    
+    /* Espaçamentos */
+    --pf-section-pad: 100px;
+    --pf-container-max: 1280px;
+}
+
+/* ---------- Ticker de certificações (elemento assinatura) ---------- */
+.pf-ticker {
+    background: var(--pf-midnight);
+    border-bottom: 1px solid rgba(0, 217, 163, 0.2);
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+}
+.pf-ticker-track {
+    display: flex;
+    gap: 120px;
+    animation: tickerScroll 30s linear infinite;
+    white-space: nowrap;
+}
+.pf-ticker-item {
+    font-family: var(--pf-font-mono);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--pf-terminal);
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.pf-ticker-item::after {
+    content: '•';
+    color: rgba(0, 217, 163, 0.4);
+}
+@keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pf-ticker-track { animation: none; }
+}
+
+/* ---------- Hero V2: Banner ---------- */
+.pf-hero-v2 {
+    background: linear-gradient(to right, rgb(0, 11, 28) 0%, rgb(1, 23, 27) 100%);
+    padding: 0;
+    position: relative;
+    overflow: visible;
+}
+.pf-hero-v2 .container {
+    max-width: 1240px;
+    margin: 28px auto 0;
+    padding: 0;
+}
+@media (min-width: 1280px) {
+    .pf-hero-v2 .container { margin-top: 44px; }
+}
+.pf-hero-slideshow {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.pf-hero-banner-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+.pf-hero-banner-img.active {
+    position: relative;
+    opacity: 1;
+}
+.pf-hero-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+.pf-hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+.pf-hero-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+.pf-hero-dot.active {
+    background: var(--pf-terminal);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+.pf-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+}
+.pf-hero-content {
+    color: #fff;
+}
+.pf-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 217, 163, 0.1);
+    border: 1px solid rgba(0, 217, 163, 0.3);
+    color: var(--pf-terminal);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-family: var(--pf-font-body);
+}
+.pf-hero-v2 h1 {
+    font-family: var(--pf-font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin: 0 0 20px;
+}
+.pf-hero-v2 h1 em {
+    font-style: normal;
+    color: var(--pf-terminal);
+}
+.pf-hero-sub {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 520px;
+}
+.pf-hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+.pf-btn-primary-v2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pf-alert);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-family: var(--pf-font-body);
+}
+.pf-btn-primary-v2:hover {
+    background: #E55A2B;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+.pf-btn-ghost-v2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    padding: 15px 28px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.pf-btn-ghost-v2:hover {
+    border-color: var(--pf-terminal);
+    color: var(--pf-terminal);
+}
+.pf-hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.pf-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.pf-stat-value {
+    font-family: var(--pf-font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+}
+.pf-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hero visual: grid de certificações */
+.pf-hero-visual {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.pf-cert-badge {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 217, 163, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+.pf-cert-badge:hover {
+    background: rgba(0, 217, 163, 0.1);
+    border-color: var(--pf-terminal);
+    transform: translateY(-4px);
+}
+.pf-cert-code {
+    font-family: var(--pf-font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+    margin-bottom: 8px;
+}
+.pf-cert-name {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+    .pf-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .pf-hero-visual {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .pf-hero-visual {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .pf-hero-stats {
+        gap: 24px;
+    }
+}
+
+/* ---------- Seção de cursos V2 ---------- */
+.pf-cursos-v2 {
+    background: var(--pf-paper);
+    padding: var(--pf-section-pad) 0;
+    position: relative;
+}
+.pf-cursos-v2 .container {
+    max-width: var(--pf-container-max);
+}
+.pf-section-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+.pf-section-header h2 {
+    font-family: var(--pf-font-display);
+    color: var(--pf-midnight);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -0.5px;
+    margin: 0 0 12px;
+}
+.pf-section-header p {
+    color: var(--pf-slate);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Filtros V2 */
+.pf-filters {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.pf-filter-btn {
+    border: 1.5px solid var(--pf-border);
+    border-radius: 8px;
+    padding: 10px 24px;
+    color: var(--pf-slate);
+    background: #fff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--pf-font-body);
+}
+.pf-filter-btn:hover {
+    border-color: var(--pf-navy);
+    color: var(--pf-navy);
+}
+.pf-filter-btn.active {
+    background: var(--pf-midnight);
+    color: #fff;
+    border-color: var(--pf-midnight);
+}
+
+/* Cards V2: fichas de certificação */
+.pf-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+.pf-card {
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.pf-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 22, 40, 0.12);
+    border-color: var(--pf-terminal);
+}
+.pf-card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--pf-paper);
+}
+.pf-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.pf-card-body {
+    padding: 24px;
+}
+.pf-card-cert {
+    font-family: var(--pf-font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--pf-terminal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.pf-card-title {
+    font-family: var(--pf-font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pf-midnight);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+.pf-card-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+    color: var(--pf-slate);
+}
+.pf-card-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.pf-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.pf-card-price-value {
+    font-family: var(--pf-font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pf-midnight);
+}
+.pf-card-price-period {
+    font-size: 0.9rem;
+    color: var(--pf-slate);
+}
+.pf-card-cta {
+    display: block;
+    width: 100%;
+    background: var(--pf-midnight);
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.pf-card-cta:hover {
+    background: var(--pf-navy);
+}
+
+/* ---------- Seção "Trilha de aprovação" (ex-Como Funciona) ---------- */
+.pf-trilha {
+    background: var(--pf-midnight);
+    padding: var(--pf-section-pad) 0;
+    position: relative;
+    overflow: hidden;
+}
+.pf-trilha::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(0, 217, 163, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+.pf-trilha .container {
+    max-width: var(--pf-container-max);
+    position: relative;
+    z-index: 1;
+}
+.pf-trilha .pf-section-header h2 {
+    color: #fff;
+}
+.pf-trilha .pf-section-header p {
+    color: rgba(255, 255, 255, 0.7);
+}
+.pf-trilha-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+}
+.pf-trilha-step {
+    text-align: center;
+    position: relative;
+}
+.pf-trilha-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(0, 217, 163, 0.1);
+    border: 2px solid var(--pf-terminal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-terminal);
+    font-family: var(--pf-font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.pf-trilha-icon-img {
+    background: none;
+    border: none;
+    padding: 0;
+    overflow: visible;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 60px;
+}
+.pf-trilha-icon-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(2.25);
+    transform-origin: center;
+    border-radius: 16px;
+}
+.pf-trilha-step h3 {
+    color: #fff;
+    font-family: var(--pf-font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+.pf-trilha-step p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+@media (max-width: 1024px) {
+    .pf-trilha-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .pf-trilha-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Seção "Materiais de estudo" (ex-Materiais Gratuitos) ---------- */
+.pf-materiais {
+    background: #fff;
+    padding: var(--pf-section-pad) 0;
+}
+.pf-materiais .container {
+    max-width: var(--pf-container-max);
+}
+.pf-materiais-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+.pf-material-card {
+    background: var(--pf-paper);
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+}
+.pf-material-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 22, 40, 0.08);
+    border-color: var(--pf-terminal);
+}
+.pf-material-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(0, 217, 163, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-terminal);
+    margin-bottom: 20px;
+}
+.pf-material-card h3 {
+    font-family: var(--pf-font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pf-midnight);
+    margin-bottom: 12px;
+}
+.pf-material-card p {
+    color: var(--pf-slate);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.pf-material-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--pf-terminal);
+    font-weight: 600;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+.pf-material-link:hover {
+    gap: 12px;
+}
+@media (max-width: 1024px) {
+    .pf-materiais-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 640px) {
+    .pf-materiais-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Seção "Garantia" - Imagem ---------- */
+.pf-garantia {
+    background: var(--pf-paper);
+    padding: var(--pf-section-pad) 0;
+}
+.pf-garantia .container {
+    max-width: 1100px;
+}
+.pf-garantia-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(10, 22, 40, 0.15);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+
+/* ---------- Seção FAQ V2 - Redesenhada ---------- */
+.pf-faq {
+    background: var(--pf-midnight);
+    padding: var(--pf-section-pad) 0;
+    position: relative;
+    overflow: hidden;
+}
+.pf-faq::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(0, 217, 163, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+.pf-faq .container {
+    max-width: var(--pf-container-max);
+    position: relative;
+    z-index: 1;
+}
+.pf-faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* Coluna esquerda: Header */
+.pf-faq-header {
+    position: sticky;
+    top: 40px;
+}
+.pf-faq-icon-header {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 24px;
+}
+.pf-faq-header h2 {
+    font-family: var(--pf-font-display);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.pf-faq-header > p {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+.pf-faq-contact {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+}
+.pf-faq-contact p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+.pf-faq-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--pf-terminal);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+}
+.pf-faq-contact-link:hover {
+    gap: 12px;
+}
+
+/* Coluna direita: Lista de perguntas */
+.pf-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.pf-faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.pf-faq-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 217, 163, 0.3);
+}
+.pf-faq-item.active {
+    background: rgba(0, 217, 163, 0.05);
+    border-color: var(--pf-terminal);
+}
+.pf-faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+.pf-faq-number {
+    font-family: var(--pf-font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+    flex-shrink: 0;
+    min-width: 32px;
+}
+.pf-faq-text {
+    flex: 1;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+}
+.pf-faq-toggle {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 217, 163, 0.1);
+    border-radius: 8px;
+    color: var(--pf-terminal);
+    transition: all 0.3s ease;
+}
+.pf-faq-item.active .pf-faq-toggle {
+    background: var(--pf-terminal);
+    color: var(--pf-midnight);
+    transform: rotate(45deg);
+}
+.pf-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+.pf-faq-item.active .pf-faq-answer {
+    max-height: 300px;
+}
+.pf-faq-answer-inner {
+    padding: 0 28px 24px 80px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .pf-faq-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .pf-faq-header {
+        position: static;
+    }
+}
+@media (max-width: 640px) {
+    .pf-faq-header h2 {
+        font-size: 2.4rem;
+    }
+    .pf-faq-question {
+        padding: 20px;
+        gap: 12px;
+    }
+    .pf-faq-answer-inner {
+        padding: 0 20px 20px 64px;
+    }
+}
+
+/* ---------- CTA final V2 ---------- */
+.pf-cta-final {
+    background: linear-gradient(135deg, var(--pf-midnight) 0%, var(--pf-navy) 100%);
+    padding: 80px 0;
+    text-align: center;
+}
+.pf-cta-final .container {
+    max-width: 700px;
+}
+.pf-cta-final h2 {
+    font-family: var(--pf-font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+}
+.pf-cta-final p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+}
+.pf-cta-final .pf-btn-primary-v2 {
+    font-size: 1.1rem;
+    padding: 18px 40px;
+}

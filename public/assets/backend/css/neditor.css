@@ -1,0 +1,982 @@
+/*!
+ * nEditor v1.0 — Premium Rich Text Editor CSS
+ * Trigger: class="nEditor" on any <textarea>
+ */
+
+:root {
+    --ne-bg: #ffffff;
+    --ne-surf: #f7f8fa;
+    --ne-surf2: #f0f1f5;
+    --ne-bdr: #e2e5ec;
+    --ne-bdr-fo: #a5b4fc;
+    --ne-tx: #0d1117;
+    --ne-tx2: #4b5563;
+    --ne-tx3: #94a3b8;
+    --ne-acc: #6366f1;
+    --ne-acc-d: #eef2ff;
+    --ne-acc-hv: #4f46e5;
+    --ne-bh: #ebebef;
+    --ne-ba: #e0e2f0;
+    --ne-code-bg: #0d1117;
+    --ne-code-tx: #c9d1d9;
+    --ne-sh: 0 1px 3px rgba(0, 0, 0, .05), 0 6px 24px rgba(0, 0, 0, .07);
+    --ne-sh-modal: 0 24px 80px rgba(0, 0, 0, .18), 0 4px 20px rgba(0, 0, 0, .10);
+    --ne-r: 12px;
+    --ne-rsm: 8px;
+    --ne-rxs: 6px;
+    --ne-ease: cubic-bezier(.25, 1, .35, 1);
+    --ne-t: .15s;
+}
+
+/* ── Shell ── */
+.ne-shell {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+/* ════════════════════════════════
+   TOOLBAR
+════════════════════════════════ */
+.ne-toolbar {
+    display: flex;
+    flex-direction: column;
+    background: var(--ne-surf);
+    border: 1.5px solid var(--ne-bdr);
+    border-bottom: 1px solid var(--ne-bdr);
+    border-radius: var(--ne-r) var(--ne-r) 0 0;
+    user-select: none;
+    /* NO overflow property — dropdowns/tooltips live in <body> via JS */
+}
+
+/* Each row of toolbar tools */
+.ne-toolbar-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1px;
+    padding: 4px 8px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ne-bdr) transparent;
+    min-height: 40px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ne-toolbar-row:first-child {
+    border-bottom: 1px solid var(--ne-bdr);
+}
+
+.ne-toolbar-row::-webkit-scrollbar {
+    height: 3px;
+}
+
+.ne-toolbar-row::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ne-toolbar-row::-webkit-scrollbar-thumb {
+    background: var(--ne-bdr);
+    border-radius: 2px;
+}
+
+.ne-g {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.ne-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--ne-bdr);
+    margin: 0 3px;
+    flex-shrink: 0;
+}
+
+/* ── Toolbar buttons ── */
+.ne-b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: var(--ne-rxs);
+    background: transparent;
+    color: var(--ne-tx2);
+    cursor: pointer;
+    font-size: 11.5px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: .01em;
+    transition: background var(--ne-t) var(--ne-ease), color var(--ne-t) var(--ne-ease), transform .07s ease;
+    outline: none;
+    flex-shrink: 0;
+    position: relative;
+    white-space: nowrap;
+}
+
+.ne-b svg {
+    pointer-events: none;
+    flex-shrink: 0;
+}
+
+.ne-b:hover {
+    background: var(--ne-bh);
+    color: var(--ne-tx);
+}
+
+.ne-b:active {
+    background: var(--ne-ba);
+}
+
+.ne-b.ne-on {
+    background: var(--ne-acc-d);
+    color: var(--ne-acc);
+}
+
+.ne-b:focus-visible {
+    outline: 2px solid var(--ne-bdr-fo);
+    outline-offset: 1px;
+}
+
+.ne-b[disabled] {
+    opacity: .35;
+    cursor: default;
+    pointer-events: none;
+}
+
+.ne-bw {
+    width: auto;
+    padding: 0 7px;
+    gap: 3px;
+    font-size: 12px;
+}
+
+.ne-bw-lbl {
+    max-width: 64px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Tooltip — rendered via JS into <body>, always above everything */
+.ne-tip {
+    position: fixed;
+    z-index: 99999999;
+    background: #0d1117;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 4px 9px;
+    border-radius: 6px;
+    pointer-events: none;
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    letter-spacing: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+/* ── Dropdowns — appended to <body>, positioned via JS getBoundingClientRect ── */
+.ne-dd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999990;
+    background: var(--ne-bg);
+    border: 1px solid var(--ne-bdr);
+    border-radius: var(--ne-rsm);
+    box-shadow: var(--ne-sh);
+    padding: 5px;
+    animation: neDD .14s var(--ne-ease) both;
+    max-height: 260px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+@keyframes neDD {
+    from {
+        opacity: 0;
+        transform: translateY(-5px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ne-dd-item {
+    display: block;
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: var(--ne-rxs);
+    font-size: 13px;
+    color: var(--ne-tx2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: background var(--ne-t) ease, color var(--ne-t) ease;
+    white-space: nowrap;
+}
+
+.ne-dd-item:hover {
+    background: var(--ne-surf);
+    color: var(--ne-tx);
+}
+
+/* Color swatches */
+.ne-swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    display: inline-block;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.ne-swatch:hover {
+    transform: scale(1.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    border-color: rgba(0, 0, 0, .1);
+    z-index: 1;
+    position: relative;
+}
+
+/* Special char / emoji buttons */
+.ne-char-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--ne-bdr);
+    border-radius: 5px;
+    background: var(--ne-surf);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: background var(--ne-t) ease, border-color var(--ne-t) ease;
+}
+
+.ne-char-btn:hover {
+    background: var(--ne-acc-d);
+    border-color: var(--ne-bdr-fo);
+}
+
+/* ── Find bar ── */
+.ne-findbar {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 6px 10px;
+    background: var(--ne-surf);
+    border: 1.5px solid var(--ne-bdr);
+    border-top: none;
+}
+
+.ne-fb-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.ne-fb-inp {
+    height: 28px;
+    padding: 0 9px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--ne-tx);
+    background: var(--ne-bg);
+    border: 1.5px solid var(--ne-bdr);
+    border-radius: var(--ne-rxs);
+    outline: none;
+    width: 140px;
+    box-sizing: border-box;
+    transition: border-color var(--ne-t) ease;
+}
+
+.ne-fb-inp:focus {
+    border-color: var(--ne-bdr-fo);
+}
+
+.ne-fb-cnt {
+    font-size: 11.5px;
+    color: var(--ne-tx3);
+    white-space: nowrap;
+}
+
+/* ════════════════════════════════
+   EDITOR CONTENT
+════════════════════════════════ */
+.ne-ed {
+    position: relative;
+    background: var(--ne-bg);
+    border: 1.5px solid var(--ne-bdr);
+    border-top: none;
+    padding: 22px 26px;
+    min-height: 240px;
+    outline: none;
+    font-size: 15px;
+    line-height: 1.78;
+    color: var(--ne-tx);
+    caret-color: var(--ne-acc);
+    cursor: text;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow-y: auto;
+    transition: border-color var(--ne-t) var(--ne-ease), box-shadow var(--ne-t) var(--ne-ease);
+}
+
+.ne-ed:focus {
+    border-color: var(--ne-bdr-fo);
+    outline: none;
+}
+
+/* Placeholder */
+.ne-ed:empty::before,
+.ne-ed[data-empty="1"]::before {
+    content: attr(data-ph);
+    color: var(--ne-tx3);
+    pointer-events: none;
+    position: absolute;
+    top: 22px;
+    left: 26px;
+    font-size: 15px;
+    line-height: 1.78;
+    user-select: none;
+}
+
+/* ── Prose ── */
+.ne-ed h1 {
+    font-size: 1.75em;
+    font-weight: 750;
+    letter-spacing: -.03em;
+    line-height: 1.22;
+    margin: .9em 0 .35em;
+}
+
+.ne-ed h2 {
+    font-size: 1.35em;
+    font-weight: 680;
+    letter-spacing: -.02em;
+    line-height: 1.3;
+    margin: .8em 0 .3em;
+}
+
+.ne-ed h3 {
+    font-size: 1.12em;
+    font-weight: 650;
+    letter-spacing: -.01em;
+    line-height: 1.4;
+    margin: .7em 0 .25em;
+}
+
+.ne-ed h4 {
+    font-size: 1em;
+    font-weight: 650;
+    line-height: 1.45;
+    margin: .6em 0 .2em;
+}
+
+.ne-ed h5 {
+    font-size: .9em;
+    font-weight: 650;
+    line-height: 1.5;
+    margin: .5em 0 .2em;
+}
+
+.ne-ed h6 {
+    font-size: .85em;
+    font-weight: 650;
+    line-height: 1.5;
+    margin: .5em 0 .2em;
+    color: var(--ne-tx2);
+}
+
+.ne-ed p {
+    margin: 0 0 .75em;
+}
+
+.ne-ed p:last-child {
+    margin-bottom: 0;
+}
+
+.ne-ed strong {
+    font-weight: 720;
+}
+
+.ne-ed em {
+    font-style: italic;
+}
+
+.ne-ed u {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.ne-ed s {
+    text-decoration: line-through;
+    color: var(--ne-tx2);
+}
+
+.ne-ed sub {
+    vertical-align: sub;
+    font-size: .8em;
+}
+
+.ne-ed sup {
+    vertical-align: super;
+    font-size: .8em;
+}
+
+.ne-ed a {
+    color: var(--ne-acc);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    transition: color var(--ne-t) ease;
+}
+
+.ne-ed a:hover {
+    color: var(--ne-acc-hv);
+}
+
+.ne-ed code {
+    font-family: "SF Mono", "Fira Code", Menlo, Monaco, monospace;
+    font-size: .85em;
+    background: #f1f3f8;
+    color: #e11d48;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #e4e7ed;
+}
+
+.ne-ed pre {
+    background: var(--ne-code-bg);
+    color: var(--ne-code-tx);
+    font-family: "SF Mono", "Fira Code", Menlo, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    padding: 16px 20px;
+    border-radius: var(--ne-rsm);
+    overflow-x: auto;
+    margin: 1em 0;
+    tab-size: 2;
+    white-space: pre;
+}
+
+.ne-ed pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.ne-ed blockquote {
+    border-left: 3px solid var(--ne-acc);
+    margin: 1em 0;
+    padding: 3px 0 3px 18px;
+    color: var(--ne-tx2);
+    font-style: italic;
+}
+
+.ne-ed ul,
+.ne-ed ol {
+    margin: .5em 0 .75em;
+    padding-left: 1.6em;
+}
+
+.ne-ed ul {
+    list-style: disc;
+}
+
+.ne-ed ol {
+    list-style: decimal;
+}
+
+.ne-ed li {
+    margin: .2em 0;
+}
+
+.ne-ed ul ul {
+    list-style: circle;
+}
+
+.ne-ed ul ul ul {
+    list-style: square;
+}
+
+.ne-ed ul[data-type="taskList"] {
+    list-style: none;
+    padding-left: .25em;
+}
+
+.ne-ed ul[data-type="taskList"] li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.ne-ed ul[data-type="taskList"] input[type=checkbox] {
+    margin-top: 4px;
+    accent-color: var(--ne-acc);
+    flex-shrink: 0;
+}
+
+.ne-ed hr {
+    border: none;
+    border-top: 1.5px solid var(--ne-bdr);
+    margin: 1.5em 0;
+}
+
+.ne-ed img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--ne-rxs);
+    display: block;
+    margin: 1em 0;
+}
+
+.ne-ed table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 14px;
+    border-radius: var(--ne-rxs);
+    overflow: hidden;
+    border: 1.5px solid var(--ne-bdr);
+}
+
+.ne-ed th {
+    background: var(--ne-surf);
+    color: var(--ne-tx);
+    font-weight: 650;
+    font-size: 12px;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    border: 1px solid var(--ne-bdr);
+    text-align: left;
+}
+
+.ne-ed td {
+    padding: 9px 14px;
+    border: 1px solid var(--ne-bdr);
+    color: var(--ne-tx2);
+    vertical-align: top;
+}
+
+.ne-ed tr:nth-child(even) td {
+    background: var(--ne-surf);
+}
+
+.ne-ed tr:hover td {
+    background: var(--ne-acc-d);
+    transition: background .12s ease;
+}
+
+.ne-ed iframe {
+    border-radius: 8px;
+    max-width: 100%;
+    display: block;
+    margin: 1em 0;
+}
+
+.ne-ed ::selection {
+    background: rgba(99, 102, 241, .15);
+}
+
+/* Find highlight */
+mark.ne-fm {
+    background: rgba(99, 102, 241, .18);
+    border-radius: 2px;
+    color: inherit;
+}
+
+mark.ne-fm.ne-fc {
+    background: rgba(99, 102, 241, .45);
+}
+
+/* ── Status bar ── */
+.ne-sbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 14px;
+    background: var(--ne-surf);
+    border: 1.5px solid var(--ne-bdr);
+    border-top: 1px solid var(--ne-bdr);
+    border-radius: 0 0 var(--ne-r) var(--ne-r);
+    font-size: 11px;
+    color: var(--ne-tx3);
+    user-select: none;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.ne-sbar-l,
+.ne-sbar-r {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ════════════════════════════════
+   CONTEXT MENU
+════════════════════════════════ */
+.ne-ctx {
+    position: fixed;
+    z-index: 9999999;
+    background: var(--ne-bg);
+    border: 1px solid var(--ne-bdr);
+    border-radius: var(--ne-rsm);
+    box-shadow: var(--ne-sh);
+    padding: 5px;
+    min-width: 170px;
+    animation: neDD .12s var(--ne-ease) both;
+}
+
+.ne-ctx-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 10px;
+    border-radius: var(--ne-rxs);
+    font-size: 13px;
+    color: var(--ne-tx2);
+    cursor: pointer;
+    transition: background var(--ne-t) ease;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.ne-ctx-item:hover {
+    background: var(--ne-surf);
+    color: var(--ne-tx);
+}
+
+.ne-ctx-sep {
+    height: 1px;
+    background: var(--ne-bdr);
+    margin: 4px 0;
+}
+
+/* ════════════════════════════════
+   MODALS
+════════════════════════════════ */
+.ne-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 14, 26, .48);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: neOvIn .18s ease both;
+}
+
+@keyframes neOvIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.ne-modal {
+    width: 100%;
+    max-width: 460px;
+    background: var(--ne-bg);
+    border: 1px solid var(--ne-bdr);
+    border-radius: 16px;
+    box-shadow: var(--ne-sh-modal);
+    overflow: hidden;
+    animation: neModIn .22s var(--ne-ease) both;
+}
+
+@keyframes neModIn {
+    from {
+        opacity: 0;
+        transform: scale(.93) translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.ne-modal-hd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px 22px 14px;
+    border-bottom: 1px solid var(--ne-bdr);
+    background: var(--ne-surf);
+}
+
+.ne-modal-title {
+    font-size: 14.5px;
+    font-weight: 650;
+    color: var(--ne-tx);
+    letter-spacing: -.2px;
+}
+
+.ne-modal-x {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: var(--ne-rxs);
+    background: transparent;
+    color: var(--ne-tx3);
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    transition: background var(--ne-t) ease, color var(--ne-t) ease;
+}
+
+.ne-modal-x:hover {
+    background: var(--ne-bh);
+    color: var(--ne-tx);
+}
+
+.ne-modal-bd {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ne-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ne-field label {
+    font-size: 11.5px;
+    font-weight: 650;
+    color: #64748b;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.ne-inp {
+    height: 40px;
+    padding: 0 13px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ne-tx);
+    background: var(--ne-bg);
+    border: 1.5px solid var(--ne-bdr);
+    border-radius: var(--ne-rsm);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color var(--ne-t) var(--ne-ease), box-shadow var(--ne-t) var(--ne-ease);
+}
+
+.ne-inp::placeholder {
+    color: var(--ne-tx3);
+}
+
+.ne-inp:focus {
+    border-color: var(--ne-bdr-fo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .12);
+}
+
+.ne-modal-ft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 13px 22px;
+    border-top: 1px solid var(--ne-bdr);
+    background: var(--ne-surf);
+}
+
+.ne-ghost {
+    height: 36px;
+    padding: 0 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    font-family: inherit;
+    border: 1.5px solid var(--ne-bdr);
+    border-radius: var(--ne-rsm);
+    background: var(--ne-bg);
+    color: var(--ne-tx2);
+    cursor: pointer;
+    outline: none;
+    transition: background var(--ne-t) ease;
+}
+
+.ne-ghost:hover {
+    background: var(--ne-bh);
+}
+
+.ne-primary {
+    height: 36px;
+    padding: 0 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--ne-rsm);
+    background: var(--ne-acc);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(99, 102, 241, .3);
+    transition: background var(--ne-t) ease, transform .08s ease;
+}
+
+.ne-primary:hover {
+    background: var(--ne-acc-hv);
+}
+
+.ne-primary:active {
+    transform: scale(.96);
+}
+
+/* ════════════════════════════════
+   MOBILE  (≤ 640px)
+════════════════════════════════ */
+@media (max-width: 640px) {
+    .ne-toolbar {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .ne-toolbar-row {
+        padding: 3px 6px;
+        gap: 1px;
+        min-height: 36px;
+        /* momentum scrolling on iOS */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide the thin row scrollbar on mobile to save space */
+    .ne-toolbar-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ne-toolbar-row {
+        scrollbar-width: none;
+    }
+
+    .ne-b {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+    }
+
+    .ne-bw {
+        padding: 0 6px;
+        font-size: 11px;
+    }
+
+    .ne-bw-lbl {
+        max-width: 48px;
+    }
+
+    .ne-ed {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+
+    /* Placeholder position follows padding */
+    .ne-ed:empty::before,
+    .ne-ed[data-empty="1"]::before {
+        top: 14px;
+        left: 16px;
+        font-size: 14px;
+    }
+
+    .ne-sbar {
+        border-radius: 0 0 10px 10px;
+        padding: 4px 10px;
+        font-size: 10.5px;
+    }
+
+    .ne-overlay {
+        padding: 10px;
+    }
+
+    .ne-modal {
+        border-radius: 14px;
+        max-width: 100%;
+    }
+
+    .ne-modal-hd {
+        padding: 13px 16px 11px;
+    }
+
+    .ne-modal-bd {
+        padding: 16px;
+    }
+
+    .ne-modal-ft {
+        padding: 11px 16px;
+    }
+
+    /* Hide tooltips on touch devices */
+    .ne-tip {
+        display: none !important;
+    }
+
+    /* Findbar stacks more gracefully */
+    .ne-findbar {
+        gap: 4px;
+        padding: 6px 8px;
+    }
+
+    .ne-fb-inp {
+        width: 100px;
+    }
+}
+
+/* ════════════════════════════════
+   VERY SMALL (≤ 400px)
+════════════════════════════════ */
+@media (max-width: 400px) {
+    .ne-bw-lbl {
+        display: none;
+    }
+
+    .ne-bw {
+        padding: 0 5px;
+        gap: 2px;
+    }
+
+    .ne-fb-label {
+        display: none;
+    }
+
+    .ne-fb-inp {
+        width: 80px;
+    }
+}

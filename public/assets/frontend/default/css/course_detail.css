@@ -1,0 +1,861 @@
+/* ============================================================
+   PÁGINA DE DETALHES DO CURSO - Design Terminal Financeiro
+   ============================================================ */
+
+/* ---------- Hero: Tese da Certificação ---------- */
+.course-detail-hero {
+    background: linear-gradient(135deg, var(--pf-midnight) 0%, var(--pf-navy) 100%);
+    padding: 60px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-detail-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(0, 217, 163, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.course-detail-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Breadcrumb minimalista */
+.course-detail-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-family: var(--pf-font-body);
+    font-size: 1.4rem;
+}
+
+.course-detail-breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.course-detail-breadcrumb a:hover {
+    color: var(--pf-terminal);
+}
+
+.course-detail-breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.course-detail-breadcrumb .current {
+    color: var(--pf-terminal);
+}
+
+/* Layout do Hero */
+.course-detail-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: start;
+}
+
+/* Coluna principal */
+.course-detail-main {
+    color: #fff;
+}
+
+/* Código da certificação - elemento assinatura */
+.course-cert-code {
+    font-family: var(--pf-font-mono);
+    font-size: 6rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 16px;
+    text-shadow: 0 0 40px rgba(0, 217, 163, 0.3);
+}
+
+.course-detail-title {
+    font-family: var(--pf-font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.course-detail-description {
+    font-family: var(--pf-font-body);
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 600px;
+}
+
+/* Dados do curso em grid */
+.course-detail-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.course-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.course-stat-value {
+    font-family: var(--pf-font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+}
+
+.course-stat-label {
+    font-family: var(--pf-font-body);
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---------- Pricing Card (Sidebar) ---------- */
+.course-pricing-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+    position: sticky;
+    top: 100px;
+}
+
+.course-pricing-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.course-pricing-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-pricing-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(0, 217, 163, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-midnight);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.course-pricing-play:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--pf-terminal);
+}
+
+.course-pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.course-pricing-current {
+    font-family: var(--pf-font-mono);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.course-pricing-original {
+    font-family: var(--pf-font-body);
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+}
+
+.course-pricing-free {
+    font-family: var(--pf-font-mono);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--pf-terminal);
+}
+
+.course-pricing-cta {
+    display: block;
+    width: 100%;
+    background: var(--pf-alert);
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: var(--pf-font-body);
+    font-size: 1.6rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+}
+
+.course-pricing-cta:hover {
+    background: #E55A2B;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+.course-pricing-secondary {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: var(--pf-font-body);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.course-pricing-secondary:hover {
+    border-color: var(--pf-terminal);
+    color: var(--pf-terminal);
+}
+
+/* ---------- Content Area ---------- */
+.course-detail-content {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.course-detail-content .container {
+    max-width: 1200px;
+}
+
+/* Tabs navigation */
+.course-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--pf-border);
+    padding-bottom: 0;
+    overflow-x: auto;
+}
+
+.course-tab {
+    background: none;
+    border: none;
+    padding: 16px 24px;
+    font-family: var(--pf-font-body);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--pf-slate);
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.course-tab:hover {
+    color: var(--pf-midnight);
+}
+
+.course-tab.active {
+    color: var(--pf-midnight);
+}
+
+.course-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--pf-terminal);
+}
+
+/* Tab panels */
+.course-tab-panel {
+    display: none;
+}
+
+.course-tab-panel.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Content sections */
+.course-section {
+    margin-bottom: 48px;
+}
+
+.course-section-title {
+    font-family: var(--pf-font-display);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--pf-midnight);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.course-section-text {
+    font-family: var(--pf-font-body);
+    font-size: 1.6rem;
+    color: var(--pf-slate);
+    line-height: 1.7;
+}
+
+/* Features list */
+.course-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: var(--pf-font-body);
+    font-size: 1.5rem;
+    color: var(--pf-midnight);
+}
+
+.course-feature-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 217, 163, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pf-terminal);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+    .course-detail-hero-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-pricing-card {
+        position: static;
+    }
+    
+    .course-cert-code {
+        font-size: 4rem;
+    }
+    
+    .course-detail-title {
+        font-size: 2.2rem;
+    }
+    
+    .course-detail-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .course-detail-hero {
+        padding: 40px 0 60px;
+    }
+    
+    .course-cert-code {
+        font-size: 3rem;
+    }
+    
+    .course-detail-title {
+        font-size: 1.8rem;
+    }
+    
+    .course-detail-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .course-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .course-tabs {
+        gap: 0;
+    }
+    
+    .course-tab {
+        padding: 12px 16px;
+        font-size: 1.4rem;
+    }
+}
+
+/* ============================================================
+   RENOVAÇÃO /COURSE — conteúdo das tabs no tema terminal
+   (Visão Geral, Conteúdo, Instrutor, Avaliações, FAQ)
+   Escopado sob .course-detail-content: não afeta header,
+   footer, modal nem nenhuma outra página.
+   ============================================================ */
+
+/* ---------- Caixas e títulos ---------- */
+.course-detail-content .ps-box {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 48px;
+}
+
+.course-detail-content .g-title {
+    font-family: var(--pf-font-display);
+    color: var(--pf-midnight);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+}
+.course-detail-content .g-title::before,
+.course-detail-content .g-title::after {
+    display: none;
+}
+
+.course-detail-content .description {
+    font-family: var(--pf-font-body);
+    color: var(--pf-slate);
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+.course-detail-content .editor-content {
+    font-family: var(--pf-font-body);
+    color: var(--pf-slate);
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+/* Link "Ver mais" */
+.course-detail-content .s_stext {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--pf-terminal);
+    font-family: var(--pf-font-body);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: gap 0.2s ease;
+}
+.course-detail-content .s_stext:hover {
+    gap: 10px;
+}
+
+/* ---------- Accordion (currículo + FAQ) ---------- */
+.course-detail-content .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.course-detail-content .accordion-item {
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.course-detail-content .accordion-button {
+    background: var(--pf-paper);
+    color: var(--pf-midnight);
+    font-family: var(--pf-font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 18px 24px;
+    box-shadow: none;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.course-detail-content .accordion-button:not(.collapsed) {
+    background: rgba(0, 217, 163, 0.06);
+    color: var(--pf-midnight);
+    box-shadow: none;
+}
+
+.course-detail-content .accordion-button:hover {
+    color: var(--pf-midnight);
+}
+
+.course-detail-content .accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.course-detail-content .accordion-body {
+    padding: 8px 24px 20px;
+    background: #fff;
+}
+
+/* ---------- Lista de aulas ---------- */
+.course-detail-content .lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-detail-content .lesson-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.course-detail-content .lesson-list li a:hover {
+    background: var(--pf-paper);
+}
+
+.course-detail-content .lesson-list li a p {
+    font-family: var(--pf-font-body);
+    color: var(--pf-midnight);
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-detail-content .lesson-list .preview-text {
+    font-family: var(--pf-font-mono);
+    color: var(--pf-slate);
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+/* ---------- FAQ ---------- */
+.course-detail-content .faqs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-detail-content .faqs li a {
+    text-decoration: none;
+}
+
+.course-detail-content .faqs li p {
+    font-family: var(--pf-font-body);
+    color: var(--pf-slate);
+    font-size: 1.5rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ---------- Card do instrutor ---------- */
+.course-detail-content .eInstructor {
+    background: var(--pf-paper);
+    border: 1px solid var(--pf-border);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.course-detail-content .istructor-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.course-detail-content .ins-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.course-detail-content .ins-left img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--pf-terminal);
+}
+
+.course-detail-content .ins-designation h5 {
+    font-family: var(--pf-font-display);
+    color: var(--pf-midnight);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.course-detail-content .ins-designation .description {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.course-detail-content .ins-right {
+    text-align: right;
+}
+
+.course-detail-content .ins-right p {
+    font-family: var(--pf-font-mono);
+    color: var(--pf-midnight);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* Estrelas de avaliação */
+.course-detail-content .re-star {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 3px;
+    justify-content: flex-end;
+}
+
+.course-detail-content .re-star li i {
+    color: #FFB020;
+    font-size: 1.4rem;
+}
+
+/* Estatísticas do instrutor */
+.course-detail-content .instructor-motion {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--pf-border);
+    border-bottom: 1px solid var(--pf-border);
+    padding: 16px 0;
+}
+
+.course-detail-content .instructor-motion li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--pf-font-mono);
+    color: var(--pf-midnight);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.course-detail-content .instructor-motion li img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* ---------- Botões CTA ---------- */
+.course-detail-content .eBtn.gradient {
+    display: inline-block;
+    background: var(--pf-alert);
+    color: #fff;
+    font-family: var(--pf-font-body);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.course-detail-content .eBtn.gradient:hover {
+    background: #E55A2B;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+}
+
+/* ---------- Área de reviews ---------- */
+.course-detail-content .write-review {
+    background: var(--pf-paper);
+    border: 1px solid var(--pf-border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+}
+
+.course-detail-content .rating-stars {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-detail-content .rating-stars .rating-star {
+    font-size: 2.4rem;
+    color: #D0D5DD;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.course-detail-content .rating-stars .rating-star.fa {
+    color: #FFB020;
+}
+
+.course-detail-content #remove-stars {
+    color: var(--pf-terminal);
+    font-family: var(--pf-font-body);
+    font-weight: 600;
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.course-detail-content .write-review .form-control {
+    font-family: var(--pf-font-body);
+    font-size: 1.5rem;
+    color: var(--pf-midnight);
+    border: 1px solid var(--pf-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: #fff;
+}
+
+.course-detail-content .write-review .form-control:focus {
+    border-color: var(--pf-terminal);
+    box-shadow: 0 0 0 3px rgba(0, 217, 163, 0.12);
+    outline: none;
+}
+
+/* Lista de reviews */
+.course-detail-content .reviews {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.course-detail-content .E-review {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--pf-border);
+}
+
+.course-detail-content .E-review:last-child {
+    border-bottom: none;
+}
+
+.course-detail-content .E-review .istructor-info {
+    margin-bottom: 12px;
+}
+
+.course-detail-content .E-review .ins-left img {
+    width: 48px;
+    height: 48px;
+}
+
+.course-detail-content .E-review .ins-designation h5 {
+    font-size: 1.6rem;
+}
+
+.course-detail-content .E-review .ins-right p {
+    font-family: var(--pf-font-body);
+    color: var(--pf-slate);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Like / dislike */
+.course-detail-content .entry-like {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+    gap: 20px;
+}
+
+.course-detail-content .entry-like li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--pf-font-body);
+    color: var(--pf-slate);
+    font-size: 1.4rem;
+}
+
+.course-detail-content .entry-like li a {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.15s ease;
+}
+
+.course-detail-content .entry-like li a:hover {
+    transform: translateY(-2px);
+}
+
+/* Link "Ver mais" reviews */
+.course-detail-content .see-more {
+    color: var(--pf-terminal);
+    font-family: var(--pf-font-body);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.course-detail-content .see-more:hover {
+    color: var(--pf-midnight);
+}
+
+/* ---------- Responsivo (conteúdo das tabs) ---------- */
+@media (max-width: 768px) {
+    .course-detail-content .ps-box {
+        margin-bottom: 36px;
+    }
+
+    .course-detail-content .eInstructor {
+        padding: 24px;
+    }
+
+    .course-detail-content .istructor-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .course-detail-content .ins-right {
+        text-align: left;
+    }
+
+    .course-detail-content .re-star {
+        justify-content: flex-start;
+    }
+
+    .course-detail-content .instructor-motion {
+        gap: 20px;
+    }
+}

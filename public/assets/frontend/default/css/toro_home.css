@@ -1,0 +1,1545 @@
+/* ============================================================
+   HOME — Academia de Certificações Financeiras (system color)
+   Verde petróleo #0B3A3E | esmeralda #12B76A | laranja #FF9F1C
+   ============================================================ */
+
+:root {
+    --pf-petrol: #0B3A3E;
+    --pf-petrol-2: #0E5C63;
+    --pf-emerald: #12B76A;
+    --pf-green: #22C55E;
+    --pf-turq: #2ED3B7;
+    --pf-orange: #FF9F1C;
+    --pf-orange-soft: #FFD7A1;
+    --pf-ivory: #F7FAF8;
+    --pf-ink: #0F172A;
+    --pf-ink-2: #475467;
+    --pf-border: #D6DDE3;
+    --pf-font-display: "Sora", "Inter", sans-serif;
+    --pf-font-body: "Inter", sans-serif;
+    
+    /* Hollywood-level enhancements */
+    --pf-shadow-sm: 0 2px 8px rgba(11, 58, 62, 0.06);
+    --pf-shadow-md: 0 8px 24px rgba(11, 58, 62, 0.12);
+    --pf-shadow-lg: 0 16px 48px rgba(11, 58, 62, 0.16);
+    --pf-shadow-xl: 0 24px 64px rgba(11, 58, 62, 0.20);
+    --pf-shadow-glow: 0 0 40px rgba(18, 183, 106, 0.25);
+    --pf-gradient-primary: linear-gradient(135deg, #12B76A 0%, #2ED3B7 100%);
+    --pf-gradient-hero: linear-gradient(135deg, #0B3A3E 0%, #0E5C63 50%, #12B76A 100%);
+    --pf-transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --pf-transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ---------- Hero banner integral ---------- */
+.pf-hero-banner {
+    position: relative;
+    background: 
+        radial-gradient(ellipse at 50% 0%, rgba(46, 211, 183, 0.05) 0%, transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+    line-height: 0;
+    max-width: 1240px;
+    margin: 28px auto 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--pf-shadow-xl);
+    animation: heroFadeIn 1.2s var(--pf-transition-smooth) both;
+    transform-origin: center top;
+}
+@media (min-width: 1280px) {
+    .pf-hero-banner { margin-top: 44px; }
+}
+.pf-hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(180deg, transparent 0%, rgba(11, 58, 62, 0.04) 100%),
+        radial-gradient(circle at 1px 1px, rgba(11, 58, 62, 0.02) 1px, transparent 0);
+    background-size: 100% 100%, 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+.pf-hero-banner-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s var(--pf-transition-smooth);
+}
+.pf-hero-banner:hover .pf-hero-banner-img {
+    transform: scale(1.02);
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* botões reais sobrepostos aos CTAs desenhados no banner */
+.pf-hero-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55em;
+    font-family: var(--pf-font-body);
+    font-weight: 700;
+    font-size: clamp(11px, 1.15vw, 24px);
+    letter-spacing: .2px;
+    text-decoration: none;
+    border-radius: clamp(8px, .65vw, 14px);
+    transition: all 0.3s var(--pf-transition-smooth);
+    z-index: 10;
+    overflow: hidden;
+}
+.pf-hero-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.pf-hero-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    filter: brightness(1.08);
+}
+.pf-hero-btn:hover::before {
+    opacity: 1;
+}
+.pf-hero-btn:active { transform: translateY(-1px) scale(1.01); }
+.pf-hero-btn:focus-visible { outline: 3px solid var(--pf-petrol); outline-offset: 3px; }
+.pf-hero-btn-primary {
+    background: linear-gradient(135deg, #F87800 0%, #FF9F1C 100%);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(248, 120, 0, .4), 0 0 0 0 rgba(248, 120, 0, 0);
+}
+.pf-hero-btn-primary:hover {
+    box-shadow: 0 12px 32px rgba(248, 120, 0, .5), 0 0 0 4px rgba(248, 120, 0, 0.1);
+}
+.pf-hero-btn-secondary {
+    background: rgba(255, 255, 255, 0.95);
+    color: #217B49;
+    border: max(2px, .13vw) solid #217B49;
+    backdrop-filter: blur(8px);
+}
+.pf-hero-btn-secondary:hover {
+    background: #fff;
+    border-color: var(--pf-emerald);
+    color: var(--pf-emerald);
+}
+.pf-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- Hero system color ---------- */
+.pf-hero {
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='260' viewBox='0 0 520 260'%3E%3Cpolyline points='0,230 90,205 170,215 260,150 340,165 430,90 520,60' fill='none' stroke='%232ED3B7' stroke-opacity='.14' stroke-width='3'/%3E%3Cpolyline points='0,250 110,235 200,240 300,190 390,200 520,120' fill='none' stroke='%2312B76A' stroke-opacity='.10' stroke-width='3'/%3E%3C/svg%3E") repeat-x left bottom / 520px 260px,
+        radial-gradient(900px 420px at 88% -12%, rgba(46, 211, 183, .16), transparent 62%),
+        linear-gradient(135deg, #0B3A3E 0%, #0E5C63 100%);
+    padding: 64px 0 72px;
+    overflow: hidden;
+}
+.pf-hero .container { max-width: 1260px; }
+.pf-hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 48px;
+    align-items: center;
+}
+.pf-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46, 211, 183, .1);
+    border: 1px solid rgba(46, 211, 183, .4);
+    color: var(--pf-turq);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-family: var(--pf-font-body);
+}
+.pf-eyebrow svg { flex-shrink: 0; }
+.pf-hero h1 {
+    color: #fff;
+    font-family: var(--pf-font-display);
+    font-weight: 800;
+    font-size: clamp(2.1rem, 4vw, 3.3rem);
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    margin: 0 0 16px;
+    text-align: left;
+}
+.pf-hero h1 em {
+    font-style: normal;
+    color: var(--pf-green);
+}
+.pf-hero .pf-hero-sub {
+    color: rgba(247, 250, 248, .82);
+    font-size: 1.06rem;
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 0 30px;
+    font-family: var(--pf-font-body);
+}
+.pf-hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 34px;
+}
+.pf-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--pf-orange);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(255, 159, 28, .35);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    font-family: var(--pf-font-body);
+}
+.pf-btn-primary:hover {
+    background: #f08c00;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 159, 28, .42);
+}
+.pf-btn-primary:focus-visible, .pf-btn-ghost:focus-visible {
+    outline: 3px solid var(--pf-turq);
+    outline-offset: 2px;
+}
+.pf-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    padding: 14px 26px;
+    border: 1.5px solid rgba(255, 255, 255, .38);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color .18s ease, background .18s ease;
+    font-family: var(--pf-font-body);
+}
+.pf-btn-ghost:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,.06); }
+.pf-hero-trust {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+.pf-hero-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(247, 250, 248, .78);
+    font-size: .9rem;
+    font-family: var(--pf-font-body);
+}
+.pf-hero-trust svg { flex-shrink: 0; }
+
+/* arte do hero (personagem 2D) */
+.pf-hero-art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.pf-hero-art > img {
+    width: min(100%, 520px);
+    height: auto;
+    filter: drop-shadow(0 24px 48px rgba(0, 0, 0, .35));
+}
+.pf-chip {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: .85rem;
+    font-weight: 700;
+    font-family: var(--pf-font-body);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .28);
+    animation: pf-float 5s ease-in-out infinite;
+}
+.pf-chip-green {
+    top: 8%;
+    right: 2%;
+    background: rgba(11, 58, 62, .82);
+    border: 1px solid rgba(34, 197, 94, .55);
+    color: var(--pf-green);
+    backdrop-filter: blur(4px);
+}
+.pf-chip-ivory {
+    bottom: 10%;
+    left: 0;
+    background: #fff;
+    color: var(--pf-petrol);
+    animation-delay: 2.2s;
+}
+@keyframes pf-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pf-chip { animation: none; }
+    .pf-btn-primary:hover { transform: none; }
+}
+
+/* ---------- Seletor de certificação + carrossel ---------- */
+.pf-cursos {
+    background: 
+        radial-gradient(ellipse at 20% 0%, rgba(46, 211, 183, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(18, 183, 106, 0.12) 0%, transparent 50%),
+        linear-gradient(180deg, #f5f8f7 0%, #edf3f1 50%, #f5f8f7 100%);
+    padding: 80px 0 90px;
+    position: relative;
+}
+.pf-cursos::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(11, 58, 62, 0.04) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+    opacity: 0.5;
+}
+.pf-cursos::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--pf-border) 50%, transparent 100%);
+}
+.pf-cursos .container { max-width: 1260px; }
+.pf-cursos-head { 
+    text-align: center; 
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) both;
+}
+.pf-cursos-head h2 {
+    font-family: var(--pf-font-display);
+    color: var(--pf-petrol);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    letter-spacing: -0.5px;
+    margin: 0 0 12px;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.pf-cursos-head p { 
+    color: var(--pf-ink-2); 
+    font-size: 1.1rem; 
+    margin: 0;
+    font-weight: 400;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* menu de filtro (bordas) */
+#toro-menu-filter-borders {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) 0.1s both;
+}
+#toro-menu-filter-borders li { list-style: none; }
+.toro-filter-btn-border {
+    border: 1.5px solid var(--pf-border);
+    border-radius: 999px;
+    padding: 10px 26px;
+    color: var(--pf-ink-2);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size: .92rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.3s var(--pf-transition-smooth);
+    font-family: var(--pf-font-body);
+    box-shadow: var(--pf-shadow-sm);
+}
+.toro-filter-btn-border:hover { 
+    border-color: var(--pf-petrol-2); 
+    color: var(--pf-petrol-2);
+    transform: translateY(-2px);
+    box-shadow: var(--pf-shadow-md);
+}
+.toro-filter-btn-border.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    border-color: transparent;
+    box-shadow: 0 8px 24px rgba(11, 58, 62, 0.25);
+    transform: translateY(-1px);
+}
+
+/* menu de filtro (âncoras) */
+#toro-menu-filter-anchors {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 22px;
+    justify-content: center;
+    align-items: center;
+}
+#toro-menu-filter-anchors li { list-style: none; }
+.toro-filter-anchor {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--pf-ink-2);
+    font-size: .82rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+    font-family: var(--pf-font-body);
+}
+.toro-filter-anchor:hover { color: var(--pf-petrol-2); }
+.toro-filter-anchor.active {
+    color: var(--pf-petrol);
+    font-weight: 800;
+    border-bottom-color: var(--pf-emerald);
+}
+/* botão primário compartilhado (CTA final etc.) */
+.toro-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 38px;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(18, 183, 106, .35);
+    transition: all 0.3s var(--pf-transition-smooth);
+    font-family: var(--pf-font-body);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+.toro-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.toro-btn-primary span {
+    position: relative;
+    z-index: 1;
+}
+.toro-btn-primary:hover { 
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(18, 183, 106, .45);
+}
+.toro-btn-primary:hover::before {
+    opacity: 1;
+}
+.toro-btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.toro-cards-wrapper {
+    position: relative;
+    margin: 0 -12px;
+    padding: 0 12px;
+}
+.toro-cards-carrossel {
+    display: flex;
+    overflow-x: auto;
+    gap: 28px;
+    padding: 28px 12px 24px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pf-petrol-2) transparent;
+    scroll-behavior: smooth;
+}
+.toro-cards-carrossel::-webkit-scrollbar { height: 8px; }
+.toro-cards-carrossel::-webkit-scrollbar-track { background: transparent; }
+.toro-cards-carrossel::-webkit-scrollbar-thumb { 
+    background: linear-gradient(135deg, var(--pf-petrol-2) 0%, var(--pf-petrol) 100%);
+    border-radius: 4px;
+}
+
+/* Setas de navegação modernas */
+.toro-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(11, 58, 62, 0.08);
+    box-shadow: 0 8px 32px rgba(11, 58, 62, 0.15), 0 2px 8px rgba(11, 58, 62, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s var(--pf-transition-smooth);
+    color: var(--pf-petrol);
+}
+.toro-nav-arrow::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+.toro-nav-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 40px rgba(18, 183, 106, 0.3), 0 4px 12px rgba(11, 58, 62, 0.12);
+    color: #fff;
+    border-color: transparent;
+}
+.toro-nav-arrow:hover::before {
+    opacity: 1;
+}
+.toro-nav-arrow:active {
+    transform: translateY(-50%) scale(1.05);
+}
+.toro-nav-arrow svg {
+    transition: transform 0.3s var(--pf-transition-smooth);
+}
+.toro-nav-arrow:hover svg {
+    transform: scale(1.1);
+}
+.toro-nav-prev {
+    left: -28px;
+}
+.toro-nav-next {
+    right: -28px;
+}
+.toro-nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+@media (max-width: 1280px) {
+    .toro-nav-prev { left: -20px; }
+    .toro-nav-next { right: -20px; }
+    .toro-nav-arrow {
+        width: 48px;
+        height: 48px;
+    }
+    .toro-nav-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (max-width: 768px) {
+    .toro-nav-arrow {
+        width: 44px;
+        height: 44px;
+    }
+    .toro-nav-prev { left: -16px; }
+    .toro-nav-next { right: -16px; }
+}
+
+/* Card de curso — espelho do card Toro com efeitos Hollywood */
+.card-curso-toro {
+    width: 320px;
+    min-width: 320px;
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 16px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s var(--pf-transition-smooth);
+    box-shadow: var(--pf-shadow-sm);
+    position: relative;
+    animation: cardSlideIn 0.6s var(--pf-transition-smooth) both;
+}
+.card-curso-toro:nth-child(1) { animation-delay: 0.1s; }
+.card-curso-toro:nth-child(2) { animation-delay: 0.2s; }
+.card-curso-toro:nth-child(3) { animation-delay: 0.3s; }
+.card-curso-toro:nth-child(4) { animation-delay: 0.4s; }
+.card-curso-toro:nth-child(5) { animation-delay: 0.5s; }
+.card-curso-toro:nth-child(6) { animation-delay: 0.6s; }
+.card-curso-toro:nth-child(7) { animation-delay: 0.7s; }
+.card-curso-toro:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-curso-toro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(18, 183, 106, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.card-curso-toro:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--pf-shadow-xl);
+    border-color: var(--pf-emerald);
+}
+.card-curso-toro:hover::before {
+    opacity: 1;
+}
+.card-curso-toro .toro-card-image {
+    width: 100%;
+    aspect-ratio: 360/205;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+}
+.card-curso-toro .toro-card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(11, 58, 62, 0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.card-curso-toro:hover .toro-card-image::after {
+    opacity: 1;
+}
+.card-curso-toro .toro-card-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transition: transform 0.6s var(--pf-transition-smooth);
+}
+.card-curso-toro:hover .toro-card-image img {
+    transform: scale(1.08);
+}
+/* card com imagem integral (proporção própria da arte, ex.: CPA) */
+.card-curso-toro.card--integral .toro-card-image { aspect-ratio: 1 / 1; }
+.card-curso-toro .toro-card-title-first-line {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--pf-petrol-2) 0%, var(--pf-petrol) 100%);
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 2;
+}
+.card-curso-toro .toro-card-price-12x {
+    margin: 16px 0 6px;
+    text-align: center;
+    color: var(--pf-ink);
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+.card-curso-toro .toro-card-price-12x span.small {
+    font-size: 1.7em;
+    font-weight: 600;
+    line-height: 1em;
+    color: var(--pf-ink-2);
+}
+.card-curso-toro .toro-card-price-12x span.large {
+    font-size: 3.2em;
+    font-weight: 800;
+    line-height: 1em;
+    margin-left: 6px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.card-curso-toro .toro-card-title-second-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--pf-ink);
+    line-height: 1.3em;
+    position: relative;
+    z-index: 2;
+}
+.card-curso-toro .toro-card-title-second-line b { 
+    font-weight: 700;
+    color: var(--pf-petrol);
+}
+.card-curso-toro .toro-icon-pix {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    border-radius: 6px;
+    font-size: 11px;
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(18, 183, 106, 0.3);
+}
+.card-curso-toro .toro-card-btn-comprar, .card-curso-toro .toro-card-read-more {
+    margin: 10px 0;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.card-curso-toro .toro-card-btn-comprar a {
+    color: #fff;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    border-radius: 12px;
+    padding: 14px 30px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s var(--pf-transition-smooth);
+    box-shadow: 0 6px 20px rgba(18, 183, 106, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.card-curso-toro .toro-card-btn-comprar a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.card-curso-toro .toro-card-btn-comprar a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(18, 183, 106, 0.4);
+}
+.card-curso-toro .toro-card-btn-comprar a:hover::before {
+    opacity: 1;
+}
+.card-curso-toro .toro-card-btn-comprar a span {
+    position: relative;
+    z-index: 1;
+}
+.card-curso-toro .toro-card-read-more a { 
+    text-decoration: none; 
+    color: var(--pf-ink-2);
+    font-size: .95em;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+}
+.card-curso-toro .toro-card-read-more a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    transition: width 0.3s var(--pf-transition-smooth);
+}
+.card-curso-toro .toro-card-read-more a:hover { 
+    color: var(--pf-emerald);
+}
+.card-curso-toro .toro-card-read-more a:hover::after {
+    width: 100%;
+}
+.card-curso-toro .toro-card-highlights {
+    margin: 12px 0 16px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+.card-curso-toro .toro-list-highlights { list-style: none; margin: 0; padding: 0; }
+.card-curso-toro .toro-list-highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    color: var(--pf-ink-2);
+    transition: transform 0.3s ease;
+}
+.card-curso-toro:hover .toro-list-highlights li {
+    transform: translateX(4px);
+}
+.card-curso-toro .toro-list-highlights li:nth-child(1) { transition-delay: 0.05s; }
+.card-curso-toro .toro-list-highlights li:nth-child(2) { transition-delay: 0.1s; }
+.card-curso-toro .toro-list-highlights .toro-check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    filter: drop-shadow(0 2px 4px rgba(18, 183, 106, 0.3));
+}
+.toro-carrossel-empty {
+    background: #fff;
+    border: 2px dashed var(--pf-border);
+    border-radius: 20px;
+    padding: 60px 32px;
+    text-align: center;
+    color: var(--pf-ink-2);
+    margin: 24px 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) both;
+}
+
+/* ---------- Seção "Por que escolher" ---------- */
+.toro-why-section {
+    background: 
+        radial-gradient(ellipse at 10% 20%, rgba(255, 159, 28, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(46, 211, 183, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafb 50%, #ffffff 100%);
+    padding: 100px 0 120px;
+    position: relative;
+}
+.toro-why-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(11, 58, 62, 0.02) 25%, transparent 25%, transparent 75%, rgba(11, 58, 62, 0.02) 75%),
+        linear-gradient(45deg, rgba(11, 58, 62, 0.02) 25%, transparent 25%, transparent 75%, rgba(11, 58, 62, 0.02) 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    pointer-events: none;
+    opacity: 0.3;
+}
+.toro-why-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--pf-border) 50%, transparent 100%);
+}
+.toro-why-section .container { max-width: 1260px; position: relative; z-index: 1; }
+
+/* Badge da seção */
+.toro-section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(18, 183, 106, 0.1) 0%, rgba(46, 211, 183, 0.1) 100%);
+    border: 1px solid rgba(18, 183, 106, 0.2);
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--pf-emerald);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.8s var(--pf-transition-smooth) both;
+}
+.toro-section-badge svg {
+    animation: rotateStar 8s linear infinite;
+}
+@keyframes rotateStar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toro-section-head { 
+    text-align: center; 
+    margin-bottom: 70px;
+}
+.toro-section-head h2 {
+    color: var(--pf-petrol);
+    font-family: var(--pf-font-display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 50%, var(--pf-emerald) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) 0.1s both;
+    letter-spacing: -0.5px;
+}
+.toro-section-head p { 
+    color: var(--pf-ink-2); 
+    font-size: 1.15rem; 
+    max-width: 720px; 
+    margin: 0 auto;
+    line-height: 1.7;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) 0.2s both;
+}
+
+/* Grid premium com layout assimétrico */
+.toro-why-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+/* Card base premium */
+.toro-why-card-premium {
+    grid-column: span 4;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--pf-transition-smooth);
+    box-shadow: 0 4px 20px rgba(11, 58, 62, 0.06);
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) both;
+}
+.toro-why-card-premium:nth-child(1) { animation-delay: 0.1s; }
+.toro-why-card-premium:nth-child(2) { animation-delay: 0.15s; }
+.toro-why-card-premium:nth-child(3) { animation-delay: 0.2s; }
+.toro-why-card-premium:nth-child(4) { animation-delay: 0.25s; }
+.toro-why-card-premium:nth-child(5) { animation-delay: 0.3s; }
+.toro-why-card-premium:nth-child(6) { animation-delay: 0.35s; }
+.toro-why-card-premium:nth-child(7) { animation-delay: 0.4s; }
+
+.toro-why-card-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(18, 183, 106, 0.03) 0%, rgba(46, 211, 183, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.toro-why-card-premium:hover .toro-why-card-bg {
+    opacity: 1;
+}
+.toro-why-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--pf-transition-smooth);
+}
+.toro-why-card-premium:hover::before {
+    transform: scaleX(1);
+}
+.toro-why-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(11, 58, 62, 0.15);
+    border-color: rgba(18, 183, 106, 0.2);
+}
+
+.toro-why-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ícone premium */
+.toro-why-icon-premium {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+    transition: all 0.5s var(--pf-transition-smooth);
+    box-shadow: 0 8px 24px rgba(11, 58, 62, 0.2);
+}
+.toro-why-icon-premium::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+.toro-why-card-premium:hover .toro-why-icon-premium {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 32px rgba(18, 183, 106, 0.3);
+}
+.toro-why-card-premium:hover .toro-why-icon-premium::after {
+    opacity: 0.3;
+}
+
+/* Glow do ícone */
+.toro-why-icon-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(18, 183, 106, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+.toro-why-card--featured:hover .toro-why-icon-glow {
+    opacity: 1;
+}
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* Card em destaque */
+.toro-why-card--featured {
+    grid-column: span 6;
+    grid-row: span 2;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    color: #fff;
+    padding: 48px 40px;
+}
+.toro-why-card--featured .toro-why-card-bg {
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(18, 183, 106, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(46, 211, 183, 0.15) 0%, transparent 50%);
+    opacity: 1;
+}
+.toro-why-card--featured::before {
+    background: linear-gradient(90deg, var(--pf-orange) 0%, var(--pf-orange-soft) 100%);
+}
+.toro-why-card--featured:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(11, 58, 62, 0.3);
+}
+.toro-why-card--featured .toro-why-icon-premium {
+    width: 88px;
+    height: 88px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.toro-why-card--featured h3 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+}
+.toro-why-card--featured p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* Estatística do card destaque */
+.toro-why-card-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.toro-stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pf-orange) 0%, var(--pf-orange-soft) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+.toro-stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+/* Features do card destaque */
+.toro-why-card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+.toro-why-card-features span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+.toro-why-card-features span:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+.toro-why-card-features i {
+    color: var(--pf-emerald);
+    font-size: 0.75rem;
+}
+
+/* Títulos e textos dos cards regulares */
+.toro-why-card-premium h3 {
+    color: var(--pf-petrol);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+.toro-why-card-premium:hover h3 {
+    color: var(--pf-emerald);
+}
+.toro-why-card-premium p {
+    color: var(--pf-ink-2);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .toro-why-grid-premium {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .toro-why-card--featured {
+        grid-column: span 6;
+        grid-row: span 1;
+    }
+    .toro-why-card-premium {
+        grid-column: span 3;
+    }
+}
+@media (max-width: 768px) {
+    .toro-why-section {
+        padding: 70px 0 80px;
+    }
+    .toro-why-grid-premium {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .toro-why-card--featured,
+    .toro-why-card-premium {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .toro-why-card--featured {
+        padding: 36px 28px;
+    }
+    .toro-stat-number {
+        font-size: 2.8rem;
+    }
+}
+
+/* ---------- Faixa de selos / certificações ---------- */
+.toro-logos-strip {
+    background: 
+        radial-gradient(ellipse at 0% 50%, rgba(18, 183, 106, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 50%, rgba(46, 211, 183, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 50%, var(--pf-petrol) 100%);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+.toro-logos-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255,255,255,0.02) 100px, rgba(255,255,255,0.02) 101px);
+    pointer-events: none;
+}
+.toro-logos-strip::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    animation: logosGlow 10s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes logosGlow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10%, 10%); }
+}
+.toro-logos-strip .container { 
+    max-width: 1260px; 
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.toro-logos-strip h3 { 
+    color: #fff; 
+    font-weight: 800; 
+    margin-bottom: 10px; 
+    font-size: 1.5rem;
+    letter-spacing: -0.3px;
+}
+.toro-logos-strip p { 
+    color: rgba(255,255,255,.75); 
+    margin-bottom: 36px;
+    font-size: 1.05rem;
+}
+.toro-logos-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+.toro-logo-badge {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 18px 28px;
+    min-width: 120px;
+    text-align: center;
+    font-weight: 800;
+    color: var(--pf-petrol);
+    font-size: 1.05rem;
+    letter-spacing: .5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s var(--pf-transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.toro-logo-badge:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+/* ---------- Seção de depoimentos (toro style) ---------- */
+.toro-testimonials {
+    background: 
+        radial-gradient(ellipse at 50% 0%, rgba(18, 183, 106, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 0% 100%, rgba(255, 159, 28, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #f5f8f7 0%, #eef4f2 50%, #f5f8f7 100%);
+    padding: 90px 0;
+    position: relative;
+}
+.toro-testimonials::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(11, 58, 62, 0.03) 2px, transparent 0);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.4;
+}
+.toro-testimonials::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--pf-border) 50%, transparent 100%);
+}
+.toro-testimonials .container { max-width: 1260px; }
+.toro-testimonial-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--pf-border);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s var(--pf-transition-smooth);
+    box-shadow: var(--pf-shadow-sm);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) both;
+}
+.toro-testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.toro-testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.toro-testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+.toro-testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 120px;
+    font-family: Georgia, serif;
+    color: var(--pf-emerald);
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+}
+.toro-testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--pf-shadow-xl);
+    border-color: var(--pf-emerald);
+}
+.toro-testimonial-card .toro-t-stars { 
+    color: var(--pf-orange); 
+    margin-bottom: 16px; 
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+.toro-testimonial-card p { 
+    color: var(--pf-ink-2); 
+    font-size: 1rem; 
+    line-height: 1.7; 
+    flex: 1;
+    font-style: italic;
+}
+.toro-testimonial-card .toro-t-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--pf-border);
+}
+.toro-testimonial-card .toro-t-avatar {
+    width: 52px; 
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pf-petrol-2) 0%, var(--pf-petrol) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.15rem;
+    box-shadow: 0 4px 12px rgba(11, 58, 62, 0.2);
+    transition: transform 0.3s var(--pf-transition-smooth);
+}
+.toro-testimonial-card:hover .toro-t-avatar {
+    transform: scale(1.1) rotate(5deg);
+}
+.toro-testimonial-card .toro-t-name { 
+    font-weight: 700; 
+    color: var(--pf-petrol); 
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+.toro-testimonial-card .toro-t-role { 
+    color: var(--pf-ink-2); 
+    font-size: .85rem;
+}
+
+/* ---------- CTA final ---------- */
+.toro-final-cta {
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(46, 211, 183, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(18, 183, 106, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 40%, var(--pf-emerald) 100%);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.toro-final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none;
+    opacity: 0.3;
+}
+.toro-final-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    animation: ctaGlow 8s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes ctaGlow {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    50% { transform: translate(5%, 5%) scale(1.1); opacity: 1; }
+}
+.toro-final-cta .container {
+    position: relative;
+    z-index: 1;
+}
+.toro-final-cta h2 { 
+    color: #fff; 
+    font-weight: 800; 
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) both;
+}
+.toro-final-cta p { 
+    color: rgba(255,255,255,.9); 
+    max-width: 640px; 
+    margin: 0 auto 36px; 
+    font-size: 1.15rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) 0.1s both;
+}
+.toro-final-cta .toro-btn-primary { 
+    font-size: 1.1rem; 
+    padding: 18px 48px;
+    animation: fadeInUp 0.8s var(--pf-transition-smooth) 0.2s both;
+    position: relative;
+    overflow: hidden;
+}
+.toro-final-cta .toro-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.toro-final-cta .toro-btn-primary:hover::before {
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .toro-why-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .pf-cursos { padding: 60px 0 70px; }
+    .toro-why-section, .toro-testimonials { padding: 70px 0; }
+    .toro-final-cta { padding: 80px 0; }
+}
+@media (max-width: 640px) {
+    .toro-why-grid { grid-template-columns: 1fr; }
+    .pf-hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .pf-hero { padding: 48px 0 56px; }
+    .pf-hero h1 { font-size: 1.9rem; }
+    .pf-hero-art { order: -1; }
+    .pf-hero-art > img { max-width: 340px; }
+    .card-curso-toro { width: 300px; min-width: 300px; }
+    .pf-cursos { padding: 50px 0 60px; }
+    .pf-cursos-head h2 { font-size: 1.8rem; }
+    .toro-why-section, .toro-testimonials { padding: 60px 0; }
+    .toro-section-head h2 { font-size: 1.8rem; }
+    .toro-final-cta { padding: 60px 0; }
+    .toro-final-cta h2 { font-size: 1.8rem; }
+    .toro-logos-strip { padding: 40px 0; }
+    .toro-logo-badge { padding: 14px 20px; min-width: 100px; font-size: 0.95rem; }
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background: var(--pf-emerald);
+    color: #fff;
+}
+
+::-moz-selection {
+    background: var(--pf-emerald);
+    color: #fff;
+}
+
+/* Focus visible improvements */
+*:focus-visible {
+    outline: 3px solid var(--pf-emerald);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .pf-hero-banner:hover .pf-hero-banner-img,
+    .card-curso-toro:hover,
+    .card-curso-toro:hover .toro-card-image img,
+    .toro-why-card:hover,
+    .toro-why-card:hover .toro-why-icon,
+    .toro-testimonial-card:hover,
+    .toro-testimonial-card:hover .toro-t-avatar,
+    .toro-logo-badge:hover,
+    .pf-hero-btn:hover,
+    .toro-btn-primary:hover {
+        transform: none !important;
+    }
+}

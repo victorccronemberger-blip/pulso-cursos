@@ -1,0 +1,377 @@
+/* ============================================================
+   PÁGINA DE CURSOS - Design personalizado
+   ============================================================ */
+
+/* ---------- Breadcrumb Area ---------- */
+.breadcum-area {
+    background: linear-gradient(135deg, var(--pf-midnight) 0%, var(--pf-navy) 100%);
+    padding: 60px 0 40px;
+    margin-top: 0;
+}
+
+.breadcum-area .breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.breadcum-area .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: color 0.2s ease;
+}
+
+.breadcum-area .breadcrumb-item a:hover {
+    color: var(--pf-terminal);
+}
+
+.breadcum-area .breadcrumb-item.active {
+    color: var(--pf-terminal);
+    font-size: 1.4rem;
+}
+
+.breadcum-area .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.breadcum-area .g-title {
+    color: #fff;
+    font-family: var(--pf-font-display);
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.breadcum-area .showing-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+}
+
+/* Layout toggle buttons */
+.breadcum-area .tab-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.breadcum-area .tab-list li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.breadcum-area .tab-list li a:hover,
+.breadcum-area .tab-list li.active a {
+    background: var(--pf-terminal);
+    border-color: var(--pf-terminal);
+    color: var(--pf-midnight);
+}
+
+.breadcum-area .tab-list li a svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ---------- Course Cards ---------- */
+.eNtery-item .eBar-card {
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.eNtery-item .eBar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 22, 40, 0.12);
+    border-color: var(--pf-terminal);
+}
+
+.eNtery-item .courses-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #f5f5f5;
+}
+
+.eNtery-item .courses-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.eNtery-item .eBar-card:hover .courses-img img {
+    transform: scale(1.05);
+}
+
+/* ---------- Pagination ---------- */
+.entry-pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.entry-pagination .pagination {
+    gap: 8px;
+}
+
+.entry-pagination .page-item .page-link {
+    padding: 10px 16px;
+    border: 1px solid var(--pf-border);
+    border-radius: 8px;
+    color: var(--pf-midnight);
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.entry-pagination .page-item .page-link:hover {
+    background: var(--pf-terminal);
+    border-color: var(--pf-terminal);
+    color: #fff;
+}
+
+.entry-pagination .page-item.active .page-link {
+    background: var(--pf-terminal);
+    border-color: var(--pf-terminal);
+    color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991px) {
+    .breadcum-area .g-title {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .breadcum-area {
+        padding: 40px 0 30px;
+    }
+    
+    .breadcum-area .g-title {
+        font-size: 2rem;
+    }
+    
+    .breadcum-area .tab-list ul {
+        justify-content: flex-start;
+        margin-top: 16px;
+    }
+}
+
+/* ============================================================
+   RENOVAÇÃO /COURSES — espelha o design da homepage
+   Paleta e card de curso (toro) iguais aos da home
+   ============================================================ */
+
+/* Tokens do card (paleta da homepage). Apenas variáveis que o
+   toro_home_v2.css NÃO define — nada aqui sobrescreve o tema v2. */
+:root {
+    --pf-petrol: #0B3A3E;
+    --pf-petrol-2: #0E5C63;
+    --pf-emerald: #12B76A;
+    --pf-turq: #2ED3B7;
+    --pf-ink: #0F172A;
+    --pf-ink-2: #475467;
+    --pf-gradient-primary: linear-gradient(135deg, #12B76A 0%, #2ED3B7 100%);
+    --pf-transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --pf-shadow-sm: 0 2px 8px rgba(11, 58, 62, 0.06);
+    --pf-shadow-xl: 0 24px 64px rgba(11, 58, 62, 0.20);
+}
+
+/* ---------- Fundo da seção do grid ---------- */
+.eNtery-item {
+    background: var(--pf-paper);
+    padding: 56px 0 72px;
+}
+
+/* ---------- Pills de categoria (links, estilo homepage) ---------- */
+.courses-category-filters {
+    margin-bottom: 44px;
+}
+.courses-category-filters a.pf-filter-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ---------- Card de curso (idêntico ao card da homepage) ---------- */
+.eNtery-item .card-curso-toro {
+    width: 100%;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid var(--pf-border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s var(--pf-transition-smooth);
+    box-shadow: var(--pf-shadow-sm);
+    position: relative;
+    height: 100%;
+}
+.eNtery-item .card-curso-toro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(18, 183, 106, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+.eNtery-item .card-curso-toro:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--pf-shadow-xl);
+    border-color: var(--pf-emerald);
+}
+.eNtery-item .card-curso-toro:hover::before {
+    opacity: 1;
+}
+
+.eNtery-item .card-curso-toro .toro-card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+.eNtery-item .card-curso-toro .toro-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--pf-transition-smooth);
+}
+.eNtery-item .card-curso-toro:hover .toro-card-image img {
+    transform: scale(1.08);
+}
+
+.eNtery-item .card-curso-toro .toro-card-title-first-line {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--pf-petrol-2) 0%, var(--pf-petrol) 100%);
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.3em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 2;
+}
+
+.eNtery-item .card-curso-toro .toro-card-price-12x {
+    margin: 16px 0 6px;
+    text-align: center;
+    color: var(--pf-ink);
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 2;
+}
+.eNtery-item .card-curso-toro .toro-card-price-12x span.small {
+    font-size: 1.7em;
+    font-weight: 600;
+    line-height: 1em;
+    color: var(--pf-ink-2);
+}
+.eNtery-item .card-curso-toro .toro-card-price-12x span.large {
+    font-size: 3.2em;
+    font-weight: 800;
+    line-height: 1em;
+    margin-left: 6px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.eNtery-item .card-curso-toro .toro-card-title-second-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--pf-ink);
+    line-height: 1.3em;
+    position: relative;
+    z-index: 2;
+}
+.eNtery-item .card-curso-toro .toro-card-title-second-line b {
+    font-weight: 700;
+    color: var(--pf-petrol);
+}
+.eNtery-item .card-curso-toro .toro-icon-pix {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    border-radius: 6px;
+    font-size: 11px;
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(18, 183, 106, 0.3);
+}
+
+.eNtery-item .card-curso-toro .toro-card-btn-comprar {
+    margin: auto 0 20px;
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+.eNtery-item .card-curso-toro .toro-card-btn-comprar a {
+    color: #fff;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--pf-emerald) 0%, var(--pf-turq) 100%);
+    border-radius: 12px;
+    padding: 14px 30px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s var(--pf-transition-smooth);
+    box-shadow: 0 6px 20px rgba(18, 183, 106, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+.eNtery-item .card-curso-toro .toro-card-btn-comprar a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--pf-petrol) 0%, var(--pf-petrol-2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.eNtery-item .card-curso-toro .toro-card-btn-comprar a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(18, 183, 106, 0.4);
+}
+.eNtery-item .card-curso-toro .toro-card-btn-comprar a:hover::before {
+    opacity: 1;
+}
+.eNtery-item .card-curso-toro .toro-card-btn-comprar a span {
+    position: relative;
+    z-index: 1;
+}
