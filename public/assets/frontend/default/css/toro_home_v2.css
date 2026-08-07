@@ -48,7 +48,8 @@
     gap: 12px;
 }
 .pf-ticker-item::after {
-    content: '•';
+    /* Encoding-independent bullet separator. */
+    content: "\2022";
     color: rgba(0, 217, 163, 0.4);
 }
 @keyframes tickerScroll {
