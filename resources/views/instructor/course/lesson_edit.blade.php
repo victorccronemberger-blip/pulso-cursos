@@ -14,7 +14,7 @@
         <strong class="text-capitalize ms-1">{{ get_phrase('Video file') }}</strong>
     @elseif ($lessons->lesson_type == 'scorm')
         <strong class="text-capitalize ms-1">{{ get_phrase('Scorm file') }}</strong>
-    @elseif ($lessons->video_type == 'youtube' || $lessons->video_type == 'vimeo')
+    @elseif ($lessons->video_type == 'youtube' || $lessons->video_type == 'vimeo' || $lessons->video_type == 'bunny_stream')
         <strong class="text-capitalize ms-1">{{ get_phrase($lessons->video_type) }} {{ get_phrase('Video') }} </strong>
     @elseif($lessons->lesson_type == 'google_drive_video')
         <strong class="text-capitalize ms-1">{{ get_phrase('Google drive video') }}</strong>
@@ -50,6 +50,8 @@
         @include('instructor.course.youtube_type_lesson_edit')
     @elseif ($lessons->lesson_type == 'vimeo-url')
         @include('instructor.course.vimeo_type_lesson_edit')
+    @elseif ($lessons->lesson_type == 'bunny_stream')
+        @include('instructor.course.bunny_stream_type_lesson_edit')
     @elseif ($lessons->lesson_type == 'system-video')
         @include('instructor.course.video_type_lesson_edit')
     @elseif ($lessons->lesson_type == 'scorm')

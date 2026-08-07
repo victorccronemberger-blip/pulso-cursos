@@ -119,6 +119,15 @@ class LessonController extends Controller
             $lesson->video_type = $request->lesson_provider;
             $lesson->lesson_src = $request->lesson_src;
             $lesson->duration   = $request->duration;
+        } elseif ($request->lesson_type == 'bunny_stream') {
+            $embed_url = $this->bunnyStreamEmbedUrl($request->lesson_src);
+            if (!$embed_url) {
+                return redirect()->back()->with('error', get_phrase('Use a valid Bunny Stream embed URL.'));
+            }
+
+            $lesson->video_type = 'bunny_stream';
+            $lesson->lesson_src = $embed_url;
+            $lesson->duration   = $request->duration ?: '00:00:00';
         } elseif ($request->lesson_type == 'iframe') {
 
             $lesson->lesson_src = $request->iframe_source;
@@ -277,6 +286,15 @@ class LessonController extends Controller
                 $sec                = sprintf('%02d', $duration_formatter[2]);
                 $lesson['duration']   = $hour . ':' . $min . ':' . $sec;
             }
+        } elseif ($request->lesson_type == 'bunny_stream') {
+            $embed_url = $this->bunnyStreamEmbedUrl($request->lesson_src);
+            if (!$embed_url) {
+                return redirect()->back()->with('error', get_phrase('Use a valid Bunny Stream embed URL.'));
+            }
+
+            $lesson['lesson_src'] = $embed_url;
+            $lesson['video_type'] = 'bunny_stream';
+            $lesson['duration'] = $request->duration ?: '00:00:00';
         } elseif ($request->lesson_type == 'iframe') {
             $lesson['lesson_src'] = $request->iframe_source;
         } elseif ($request->lesson_type == 'google_drive') {
@@ -447,6 +465,23 @@ class LessonController extends Controller
         Lesson::where('id', $request->id)->update($lesson);
         Session::flash('success', get_phrase('lesson update successfully'));
         return redirect()->back();
+    }
+
+    private function bunnyStreamEmbedUrl(?string $url): ?string
+    {
+        $url = trim((string) $url);
+        $parts = parse_url($url);
+
+        if (
+            !is_array($parts) ||
+            ($parts['scheme'] ?? '') !== 'https' ||
+            strtolower($parts['host'] ?? '') !== 'iframe.mediadelivery.net' ||
+            !preg_match('#^/embed/\d+/[a-zA-Z0-9-]+$#', $parts['path'] ?? '')
+        ) {
+            return null;
+        }
+
+        return $url;
     }
 
     public function deleteDir($directoryPath)

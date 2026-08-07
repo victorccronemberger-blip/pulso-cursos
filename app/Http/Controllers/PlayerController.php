@@ -15,7 +15,7 @@ class PlayerController extends Controller
 {
     public function course_player(Request $request, $slug, $id = '')
     {
-        $course = Course::where('slug', $slug)->firstOrNew();
+        $course = Course::where('slug', $slug)->firstOrFail();
 
         // check if course is paid
         if ($course->is_paid && auth()->user()->role != 'admin') {
@@ -63,6 +63,10 @@ class PlayerController extends Controller
             $id = $check_lesson_history->watching_lesson_id ?? $first_lesson_of_course;
         }
 
+        // A lesson URL must always resolve inside the course the student can access.
+        // Without this scope a manually edited URL could expose another course's lesson.
+        $lesson_details = Lesson::where('course_id', $course->id)->where('id', $id)->firstOrFail();
+
         // if user has any watched history or not
         if (! $check_lesson_history && $id > 0) {
             $data = [
@@ -84,7 +88,7 @@ class PlayerController extends Controller
         }
 
         $page_data['course_details'] = $course;
-        $page_data['lesson_details'] = Lesson::where('id', $id)->firstOrNew();
+        $page_data['lesson_details'] = $lesson_details;
         $page_data['history']        = Watch_history::where('course_id', $course->id)->where('student_id', auth()->user()->id)->first();
 
         $forum_query = Forum::join('users', 'forums.user_id', 'users.id')
@@ -106,9 +110,11 @@ class PlayerController extends Controller
 
     public function set_watch_history(Request $request)
     {
-        $course     = Course::where('id', $request->course_id)->first();
+        $course = Course::findOrFail($request->course_id);
+        $lesson = Lesson::where('course_id', $course->id)->where('id', $request->lesson_id)->firstOrFail();
         $enrollment = Enrollment::where('course_id', $course->id)->where('user_id', auth()->user()->id)->first();
-        if (!$enrollment && !is_course_instructor($course->id) && auth()->user()->role != 'admin') {
+        $is_course_instructor = is_course_instructor($course->id, auth()->user()->id);
+        if ($course->is_paid && !$enrollment && !$is_course_instructor && auth()->user()->role != 'admin') {
             Session::flash('error', get_phrase('Not registered for this course.'));
             return redirect()->back();
         }
@@ -132,13 +138,13 @@ class PlayerController extends Controller
             }
 
             $data['completed_lesson']   = json_encode($lessons);
-            $data['watching_lesson_id'] = $request->lesson_id;
+            $data['watching_lesson_id'] = $lesson->id;
             $data['completed_date']     = (count($total_lesson) == count($lessons)) ? time() : null;
             Watch_history::where('course_id', $request->course_id)->where('student_id', auth()->user()->id)->update($data);
         } else {
-            $lessons                    = [$request->lesson_id];
+            $lessons                    = [$lesson->id];
             $data['completed_lesson']   = json_encode($lessons);
-            $data['watching_lesson_id'] = $request->lesson_id;
+            $data['watching_lesson_id'] = $lesson->id;
             $data['completed_date']     = (count($total_lesson) == count($lessons)) ? time() : null;
             $data['updated_at'] = now();
             $data['created_at'] = now();

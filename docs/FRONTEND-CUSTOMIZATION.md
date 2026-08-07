@@ -27,6 +27,15 @@ com um novo visual (banners, cards de curso, ícones FAQ, seção de garantia).
 - `public/assets/frontend/default/css/login_page.css`
 - `public/assets/frontend/default/css/toro_home_v2.css`
 
+### Player de aulas
+
+- O player recebe aulas por `play-course/{slug}/{id?}` e a aula informada no URL
+  precisa pertencer ao curso correspondente.
+- Para Bunny Stream, instrutores selecionam **Bunny Stream** ao criar a aula e
+  colam somente a URL de incorporação `https://iframe.mediadelivery.net/embed/{library}/{video}`.
+  Não há chave Bunny no frontend; a proteção do vídeo continua configurada no
+  próprio Bunny Stream.
+
 **Onde são carregados** (confirmado no código):
 - `layouts/default.blade.php` → `courses_page.css` (l.66) e `course_detail.css` (l.72).
 - `course_details.blade.php` → `course_detail.css` (l.5).

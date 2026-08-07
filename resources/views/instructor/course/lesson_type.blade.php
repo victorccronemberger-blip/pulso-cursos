@@ -39,6 +39,16 @@
                 </label>
             </div>
 
+            <div class="col">
+                <label class="ol-radiobox-1 d-flex align-items-center justify-content-between flex-wrap" for="radio-bunny-stream">
+                    <div class="title-icon d-flex align-items-center">
+                        <img src="assets/images/icons/video-square-black-18.svg" alt="">
+                        <p class="title">Bunny Stream</p>
+                    </div>
+                    <input class="form-check-input form-check-input-radio" type="radio" name="lesson_type" id="radio-bunny-stream" value="bunny_stream" @if ($selected_lesson == 'bunny_stream') checked @endif>
+                </label>
+            </div>
+
 
             <div class="col">
                 <label class="ol-radiobox-1 d-flex align-items-center justify-content-between flex-wrap" for="radio-videofile">

@@ -69,7 +69,7 @@
                                                 @else
                                                     @if(in_array($lesson->id, $completed_lesson_arr))
                                                         <i class="fas fa-check-circle checkbox-icon" title="<?php echo get_phrase('Lesson completed'); ?>"></i>
-                                                    @elseif(in_array($type, ['video-url', 'system-video', 'vimeo-url', 'google_drive']))
+                                                    @elseif(in_array($type, ['video-url', 'system-video', 'vimeo-url', 'google_drive', 'bunny_stream']))
                                                         <i class="form-check-input flexCheckChecked mt-0" title="<?php echo get_phrase('Play Now'); ?>"></i>
                                                     @else
                                                         <input class="form-check-input flexCheckChecked mt-0" @if (in_array($lesson->id, $completed_lesson)) checked @endif type="checkbox" id="{{ $lesson->id }}">
@@ -79,7 +79,7 @@
                                                     <span>
                                                         @if (in_array($type, ['text', 'document_type', 'iframe']))
                                                             <i class="fa-solid fa-file"></i>
-                                                        @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url']))
+                                                        @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url', 'bunny_stream']))
                                                             <i class="fa-solid fa-video"></i>
                                                         @elseif ($type == 'image')
                                                             <i class="fa-solid fa-image"></i>
@@ -99,7 +99,7 @@
                                                     <span>
                                                         @if (in_array($type, ['text', 'document_type', 'iframe']))
                                                             <i class="fa-solid fa-file"></i>
-                                                        @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url']))
+                                                        @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url', 'bunny_stream']))
                                                             <i class="fa-solid fa-video"></i>
                                                         @elseif ($type == 'image')
                                                             <i class="fa-solid fa-image"></i>

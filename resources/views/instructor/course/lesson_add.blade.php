@@ -10,6 +10,8 @@
             {{ get_phrase('Video file') }}
         @elseif ($lesson_type == 'youtube' || $lesson_type == 'academy cloud' || $lesson_type == 'vimeo')
             {{ ucfirst(get_phrase($lesson_type)) }} {{ get_phrase('Video') }}
+        @elseif ($lesson_type == 'bunny_stream')
+            Bunny Stream
         @elseif($lesson_type == 'google_drive_video')
             {{ get_phrase('Google drive video') }}
         @elseif($lesson_type == 'document')
@@ -49,6 +51,8 @@
         @include('instructor.course.academy_cloud_type_lesson_add')
     @elseif ($lesson_type == 'vimeo')
         @include('instructor.course.vimeo_type_lesson_add')
+    @elseif ($lesson_type == 'bunny_stream')
+        @include('instructor.course.bunny_stream_type_lesson_add')
     @elseif ($lesson_type == 'html5')
         @include('instructor.course.html5_type_lesson_add')
     @elseif ($lesson_type == 'video')
