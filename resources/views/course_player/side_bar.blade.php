@@ -17,7 +17,7 @@
     $completed_lesson_arr = json_decode($lesson_history->completed_lesson, true);
     $completed_lesson_arr = is_array($completed_lesson_arr) ? $completed_lesson_arr : array();
     $complated_lesson = is_array($completed_lesson_arr) ? count($completed_lesson_arr) : 0;
-    $course_progress_out_of_100 = progress_bar($course_details->id);
+    $course_progress_out_of_100 = (int) round((float) progress_bar($course_details->id));
 
     $user_id = Auth()->user()->id;
     $is_course_instructor = is_course_instructor($course_details->id, $user_id);
@@ -35,10 +35,10 @@
 <div class="course-content-playlist">
     <div class="row border-bottom pb-3">
         <div class="col-md-12">
-            <h1 class="heading mb-2">{{ get_phrase('Course curriculum') }}</h1>
-            <p class="info text-14px text-center mb-1">{{ $course_progress_out_of_100 }}% {{ get_phrase('Completed') }}
-                ({{ $complated_lesson }}/{{ lesson_count($course_details->id) }})
-            </p>
+            <span class="pf-outline-kicker">Trilha de aprovação</span>
+            <h1 class="heading mb-2">Conteúdo do curso</h1>
+            <div class="pf-outline-progress"><i style="width: {{ $course_progress_out_of_100 }}%"></i></div>
+            <p class="info text-14px mb-1"><b>{{ $course_progress_out_of_100 }}%</b> concluído · {{ $complated_lesson }} de {{ lesson_count($course_details->id) }} itens</p>
         </div>
     </div>
 
@@ -61,7 +61,7 @@
                             <ul class="coourse-playlist-list">
                                 @foreach ($lessons as $key => $lesson)
                                     @php $type = $lesson->lesson_type; @endphp
-                                    <li class="coourse-playlist-item @if (isset($history->watching_lesson_id) && $lesson->id == $history->watching_lesson_id || $lesson->id == $lesson_details->id) active @else lock @endif">
+                                    <li class="coourse-playlist-item pf-outline-item pf-outline-item-{{ $type }} @if (isset($history->watching_lesson_id) && $lesson->id == $history->watching_lesson_id || $lesson->id == $lesson_details->id) active @else lock @endif">
                                         <div class="check-title-area align-items-center">
                                             @if($course_details->enable_drip_content)
                                                 @if($is_locked)
@@ -77,7 +77,9 @@
                                                 @endif
                                                 <div class="play-lock-number">
                                                     <span>
-                                                        @if (in_array($type, ['text', 'document_type', 'iframe']))
+                                                        @if ($type === 'quiz')
+                                                            <i class="fa-solid fa-bullseye"></i>
+                                                        @elseif (in_array($type, ['text', 'document_type', 'iframe']))
                                                             <i class="fa-solid fa-file"></i>
                                                         @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url', 'bunny_stream']))
                                                             <i class="fa-solid fa-video"></i>
@@ -91,13 +93,19 @@
                                                     </span>
                                                 </div>
                                                 <p class="d-none">{{ $lesson->lesson_type }}</p>
-                                                <a href="{{ route('course.player', ['slug' => $course_details->slug, 'id' => $lesson->id]) }}" class="video-title">{{ $lesson->title }}</a>
+                                                <a href="{{ route('course.player', ['slug' => $course_details->slug, 'id' => $lesson->id]) }}" class="video-title">
+                                                    {{ $lesson->title }}
+                                                    @if($type === 'quiz')<small class="pf-outline-badge">Simulado</small>@endif
+                                                    @if(in_array($lesson->id, $material_lesson_ids ?? []))<small class="pf-outline-badge pf-outline-badge-pdf">PDF</small>@endif
+                                                </a>
                                             @else
                                                 <input class="form-check-input flexCheckChecked mt-0" @if (in_array($lesson->id, $completed_lesson)) checked @endif type="checkbox" id="{{ $lesson->id }}">
                                                 <div class="play-lock-number">
                                                     @php $type = $lesson->lesson_type; @endphp
                                                     <span>
-                                                        @if (in_array($type, ['text', 'document_type', 'iframe']))
+                                                        @if ($type === 'quiz')
+                                                            <i class="fa-solid fa-bullseye"></i>
+                                                        @elseif (in_array($type, ['text', 'document_type', 'iframe']))
                                                             <i class="fa-solid fa-file"></i>
                                                         @elseif (in_array($type, ['video-url', 'system-video', 'vimeo-url', 'bunny_stream']))
                                                             <i class="fa-solid fa-video"></i>
@@ -111,7 +119,11 @@
                                                     </span>
                                                 </div>
                                                 <p class="d-none">{{ $lesson->lesson_type }}</p>
-                                                <a href="{{ route('course.player', ['slug' => $course_details->slug, 'id' => $lesson->id]) }}" class="video-title">{{ $lesson->title }}</a>
+                                                <a href="{{ route('course.player', ['slug' => $course_details->slug, 'id' => $lesson->id]) }}" class="video-title">
+                                                    {{ $lesson->title }}
+                                                    @if($type === 'quiz')<small class="pf-outline-badge">Simulado</small>@endif
+                                                    @if(in_array($lesson->id, $material_lesson_ids ?? []))<small class="pf-outline-badge pf-outline-badge-pdf">PDF</small>@endif
+                                                </a>
                                             @endif
                                         </div>
 

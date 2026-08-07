@@ -76,6 +76,9 @@ para os gateways notificarem. Suporta Razorpay, Paytm, Doku e demais gateways.
 
 `auth`. Player de curso (`play-course/{slug}/{id?}`), gravação de watch
 history, watermark no vídeo, fórum (Q&A), e download de arquivos/vídeos/PDF.
+`GET /course-materials/{material}/download` entrega apostilas como download
+privado; o backend deriva o curso do próprio material e valida matrícula,
+instrutor ou administrador antes de retornar o binário.
 
 ## `chat.php` — mensagens
 

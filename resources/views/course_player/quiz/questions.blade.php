@@ -24,11 +24,12 @@
 <form action="{{ route('quiz.submit', $quiz->id) }}" method="post" class="quiz-submit-form">@csrf
     <input type="hidden" name="quiz_id" value="{{ $quiz->id }}">
     @foreach ($questions as $key => $question)
-        <div class="question px-4 mb-4 @if ($key > 0) d-none @endif">
-            <div class="mb-3 d-flex gap-3">
+        <div class="question pf-question @if ($key > 0) d-none @endif">
+            <div class="pf-question-heading">
                 <span class="serial">{{ ++$key }} </span>
+                <small>Questão {{ $key }} de {{ $questions->count() }}</small>
                 @if($question->type == 'fill_blanks')
-                    <div>
+                    <div class="pf-question-title">
                         @php
                         $correct_answers = json_decode($question['answer'], true);
                         $question_title = remove_js(htmlspecialchars_decode_($question['title']));
@@ -39,19 +40,19 @@
                         {{ $question_title; }}
                     </div>
                 @else
-                    <div>{!! $question->title !!}</div>
+                    <div class="pf-question-title">{!! $question->title !!}</div>
                 @endif
             </div>
 
-            <div class="row gap-0">
+            <div class="pf-question-options">
                 @if ($question->type == 'mcq')
                     @php $options = json_decode($question->options, true) ?? []; @endphp
                     @foreach ($options as $index => $option)
-                        <div class="col-sm-6">
+                        <div class="pf-question-option">
                             <input class="form-check-input" type="checkbox" name="{{ $question->id }}[]"
-                                value="{{ $option }}" id="{{ $option }}-{{ $question->id }}">
-                            <label class="form-check-label text-capitalize"
-                                for="{{ $option }}-{{ $question->id }}">{{ $option }}</label>
+                                value="{{ $option }}" id="option-{{ $question->id }}-{{ $index }}">
+                            <label class="form-check-label"
+                                for="option-{{ $question->id }}-{{ $index }}"><b>{{ chr(65 + $index) }}</b><span>{{ $option }}</span></label>
                         </div>
                     @endforeach
                 @elseif($question->type == 'fill_blanks')
@@ -80,13 +81,13 @@
 @if ($questions->count() > 0)
     <div class="row">
         <div class="col-12 d-flex gap-3 justify-content-center">
-            <button type="button" class="eBtn gradient border-0" id="prevBtn" onclick="prevQuestion()"><i
-                    class="fi fi-rr-angle-small-left"></i>{{ get_phrase('Prev') }}</button>
-            <button type="button" class="eBtn gradient border-0" id="nextBtn"
-                onclick="nextQuestion()">{{ get_phrase('Next') }}<i class="fi fi-rr-angle-small-right"></i></button>
+            <button type="button" class="pf-question-nav pf-question-prev" id="prevBtn" onclick="prevQuestion()"><i
+                    class="fi fi-rr-angle-small-left"></i>Anterior</button>
+            <button type="button" class="pf-question-nav pf-question-next" id="nextBtn"
+                onclick="nextQuestion()">Próxima<i class="fi fi-rr-angle-small-right"></i></button>
             @if ($submits->count() < $quiz->retake)
-                <button type="button" class="eBtn gradient border-0 d-none" id="submitBtn"
-                    onclick="submitQuiz()">{{ get_phrase('Submit') }}<i class="fi fi-rr-badge-check ms-2"></i></button>
+                <button type="button" class="pf-question-nav pf-question-submit d-none" id="submitBtn"
+                    onclick="submitQuiz()">Finalizar simulado<i class="fi fi-rr-badge-check ms-2"></i></button>
             @endif
         </div>
     </div>
@@ -139,7 +140,7 @@
     // Submit quiz
     function submitQuiz() {
 
-        var quizId = "{{ $quiz->id }}";
+        const quizId = Number("{{ $quiz->id }}");
         var completed_lesson_arr = @json($completed_lesson_arr);  // Convert the PHP array to a JavaScript array
         
         // Check if quizId is in the completed_lesson_arr array using JavaScript's `includes()` method
@@ -163,4 +164,3 @@
         }
     }
 </script>
-

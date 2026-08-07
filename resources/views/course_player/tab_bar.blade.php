@@ -12,14 +12,14 @@
     <li class="nav-item" role="presentation">
         <button class="nav-link @if ($tab == 'summary') active @endif" id="pills-summary-tab" data-bs-toggle="pill" data-bs-target="#pills-summary" type="button" role="tab" aria-controls="pills-summary" aria-selected="true">
             <i class="fi-rr-blog-text"></i>
-            <span>{{ get_phrase('Summary') }}</span>
+            <span>Visão geral</span>
         </button>
     </li>
 
     <li class="nav-item" role="presentation">
         <button class="nav-link @if ($tab == 'live-class') active @endif" id="pills-live-class-tab" data-bs-toggle="pill" data-bs-target="#pills-live-class" type="button" role="tab" aria-controls="pills-live-class" aria-selected="true">
             <i class="fi-rr-video-camera-alt"></i>
-            <span>{{ get_phrase('Live class') }}</span>
+            <span>Aulas ao vivo</span>
         </button>
     </li>
 
@@ -28,28 +28,28 @@
             data-bs-toggle="pill" data-bs-target="#pills-assignment" type="button" role="tab"
             aria-controls="pills-assignment" aria-selected="true">
             <i class="fi fi-rr-memo-pad"></i>
-            <span>{{ get_phrase('Assignment') }}</span>
+            <span>Atividades</span>
         </button>
     </li>
 
     <li class="nav-item" role="presentation">
         <button class="nav-link @if ($tab == 'certificate') active @endif" id="pills-certificate-tab" data-bs-toggle="pill" data-bs-target="#pills-certificate" type="button" role="tab" aria-controls="pills-certificate" aria-selected="true">
             <i class="fi-rr-graduation-cap"></i>
-            <span>{{ get_phrase('Certificate') }}</span>
+            <span>Certificado</span>
         </button>
     </li>
 
     <li class="nav-item" role="presentation">
         <button class="nav-link @if ($tab == 'forum') active @endif" id="pills-forum-tab" data-bs-toggle="pill" data-bs-target="#pills-forum" type="button" role="tab" aria-controls="pills-forum" aria-selected="true">
             <i class="fi fi-rr-users-alt"></i>
-            <span>{{ get_phrase('Forum') }}</span>
+            <span>Dúvidas</span>
         </button>
     </li>
 
     <li class="nav-item" role="presentation">
         <button class="nav-link @if ($tab == 'notice') active @endif" id="pills-notice-tab" data-bs-toggle="pill" data-bs-target="#pills-notice" type="button" role="tab" aria-controls="pills-notice" aria-selected="true">
             <span class="fi-rr-megaphone"></span>
-            <span>{{ get_phrase('Notice Board') }}</span>
+            <span>Avisos</span>
         </button>
     </li>
 

@@ -42,6 +42,16 @@ class CourseVideoManifest
         return $this->data['lessons'];
     }
 
+    public function curriculumSortStep(): int
+    {
+        return max(1, (int) ($this->data['curriculum']['sort_step'] ?? 1));
+    }
+
+    public function content(): array
+    {
+        return is_array($this->data['content'] ?? null) ? $this->data['content'] : [];
+    }
+
     private function validate(): void
     {
         if (($this->data['version'] ?? null) !== 1) {

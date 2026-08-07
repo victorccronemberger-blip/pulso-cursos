@@ -7,6 +7,22 @@
     "driver": "bunny_stream",
     "library_id": 723013
   },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m8",
+    "section_overrides": {
+      "CFPREV01": "m1",
+      "CFPREV02": "m6",
+      "CFPREV03": "m7",
+      "CFPREV04": "m3",
+      "CFPREV05": "m3",
+      "079": "m1",
+      "CFP30D027": "m8"
+    }
+  },
   "sections": [
     {
       "key": "m1",

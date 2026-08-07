@@ -4,10 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lesson;
+use App\Models\CourseMaterial;
+use App\Support\CourseAccess;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class FileController extends Controller
 {
+    public function download_course_material(CourseMaterial $material, CourseAccess $courseAccess)
+    {
+        abort_unless($courseAccess->allows(auth()->user(), $material->course_id), 403);
+
+        $contents = $material->getRawOriginal('contents');
+        abort_if($contents === null, 404);
+
+        $fallbackName = Str::ascii($material->file_name);
+        $disposition = ResponseHeaderBag::makeDisposition('attachment', $material->file_name, $fallbackName);
+
+        return response($contents, 200, [
+            'Content-Type' => $material->mime_type,
+            'Content-Length' => (string) $material->size_bytes,
+            'Content-Disposition' => $disposition,
+            'Cache-Control' => 'private, no-store, max-age=0',
+            'X-Content-Type-Options' => 'nosniff',
+        ]);
+    }
+
     public function get_file(Request $request)
     {
         // check this request from iframe, canvas, api or direct from browser url
@@ -21,7 +44,7 @@ class FileController extends Controller
         if (isset($request->course_id) && isset($request->lesson_id) && $user_id > 0) {
             $course_id = $request->course_id;
             $lesson_id = $request->lesson_id;
-            $lesson = Lesson::find($lesson_id);
+            $lesson = Lesson::where('id', $lesson_id)->where('course_id', $course_id)->firstOrFail();
             $get_lesson_type = $lesson->lesson_type;
 
             if(enroll_status($course_id, $user_id) || auth()->user()->role == 'admin' || is_course_instructor($course_id, $user_id)){

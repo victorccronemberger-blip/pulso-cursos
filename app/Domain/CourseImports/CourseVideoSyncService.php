@@ -92,7 +92,7 @@ class CourseVideoSyncService
                     'duration' => $lesson['duration'],
                     'video_type' => $provider->name(),
                     'is_free' => (int) ($lesson['is_free'] ?? false),
-                    'sort' => (int) $lesson['sort'],
+                    'sort' => (int) $lesson['sort'] * $manifest->curriculumSortStep(),
                     'status' => 1,
                     'updated_at' => now(),
                 ];

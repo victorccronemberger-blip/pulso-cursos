@@ -7,17 +7,20 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Question;
 use App\Models\QuizSubmission;
+use App\Support\CourseAccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class QuizController extends Controller
 {
-    public function quiz_submit(Request $request)
+    public function quiz_submit(Request $request, CourseAccess $courseAccess)
     {
         $lesson = Lesson::where('id', $request->quiz_id)->firstOrFail();
+        abort_unless((int) $request->route('id') === (int) $lesson->id, 404);
+        abort_unless($lesson->lesson_type === 'quiz' && $courseAccess->allows(auth()->user(), $lesson->course_id), 403);
         $retake = $lesson->retake;
         $submit = QuizSubmission::where('quiz_id', $request->quiz_id)->where('user_id', auth()->user()->id)->count();
-        if ($submit > $retake) {
+        if ($submit >= $retake) {
             Session::flash('warning', get_phrase('Attempt has been over.'));
             echo '<script>
             window.location.href = "'.route('course.player', ['slug' => $lesson->course->slug, 'id' => $lesson->id ?? '']).'"
@@ -36,15 +39,18 @@ class QuizController extends Controller
             }
         }
 
-        $question_ids      = $submits->keys();
-        $submitted_answers = $submits->values();
-        $questions         = Question::whereIn('id', $question_ids)->get();
+        $question_ids = $submits->keys()->map(fn ($id) => (int) $id);
+        $questions = Question::where('quiz_id', $quiz_id)->whereIn('id', $question_ids)->get()->keyBy('id');
 
         $right_answers = $wrong_answers = [];
-        foreach ($questions as $key => $question) {
+        foreach ($submits as $questionId => $submitted) {
+            $question = $questions->get((int) $questionId);
+            if (! $question) {
+                continue;
+            }
 
             $correct_answer = json_decode($question->answer, true);
-            $submitted      = $submitted_answers[$key];
+            $submitted = is_array($submitted) ? $submitted : [$submitted];
 
             if ($question->type == 'mcq') {
                 $isCorrect = empty(array_diff($correct_answer, $submitted)) && empty(array_diff($submitted, $correct_answer));
@@ -84,20 +90,22 @@ class QuizController extends Controller
         die();
     }
 
-    public function load_result(Request $request)
+    public function load_result(Request $request, CourseAccess $courseAccess)
     {
-        $page_data['quiz']      = Lesson::where('id', $request->quiz_id)->first();
+        $page_data['quiz'] = Lesson::where('id', $request->quiz_id)->where('lesson_type', 'quiz')->firstOrFail();
+        abort_unless($courseAccess->allows(auth()->user(), $page_data['quiz']->course_id), 403);
         $page_data['questions'] = Question::where('quiz_id', $request->quiz_id)->get();
         $page_data['result']    = QuizSubmission::where('id', $request->submit_id)
             ->where('quiz_id', $request->quiz_id)
             ->where('user_id', auth()->user()->id)
-            ->first();
+            ->firstOrFail();
         return view('course_player.quiz.result', $page_data);
     }
 
-    public function load_questions(Request $request)
+    public function load_questions(Request $request, CourseAccess $courseAccess)
     {
-        $page_data['quiz']      = Lesson::where('id', $request->quiz_id)->first();
+        $page_data['quiz'] = Lesson::where('id', $request->quiz_id)->where('lesson_type', 'quiz')->firstOrFail();
+        abort_unless($courseAccess->allows(auth()->user(), $page_data['quiz']->course_id), 403);
         $page_data['questions'] = Question::where('quiz_id', $request->quiz_id)->get();
         $page_data['submits']   = QuizSubmission::where('quiz_id', $request->quiz_id)
             ->where('user_id', auth()->user()->id)

@@ -9,32 +9,17 @@
         $submits = $result->submits ? json_decode($result->submits, true) : [];
         $correct_answers = $result->correct_answer ? json_decode($result->correct_answer, true) : [];
         $wrong_answers = $result->wrong_answer ? json_decode($result->wrong_answer, true) : [];
-        $mark_per_question = $quiz->total_mark / $questions->count();
+        $mark_per_question = $questions->count() ? $quiz->total_mark / $questions->count() : 0;
+        $obtainedMarks = count($correct_answers) * $mark_per_question;
+        $passed = $obtainedMarks >= $quiz->pass_mark;
+        $scorePercentage = $quiz->total_mark ? (int) round(($obtainedMarks / $quiz->total_mark) * 100) : 0;
         @endphp
 
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <p>{{ get_phrase('Duration : ') }}
-                @php $duration = explode(':', $quiz->duration); @endphp
-                {{ $duration[0] }} {{ get_phrase('Hour') }}
-                {{ $duration[1] }} {{ get_phrase('Minute') }}
-                {{ $duration[1] }} {{ get_phrase('Second') }}
-            </p>
-            <p>{{ get_phrase('Total Mark : ') }}{{ $quiz->total_mark }}</p>
-            <p>{{ get_phrase('Pass Mark : ') }}{{ $quiz->pass_mark }}</p>
-        </div>
-        <div class="col-md-6">
-            <p>{{ get_phrase('Correct Answer : ') }}{{ count($correct_answers) }}</p>
-            <p>{{ get_phrase('Wrong Answer : ') }}{{ count($wrong_answers) }}</p>
-            <p>{{ get_phrase('Obtained marks') }} : {{ count($correct_answers) * $mark_per_question }}</p>
-            <p>{{ get_phrase('Result : ') }}
-                @if (count($correct_answers)*$mark_per_question >= $quiz->pass_mark)
-                    <span class="text-success">{{ get_phrase('Passed') }}</span>
-                @else
-                    <span class="text-danger">{{ get_phrase('Failed') }}</span>
-                @endif
-            </p>
-        </div>
+    <div class="pf-result-summary {{ $passed ? 'is-passed' : 'is-failed' }}">
+        <div class="pf-result-score"><span>Seu resultado</span><strong>{{ $scorePercentage }}%</strong><small>{{ number_format($obtainedMarks, 0, ',', '.') }} de {{ $quiz->total_mark }} pontos</small></div>
+        <div><span>Acertos</span><strong>{{ count($correct_answers) }}</strong><small>de {{ $questions->count() }} questões</small></div>
+        <div><span>Erros</span><strong>{{ count($wrong_answers) }}</strong><small>revise abaixo</small></div>
+        <div class="pf-result-status"><span>Desempenho</span><strong>{{ $passed ? 'Aprovado' : 'Em desenvolvimento' }}</strong><small>mínimo de {{ $quiz->pass_mark }} pontos</small></div>
     </div>
 
     @foreach ($questions as $key => $question)
@@ -43,7 +28,7 @@
             $user_answers = array_key_exists($question->id, $submits) ? $submits[$question->id] : [];
         @endphp
 
-        <div class="result-question mb-4 @if ($key > 0)  @endif">
+        <div class="result-question pf-result-question mb-4">
             <div class="mb-1 d-flex align-items-center gap-3">
                 <span class="serial">{{ ++$key }}</span>
                 <div>{!! $question->title !!}</div>
@@ -55,14 +40,14 @@
                 @endif
             </div>
 
-            <div class="row gap-0">
+            <div class="pf-result-options">
                 @if ($question->type == 'mcq')
                     @php $options = json_decode($question->options, true) ?? []; @endphp
                     @foreach ($options as $index => $option)
                         @php $val = $user_answers ? array_search($option, $user_answers) : ''; @endphp
-                        <div class="col-sm-6">
+                        <div class="pf-result-option">
                             <input class="form-check-input" type="checkbox" value="{{ $option }}" @if (is_numeric($val)) checked @endif disabled>
-                            <label class="form-check-label text-capitalize">{{ $option }}</label>
+                            <label class="form-check-label"><b>{{ chr(65 + $index) }}</b><span>{{ $option }}</span></label>
                         </div>
                     @endforeach
                 @elseif($question->type == 'fill_blanks')
@@ -77,8 +62,8 @@
                         <label class="form-check-label">{{ get_phrase('False') }}</label>
                     </div>
                 @endif
-                <p class="text-capitalize text-success fw-600">
-                    {{ get_phrase('Answer : ') }}{{ $given_answer }}
+                <p class="pf-result-correct">
+                    Resposta correta: {{ $given_answer }}
                 </p>
             </div>
         </div>
@@ -86,7 +71,7 @@
 
     <div class="row">
         <div class="col-12 d-flex gap-3 justify-content-center">
-            <button type="button" class="eBtn gradient border-0 mb-4 d-flex align-items-center gap-2" id="backBtn" onclick="back()"><i class="fi fi-rr-angle-small-left fs-5"></i>{{ get_phrase('Back') }}</button>
+            <button type="button" class="pf-question-nav pf-question-prev mb-4" id="backBtn" onclick="back()"><i class="fi fi-rr-angle-small-left fs-5"></i>Voltar ao simulado</button>
         </div>
     </div>
 </div>

@@ -224,17 +224,17 @@
                             '"></div>';
                         $('#aiGeneratedText .row').append(img);
                     }
-                    $('#aiResultHeader').html('{{ get_phrase('
-                        Your images ') }}:');
+                    $('#aiResultHeader').text(@json(get_phrase('Your images').':'));
                     $('#aiGeneratedText').attr('contenteditable', 'false');
                 } else {
                     $('#aiGeneratedText').html(response);
                     $('#aiGeneratedText').append('<input type="text" value="' + response + '" id="generatedAiText" class="visibility-hidden">');
+                    const copyLabel = @json(get_phrase('Copy'));
+                    const generatedTextLabel = @json(get_phrase('Generated text'));
                     $('#aiResultHeader').html(
-                        '<span class="text-14px">{{ get_phrase('
-                        Generated text ') }}:</span> <a href="javascript:;" onclick="copy_text(this)" data-toggle="tooltip" data-placement="top" title="{{ get_phrase('
-                        Copy ') }}" class="float-right btn p-0"><i class="far fa-copy"></i> {{ get_phrase('
-                        Copy ') }}</a>'
+                        '<span class="text-14px">' + generatedTextLabel +
+                        ':</span> <a href="javascript:;" onclick="copy_text(this)" data-toggle="tooltip" data-placement="top" title="' +
+                        copyLabel + '" class="float-right btn p-0"><i class="far fa-copy"></i> ' + copyLabel + '</a>'
                     );
                 }
 
@@ -260,7 +260,6 @@
         // Copy the text inside the text field
         navigator.clipboard.writeText(copyText.value);
 
-        $(e).html('<i class="far fa-copy"></i> {{ get_phrase('
-            Copied ') }}!')
+        $(e).html('<i class="far fa-copy"></i> ' + @json(get_phrase('Copied')) + '!')
     }
 </script>

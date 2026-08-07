@@ -36,6 +36,31 @@ com um novo visual (banners, cards de curso, ícones FAQ, seção de garantia).
   Não há chave Bunny no frontend; a proteção do vídeo continua configurada no
   próprio Bunny Stream.
 
+O player do aluno usa a identidade Pulso/Academy em
+`public/assets/global/course_player/css/pulso-player.css`. A navegação segue a
+"trilha de aprovação": vídeo, apostila vinculada, prática do tema e simulados
+do módulo aparecem no mesmo contexto. As views principais são:
+
+- `course_player/header.blade.php` — curso e progresso global;
+- `course_player/lesson_tools.blade.php` — ações da aula e checkpoints;
+- `course_player/side_bar.blade.php` — currículo intercalando aulas e quizzes;
+- `course_player/quiz/*` — preparação, questões e resultado do simulado.
+
+Materiais não ficam em `public/`. `course_materials` guarda metadados e o PDF;
+o download autenticado é feito por `course.material.download`. Quizzes
+importados continuam sendo `lessons.lesson_type = quiz`, preservando o fluxo
+nativo de progresso e submissões.
+
+### Importação modular de conteúdo
+
+O mesmo manifesto usado por `courses:sync-videos` aceita `curriculum.sort_step`
+e `content`. O comando `courses:sync-content` recebe pastas de PDFs e JSONs,
+associa códigos equivalentes à aula, cria quizzes nativos e registra o contexto
+em `course_quiz_contexts`.
+
+Sempre execute o comando com `--dry-run` antes da carga real. O relatório
+precisa terminar com zero arquivos não resolvidos.
+
 **Onde são carregados** (confirmado no código):
 - `layouts/default.blade.php` → `courses_page.css` (l.66) e `course_detail.css` (l.72).
 - `course_details.blade.php` → `course_detail.css` (l.5).

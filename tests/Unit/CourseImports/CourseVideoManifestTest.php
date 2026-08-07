@@ -15,6 +15,20 @@ class CourseVideoManifestTest extends TestCase
         $this->assertSame('course-slug', $manifest->courseSlug());
         $this->assertCount(1, $manifest->sections());
         $this->assertCount(1, $manifest->lessons());
+        $this->assertSame(1, $manifest->curriculumSortStep());
+        $this->assertSame([], $manifest->content());
+    }
+
+    public function test_it_exposes_optional_curriculum_and_content_configuration(): void
+    {
+        $data = $this->validManifest();
+        $data['curriculum'] = ['sort_step' => 100];
+        $data['content'] = ['final_section' => 'module-1'];
+
+        $manifest = new CourseVideoManifest($data);
+
+        $this->assertSame(100, $manifest->curriculumSortStep());
+        $this->assertSame('module-1', $manifest->content()['final_section']);
     }
 
     public function test_it_rejects_duplicate_provider_ids(): void

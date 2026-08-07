@@ -31,6 +31,8 @@ Modelos Eloquent correspondentes em `app/Models/`.
 | `enrollments` | `Enrollment` / `Enrollments` | Matrículas (dois modelos espelhados) |
 | `watch_durations` | `WatchDuration` | Tempo assistido |
 | `watch_histories` | `Watch_history` | Histórico de assistir |
+| `course_materials` | `CourseMaterial` | Apostilas protegidas por curso/seção/aula; binário servido somente após autorização |
+| `course_quiz_contexts` | `CourseQuizContext` | Liga cada quiz nativo à aula ou ao checkpoint de módulo correspondente |
 | `wishlists` | `Wishlist` | Lista de desejos |
 | `reviews` | `Review` | Avaliações de curso |
 | `like_dislike_reviews` | `LikeDislikeReview` | Likes/dislikes em reviews |

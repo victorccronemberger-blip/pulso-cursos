@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <title>{{ get_phrase('Course Playing Page') }}| {{ config('app.name') }}</title>
@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/global/course_player/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/global/course_player/css/custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/global/course_player/css/pulso-player.css') }}" />
     <!-- FlatIcons Css -->
     <link rel="stylesheet" href="{{ asset('assets/global/icons/uicons-bold-rounded/css/uicons-bold-rounded.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/global/icons/uicons-bold-straight/css/uicons-bold-straight.css') }}" />
@@ -38,7 +39,7 @@
     <script src="{{ asset('assets/global/plyr/plyr.js') }}"></script>
 </head>
 
-<body>
+<body class="pf-player">
 
     <!-- Start Course Playing Header -->
     <header class="playing-header-section">
@@ -61,6 +62,7 @@
                     @else
                         @include('course_player.player_page')
                     @endif
+                    @include('course_player.lesson_tools')
                     <!-- Tab -->
                     <div class="course-video-navtab">
                         @include('course_player.tab_bar')

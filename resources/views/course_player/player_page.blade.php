@@ -147,7 +147,7 @@
             <iframe class="embed-responsive-item" width='100%' src="{{ $src }}" frameborder='0'></iframe>
         @endif
     @elseif($lesson_details->lesson_type == 'quiz')
-        <div class="course-video-area border-primary pb-5">
+        <div class="course-video-area pf-quiz-area border-primary pb-5">
             @include('course_player.quiz.index')
         </div>
     @elseif($lesson_details->lesson_type == 'amazon_s3')
@@ -169,7 +169,10 @@
 
 <script>
     // Disable right-click on video
-    document.getElementById('player').oncontextmenu = function() {
-        return false; // Prevent right-click menu
-    };
+    const coursePlayerElement = document.getElementById('player');
+    if (coursePlayerElement) {
+        coursePlayerElement.oncontextmenu = function() {
+            return false;
+        };
+    }
 </script>

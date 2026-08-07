@@ -7,6 +7,9 @@ use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Forum;
 use App\Models\Lesson;
+use App\Models\CourseMaterial;
+use App\Models\CourseQuizContext;
+use App\Models\Section;
 use App\Models\Watch_history;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -90,6 +93,41 @@ class PlayerController extends Controller
         $page_data['course_details'] = $course;
         $page_data['lesson_details'] = $lesson_details;
         $page_data['history']        = Watch_history::where('course_id', $course->id)->where('student_id', auth()->user()->id)->first();
+
+        $contextLessonId = $lesson_details->lesson_type === 'quiz'
+            ? CourseQuizContext::where('quiz_lesson_id', $lesson_details->id)->value('lesson_id')
+            : $lesson_details->id;
+        $activeSectionId = (int) $lesson_details->section_id;
+        $page_data['current_section'] = Section::find($activeSectionId);
+
+        $page_data['lesson_materials'] = CourseMaterial::query()
+            ->select(['id', 'course_id', 'section_id', 'lesson_id', 'title', 'file_name', 'mime_type', 'size_bytes'])
+            ->where('course_id', $course->id)
+            ->where('lesson_id', $contextLessonId)
+            ->orderBy('title')
+            ->get();
+        $page_data['section_materials'] = CourseMaterial::query()
+            ->select(['id', 'course_id', 'section_id', 'lesson_id', 'title', 'file_name', 'mime_type', 'size_bytes'])
+            ->where('course_id', $course->id)
+            ->where('section_id', $activeSectionId)
+            ->orderBy('title')
+            ->get();
+        $page_data['material_lesson_ids'] = $page_data['section_materials']->pluck('lesson_id')->filter()->map(fn ($id) => (int) $id)->all();
+        $page_data['lesson_quizzes'] = Lesson::query()
+            ->join('course_quiz_contexts', 'course_quiz_contexts.quiz_lesson_id', '=', 'lessons.id')
+            ->select('lessons.*', 'course_quiz_contexts.kind as context_kind')
+            ->where('course_quiz_contexts.course_id', $course->id)
+            ->where('course_quiz_contexts.lesson_id', $contextLessonId)
+            ->orderBy('lessons.sort')
+            ->get();
+        $page_data['module_simulations'] = Lesson::query()
+            ->join('course_quiz_contexts', 'course_quiz_contexts.quiz_lesson_id', '=', 'lessons.id')
+            ->select('lessons.*', 'course_quiz_contexts.kind as context_kind')
+            ->where('course_quiz_contexts.course_id', $course->id)
+            ->where('course_quiz_contexts.section_id', $activeSectionId)
+            ->whereIn('course_quiz_contexts.kind', ['module', 'final'])
+            ->orderBy('lessons.sort')
+            ->get();
 
         $forum_query = Forum::join('users', 'forums.user_id', 'users.id')
             ->select('forums.*', 'users.name as user_name', 'users.photo as user_photo')

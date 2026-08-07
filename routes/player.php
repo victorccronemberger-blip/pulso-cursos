@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::controller(FileController::class)->group(function () {
+        Route::get('course-materials/{material}/download', 'download_course_material')->name('course.material.download');
         Route::get('files', 'get_file')->name('course.get_file');
         Route::get('video-files', 'get_video_file')->name('course.get_video_file');
         Route::get('pdf-canvas/{course_id?}/{lesson_id?}', 'pdf_canvas')->name('pdf_canvas');
