@@ -19,7 +19,12 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    // Keep the browser API private to the published frontend. Multiple
+    // origins may be supplied as a comma-separated CORS_ALLOWED_ORIGINS value.
+    'allowed_origins' => array_filter(array_map(
+        'trim',
+        explode(',', env('CORS_ALLOWED_ORIGINS', 'https://academy.cyara.com.br'))
+    )),
 
     'allowed_origins_patterns' => [],
 
