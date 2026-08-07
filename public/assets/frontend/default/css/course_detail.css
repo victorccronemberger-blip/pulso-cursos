@@ -859,3 +859,9 @@
         gap: 20px;
     }
 }
+
+/* Decisão de compra: reduzir dúvida sem esconder o conteúdo importante. */
+.course-detail-hero { background:radial-gradient(circle at 78% 12%,rgba(0,217,163,.18),transparent 24%),linear-gradient(135deg,#071425 0%,#102f4c 100%); }
+.course-detail-outcome { align-items:flex-start; background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.11); border-radius:12px; display:flex; gap:12px; margin:0 0 28px; max-width:660px; padding:14px 16px; }.course-detail-outcome-marker { background:var(--pf-terminal); border-radius:50%; box-shadow:0 0 0 5px rgba(0,217,163,.12); flex:0 0 8px; height:8px; margin-top:6px; width:8px; }.course-detail-outcome p { color:rgba(255,255,255,.76); font:400 1.35rem/1.45 var(--pf-font-body); margin:0; }.course-detail-outcome strong { color:#fff; font-weight:700; }
+.course-pricing-card { background:rgba(4,16,32,.58); box-shadow:0 22px 54px rgba(0,0,0,.21); }.course-pricing-installments { border-top:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.7); font:400 1.2rem/1.45 var(--pf-font-body); margin:0 0 18px; padding-top:15px; }.course-pricing-installments strong { color:var(--pf-terminal); font-family:var(--pf-font-mono); }.course-pricing-reassurance { border-top:1px solid rgba(255,255,255,.12); display:grid; gap:10px; list-style:none; margin:20px 0 0; padding:18px 0 0; }.course-pricing-reassurance li { color:rgba(255,255,255,.7); font:500 1.18rem/1.35 var(--pf-font-body); padding-left:21px; position:relative; }.course-pricing-reassurance li::before { color:var(--pf-terminal); content:'✓'; font-weight:700; left:0; position:absolute; }.course-pricing-cta { background:var(--pf-alert); }.course-pricing-cta:focus-visible,.course-tab:focus-visible { outline:3px solid var(--pf-terminal); outline-offset:3px; }
+@media(max-width:768px){.course-detail-outcome{margin-bottom:24px}.course-pricing-card{padding:24px}.course-pricing-current,.course-pricing-free{font-size:2.7rem}}

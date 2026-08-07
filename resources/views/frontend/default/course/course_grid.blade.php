@@ -1,43 +1,37 @@
 @php
-    // Espelha a lógica de preço do card da homepage (hero_banner.blade.php)
     $price = $course->discount_flag == 1 ? $course->discounted_price : $course->price;
-    $price = $price > 0 ? $price : 0;
-    $monthly = round($price / 12, 2);
-    $monthly_int = floor($monthly);
-    $monthly_dec = str_pad((string) round(($monthly - $monthly_int) * 100), 2, '0', STR_PAD_LEFT);
+    $price = max(0, (float) $price);
+    $monthly = $price ? $price / 12 : 0;
 @endphp
-<div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-    <div class="card-curso-toro card--integral">
-        <a href="{{ route('course.details', $course->slug) }}" class="toro-card-image" aria-label="{{ $course->title }}">
+<article class="col-lg-4 col-md-6 mb-30 pf-course-column">
+    <div class="pf-course-card">
+        <a href="{{ route('course.details', $course->slug) }}" class="pf-course-media" aria-label="{{ $course->title }}">
             @if ($course->thumbnail)
-                <img src="{{ get_image($course->thumbnail) }}" alt="{{ $course->title }}">
+                <img src="{{ get_image($course->thumbnail) }}" alt="{{ $course->title }}" loading="lazy">
             @endif
+            <span class="pf-course-media-badge">{{ $course->is_paid ? get_phrase('Curso completo') : get_phrase('Acesso gratuito') }}</span>
         </a>
-
-        <div class="toro-card-title-first-line">{{ get_phrase('Curso Completo + Simulados') }}</div>
-
-        @if ($course->is_paid == 1)
-            <div class="toro-card-price-12x">
-                <span class="small">12x R$</span>
-                <span class="large">{{ $monthly_int }}</span>
-                <span class="small">,{{ $monthly_dec }}</span>
+        <div class="pf-course-body">
+            <p class="pf-course-eyebrow">{{ $course->category->title ?? get_phrase('Certificação financeira') }}</p>
+            <h2><a href="{{ route('course.details', $course->slug) }}">{{ $course->title }}</a></h2>
+            <p class="pf-course-description">{{ \Illuminate\Support\Str::limit(strip_tags($course->short_description), 108) }}</p>
+            <div class="pf-course-signals" aria-label="Dados do curso">
+                <span>{{ lesson_count($course->id) }} {{ get_phrase('aulas') }}</span>
+                <span>{{ total_durations($course->id) }}</span>
             </div>
-            <div class="toro-card-title-second-line">
-                {{ get_phrase('Ou') }} <b>R$ {{ number_format($price, 2, ',', '.') }}</b> {{ get_phrase('à vista') }}
-                <span class="toro-icon-pix">PIX</span>
+            <div class="pf-course-footer">
+                <div class="pf-course-price">
+                    @if ($price > 0)
+                        <small>{{ get_phrase('a partir de') }}</small>
+                        <strong>12x R$ {{ number_format($monthly, 2, ',', '.') }}</strong>
+                        <span>R$ {{ number_format($price, 2, ',', '.') }} {{ get_phrase('à vista') }}</span>
+                    @else
+                        <small>{{ get_phrase('Comece agora') }}</small>
+                        <strong>{{ get_phrase('Grátis') }}</strong>
+                    @endif
+                </div>
+                <a class="pf-course-action" href="{{ route('course.details', $course->slug) }}">{{ get_phrase('Ver curso') }} <span aria-hidden="true">→</span></a>
             </div>
-        @else
-            <div class="toro-card-price-12x">
-                <span class="large">{{ get_phrase('GRÁTIS') }}</span>
-            </div>
-        @endif
-
-        <div class="toro-card-btn-comprar">
-            @if ($course->is_paid == 1)
-                <a href="{{ route('purchase.course', $course->id) }}"><span>{{ get_phrase('Comprar Agora') }}</span></a>
-            @else
-                <a href="{{ route('purchase.course', $course->id) }}"><span>{{ get_phrase('Inscrever-se') }}</span></a>
-            @endif
         </div>
     </div>
-</div>
+</article>

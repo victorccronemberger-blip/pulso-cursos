@@ -30,10 +30,14 @@
 }
 
 .pf-auth-visual {
-    background: linear-gradient(90deg, rgba(3, 13, 31, .18), rgba(3, 13, 31, .02) 58%, rgba(10, 22, 40, .66)), linear-gradient(180deg, rgba(3, 13, 31, .02), rgba(3, 13, 31, .9)), url('../img/banner-full-hero.png') 63% center / cover;
+    background: linear-gradient(90deg, rgba(3, 13, 31, .94) 0%, rgba(3, 13, 31, .48) 50%, rgba(3, 13, 31, .10) 100%), linear-gradient(0deg, rgba(3, 13, 31, .34), transparent 55%), url('../img/auth-login-study.png') 68% center / cover;
     color: #fff;
     min-height: 100%;
     position: relative;
+}
+
+.pf-auth-register .pf-auth-visual {
+    background: linear-gradient(90deg, rgba(3, 13, 31, .96) 0%, rgba(3, 13, 31, .50) 48%, rgba(3, 13, 31, .08) 100%), linear-gradient(0deg, rgba(3, 13, 31, .24), transparent 55%), url('../img/auth-register-journey.png') 58% center / cover;
 }
 
 .pf-auth-visual::after {
@@ -70,6 +74,7 @@
 .pf-auth-home-link span { color: var(--auth-terminal); font-size: 1.8rem; }
 
 .pf-auth-visual-copy { max-width: 400px; margin-top: auto; }
+.pf-auth-visual-copy::after { background: linear-gradient(90deg, var(--auth-terminal), transparent); content: ''; display: block; height: 2px; margin-top: 28px; opacity: .9; width: 142px; }
 
 .pf-auth-kicker {
     align-items: center;
@@ -121,7 +126,7 @@
 
 .pf-auth-form-column {
     align-items: center;
-    background: #f8f9fa;
+    background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 55%, #eefaf7 100%);
     display: flex;
     justify-content: center;
     padding: 48px 72px;
@@ -141,6 +146,7 @@
 
 .pf-auth-form-column > * { position: relative; z-index: 1; }
 .pf-auth-form { max-width: 442px; width: 100%; }
+.pf-auth-register .pf-auth-form { max-width: 460px; }
 .pf-auth-heading { margin-bottom: 34px; }
 .pf-auth-heading h1 { color: var(--auth-midnight); font-size: clamp(2.8rem, 3vw, 3.7rem); line-height: 1.07; margin: 0 0 11px; }
 .pf-auth-heading p { color: var(--auth-slate); font: 400 1.5rem/1.55 "IBM Plex Sans", sans-serif; margin: 0; }

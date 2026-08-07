@@ -32,6 +32,9 @@ $average_rating = 0;
 if ($total != 0) {
 $average_rating = $rating / $total;
 }
+
+$display_price = $course_details->discount_flag == 1 ? $course_details->discounted_price : $course_details->price;
+$installment_price = $display_price > 0 ? $display_price / 12 : 0;
 @endphp
 
 @section('content')
@@ -60,6 +63,11 @@ $average_rating = $rating / $total;
                 <p class="course-detail-description">
                     {{ $course_details->short_description }}
                 </p>
+
+                <div class="course-detail-outcome">
+                    <span class="course-detail-outcome-marker" aria-hidden="true"></span>
+                    <p><strong>{{ $cert_code === 'ANCORD' ? 'Preparação para a ANCORD, do primeiro módulo à revisão final.' : 'Uma trilha clara para transformar conteúdo em segurança na prova.' }}</strong> {{ get_phrase('Estude com objetivo, pratique e acompanhe sua evolução.') }}</p>
+                </div>
 
                 {{-- Stats --}}
                 <div class="course-detail-stats">
@@ -108,6 +116,10 @@ $average_rating = $rating / $total;
                     @endif
                 </div>
 
+                @if($installment_price > 0)
+                    <p class="course-pricing-installments">{{ get_phrase('Em até') }} <strong>12x R$ {{ number_format($installment_price, 2, ',', '.') }}</strong> {{ get_phrase('sem transformar sua decisão em dúvida.') }}</p>
+                @endif
+
                 @php
                 if (isset(auth()->user()->id)) {
                     $is_enrolled = DB::table('enrollments')
@@ -126,9 +138,14 @@ $average_rating = $rating / $total;
                     <a href="{{ route('my.courses') }}" class="course-pricing-cta">Acessar Curso</a>
                 @else
                     <a href="{{ route('purchase.course', $course_details->id) }}" class="course-pricing-cta">
-                        {{ $course_details->is_paid ? 'Comprar Agora' : 'Inscrever-se' }}
+                        {{ $course_details->is_paid ? ($cert_code === 'ANCORD' ? 'Começar minha preparação' : 'Garantir minha vaga') : 'Inscrever-se gratuitamente' }}
                     </a>
                 @endif
+                <ul class="course-pricing-reassurance">
+                    <li>{{ get_phrase('Acesso imediato após a confirmação') }}</li>
+                    <li>{{ get_phrase('Estude no computador, tablet ou celular') }}</li>
+                    <li>{{ get_phrase('Conteúdo organizado para você saber o próximo passo') }}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -207,11 +224,11 @@ $average_rating = $rating / $total;
     "use strict";
     const myModalElement = document.getElementById('exampleModal')
     myModalElement.addEventListener('hidden.bs.modal', event => {
-        promoPlayer.pause();
+        if (typeof promoPlayer !== 'undefined') promoPlayer.pause();
         $('#exampleModal').toggleClass('in');
     });
     myModalElement.addEventListener('shown.bs.modal', event => {
-        promoPlayer.play();
+        if (typeof promoPlayer !== 'undefined') promoPlayer.play();
         $('#exampleModal').toggleClass('in');
     });
 </script>

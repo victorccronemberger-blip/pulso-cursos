@@ -9,7 +9,7 @@
 @endpush
 
 @section('content')
-    <section class="pf-auth" aria-labelledby="auth-title">
+    <section class="pf-auth pf-auth-login" aria-labelledby="auth-title">
         <div class="container pf-auth-container">
             <div class="pf-auth-shell">
                 <aside class="pf-auth-visual" aria-label="Preparação para certificações financeiras">
@@ -18,7 +18,7 @@
                             <span aria-hidden="true">←</span> {{ get_phrase('Voltar para a página inicial') }}
                         </a>
                         <div class="pf-auth-visual-copy">
-                            <span class="pf-auth-kicker"><span></span>{{ get_phrase('Sua jornada continua') }}</span>
+                            <span class="pf-auth-kicker"><span></span>{{ get_phrase('Ritmo de aprovação') }}</span>
                             <h2>{{ get_phrase('A próxima aprovação começa com um acesso.') }}</h2>
                             <p>{{ get_phrase('Retome seus estudos, simulados e materiais em um único lugar.') }}</p>
                         </div>
