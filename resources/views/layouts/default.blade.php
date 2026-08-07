@@ -64,6 +64,7 @@
     <!-- Courses Page Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/toro_home_v2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/courses_page.css') }}?v=20260807-2">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/courses_media.css') }}?v=20260807-1">
     @endif
 
     @if (Route::currentRouteName() == 'course.details')
