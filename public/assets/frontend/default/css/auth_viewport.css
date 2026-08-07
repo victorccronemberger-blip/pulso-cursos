@@ -1,0 +1,2 @@
+/* O tema principal reserva altura para o cabeçalho; autenticação não tem cabeçalho. */
+body:has(.pf-auth-page){padding-top:0!important}
