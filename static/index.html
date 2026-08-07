@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Academy Learning Club</title><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="header"><a class="brand" href="#/">ACADEMY</a><nav><a href="#/courses">Cursos</a><button id="account" class="button secondary">Entrar</button></nav></header>
+  <main id="app" aria-live="polite"><p class="loading">Carregando cursos…</p></main>
+  <dialog id="login-dialog"><form id="login-form"><button type="button" class="close" id="close-login" aria-label="Fechar">×</button><h2>Entrar</h2><label>E-mail<input name="email" type="email" autocomplete="email" required></label><label>Senha<input name="password" type="password" autocomplete="current-password" required></label><p class="error" id="login-error"></p><button class="button">Entrar</button></form></dialog>
+  <script>window.ACADEMY_API_URL='https://api-pulso.cyara.com.br/api';</script><script src="./app.js" defer></script>
+</body>
+</html>

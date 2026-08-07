@@ -8,6 +8,7 @@ use App\Http\Controllers\frontend\ContactController;
 use App\Http\Controllers\frontend\CourseController;
 use App\Http\Controllers\frontend\EbookController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\Api\AcademyFrontendController;
 use App\Http\Controllers\frontend\InstructorController;
 use App\Http\Controllers\frontend\NewsletterController;
 use App\Http\Controllers\frontend\TeamTrainingController;
@@ -22,6 +23,10 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/update_watch_history', 'update_watch_history_with_duration')->name('update_watch_history');
     Route::any('/send_email_to_assigned_addresses', 'sendEmailToAssignedAddresses')->name('sendEmailToAssignedAddresses');
 });
+
+Route::get('frontend/checkout/{user}/{course}', [AcademyFrontendController::class, 'checkout'])
+    ->middleware('signed')
+    ->name('api.frontend.checkout');
 
 // course page
 Route::controller(CourseController::class)->group(function () {

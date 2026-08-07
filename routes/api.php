@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\CourseController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Api\AcademyFrontendController;
 
 
 /*
@@ -25,8 +26,15 @@ Route::post('/login', [ApiController::class, 'login']);
 Route::post('/signup', [ApiController::class, 'signup']);
 Route::post('/forgot_password', [ApiController::class, 'forgot_password']);
 
+Route::get('/frontend/courses', [AcademyFrontendController::class, 'courses']);
+Route::get('/frontend/courses/{slug}', [AcademyFrontendController::class, 'course']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/frontend/me', [AcademyFrontendController::class, 'me']);
+    Route::post('/frontend/checkout/course/{course}', [AcademyFrontendController::class, 'startCheckout']);
+});
 
-Route::group(['middleware', ['auth:sanctum']], function () {
+
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/top_courses', [ApiController::class, 'top_courses']);
     Route::get('/all_categories', [ApiController::class, 'all_categories']);
     Route::get('/categories', [ApiController::class, 'categories']);
