@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-cfp-certificacao-planejador-financeiro"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Fundamentos do Planejamento Financeiro",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Gestão Financeira",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Investimentos e Gestão de Carteiras",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Planejamento de Aposentadoria",
+      "sort": 4
+    },
+    {
+      "key": "m5",
+      "title": "Módulo 5 · Seguros e Gestão de Riscos",
+      "sort": 5
+    },
+    {
+      "key": "m6",
+      "title": "Módulo 6 · Planejamento Tributário",
+      "sort": 6
+    },
+    {
+      "key": "m7",
+      "title": "Módulo 7 · Planejamento Patrimonial e Sucessório",
+      "sort": 7
+    },
+    {
+      "key": "m8",
+      "title": "Módulo 8 · Psicologia e Finanças Comportamentais",
+      "sort": 8
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CFP-Intro52_Introdução ao Curso CFP.mp4",
+      "provider_id": "41854dd4-df5a-4267-9e8d-e7b0b6933f6f",
+      "title": "Introdução ao Curso CFP",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:42:53",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CFP - AULA INAUGURAL_Aula Inaugural - CFP®.mp4",
+      "provider_id": "036d5210-e39d-4e23-a807-63532dc8cc00",
+      "title": "Aula Inaugural - CFP®",
+      "section": "m1",
+      "sort": 2,
+      "duration": "01:28:08",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CFP-SFN_SISTEMA FINANCEIRO NACIONAL (M1).mp4",
+      "provider_id": "2718c9bc-8478-490d-8121-f9977f4fe348",
+      "title": "SISTEMA FINANCEIRO NACIONAL",
+      "section": "m1",
+      "sort": 3,
+      "duration": "01:05:40",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CFP-ECO_ECONOMIA (M1).mp4",
+      "provider_id": "d048142a-b179-4799-ac8a-0769f00f2e01",
+      "title": "ECONOMIA",
+      "section": "m1",
+      "sort": 4,
+      "duration": "01:19:14",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CFP-FIN_FINANÇAS (M1).mp4",
+      "provider_id": "dd353752-03e1-493d-ba2d-0d6085719b2f",
+      "title": "FINANÇAS",
+      "section": "m1",
+      "sort": 5,
+      "duration": "01:18:11",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CFP-ANP_ANÁLISE DE PROJETOS (M1).mp4",
+      "provider_id": "5b07265a-4a6e-422e-8596-0657b971e46c",
+      "title": "ANÁLISE DE PROJETOS",
+      "section": "m1",
+      "sort": 6,
+      "duration": "00:40:46",
+      "is_free": false
+    },
+    {
+      "source_file": "37_CFP-ETICA_CÓDIGO DE ÉTICA DA PLANEJAR (M1).mp4",
+      "provider_id": "a1a67705-7a71-42dd-97cb-be04da8e90c6",
+      "title": "CÓDIGO DE ÉTICA DA PLANEJAR",
+      "section": "m1",
+      "sort": 7,
+      "duration": "01:08:10",
+      "is_free": false
+    },
+    {
+      "source_file": "38_CFP-PFIN_PLANEJAMENTO FINANCEIRO (M1).mp4",
+      "provider_id": "3e43e636-af0b-447d-974e-dd6ae49e1113",
+      "title": "PLANEJAMENTO FINANCEIRO",
+      "section": "m1",
+      "sort": 8,
+      "duration": "01:11:37",
+      "is_free": false
+    },
+    {
+      "source_file": "39_CFP-CH_COMPETÊNCIAS & HABILIDADES DO PLANEJADOR FINANCEIRO (M1).mp4",
+      "provider_id": "14dba95d-bf8c-47be-a890-8c038acad20d",
+      "title": "COMPETÊNCIAS & HABILIDADES DO PLANEJADOR FINANCEIRO",
+      "section": "m1",
+      "sort": 9,
+      "duration": "00:47:12",
+      "is_free": false
+    },
+    {
+      "source_file": "49_081_REVISÃO_ ECONOMIA& SISTEMA FINANCEIRO NACIONAL (M1).mp4",
+      "provider_id": "c5b496cd-9ad1-4f40-9e0a-a3994c627efa",
+      "title": "REVISÃO · ECONOMIA& SISTEMA FINANCEIRO NACIONAL",
+      "section": "m1",
+      "sort": 10,
+      "duration": "00:45:44",
+      "is_free": false
+    },
+    {
+      "source_file": "61_082_RESUMO_ FUNDAMENTOS DE FINANÇAS (M1).mp4",
+      "provider_id": "6f6a5696-87ae-4dc1-9a72-f426fe0e001d",
+      "title": "RESUMO · FUNDAMENTOS DE FINANÇAS",
+      "section": "m1",
+      "sort": 11,
+      "duration": "00:18:04",
+      "is_free": false
+    },
+    {
+      "source_file": "63_080_REVISÃO_ CÓDIGO DE ÉTICA DA PLANEJAR (M1).mp4",
+      "provider_id": "bf6b198f-af05-4a6c-ab48-ff0dd22c0845",
+      "title": "REVISÃO · CÓDIGO DE ÉTICA DA PLANEJAR",
+      "section": "m1",
+      "sort": 12,
+      "duration": "00:31:10",
+      "is_free": false
+    },
+    {
+      "source_file": "74_083_REVISÃO_ PLANEJAMENTO FINANCEIRO (M1).mp4",
+      "provider_id": "f99495b4-07d0-4260-a47d-fb69ea0ca554",
+      "title": "REVISÃO · PLANEJAMENTO FINANCEIRO",
+      "section": "m1",
+      "sort": 13,
+      "duration": "00:23:23",
+      "is_free": false
+    },
+    {
+      "source_file": "78_079_REVISÃO_ FUNDAMENTOS DE FINANÇAS.mp4",
+      "provider_id": "9ca4a26e-efdf-45b3-ab6e-c1c31146aa18",
+      "title": "REVISÃO · FUNDAMENTOS DE FINANÇAS",
+      "section": "m1",
+      "sort": 14,
+      "duration": "00:18:04",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CFP-GFIN01_GESTÃO FINANCEIRA I (M2).mp4",
+      "provider_id": "ec8c1e59-2edc-42bb-89db-b8f80dab899a",
+      "title": "GESTÃO FINANCEIRA I",
+      "section": "m2",
+      "sort": 1,
+      "duration": "01:06:47",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CFP-GFIN02_GESTÃO FINANCEIRA II (M2).mp4",
+      "provider_id": "da6adb85-8858-4339-bfda-705bc9046227",
+      "title": "GESTÃO FINANCEIRA II",
+      "section": "m2",
+      "sort": 2,
+      "duration": "01:13:22",
+      "is_free": false
+    },
+    {
+      "source_file": "76_CFP-RESUMO019_REVISÃO_ GESTÃO FINANCEIRA (M2).mp4",
+      "provider_id": "448552ec-66c6-4816-9356-7e251f9341d6",
+      "title": "REVISÃO · GESTÃO FINANCEIRA",
+      "section": "m2",
+      "sort": 3,
+      "duration": "00:56:56",
+      "is_free": false
+    },
+    {
+      "source_file": "22_CFP-RF01_RENDA FIXA I (M3).mp4",
+      "provider_id": "48c729d8-c73d-4403-8f8c-df3211d8c7ca",
+      "title": "RENDA FIXA I",
+      "section": "m3",
+      "sort": 1,
+      "duration": "00:56:05",
+      "is_free": false
+    },
+    {
+      "source_file": "23_CFP-RF02_RENDA FIXA II (M3).mp4",
+      "provider_id": "14ebf6b8-cd83-411c-8c26-3476704ea4b4",
+      "title": "RENDA FIXA II",
+      "section": "m3",
+      "sort": 2,
+      "duration": "01:17:46",
+      "is_free": false
+    },
+    {
+      "source_file": "24_CFP-RV01_RENDA VARIÁVEL I (M3).mp4",
+      "provider_id": "9bb4126c-2e1d-4777-85f9-5b2372e336c1",
+      "title": "RENDA VARIÁVEL I",
+      "section": "m3",
+      "sort": 3,
+      "duration": "01:18:32",
+      "is_free": false
+    },
+    {
+      "source_file": "25_CFP-RV02_RENDA VARIÁVEL II (M3).mp4",
+      "provider_id": "f45a6b67-985e-4076-9a25-684ceb1b6eae",
+      "title": "RENDA VARIÁVEL II",
+      "section": "m3",
+      "sort": 4,
+      "duration": "01:10:43",
+      "is_free": false
+    },
+    {
+      "source_file": "26_CFP-FUND_FUNDOS DE INVESTIMENTOS (M3).mp4",
+      "provider_id": "f2782375-5159-4e43-a35d-e4f385ec96e3",
+      "title": "FUNDOS DE INVESTIMENTOS",
+      "section": "m3",
+      "sort": 5,
+      "duration": "01:30:48",
+      "is_free": false
+    },
+    {
+      "source_file": "28_CFP-EXT&IMOV_INVESTIMENTOS NO EXTERIOR & EM IMÓVEIS (M3).mp4",
+      "provider_id": "185e0afb-a374-42d4-834b-0cbb0233daf7",
+      "title": "INVESTIMENTOS NO EXTERIOR & EM IMÓVEIS",
+      "section": "m3",
+      "sort": 6,
+      "duration": "01:18:02",
+      "is_free": false
+    },
+    {
+      "source_file": "29_CFP-DER_DERIVATIVOS (M3).mp4",
+      "provider_id": "9be2a07b-6fb0-4641-9b88-afa7b2775f70",
+      "title": "DERIVATIVOS",
+      "section": "m3",
+      "sort": 7,
+      "duration": "01:26:37",
+      "is_free": false
+    },
+    {
+      "source_file": "31_CFP-GCART01_TEORIA MODERNA DE CARTEIRAS (M3).mp4",
+      "provider_id": "0ddd881d-35cc-4906-a0db-89c3286f5a62",
+      "title": "TEORIA MODERNA DE CARTEIRAS",
+      "section": "m3",
+      "sort": 8,
+      "duration": "01:22:34",
+      "is_free": false
+    },
+    {
+      "source_file": "32_CFP-GCART02_GESTÃO DE CARTEIRAS II (M3).mp4",
+      "provider_id": "5e7b6fb5-dfbf-44f1-9b94-0d84e6897487",
+      "title": "GESTÃO DE CARTEIRAS II",
+      "section": "m3",
+      "sort": 9,
+      "duration": "01:15:06",
+      "is_free": false
+    },
+    {
+      "source_file": "34_CFP-AD_ATIVOS DIGITAIS (M3).mp4",
+      "provider_id": "402bbfa6-4325-4c73-8a8a-db71a32e68b2",
+      "title": "ATIVOS DIGITAIS",
+      "section": "m3",
+      "sort": 10,
+      "duration": "00:29:22",
+      "is_free": false
+    },
+    {
+      "source_file": "50_085_REVISÃO_ RENDA FIXA (M3).mp4",
+      "provider_id": "9d6aea71-1508-4b54-a264-c9c3007bffe6",
+      "title": "REVISÃO · RENDA FIXA",
+      "section": "m3",
+      "sort": 11,
+      "duration": "00:36:07",
+      "is_free": false
+    },
+    {
+      "source_file": "51_086_REVISÃO_ RENDA VARIÁVEL (M3).mp4",
+      "provider_id": "bc17a760-28f7-4740-ae50-eff4b90af5e5",
+      "title": "REVISÃO · RENDA VARIÁVEL",
+      "section": "m3",
+      "sort": 12,
+      "duration": "00:43:03",
+      "is_free": false
+    },
+    {
+      "source_file": "62_092_REVISÃO_ INVESTIMENTOS ALTERNATIVOS & IMÓVEIS (M3).mp4",
+      "provider_id": "fce16f28-795a-48ba-a854-dcd4f2b798fb",
+      "title": "REVISÃO · INVESTIMENTOS ALTERNATIVOS & IMÓVEIS",
+      "section": "m3",
+      "sort": 13,
+      "duration": "00:31:05",
+      "is_free": false
+    },
+    {
+      "source_file": "75_089_REVISÃO_ GESTÃO DE CARTEIRAS (M3).mp4",
+      "provider_id": "d22a4995-2ffb-4ec4-bdc7-ff94728ba809",
+      "title": "REVISÃO · GESTÃO DE CARTEIRAS",
+      "section": "m3",
+      "sort": 14,
+      "duration": "00:44:37",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CFP-PREV01_PLANEJAMENTO DE APOSENTADORIA I (M4).mp4",
+      "provider_id": "9b80accd-155e-4472-845c-210e26340df2",
+      "title": "PLANEJAMENTO DE APOSENTADORIA I",
+      "section": "m4",
+      "sort": 1,
+      "duration": "01:15:24",
+      "is_free": false
+    },
+    {
+      "source_file": "07_CFP-PREV02_PLANEJAMENTO DE APOSENTADORIA II (M4).mp4",
+      "provider_id": "078cf1ad-c76d-48e2-b4e5-0827ab3b9fc4",
+      "title": "PLANEJAMENTO DE APOSENTADORIA II",
+      "section": "m4",
+      "sort": 2,
+      "duration": "01:05:41",
+      "is_free": false
+    },
+    {
+      "source_file": "48_090_REVISÃO_ PLANEJAMENTO DE APOSENTADORIA (M4).mp4",
+      "provider_id": "70dcd216-41f8-4b50-8b1a-c4380279155e",
+      "title": "REVISÃO · PLANEJAMENTO DE APOSENTADORIA",
+      "section": "m4",
+      "sort": 3,
+      "duration": "00:38:52",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CFP-SEG01_PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO I (M5).mp4",
+      "provider_id": "047d23f5-f426-4014-8b29-60ce888dc04e",
+      "title": "PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO I",
+      "section": "m5",
+      "sort": 1,
+      "duration": "01:13:28",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CFP-SEG02_PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO II (M5).mp4",
+      "provider_id": "e8bb7565-8e55-4a8f-9699-8b1460e98f9f",
+      "title": "PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO II",
+      "section": "m5",
+      "sort": 2,
+      "duration": "01:08:09",
+      "is_free": false
+    },
+    {
+      "source_file": "64_091_RESUMO_ PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO (M5).mp4",
+      "provider_id": "94383873-f98a-4c6d-ae60-d3a6fa457e6d",
+      "title": "RESUMO · PLANEJAMENTO DE SEGUROS & GESTÃO DE RISCO",
+      "section": "m5",
+      "sort": 3,
+      "duration": "00:43:23",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CFP-PFISC01_PLANEJAMENTO TRIBUTÁRIO I (M6).mp4",
+      "provider_id": "fe020a64-b4fa-4654-85cc-b424297d2d4b",
+      "title": "PLANEJAMENTO TRIBUTÁRIO I",
+      "section": "m6",
+      "sort": 1,
+      "duration": "01:16:47",
+      "is_free": false
+    },
+    {
+      "source_file": "13_CFP-PFISC02_PLANEJAMENTO TRIBUTÁRIO II (M6).mp4",
+      "provider_id": "f735b7a1-29ca-402c-9077-1d48d81c46a5",
+      "title": "PLANEJAMENTO TRIBUTÁRIO II",
+      "section": "m6",
+      "sort": 2,
+      "duration": "01:04:06",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CFP-TRIBEXT_TRIBUTAÇÃO DE RENDIMENTOS NO EXTERIOR (M6).mp4",
+      "provider_id": "95ec9365-9368-4a10-8be7-376b3ebd81be",
+      "title": "TRIBUTAÇÃO DE RENDIMENTOS NO EXTERIOR",
+      "section": "m6",
+      "sort": 3,
+      "duration": "01:08:00",
+      "is_free": false
+    },
+    {
+      "source_file": "30_CFP-TRIB_TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS (M6).mp4",
+      "provider_id": "c8351661-a764-4e7f-8203-28c12d05859c",
+      "title": "TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS",
+      "section": "m6",
+      "sort": 4,
+      "duration": "01:14:53",
+      "is_free": false
+    },
+    {
+      "source_file": "65_CFP-RESUMO018_RESUMO_ TRIBUTAÇÃO DE PRODUTOS DE INVESTIMENTOS (M6).mp4",
+      "provider_id": "266a828b-308c-45f3-96ac-ba50f9590fd1",
+      "title": "RESUMO · TRIBUTAÇÃO DE PRODUTOS DE INVESTIMENTOS",
+      "section": "m6",
+      "sort": 5,
+      "duration": "00:29:51",
+      "is_free": false
+    },
+    {
+      "source_file": "77_095_REVISÃO_ PLANEJAMENTO FISCAL (M6).mp4",
+      "provider_id": "80fcc977-4336-4139-8008-51e21def3973",
+      "title": "REVISÃO · PLANEJAMENTO FISCAL",
+      "section": "m6",
+      "sort": 6,
+      "duration": "00:42:21",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CFP-SUC01_PLANEJAMENTO SUCESSÓRIO I (M7).mp4",
+      "provider_id": "48c41da5-345f-48b9-b1f6-e25e57cc23bf",
+      "title": "PLANEJAMENTO SUCESSÓRIO I",
+      "section": "m7",
+      "sort": 1,
+      "duration": "01:07:59",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CFP-SUC02_PLANEJAMENTO SUCESSÓRIO II (M7).mp4",
+      "provider_id": "56b103ec-df94-47d2-9ffd-aac335bbe853",
+      "title": "PLANEJAMENTO SUCESSÓRIO II",
+      "section": "m7",
+      "sort": 2,
+      "duration": "01:20:08",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CFP-PSUC03_Planejamento Patrimonial & Sucessório III (M7).mp4",
+      "provider_id": "e68fdbb9-f357-4d28-a613-cf080f996ebc",
+      "title": "Planejamento Patrimonial & Sucessório III",
+      "section": "m7",
+      "sort": 3,
+      "duration": "00:43:12",
+      "is_free": false
+    },
+    {
+      "source_file": "52_093_RESUMO_ PLANEJAMENTO PATRIMONIAL & SUCESSÓRIO (M7).mp4",
+      "provider_id": "a40a312e-b798-4cf4-bd49-7e53b9190fc2",
+      "title": "RESUMO · PLANEJAMENTO PATRIMONIAL & SUCESSÓRIO",
+      "section": "m7",
+      "sort": 4,
+      "duration": "00:37:33",
+      "is_free": false
+    },
+    {
+      "source_file": "35_CFP-FC_FINANÇAS COMPORTAMENTAIS (M8).mp4",
+      "provider_id": "77829fbe-ba23-4696-aeb3-c417bbe4c469",
+      "title": "FINANÇAS COMPORTAMENTAIS",
+      "section": "m8",
+      "sort": 1,
+      "duration": "00:53:21",
+      "is_free": false
+    },
+    {
+      "source_file": "36_CFP-PSIC_PSICOLOGIA NO PLANEJAMENTO FINANCEIRO (M8).mp4",
+      "provider_id": "afee8865-a5fb-4e2f-beab-120c86d29ca4",
+      "title": "PSICOLOGIA NO PLANEJAMENTO FINANCEIRO",
+      "section": "m8",
+      "sort": 2,
+      "duration": "00:25:40",
+      "is_free": false
+    }
+  ]
+}
