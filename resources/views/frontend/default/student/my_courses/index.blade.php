@@ -1,161 +1,86 @@
 @extends('layouts.default')
-@push('title', get_phrase('My Courses'))
-@push('meta')@endpush
-@push('css')@endpush
+@push('title', get_phrase('Minha preparação'))
+@push('css')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+@endpush
 @section('content')
-
-<!------------------- Breadcum Area Start  ------>
-<section class="breadcum-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('My Courses') }}</li>
-                        </ol>
-                    </nav>
-
-                    <div class="row row-gap-3">
-                        <div class="col-auto col-md-4 col-lg-3">
-                            <h3 class="g-title mt-4">{{ get_phrase('My Courses') }}</h3>
-                        </div>
-                    </div>
+@php
+    $student_name = trim(explode(' ', auth()->user()->name)[0]);
+    $enrolled_count = $my_courses->total();
+@endphp
+<main class="pf-student-shell">
+    <section class="pf-student-hero">
+        <div class="container">
+            <p class="pf-student-kicker"><span></span>{{ get_phrase('Central de preparação') }}</p>
+            <div class="pf-student-hero-grid">
+                <div>
+                    <h1>{{ get_phrase('Olá,') }} {{ $student_name }}.</h1>
+                    <p>{{ get_phrase('Seu próximo passo está aqui. Retome seus cursos, acompanhe seu avanço e mantenha o ritmo até a aprovação.') }}</p>
+                </div>
+                <div class="pf-student-hero-metrics" aria-label="{{ get_phrase('Resumo da sua preparação') }}">
+                    <div><strong>{{ $enrolled_count }}</strong><span>{{ get_phrase('cursos na sua trilha') }}</span></div>
+                    <div><strong>{{ $enrolled_count ? get_phrase('Ativa') : get_phrase('Pronta') }}</strong><span>{{ get_phrase('sua preparação') }}</span></div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!------------------- Breadcum Area End  --------->
+    </section>
 
-<!-------------- List Item Start   --------------->
-<div class="eNtery-item">
-    <div class="container">
-        <div class="row">
+    <section class="pf-student-content">
+        <div class="container">
+            <div class="row g-4">
                 @include('frontend.default.student.left_sidebar')
-            <div class="col-lg-9 col-md-8">
-                <div class="row">
-                    @foreach ($my_courses as $course)
-                    @php
-                    $course_progress = progress_bar($course->course_id);
-                    @endphp
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-30">
-                        <div class="card Ecard g-card c-card">
-                            <div class="card-head">
-                                <img src="{{ get_image($course->thumbnail) }}" alt="course-thumbnail">
-                            </div>
-                            <div class="card-body entry-details">
-                                <div class="info-card mb-15">
-                                    <div class="creator">
-                                        <img src="{{ get_image($course->user_photo) }}" alt="author-image">
-                                        <h5>{{ $course->user_name }}</h5>
-                                    </div>
-                                </div>
-                                <div class="entry-title">
-                                    <a href="{{ route('course.details', $course->slug) }}">
-                                        <h3 class="w-100 ellipsis-line-2">{{ ucfirst($course->title) }}</h3>
-                                    </a>
-                                </div>
-                                <div class="single-progress">
-                                    <div class="d-flex justify-content-between align-items-center mb-10">
-                                        <h5>{{ get_phrase('Progress') }}</h5>
-                                        <p>{{ $course_progress }}%</p>
-                                    </div>
-                                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar" style="width: {{ $course_progress }}%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="class-details pt-3">
-                                    <div class="d-flex gap-3 justify-content-between">
-                                        @if($course->expiry_date > 0 && $course->expiry_date < time())
-                                            <div class="class-status">
-                                            <span class="text-capitalize">{{ get_phrase('Expired') }}:</span>
-                                    </div>
-                                    <div class="class-status">
-                                        <span class="badge bg-danger text-capitalize">{{ date('d M Y, H:i A', $course->expiry_date) }}</span>
-                                    </div>
-                                    @else
-                                    @if($course->expiry_date == 0)
-                                    <div class="class-status">
-                                        <span class="text-capitalize">{{ get_phrase('Expiry period') }}:</span>
-                                    </div>
-                                    <div class="class-status">
-                                        <span class="badge bg-success text-capitalize">{{ get_phrase('Lifetime Access') }}</span>
-                                    </div>
-                                    @else
-                                    <div class="class-status">
-                                        <span class="text-capitalize">{{ get_phrase('Expiration On') }}:</span>
-                                    </div>
-                                    <div class="class-status">
-                                        <span class="badge bg-success text-capitalize">{{ date('d M Y, H:i A', $course->expiry_date) }}</span>
-                                    </div>
-                                    @endif
-                                    @endif
-                                </div>
-                            </div>
-
-                            @php
-                            $watch_history = App\Models\Watch_history::where('course_id', $course->course_id)
-                            ->where('student_id', auth()->user()->id)
-                            ->first();
-                            $lesson = App\Models\Lesson::where('course_id', $course->course_id)
-                            ->orderBy('section_id', 'asc')
-                            ->orderBy('sort', 'asc')
-                            ->first();
-                            if (!$watch_history && !$lesson) {
-                            $url = route('course.player', ['slug' => $course->slug]);
-                            } else {
-                            if ($watch_history) {
-                            $lesson_id = $watch_history->watching_lesson_id;
-                            } elseif ($lesson) {
-                            $lesson_id = $lesson->id;
-                            }
-                            $url = route('course.player', ['slug' => $course->slug, 'id' => $lesson_id]);
-                            }
-                            @endphp
-
-                            @if($course->expiry_date > 0 && $course->expiry_date < time())
-                                <a href="{{ route('purchase.course', ['course_id' => $course->course_id]) }}" class="eBtn learn-btn w-100 text-center mt-20 f-500">
-                                {{ get_phrase('Renew') }}
-                                </a>
-                                @else
-                                @if ($course_progress > 0 && $course_progress < 100.00)
-                                    <a href="{{ $url }}" class="eBtn learn-btn w-100 text-center mt-20 f-500">{{ get_phrase('Continue') }}</a>
-                                    @elseif ($course_progress == 100.00)
-                                    <a href="{{ $url }}" class="eBtn learn-btn w-100 text-center mt-20 f-500">{{ get_phrase('Watch again') }}</a>
-                                    @else
-                                    <a href="{{ $url }}" class="eBtn learn-btn w-100 text-center mt-20 f-500">{{ get_phrase('Start Now') }}</a>
-                                    @endif
-                                    @endif
-
-                        </div>
+                <div class="col-lg-9 col-md-8">
+                    <div class="pf-student-section-heading">
+                        <div><p>{{ get_phrase('Minha biblioteca') }}</p><h2>{{ get_phrase('Cursos em andamento') }}</h2></div>
+                        <a href="{{ route('courses') }}" class="pf-student-browse">{{ get_phrase('Explorar cursos') }} <span aria-hidden="true">→</span></a>
                     </div>
+
+                    @forelse ($my_courses as $course)
+                        @php
+                            $course_progress = progress_bar($course->course_id);
+                            $watch_history = App\Models\Watch_history::where('course_id', $course->course_id)->where('student_id', auth()->id())->first();
+                            $lesson = App\Models\Lesson::where('course_id', $course->course_id)->orderBy('section_id')->orderBy('sort')->first();
+                            $lesson_id = $watch_history?->watching_lesson_id ?? $lesson?->id;
+                            $player_url = $lesson_id ? route('course.player', ['slug' => $course->slug, 'id' => $lesson_id]) : route('course.details', $course->slug);
+                            $is_expired = $course->expiry_date > 0 && $course->expiry_date < time();
+                        @endphp
+                        <article class="pf-learning-card">
+                            <a class="pf-learning-art" href="{{ route('course.details', $course->slug) }}">
+                                <img src="{{ get_image($course->thumbnail) }}" alt="{{ $course->title }}">
+                            </a>
+                            <div class="pf-learning-body">
+                                <p class="pf-learning-label">{{ get_phrase('Sua trilha') }}</p>
+                                <h3>{{ $course->title }}</h3>
+                                <p class="pf-learning-instructor">{{ get_phrase('Com') }} {{ $course->user_name }}</p>
+                                <div class="pf-learning-progress">
+                                    <div><span>{{ get_phrase('Seu progresso') }}</span><strong>{{ number_format($course_progress, 0) }}%</strong></div>
+                                    <div class="pf-learning-track" role="progressbar" aria-label="{{ get_phrase('Progresso do curso') }}" aria-valuenow="{{ $course_progress }}" aria-valuemin="0" aria-valuemax="100"><i style="width: {{ $course_progress }}%"></i></div>
+                                </div>
+                                @if ($is_expired)
+                                    <a href="{{ route('purchase.course', ['course_id' => $course->course_id]) }}" class="pf-learning-action">{{ get_phrase('Renovar acesso') }} <span aria-hidden="true">→</span></a>
+                                @else
+                                    <a href="{{ $player_url }}" class="pf-learning-action">{{ $course_progress > 0 ? get_phrase('Continuar estudando') : get_phrase('Começar curso') }} <span aria-hidden="true">→</span></a>
+                                @endif
+                            </div>
+                        </article>
+                    @empty
+                        <div class="pf-student-empty">
+                            <div class="pf-student-empty-orbit" aria-hidden="true"><i></i></div>
+                            <p class="pf-student-kicker"><span></span>{{ get_phrase('Sua jornada começa aqui') }}</p>
+                            <h3>{{ get_phrase('Ainda não há cursos na sua biblioteca.') }}</h3>
+                            <p>{{ get_phrase('Escolha a certificação que você quer conquistar e transforme este painel no seu plano de preparação.') }}</p>
+                            <a href="{{ route('courses') }}" class="pf-student-empty-action">{{ get_phrase('Encontrar minha trilha') }} <span aria-hidden="true">→</span></a>
+                        </div>
+                    @endforelse
+
+                    @if ($my_courses->hasPages())
+                        <div class="pf-student-pagination">{{ $my_courses->links() }}</div>
+                    @endif
                 </div>
-                @endforeach
-
-                @if ($my_courses->count() == 0)
-                <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                    @include('frontend.default.empty')
-                </div>
-                @endif
             </div>
-
-            <!-- Pagination -->
-            @if (count($my_courses) > 0)
-            <div class="entry-pagination">
-                <nav aria-label="Page navigation example">
-                    {{ $my_courses->links() }}
-                </nav>
-            </div>
-            @endif
-            <!-- Pagination -->
-
         </div>
-    </div>
-</div>
-</div>
-<!-------------- List Item End  --------------->
-
+    </section>
+</main>
 @endsection

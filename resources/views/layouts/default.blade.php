@@ -73,6 +73,12 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/course_detail.css') }}?v=20260807-2">
     @endif
 
+    @if (Route::currentRouteName() == 'my.courses')
+    <!-- Student Dashboard Style -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/toro_home_v2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/student_dashboard.css') }}?v=20260807-1">
+    @endif
+
     @if (Route::currentRouteName() == 'login' || request()->is('login'))
     <!-- Login Page Style -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/toro_home_v2.css') }}">
