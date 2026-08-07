@@ -4,6 +4,7 @@ namespace App\Http\Controllers\student;
 
 use App\Http\Controllers\Controller;
 use App\Models\CartItem;
+use App\Models\Coupon;
 use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Payment_history;
@@ -121,9 +122,39 @@ class PurchaseController extends Controller
 
     public function payout(Request $request)
     {
-        // get all item details by its id
-        $items_id = json_decode($request->items);
-        $courses  = $items_id;
+        // Prices, taxes and item ids must come from the current server-side cart.
+        // Hidden inputs in the cart page are display helpers and are not purchase authority.
+        $cart_courses = CartItem::join('courses', 'cart_items.course_id', '=', 'courses.id')
+            ->where('cart_items.user_id', auth()->id())
+            ->select('courses.*')
+            ->get();
+
+        if ($cart_courses->isEmpty()) {
+            Session::flash('error', get_phrase('Your cart is empty.'));
+            return redirect()->route('cart');
+        }
+
+        $items_id = $cart_courses->pluck('id')->map(fn ($id) => (int) $id)->all();
+        $courses = $items_id;
+
+        foreach ($cart_courses as $course) {
+            if ($course->user_id == auth()->id()) {
+                Session::flash('error', get_phrase('Ops! You own this course.'));
+                return redirect()->route('cart');
+            }
+
+            $already_enrolled = Enrollment::where('course_id', $course->id)
+                ->where('user_id', auth()->id())
+                ->where(function ($query) {
+                    $query->where('expiry_date', '>', now()->timestamp)->orWhereNull('expiry_date');
+                })
+                ->exists();
+
+            if ($already_enrolled) {
+                Session::flash('error', get_phrase('You already enrolled in this course'));
+                return redirect()->route('cart');
+            }
+        }
 
         // if order is gift then select gifted user id
         if ($request->gifted_user_email) {
@@ -146,7 +177,31 @@ class PurchaseController extends Controller
             }
         }
 
-        $selected_courses = Course::whereIn('id', $courses)->get();
+        $selected_courses = $cart_courses->whereIn('id', $courses)->values();
+
+        $subtotal = 0;
+        foreach ($selected_courses as $course) {
+            $subtotal += $course->discount_flag ? (float) $course->discounted_price : (float) $course->price;
+        }
+
+        $coupon_code = trim((string) $request->input('coupon_code'));
+        $coupon = null;
+        if ($coupon_code !== '') {
+            $coupon = Coupon::where('code', $coupon_code)
+                ->where('status', 1)
+                ->where('expiry', '>', time())
+                ->first();
+
+            if (! $coupon) {
+                Session::flash('error', get_phrase('This coupon is not valid.'));
+                return redirect()->route('cart');
+            }
+        }
+
+        $coupon_discount = $coupon ? round($subtotal * ((float) $coupon->discount / 100), 2) : 0;
+        $tax_rate = max(0, (float) get_settings('course_selling_tax'));
+        $tax = round(($subtotal - $coupon_discount) * ($tax_rate / 100), 2);
+        $payable = round(max(0, $subtotal - $coupon_discount + $tax), 2);
 
         // prepare each item by its id
         foreach ($selected_courses as $key => $course) {
@@ -167,8 +222,8 @@ class PurchaseController extends Controller
                 'pay_for'         => 'course payment',
                 'user_id'         => auth()->user()->id,
                 'user_photo'      => auth()->user()->photo,
-                'cart_id'         => $items_id,
-                'coupon_discount' => $request->coupon_discount,
+                'cart_id'         => $courses,
+                'coupon_discount' => $coupon_discount,
                 'gifted_user_id'  => $gifted_user_id ?? '',
             ],
 
@@ -177,14 +232,19 @@ class PurchaseController extends Controller
                 'function_name' => 'purchase_course',
             ],
 
-            'tax'            => round($request->tax, 2),
-            'coupon'         => $request->coupon_code,
-            'payable_amount' => round($request->payable, 2),
+            'tax'            => $tax,
+            'coupon'         => $coupon?->code,
+            'payable_amount' => $payable,
             'cancel_url'     => route('cart'),
             'success_url'    => route('payment.success', ''),
         ];
 
         Session::put(['payment_details' => $payment_details]);
+
+        if ($payable <= 0) {
+            return \App\Models\PurchaseCourse::purchase_course('coupon');
+        }
+
         return redirect()->route('payment');
     }
 }

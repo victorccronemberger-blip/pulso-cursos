@@ -18,12 +18,12 @@ class CartController extends Controller
         if (request()->has('coupon')) {
             $code   = request()->query('coupon');
             $coupon = Coupon::where('code', $code)->first();
-            if (! $coupon) {
+            if (! $coupon || ! $coupon->status) {
                 Session::flash('error', get_phrase('This coupon is not valid.'));
                 return redirect()->back();
             }
 
-            if ($coupon->status && (time() >= $coupon->expiry)) {
+            if (time() >= $coupon->expiry) {
                 Session::flash('error', get_phrase('Ops! coupon is expired.'));
                 return redirect()->back();
             }
@@ -43,8 +43,14 @@ class CartController extends Controller
 
     public function store($id)
     {
+        $course = Course::find($id);
+        if (! $course) {
+            Session::flash('error', get_phrase('Data not found.'));
+            return redirect()->back();
+        }
+
         // check personal course
-        if (Course::where('id', $id)->where('user_id', auth()->user()->id)->exists()) {
+        if ($course->user_id == auth()->user()->id) {
             Session::flash('error', get_phrase('Ops! You own this course.'));
             return redirect()->back();
         }

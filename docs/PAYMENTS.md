@@ -41,6 +41,9 @@ checkout em `resources/views/payment/`:
 7. **Stripe** — a sessão devolvida pelo Checkout é conferida no servidor contra
    o valor, moeda, aluno e referência aleatória gerada para aquela compra antes
    de liberar qualquer matrícula.
+8. **Total do pedido** — cursos, desconto de cupom, imposto e valor final são
+   recalculados pelo carrinho do aluno no servidor; campos ocultos do navegador
+   não alteram o que é cobrado.
 
 ## Pontos de atenção
 
