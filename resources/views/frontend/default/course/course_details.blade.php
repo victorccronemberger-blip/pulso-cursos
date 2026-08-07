@@ -40,6 +40,9 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
 @section('content')
 <!------------------- Hero Area Start  ------>
 <section class="course-detail-hero">
+    @if($course_details->banner)
+        <div class="course-detail-backdrop" style="background-image:url('{{ get_image($course_details->banner) }}')" aria-hidden="true"></div>
+    @endif
     <div class="container">
         {{-- Breadcrumb --}}
         <div class="course-detail-breadcrumb">
@@ -54,9 +57,10 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
         <div class="course-detail-hero-grid">
             {{-- Coluna principal --}}
             <div class="course-detail-main">
-                @if($cert_code)
-                <div class="course-cert-code">{{ $cert_code }}</div>
-                @endif
+                <div class="course-detail-topline">
+                    <span>{{ $course_details->category->title ?? get_phrase('Certificação financeira') }}</span>
+                    @if($cert_code)<b>{{ $cert_code }}</b>@endif
+                </div>
                 
                 <h1 class="course-detail-title">{{ $course_details->title }}</h1>
                 
@@ -66,7 +70,7 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
 
                 <div class="course-detail-outcome">
                     <span class="course-detail-outcome-marker" aria-hidden="true"></span>
-                    <p><strong>{{ $cert_code === 'ANCORD' ? 'Preparação para a ANCORD, do primeiro módulo à revisão final.' : 'Uma trilha clara para transformar conteúdo em segurança na prova.' }}</strong> {{ get_phrase('Estude com objetivo, pratique e acompanhe sua evolução.') }}</p>
+                    <p><strong>{{ get_phrase('Uma trilha clara para transformar conteúdo em segurança na prova.') }}</strong> {{ get_phrase('Estude com objetivo, pratique e acompanhe sua evolução.') }}</p>
                 </div>
 
                 {{-- Stats --}}
@@ -138,7 +142,7 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
                     <a href="{{ route('my.courses') }}" class="course-pricing-cta">Acessar Curso</a>
                 @else
                     <a href="{{ route('purchase.course', $course_details->id) }}" class="course-pricing-cta">
-                        {{ $course_details->is_paid ? ($cert_code === 'ANCORD' ? 'Começar minha preparação' : 'Garantir minha vaga') : 'Inscrever-se gratuitamente' }}
+                        {{ $course_details->is_paid ? 'Começar minha preparação' : 'Inscrever-se gratuitamente' }}
                     </a>
                 @endif
                 <ul class="course-pricing-reassurance">
@@ -154,6 +158,10 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
 
 <section class="course-detail-content">
     <div class="container">
+        <div class="course-detail-content-intro">
+            <p class="course-detail-content-kicker">{{ get_phrase('Conheça sua preparação') }}</p>
+            <p>{{ get_phrase('Veja o que você vai estudar e avance no seu ritmo. O acesso e o andamento ficam centralizados na sua plataforma.') }}</p>
+        </div>
         {{-- Tabs Navigation --}}
         <div class="course-tabs">
             <button class="course-tab active" data-tab="overview">Visão Geral</button>

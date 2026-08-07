@@ -100,7 +100,11 @@
         }
     @endphp
 
-    @if ($home_page->is_permanent == 1)
+    @if (in_array($current_route_name, ['login', 'register.form']) || request()->is('login', 'register'))
+        <main class="pf-auth-page">
+            @yield('content')
+        </main>
+    @elseif ($home_page->is_permanent == 1)
         @include('components.home_made_by_developer.top_bar')
         @include('components.home_made_by_developer.header')
         <section>
