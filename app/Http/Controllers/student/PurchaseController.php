@@ -27,7 +27,7 @@ class PurchaseController extends Controller
     public function invoice($id)
     {
         // validate course id
-        if (!is_numeric($id) && $id < 1) {
+        if (!is_numeric($id) || (int) $id < 1) {
             Session::flash('error', get_phrase('Data not found.'));
             return redirect()->back();
         }
@@ -36,6 +36,7 @@ class PurchaseController extends Controller
         $payment = Payment_history::join('courses', 'payment_histories.course_id', 'courses.id')
             ->join('users', 'payment_histories.user_id', 'users.id')
             ->where('payment_histories.id', $id)
+            ->where('payment_histories.user_id', auth()->id())
             ->select('payment_histories.*', 'courses.title as course_title', 'users.name as user_name')->first();
         if (!$payment) {
             Session::flash('error', get_phrase('Data not found.'));
@@ -50,7 +51,7 @@ class PurchaseController extends Controller
     public function purchase_course($course_id)
     {
         // validate course id
-        if (!is_numeric($course_id) && $course_id < 1) {
+        if (!is_numeric($course_id) || (int) $course_id < 1) {
             Session::flash('error', get_phrase('Data not found.'));
             return redirect()->back();
         }

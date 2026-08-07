@@ -35,6 +35,10 @@ checkout em `resources/views/payment/`:
    (endpoint público, sem CSRF — ver `VerifyCsrfToken.php`) atualizam
    `Payment_history`, criam `Enrollment` / `Purchase*` e liberam o item.
 
+6. **Histórico e fatura** — as faturas da área do aluno são filtradas pelo
+   usuário autenticado; um identificador de pagamento não concede acesso à
+   compra de outro aluno.
+
 ## Pontos de atenção
 
 - **Callbacks públicos**: `POST payment-notification/{identifier}` é acessível
