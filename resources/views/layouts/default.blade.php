@@ -6,7 +6,7 @@
     @stack('meta')
 
     <!-- fav icon -->
-    <link rel="shortcut icon" href="{{ asset(get_frontend_settings('favicon')) }}" />
+    <link rel="shortcut icon" href="{{ get_image(get_frontend_settings('favicon')) }}" />
 
     <!-- owl carousel -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/owl.carousel.min.css') }}">

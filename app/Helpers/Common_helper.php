@@ -726,7 +726,7 @@ if (! function_exists('get_image')) {
     function get_image($url = null, $optimized = false)
     {
         if ($url == null) {
-            return asset('uploads/system/placeholder.png');
+            return asset('placeholder/placeholder.png');
         }
 
         // If the value of URL is from an online URL
@@ -742,17 +742,24 @@ if (! function_exists('get_image')) {
         //Optimized image url
         $optimized_image = $path . 'optimized/' . $file_name;
 
+        $fallback_image = match (true) {
+            str_contains($path, 'dark_logo/') => 'assets/global/images/logo-dark.png',
+            str_contains($path, 'light_logo/') => 'assets/global/images/logo-light.png',
+            str_contains($path, 'favicon/') => 'assets/global/images/favicon.png',
+            default => 'placeholder/placeholder.png',
+        };
+
         if (! $optimized) {
             if (is_file(public_path($url)) && file_exists(public_path($url))) {
                 return asset($url);
             } else {
-                return asset($path . 'placeholder/placeholder.png');
+                return asset($fallback_image);
             }
         } else {
             if (is_file(public_path($optimized_image)) && file_exists(public_path($optimized_image))) {
                 return asset($optimized_image);
             } else {
-                return asset($path . 'placeholder/placeholder.png');
+                return asset($fallback_image);
             }
         }
     }
