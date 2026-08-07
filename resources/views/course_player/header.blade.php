@@ -1,7 +1,7 @@
 @php $courseProgress = (int) round((float) progress_bar($course_details->id)); @endphp
 <div class="pf-player-header">
     <a class="pf-player-brand" href="{{ route('home') }}" aria-label="Voltar para a página inicial">
-        <img src="{{ asset(get_frontend_settings('light_logo')) }}" alt="{{ config('app.name') }}">
+        <img src="{{ asset('assets/global/course_player/images/academy-logo-light.png') }}" alt="{{ config('app.name') }}">
     </a>
 
     <div class="pf-player-course">
