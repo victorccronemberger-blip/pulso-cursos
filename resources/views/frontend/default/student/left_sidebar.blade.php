@@ -57,13 +57,16 @@ $current_route = Route::currentRouteName();
                     </a>
                 </li>
 
+                @if (Route::has('my.bootcamps'))
                 <li class="@if ($current_route == 'my.bootcamps' || $current_route == 'my.bootcamp.details' || $current_route == 'my.bootcamp.invoice') active @endif">
                     <a href="{{ route('my.bootcamps') }}">
                         <i class="fi-rr-video-camera text-23px me-3 ms-1"></i>
                         {{ get_phrase('My Bootcamps') }}
                     </a>
                 </li>
+                @endif
 
+                @if (Route::has('my_bookings'))
                 <li class="@if ($current_route == 'my_bookings' || $current_route == 'booking_invoice') active @endif">
                     <a href="{{ route('my_bookings', ['tab' => 'live-upcoming']) }}" class="bootcamp-sidebar-icon text-capitalize">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="m-0">
@@ -75,14 +78,18 @@ $current_route = Route::currentRouteName();
                         {{ get_phrase('My Bookings') }}
                     </a>
                 </li>
+                @endif
 
+                @if (Route::has('my.team.packages'))
                 <li class="@if ($current_route == 'my.team.packages' || $current_route == 'my.team.packages.details' || $current_route == 'team.package.invoice') active @endif">
                     <a href="{{ route('my.team.packages') }}">
                         <i class="fi-rr-users-alt text-23px me-3 ms-1"></i>
                         {{ get_phrase('My Teams') }}
                     </a>
                 </li>
+                @endif
                 {{-- ebook start  --}}
+                @if (Route::has('my.ebooks'))
                 <li class="@if (Route::currentRouteName() == 'my.ebooks') active @endif">
                     <a href="{{ route('my.ebooks') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="sidebar-ebook-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -93,6 +100,7 @@ $current_route = Route::currentRouteName();
                         {{ get_phrase('My Ebooks') }}
                     </a>
                 </li>
+                @endif
                 {{-- ebook end  --}}
 
                 <li class="@if ($current_route == 'my.profile') active @endif">
