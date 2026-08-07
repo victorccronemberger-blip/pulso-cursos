@@ -38,6 +38,9 @@ checkout em `resources/views/payment/`:
 6. **Histórico e fatura** — as faturas da área do aluno são filtradas pelo
    usuário autenticado; um identificador de pagamento não concede acesso à
    compra de outro aluno.
+7. **Stripe** — a sessão devolvida pelo Checkout é conferida no servidor contra
+   o valor, moeda, aluno e referência aleatória gerada para aquela compra antes
+   de liberar qualquer matrícula.
 
 ## Pontos de atenção
 

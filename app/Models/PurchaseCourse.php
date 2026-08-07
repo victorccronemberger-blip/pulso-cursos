@@ -91,6 +91,7 @@ class PurchaseCourse extends Model
         self::course_purchase_mail_function($payment_details);
 
         $remove_session_item[] = 'payment_details';
+        $remove_session_item[] = 'stripe_payment_reference';
         Session::forget($remove_session_item);
         Session::flash('success', 'Course enrolled successfully.');
 
