@@ -31,6 +31,13 @@ Route::get('/frontend/courses/{slug}', [AcademyFrontendController::class, 'cours
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/frontend/me', [AcademyFrontendController::class, 'me']);
     Route::post('/frontend/checkout/course/{course}', [AcademyFrontendController::class, 'startCheckout']);
+    Route::get('/frontend/cart', [AcademyFrontendController::class, 'cart']);
+    Route::post('/frontend/cart/{course}', [AcademyFrontendController::class, 'addToCart']);
+    Route::delete('/frontend/cart/{course}', [AcademyFrontendController::class, 'removeFromCart']);
+    Route::post('/frontend/courses/{course}/enroll', [AcademyFrontendController::class, 'enrollFree']);
+    Route::get('/frontend/my-courses', [AcademyFrontendController::class, 'myCourses']);
+    Route::get('/frontend/player/{course}', [AcademyFrontendController::class, 'player']);
+    Route::post('/frontend/player/lessons/{lesson}/progress', [AcademyFrontendController::class, 'progress']);
 });
 
 
