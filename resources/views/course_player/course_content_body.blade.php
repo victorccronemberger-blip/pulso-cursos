@@ -33,8 +33,8 @@
     @include('frontend.course_player.player_config')
 @elseif ($lesson_details->lesson_type == 'bunny_stream' && $lesson_details->video_type == 'bunny_stream')
     <div class="overflow-hidden bd-r-10 mb-16 h-314 h-md-428 position-relative bg-light">
-        <div class="plyr__video-embed" id="player">
-            <iframe src="{{ $lesson_details->lesson_src }}" title="Bunny Stream video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="plyr__video-embed bunny-stream-player" id="player">
+            <iframe src="{{ $lesson_details->lesson_src }}" title="Bunny Stream video player" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 @elseif($lesson_details->lesson_type == 'system-video')

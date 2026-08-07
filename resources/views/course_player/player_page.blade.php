@@ -17,9 +17,9 @@
         </div>
     @elseif ($lesson_details->lesson_type == 'bunny_stream' && $lesson_details->video_type == 'bunny_stream')
         <div class="course-video-area border-primary border">
-            <div class="course-video-wrap">
+            <div class="course-video-wrap bunny-stream-player">
                 <div id="player">
-                    <iframe src="{{ $lesson_details->lesson_src }}" title="Bunny Stream video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="{{ $lesson_details->lesson_src }}" title="Bunny Stream video player" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
