@@ -78,6 +78,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/login_page.css') }}?v=20260807-2">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/login_page_hotfix.css') }}?v=20260807-1">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/auth_viewport.css') }}?v=20260807-1">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/auth_flow.css') }}?v=20260807-1">
     @endif
 
     @if (Route::currentRouteName() == 'register.form' || request()->is('register'))
@@ -86,6 +87,7 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/login_page.css') }}?v=20260807-2">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/login_page_hotfix.css') }}?v=20260807-1">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/auth_viewport.css') }}?v=20260807-1">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/auth_flow.css') }}?v=20260807-1">
     @endif
 
     <!-- Jquery Js -->

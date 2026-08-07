@@ -30,7 +30,6 @@
                 </aside>
 
                 <div class="pf-auth-form-column">
-                    <svg class="pf-auth-infinity" viewBox="0 0 760 440" aria-hidden="true" preserveAspectRatio="none"><path d="M35 220C135 45 245 45 380 220S625 395 725 220C625 45 515 45 380 220S135 395 35 220"/></svg>
                     <form action="{{ route('login') }}" method="POST" class="pf-auth-form" id="login-form">
                         @csrf
                         <input type="hidden" id="user_agent" name="user_agent">
