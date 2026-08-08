@@ -1,5 +1,5 @@
 @php
-    $quiz = App\Models\Lesson::where('id', request()->route()->parameter('id'))->firstOrNew();
+    $quiz = $lesson_details;
     $questions = DB::table('questions')->where('quiz_id', $quiz->id)->get();
     $submits = DB::table('quiz_submissions')->where('quiz_id', $quiz->id)->where('user_id', auth()->user()->id)->get();
     $duration = explode(':', $quiz->duration);

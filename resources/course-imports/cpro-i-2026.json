@@ -1,0 +1,290 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-c-pro-i-certificacao-agentes-autonomos"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m4",
+    "section_overrides": {
+      "CPROIEXTRA01": "m4",
+      "CPROISIMULADO1": "m4",
+      "CPROISIMULADO2": "m4",
+      "CPROISIMULADO3": "m4",
+      "CPROISIMULADO4": "m4",
+      "CPROISIMULADO5": "m4",
+      "CPROISIMOFICIAL01": "m4"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Produtos e instrumentos de investimento",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Fundos, tributação e investimentos alternativos",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Previdência, carteiras e gestão de riscos",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Revisões, simulados e estratégia de prova",
+      "sort": 4
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CPROI-INTRO_Introdução ao Curso CPRO-I.mp4",
+      "provider_id": "c5c7c063-ec89-489f-9acb-507f37349d70",
+      "title": "Introdução ao Curso CPRO-I",
+      "description": "<p><strong>Aplicativo Quiz ART — Pratique de onde estiver</strong></p>\n<p>Para reforçar seu aprendizado e treinar com questões a qualquer momento, disponibilizamos o aplicativo <strong>Quiz ART</strong>.</p>\n<p>Baixe agora pelo seu dispositivo:</p>\n<p><strong>Android:</strong> <a href=\"https://play.google.com/store/apps/details?id=com.firedevsolutionsit.quizart\" target=\"_self\">Quiz Art - Google Play</a></p>\n<p><strong>iOS:</strong> <a href=\"https://apps.apple.com/br/app/quiz-art/id1586341362\" target=\"_self\">Quiz ART - App Store</a></p>\n<p></p>\n<p><strong>Canal do Telegram</strong></p>\n<p>Abaixo você encontra o link de acesso ao nosso canal no Telegram, onde compartilhamos avisos, materiais complementares e atualizações importantes do curso.&nbsp;</p>\n<p><a href=\"https://t.me/academiarafaeltoroCPROI\" target=\"_self\">Telegram: View @academiarafaeltoroCPROI</a>&nbsp;</p>",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:47:14",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CPROI-REND1_RENDA FIXA - PRODUTOS.mp4",
+      "provider_id": "83a97b75-39ef-44e3-8450-823ba92b5e44",
+      "title": "RENDA FIXA - PRODUTOS",
+      "description": "",
+      "section": "m1",
+      "sort": 2,
+      "duration": "01:06:11",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CPROI-REND2_RENDA FIXA - PRECIFICAÇÃO DE TÍTULOS.mp4",
+      "provider_id": "d4a03045-774d-4a11-8d7a-3834b62a5415",
+      "title": "RENDA FIXA - PRECIFICAÇÃO DE TÍTULOS",
+      "description": "",
+      "section": "m1",
+      "sort": 3,
+      "duration": "00:50:44",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CPROI-REND3_RENDA VARIÁVEL I.mp4",
+      "provider_id": "c258e843-eb7f-40e1-8398-a5724f88dcc5",
+      "title": "RENDA VARIÁVEL I",
+      "description": "",
+      "section": "m1",
+      "sort": 4,
+      "duration": "00:58:18",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CPROI-REND4_RENDA VARIÁVEL II.mp4",
+      "provider_id": "ceb6106e-c914-49f4-8111-8d229ceaef43",
+      "title": "RENDA VARIÁVEL II",
+      "description": "<p></p>",
+      "section": "m1",
+      "sort": 5,
+      "duration": "01:20:17",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CPROI-IND_ÍNDICES DE MERCADO.mp4",
+      "provider_id": "8333e7d9-edfe-4b61-9cdf-7f54c54301ce",
+      "title": "ÍNDICES DE MERCADO",
+      "description": "",
+      "section": "m1",
+      "sort": 6,
+      "duration": "00:32:59",
+      "is_free": false
+    },
+    {
+      "source_file": "07_CPROI-DERIV_DERIVATIVOS.mp4",
+      "provider_id": "a1077166-656e-46b2-82fd-ea331e450e01",
+      "title": "DERIVATIVOS",
+      "description": "<p></p>",
+      "section": "m1",
+      "sort": 7,
+      "duration": "01:24:35",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CPROI-ASG_ASG - AMBIENTAL, SOCIAL E GOVERNANÇA.mp4",
+      "provider_id": "7989613f-08b9-4050-8a5c-b9d9c37dfb21",
+      "title": "ASG - AMBIENTAL, SOCIAL E GOVERNANÇA",
+      "description": "",
+      "section": "m1",
+      "sort": 8,
+      "duration": "00:29:55",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CPROI-FUN1_FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS.mp4",
+      "provider_id": "3f1cadeb-0b47-4833-a35e-825b781f5c75",
+      "title": "FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS",
+      "description": "",
+      "section": "m2",
+      "sort": 1,
+      "duration": "00:54:37",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CPROI-FUN2_FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM FIF.mp4",
+      "provider_id": "700e227a-2ab5-489f-9f27-f2c73335988f",
+      "title": "FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM FIF",
+      "description": "",
+      "section": "m2",
+      "sort": 2,
+      "duration": "00:46:18",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CPROI-FUN3_FUNDOS - CÓDIGO ANBIMA.mp4",
+      "provider_id": "2e4fc3e5-2b4a-4801-b186-d7ed7ac02aa6",
+      "title": "FUNDOS - CÓDIGO ANBIMA",
+      "description": "",
+      "section": "m2",
+      "sort": 3,
+      "duration": "00:38:10",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CPROI-TRIBU1_TRIBUTAÇÃO DE APLICAÇÕES FINANCEIRAS.mp4",
+      "provider_id": "7a50318d-c17d-493d-b9ef-c71264644f9e",
+      "title": "TRIBUTAÇÃO DE APLICAÇÕES FINANCEIRAS",
+      "description": "",
+      "section": "m2",
+      "sort": 4,
+      "duration": "01:00:48",
+      "is_free": false
+    },
+    {
+      "source_file": "13_CPROI-INST_INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR.mp4",
+      "provider_id": "eab8b81c-2197-4cfe-9d82-7926499d57d7",
+      "title": "INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR",
+      "description": "",
+      "section": "m2",
+      "sort": 5,
+      "duration": "00:31:14",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CPROI-TRIBU2_TRIBUTAÇÃO - INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR.mp4",
+      "provider_id": "05f27018-c7e6-40c8-ba05-371b55d29aab",
+      "title": "TRIBUTAÇÃO - INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR",
+      "description": "",
+      "section": "m2",
+      "sort": 6,
+      "duration": "00:07:39",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CPROI-INVES_INVESTIMENTOS ALTERNATIVOS.mp4",
+      "provider_id": "8928a53a-ed59-48cf-be64-fe684fc2c2f5",
+      "title": "INVESTIMENTOS ALTERNATIVOS",
+      "description": "",
+      "section": "m2",
+      "sort": 7,
+      "duration": "00:46:42",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CPROI-CRIP_CRIPTOATIVOS.mp4",
+      "provider_id": "0c54ff06-34c8-4b58-8922-9a95c4a76401",
+      "title": "CRIPTOATIVOS",
+      "description": "",
+      "section": "m2",
+      "sort": 8,
+      "duration": "00:33:18",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CPROI-PREV1_PREVIDÊNCIA PRIVADA I.mp4",
+      "provider_id": "872e2788-e218-44a5-969c-4feec3585518",
+      "title": "PREVIDÊNCIA PRIVADA I",
+      "description": "",
+      "section": "m3",
+      "sort": 1,
+      "duration": "01:15:25",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CPROI-PREV2_PREVIDÊNCIA PRIVADA II.mp4",
+      "provider_id": "ef2fe55d-b71c-421d-9ada-b89e641e926b",
+      "title": "PREVIDÊNCIA PRIVADA II",
+      "description": "",
+      "section": "m3",
+      "sort": 2,
+      "duration": "01:05:41",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CPROI-RISCO_RISCOS NA RENDA FIXA E NO MERCADO ACIONÁRIO.mp4",
+      "provider_id": "d0a4daec-8ff2-4884-8fc7-bd6d9822dfcf",
+      "title": "RISCOS NA RENDA FIXA E NO MERCADO ACIONÁRIO",
+      "description": "",
+      "section": "m3",
+      "sort": 3,
+      "duration": "00:48:09",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CPROI-TEOR_TEORIA MODERNA DE CARTEIRAS.mp4",
+      "provider_id": "6fc53209-c5e8-4360-a707-ddf70e59985d",
+      "title": "TEORIA MODERNA DE CARTEIRAS",
+      "description": "",
+      "section": "m3",
+      "sort": 4,
+      "duration": "01:08:03",
+      "is_free": false
+    },
+    {
+      "source_file": "21_CPROI-POLIT_POLÍTICA DE INVESTIMENTOS.mp4",
+      "provider_id": "59fb9452-77f3-44d5-a3cb-8e905f7d8182",
+      "title": "POLÍTICA DE INVESTIMENTOS",
+      "description": "",
+      "section": "m3",
+      "sort": 5,
+      "duration": "00:50:00",
+      "is_free": false
+    },
+    {
+      "source_file": "22_CPROI-GEST_GESTÃO DE RISCO EM FUNDOS DE INVESTIMENTOS & CARTEIRAS ADMINISTRADAS.mp4",
+      "provider_id": "321a52ec-40a6-40b7-abda-f216e4413d19",
+      "title": "GESTÃO DE RISCO EM FUNDOS DE INVESTIMENTOS & CARTEIRAS ADMINISTRADAS",
+      "description": "",
+      "section": "m3",
+      "sort": 6,
+      "duration": "00:28:41",
+      "is_free": false
+    },
+    {
+      "source_file": "23_CPROI-ADM_ADMINISTRAÇÃO E GERENCIAMENTO DE RISCO.mp4",
+      "provider_id": "f9eb7a3b-46ca-4c51-8832-69e1d6031d0e",
+      "title": "ADMINISTRAÇÃO E GERENCIAMENTO DE RISCO",
+      "description": "",
+      "section": "m3",
+      "sort": 7,
+      "duration": "00:58:50",
+      "is_free": false
+    },
+    {
+      "source_file": "31_ANB-DICAS_Dicas de Provas.mp4",
+      "provider_id": "7d4c10c5-a63d-4a33-b70f-3475fefdcf2e",
+      "title": "Dicas de Provas",
+      "description": "",
+      "section": "m4",
+      "sort": 1,
+      "duration": "00:22:04",
+      "is_free": false
+    }
+  ]
+}

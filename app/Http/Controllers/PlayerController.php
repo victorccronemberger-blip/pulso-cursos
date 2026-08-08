@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Certificate;
 use App\Models\Course;
+use App\Models\CourseMaterial;
+use App\Models\CourseQuizContext;
 use App\Models\Enrollment;
 use App\Models\Forum;
 use App\Models\Lesson;
-use App\Models\CourseMaterial;
-use App\Models\CourseQuizContext;
 use App\Models\Section;
 use App\Models\Watch_history;
 use Illuminate\Http\Request;
@@ -30,19 +30,19 @@ class PlayerController extends Controller
                     ->latest('created_at')
                     ->first();
 
-                if (!$latest_enrollment) {
+                if (! $latest_enrollment) {
                     Session::flash('error', get_phrase('Not registered for this course.'));
+
                     return redirect()->route('course.details', ['slug' => $slug]);
                 }
 
                 // check if latest enrollment is expired (expiry_date is unix timestamp)
                 if ($latest_enrollment->expiry_date && $latest_enrollment->expiry_date < time()) {
                     Session::flash('error', get_phrase('Your course accessibility has expired. You need to buy it again'));
+
                     return redirect()->route('course.details', ['slug' => $slug]);
                 }
             }
-
-
 
             if (auth()->user()->role == 'instructor') { // for instructor check who is course instructor
                 $instructor_ids = json_decode($course->instructor_ids ?? '[]', true);
@@ -50,10 +50,11 @@ class PlayerController extends Controller
 
                 if (
                     $course->user_id != auth()->id() &&
-                    !in_array(auth()->id(), $instructor_ids) &&
-                    !$enroll_status
+                    ! in_array(auth()->id(), $instructor_ids) &&
+                    ! $enroll_status
                 ) {
                     Session::flash('error', get_phrase('Not valid instructor.'));
+
                     return redirect()->route('my.courses');
                 }
             }
@@ -61,7 +62,13 @@ class PlayerController extends Controller
 
         $check_lesson_history = Watch_history::where('course_id', $course->id)
             ->where('student_id', auth()->user()->id)->first();
-        $first_lesson_of_course = Lesson::where('course_id', $course->id)->orderBy('sort', 'asc')->value('id');
+        $first_lesson_of_course = Lesson::query()
+            ->join('sections', 'sections.id', '=', 'lessons.section_id')
+            ->where('lessons.course_id', $course->id)
+            ->orderBy('sections.sort')
+            ->orderBy('lessons.sort')
+            ->orderBy('lessons.id')
+            ->value('lessons.id');
         if ($id == '') {
             $id = $check_lesson_history->watching_lesson_id ?? $first_lesson_of_course;
         }
@@ -73,10 +80,10 @@ class PlayerController extends Controller
         // if user has any watched history or not
         if (! $check_lesson_history && $id > 0) {
             $data = [
-                'course_id'          => $course->id,
-                'student_id'         => auth()->user()->id,
+                'course_id' => $course->id,
+                'student_id' => auth()->user()->id,
                 'watching_lesson_id' => $id,
-                'completed_lesson'   => json_encode([])
+                'completed_lesson' => json_encode([]),
             ];
             $data['updated_at'] = now();
             $data['created_at'] = now();
@@ -92,7 +99,7 @@ class PlayerController extends Controller
 
         $page_data['course_details'] = $course;
         $page_data['lesson_details'] = $lesson_details;
-        $page_data['history']        = Watch_history::where('course_id', $course->id)->where('student_id', auth()->user()->id)->first();
+        $page_data['history'] = Watch_history::where('course_id', $course->id)->where('student_id', auth()->user()->id)->first();
 
         $contextLessonId = $lesson_details->lesson_type === 'quiz'
             ? CourseQuizContext::where('quiz_lesson_id', $lesson_details->id)->value('lesson_id')
@@ -137,7 +144,7 @@ class PlayerController extends Controller
 
         if (isset($_GET['search'])) {
             $forum_query->where(function ($query) use ($request) {
-                $query->where('forums.title', 'like', '%' . $request->search . '%')->orWhere('forums.description', 'like', '%' . $request->search . '%');
+                $query->where('forums.title', 'like', '%'.$request->search.'%')->orWhere('forums.description', 'like', '%'.$request->search.'%');
             });
         }
 
@@ -152,12 +159,13 @@ class PlayerController extends Controller
         $lesson = Lesson::where('course_id', $course->id)->where('id', $request->lesson_id)->firstOrFail();
         $enrollment = Enrollment::where('course_id', $course->id)->where('user_id', auth()->user()->id)->first();
         $is_course_instructor = is_course_instructor($course->id, auth()->user()->id);
-        if ($course->is_paid && !$enrollment && !$is_course_instructor && auth()->user()->role != 'admin') {
+        if ($course->is_paid && ! $enrollment && ! $is_course_instructor && auth()->user()->role != 'admin') {
             Session::flash('error', get_phrase('Not registered for this course.'));
+
             return redirect()->back();
         }
 
-        $data['course_id']  = $request->course_id;
+        $data['course_id'] = $request->course_id;
         $data['student_id'] = auth()->user()->id;
 
         $total_lesson = Lesson::where('course_id', $request->course_id)->pluck('id')->toArray();
@@ -175,15 +183,15 @@ class PlayerController extends Controller
                 }
             }
 
-            $data['completed_lesson']   = json_encode($lessons);
+            $data['completed_lesson'] = json_encode($lessons);
             $data['watching_lesson_id'] = $lesson->id;
-            $data['completed_date']     = (count($total_lesson) == count($lessons)) ? time() : null;
+            $data['completed_date'] = (count($total_lesson) == count($lessons)) ? time() : null;
             Watch_history::where('course_id', $request->course_id)->where('student_id', auth()->user()->id)->update($data);
         } else {
-            $lessons                    = [$lesson->id];
-            $data['completed_lesson']   = json_encode($lessons);
+            $lessons = [$lesson->id];
+            $data['completed_lesson'] = json_encode($lessons);
             $data['watching_lesson_id'] = $lesson->id;
-            $data['completed_date']     = (count($total_lesson) == count($lessons)) ? time() : null;
+            $data['completed_date'] = (count($total_lesson) == count($lessons)) ? time() : null;
             $data['updated_at'] = now();
             $data['created_at'] = now();
             Watch_history::insert($data);
@@ -193,8 +201,8 @@ class PlayerController extends Controller
             $certificate = Certificate::where('user_id', auth()->user()->id)->where('course_id', $request->course_id);
 
             if ($certificate->count() == 0) {
-                $certificate_data['user_id']    = auth()->user()->id;
-                $certificate_data['course_id']  = $request->course_id;
+                $certificate_data['user_id'] = auth()->user()->id;
+                $certificate_data['course_id'] = $request->course_id;
                 $certificate_data['identifier'] = random(12);
                 $certificate_data['created_at'] = date('Y-m-d H:i:s');
                 $certificate_data['updated_at'] = now();

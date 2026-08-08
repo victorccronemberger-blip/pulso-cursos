@@ -4,6 +4,7 @@ namespace App\Domain\CourseImports;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use PDO;
 use RuntimeException;
 
 class CourseContentSyncService
@@ -184,20 +185,73 @@ class CourseContentSyncService
     {
         $fileName = basename($file);
         $title = preg_replace('/^\d+_/', '', pathinfo($fileName, PATHINFO_FILENAME));
+        $size = filesize($file);
         $values = [
             'section_id' => $metadata['section_id'],
             'lesson_id' => $metadata['lesson_id'],
             'title' => $this->displayTitle((string) $title),
             'file_name' => $fileName,
             'mime_type' => 'application/pdf',
-            'size_bytes' => filesize($file),
-            'contents' => file_get_contents($file),
+            'size_bytes' => $size,
             'updated_at' => now(),
         ];
-        $existing = DB::table('course_materials')->where('course_id', $courseId)->where('source_key', $metadata['source_key'])->value('id');
-        $existing
-            ? DB::table('course_materials')->where('id', $existing)->update($values)
-            : DB::table('course_materials')->insert($values + ['course_id' => $courseId, 'source_key' => $metadata['source_key'], 'created_at' => now()]);
+        $existing = DB::table('course_materials')
+            ->select(['id', DB::raw('OCTET_LENGTH(contents) as content_size')])
+            ->where('course_id', $courseId)
+            ->where('source_key', $metadata['source_key'])
+            ->first();
+        if ($existing) {
+            $materialId = (int) $existing->id;
+            DB::table('course_materials')->where('id', $materialId)->update($values);
+        } else {
+            $materialId = DB::table('course_materials')->insertGetId($values + [
+                'course_id' => $courseId,
+                'source_key' => $metadata['source_key'],
+                'contents' => '',
+                'created_at' => now(),
+            ]);
+        }
+
+        if (! $existing || (int) $existing->content_size !== $size) {
+            $this->streamMaterialContents($materialId, $file);
+        }
+    }
+
+    private function streamMaterialContents(int $materialId, string $file): void
+    {
+        $stream = fopen($file, 'rb');
+        if ($stream === false) {
+            throw new RuntimeException("Material could not be opened: {$file}");
+        }
+
+        try {
+            DB::table('course_materials')->where('id', $materialId)->update(['contents' => '']);
+            $statement = DB::connection()->getPdo()->prepare(
+                'UPDATE course_materials SET contents = CONCAT(contents, ?) WHERE id = ?',
+            );
+            while (! feof($stream)) {
+                $chunk = fread($stream, 4 * 1024 * 1024);
+                if ($chunk === false) {
+                    throw new RuntimeException("Material could not be read: {$file}");
+                }
+                if ($chunk === '') {
+                    continue;
+                }
+                $statement->bindValue(1, $chunk, PDO::PARAM_LOB);
+                $statement->bindValue(2, $materialId, PDO::PARAM_INT);
+                $statement->execute();
+                $statement->closeCursor();
+            }
+        } finally {
+            fclose($stream);
+        }
+
+        $storedSize = (int) DB::table('course_materials')
+            ->where('id', $materialId)
+            ->value(DB::raw('OCTET_LENGTH(contents)'));
+        if ($storedSize !== filesize($file)) {
+            throw new RuntimeException("Material upload is incomplete: {$file}");
+        }
     }
 
     private function upsertQuiz(int $courseId, int $userId, string $file, array $payload, array $metadata, array $content): void

@@ -10,7 +10,7 @@
     <meta content="" name="author" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- all the css files -->
-    <link rel="shortcut icon" href="{{ asset(get_frontend_settings('favicon')) }}" />
+    <link rel="shortcut icon" href="{{ get_image(get_frontend_settings('favicon')) }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/bootstrap.min.css') }}">
     <!-- Fontawesome CSS -->
