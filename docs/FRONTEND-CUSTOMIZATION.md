@@ -88,6 +88,12 @@ pelas matrículas válidas, agrupa por curso e seção e combina o histórico de
 `quiz_submissions`. A tabela `exams` permanece reservada às avaliações formais
 com envio de arquivo e aparece em uma seção separada na mesma página.
 
+Quando o aluno possui mais de um curso, a central usa o seletor
+`?course={id}` e carrega os módulos e quizzes apenas do curso ativo. As
+contagens gerais vêm de uma consulta agregada e a montagem modular fica em
+`App\Support\StudentQuizCatalog`, evitando uma página e uma consulta que crescem
+com todo o catálogo matriculado.
+
 Sempre execute o comando com `--dry-run` antes da carga real. O relatório
 precisa terminar com zero arquivos não resolvidos.
 
