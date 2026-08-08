@@ -13,6 +13,7 @@
     background: var(--pf-surface);
     color: var(--pf-ink);
     font-family: "IBM Plex Sans", sans-serif;
+    padding-top: 0 !important;
 }
 
 .pf-student-app .pf-portal-main { min-height: calc(100vh - 64px); }
@@ -74,7 +75,7 @@
 .pf-student-app .eNtry-breadcum .mt-4 { margin-top: 8px !important; }
 
 .pf-student-app .eNtery-item,
-.pf-student-app .pf-student-content { background: transparent; padding: 0 0 48px; }
+.pf-student-app .pf-student-content { background: transparent; margin-top: 0 !important; padding: 0 0 48px; }
 .pf-student-app .eNtery-item > .container > .row,
 .pf-student-app .pf-student-content > .container > .row { row-gap: 22px; }
 
