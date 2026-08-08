@@ -180,6 +180,16 @@
         courseSwitcher?.addEventListener('change', function () {
             this.form.requestSubmit();
         });
+
+        document.querySelectorAll('.pf-quiz-module').forEach(function (module) {
+            module.addEventListener('toggle', function () {
+                if (!this.open) return;
+
+                this.parentElement.querySelectorAll('.pf-quiz-module[open]').forEach(function (openModule) {
+                    if (openModule !== module) openModule.removeAttribute('open');
+                });
+            });
+        });
     });
 </script>
 @endpush
