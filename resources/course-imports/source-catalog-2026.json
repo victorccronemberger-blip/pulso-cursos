@@ -77,7 +77,7 @@
       "catalog": {
         "title": "Preparatório CGA Certificação de Gestores ANBIMA",
         "short_description": "Domine a gestão profissional de carteiras, renda fixa, renda variável, riscos e avaliação de desempenho com preparação completa para a CGA.",
-        "category_id": 6,
+        "category": {"title": "CGA", "slug": "cga", "sort": 8},
         "level": "advanced",
         "price": 2490,
         "discounted_price": 1990,
@@ -115,7 +115,7 @@
       "catalog": {
         "title": "Preparatório CGE Certificação de Gestores ANBIMA para Fundos Estruturados",
         "short_description": "Prepare-se para gerir fundos estruturados com domínio de FII, FIDC, FIP, FIAGRO, índices, securitização, governança e riscos.",
-        "category_id": 6,
+        "category": {"title": "CGE", "slug": "cge", "sort": 9},
         "level": "advanced",
         "price": 2490,
         "discounted_price": 1990,

@@ -1,2 +1,2 @@
 /* As artes dos cursos são peças quadradas; o card preserva o canvas integral. */
-.pf-course-media{aspect-ratio:1/1;background:#eff6f4;display:grid;place-items:center}.pf-course-media img{height:100%!important;object-fit:contain!important;width:100%!important}.pf-course-card:hover .pf-course-media img{transform:none!important}@media(max-width:575px){.pf-course-media{aspect-ratio:1/1}}
+.pf-course-media{aspect-ratio:1/1;background:#eff6f4;display:grid;place-items:center}.pf-course-media img{height:100%!important;object-fit:contain!important;width:100%!important}.pf-course-card:hover .pf-course-media img{transform:none!important}.pf-course-media-badge{left:auto;right:14px}@media(max-width:575px){.pf-course-media{aspect-ratio:1/1}}

@@ -11,7 +11,7 @@
 @php
 // Extrair código da certificação do título
 $cert_code = '';
-$cert_patterns = ['ANCORD', 'CFP', 'CFA', 'CPA', 'CNPI', 'CFG', 'C-PRO'];
+$cert_patterns = ['ANCORD', 'CFP', 'CFA', 'CPA', 'CNPI', 'CFG', 'CGA', 'CGE', 'C-PRO'];
 foreach ($cert_patterns as $pattern) {
     if (stripos($course_details->title, $pattern) !== false) {
         $cert_code = $pattern;

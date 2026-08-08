@@ -12,6 +12,11 @@ if (($argv[1] ?? null) === '--id' && isset($argv[2])) {
     exit;
 }
 
+if (($argv[1] ?? null) === '--categories') {
+    echo json_encode(DB::table('categories')->orderBy('id')->get(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), PHP_EOL;
+    exit;
+}
+
 $courses = DB::table('courses')
     ->select(['id', 'title', 'slug', 'status', 'is_paid', 'price', 'discount_flag', 'discounted_price', 'user_id'])
     ->orderBy('id')
