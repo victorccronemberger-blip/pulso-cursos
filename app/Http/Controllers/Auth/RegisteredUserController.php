@@ -8,6 +8,7 @@ use App\Models\FileUploader;
 use App\Models\User;
 use App\Models\ZapierSetting;
 use App\Providers\RouteServiceProvider;
+use App\Support\CpfValidator;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -41,6 +42,11 @@ class RegisteredUserController extends Controller
     {
         $input = $request->all();
 
+        $request->merge([
+            'cpf' => CpfValidator::normalize($request->input('cpf')),
+            'phone' => trim((string) $request->input('phone')),
+        ]);
+
         if (get_frontend_settings('recaptcha_status') == true && check_recaptcha($input['g-recaptcha-response']) == false) {
 
             Session::flash('error', get_phrase('Recaptcha verification failed'));
@@ -49,7 +55,19 @@ class RegisteredUserController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
+            'last_name' => ['required', 'string', 'max:120'],
+            'cpf' => [
+                'required',
+                'digits:11',
+                'unique:users,cpf',
+                function (string $attribute, mixed $value, \Closure $fail) {
+                    if (!CpfValidator::isValid((string) $value)) {
+                        $fail('Informe um CPF válido.');
+                    }
+                },
+            ],
+            'phone' => ['required', 'string', 'max:30'],
             'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', Rules\Password::defaults()],
         ]);
@@ -59,7 +77,10 @@ class RegisteredUserController extends Controller
         }
 
         $user_data = [
-            'name' => $request->name,
+            'name' => trim($request->name . ' ' . $request->last_name),
+            'last_name' => trim($request->last_name),
+            'cpf' => $request->cpf,
+            'phone' => $request->phone,
             'email' => $request->email,
             'role' => 'student',
             'status' => 1,
@@ -123,4 +144,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
 }

@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/registration_profile_fields.css') }}?v=20260808-1">
 @endpush
 
 @section('content')
@@ -38,13 +39,42 @@
                             <p>{{ get_phrase('Leva menos de um minuto para começar.') }}</p>
                         </div>
 
-                        <div class="pf-auth-field">
-                            <label for="name">{{ get_phrase('Seu nome') }}</label>
-                            <div class="pf-auth-input">
-                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.8-3.6 3.3-5.5 7.5-5.5s6.7 1.9 7.5 5.5"></path></svg>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="{{ get_phrase('Como podemos te chamar?') }}" required autocomplete="name">
+                        <div class="pf-auth-field-row">
+                            <div class="pf-auth-field">
+                                <label for="name">Nome</label>
+                                <div class="pf-auth-input">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.8-3.6 3.3-5.5 7.5-5.5s6.7 1.9 7.5 5.5"></path></svg>
+                                    <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Seu nome" required autocomplete="given-name">
+                                </div>
+                                @error('name')<span class="pf-auth-error">{{ $message }}</span>@enderror
                             </div>
-                            @error('name')<span class="pf-auth-error">{{ $message }}</span>@enderror
+                            <div class="pf-auth-field">
+                                <label for="last_name">Sobrenome</label>
+                                <div class="pf-auth-input">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.8-3.6 3.3-5.5 7.5-5.5s6.7 1.9 7.5 5.5"></path></svg>
+                                    <input type="text" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Seu sobrenome" required autocomplete="family-name">
+                                </div>
+                                @error('last_name')<span class="pf-auth-error">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+
+                        <div class="pf-auth-field-row">
+                            <div class="pf-auth-field">
+                                <label for="cpf">CPF</label>
+                                <div class="pf-auth-input">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 10h4M7 14h7"></path></svg>
+                                    <input type="text" id="cpf" name="cpf" value="{{ old('cpf') }}" placeholder="000.000.000-00" required inputmode="numeric" maxlength="14" autocomplete="off">
+                                </div>
+                                @error('cpf')<span class="pf-auth-error">{{ $message }}</span>@enderror
+                            </div>
+                            <div class="pf-auth-field">
+                                <label for="phone">Celular</label>
+                                <div class="pf-auth-input">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path><path d="M10 18h4"></path></svg>
+                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="(00) 00000-0000" required autocomplete="tel" inputmode="tel" maxlength="15">
+                                </div>
+                                @error('phone')<span class="pf-auth-error">{{ $message }}</span>@enderror
+                            </div>
                         </div>
 
                         <div class="pf-auth-field">
@@ -75,10 +105,6 @@
                             </label>
 
                             <div id="become-instructor-fields" class="pf-auth-instructor-fields d-none">
-                                <div class="pf-auth-field">
-                                    <label for="phone">{{ get_phrase('Telefone') }}</label>
-                                    <div class="pf-auth-input"><input id="phone" type="tel" name="phone" placeholder="{{ get_phrase('Seu telefone') }}"></div>
-                                </div>
                                 <div class="pf-auth-field">
                                     <label for="document">{{ get_phrase('Comprovante de qualificação') }}</label>
                                     <div class="pf-auth-file"><input id="document" type="file" name="document" accept=".doc,.docx,.pdf,.txt,.png,.jpg,.jpeg"></div>
@@ -124,10 +150,21 @@
             if (instructor) {
                 instructor.addEventListener('change', function () {
                     document.getElementById('become-instructor-fields').classList.toggle('d-none', !this.checked);
-                    document.getElementById('phone').required = this.checked;
                     document.getElementById('document').required = this.checked;
                 });
             }
+
+            var cpf = document.getElementById('cpf');
+            cpf.addEventListener('input', function () {
+                var digits = this.value.replace(/\D/g, '').slice(0, 11);
+                this.value = digits.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            });
+
+            var phone = document.getElementById('phone');
+            phone.addEventListener('input', function () {
+                var digits = this.value.replace(/\D/g, '').slice(0, 11);
+                this.value = digits.replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+            });
         });
     </script>
 @endpush
