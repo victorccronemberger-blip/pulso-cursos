@@ -15,7 +15,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ get_phrase('Home') }}</a>
+                                <a href="{{ route('my.courses') }}">Área do aluno</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{ get_phrase('My Exams') }}
@@ -140,9 +140,13 @@
 
                     @empty
 
-                    <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                        @include('frontend.default.empty', [
-                        'message' => get_phrase('No exams found.')
+                    <div class="col-12">
+                        @include('frontend.default.student.empty_state', [
+                            'icon' => 'fi-rr-document',
+                            'title' => 'Nenhuma prova disponível.',
+                            'message' => 'As provas e avaliações liberadas para seus cursos aparecerão aqui.',
+                            'actionUrl' => route('my.courses'),
+                            'actionLabel' => 'Voltar aos meus cursos',
                         ])
                     </div>
 

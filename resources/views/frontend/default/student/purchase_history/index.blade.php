@@ -12,7 +12,7 @@
                 <div class="eNtry-breadcum">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Purchase History') }}</li>
                         </ol>
                     </nav>
@@ -53,7 +53,7 @@
                                 @foreach ($payments as $payment)
                                 <tr>
                                     <td>{{ $payment->course_title }}</td>
-                                    <td>{{ date('Y-m-d', strtotime($payment->created_at)) }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('d/m/Y') }}</td>
                                     <td>{{ ucfirst($payment->payment_type) }}</td>
                                     <td>{{ currency($payment->amount) }}</td>
                                     <td>
@@ -71,9 +71,13 @@
                     </div>
                 </div>
                 @else
-                <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                    @include('frontend.default.empty')
-                </div>
+                @include('frontend.default.student.empty_state', [
+                    'icon' => 'fi-rr-receipt',
+                    'title' => 'Nenhuma compra registrada.',
+                    'message' => 'Suas compras e faturas ficarão organizadas nesta página.',
+                    'actionUrl' => route('courses'),
+                    'actionLabel' => 'Ver catálogo',
+                ])
                 @endif
                 <!-- Pagination -->
                 @if (count($payments) > 0)

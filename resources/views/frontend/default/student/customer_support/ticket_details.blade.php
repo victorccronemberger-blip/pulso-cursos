@@ -27,7 +27,7 @@
                 <div class="eNtry-breadcum">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('support.ticket.index') }}">{{ get_phrase('Customer Support') }}</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $ticket_details->subject }}</li>
                         </ol>

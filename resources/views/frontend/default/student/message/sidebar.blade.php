@@ -11,11 +11,11 @@
                         name="user_email"
                         id="search_student"
                         class="form-control msg-search-input"
-                        placeholder="{{ get_phrase('Search by email...') }}">
+                        placeholder="Buscar por e-mail...">
                 </div>
             </form>
             <ul class="msg-search-dropdown" id="msg-search-list">
-                <li>{{ get_phrase('Search user email...') }}</li>
+                <li>Digite o e-mail do contato.</li>
             </ul>
         </div>
     </div>
@@ -44,7 +44,7 @@
         @if ($my_threads->isEmpty() && $new_contacts->isEmpty())
         <div class="msg-empty">
             <i class="fa-regular fa-comment-dots"></i>
-            <p>{{ get_phrase('No contacts available') }}</p>
+            <p>Nenhum contato disponível.</p>
         </div>
         @else
 
@@ -53,30 +53,36 @@
         @php
         $last_message = $thread->messages()->orderBy('id', 'desc')->firstOrNew();
         $is_active = $thread->code == request()->query('inbox');
+        $contact = $thread->user;
+        $roleLabel = $contact->role === 'admin' ? 'Administrador' : 'Instrutor';
         @endphp
 
-        <a href="{{ route('message', ['inbox' => $thread->code, 'instructor' => $thread->user->id]) }}"
+        <a href="{{ route('message', ['inbox' => $thread->code, 'instructor' => $contact->id]) }}"
             class="msg-contact {{ $is_active ? 'active' : '' }}">
 
             <div class="msg-contact-avatar-wrap">
-                <img src="{{ get_image($thread->user->photo) }}"
-                    alt="{{ $thread->user->name }}"
-                    class="msg-contact-avatar">
+                @if (!empty($contact->photo))
+                    <img src="{{ get_image($contact->photo) }}" alt="{{ $contact->name }}" class="msg-contact-avatar">
+                @else
+                    <span class="msg-contact-avatar-fallback">{{ mb_strtoupper(mb_substr($contact->name, 0, 1)) }}</span>
+                @endif
                 <span class="msg-contact-online"></span>
             </div>
 
             <div class="msg-contact-body">
                 <div class="msg-contact-top">
-                    <h6 class="msg-contact-name">{{ ucfirst($thread->user->name) }}</h6>
-                    <span class="msg-contact-role-badge {{ $thread->user->role }}">
-                        {{ ucfirst($thread->user->role) }}
+                    <h6 class="msg-contact-name">{{ $contact->name }}</h6>
+                    <span class="msg-contact-role-badge {{ $contact->role }}">
+                        {{ $roleLabel }}
                     </span>
                 </div>
                 <div class="msg-contact-bottom">
                     <p class="msg-contact-preview">
-                        {{ $last_message->message ?? get_phrase('No messages yet') }}
+                        {{ $last_message->message ?? 'Nenhuma mensagem ainda.' }}
                     </p>
-                    <span class="msg-contact-time">{{ timeAgo($last_message->created_at) }}</span>
+                    @if ($last_message->created_at)
+                        <span class="msg-contact-time">{{ timeAgo($last_message->created_at) }}</span>
+                    @endif
                 </div>
             </div>
 
@@ -87,29 +93,32 @@
         @if ($new_contacts->isNotEmpty())
         @if ($my_threads->isNotEmpty())
         <div class="msg-contacts-divider">
-            <span>{{ get_phrase('All Contacts') }}</span>
+            <span>Outros contatos</span>
         </div>
         @endif
 
         @foreach ($new_contacts as $contact)
+        @php $roleLabel = $contact->role === 'admin' ? 'Administrador' : 'Instrutor'; @endphp
         <a href="{{ route('message.inbox', $contact->id) }}"
             class="msg-contact">
 
             <div class="msg-contact-avatar-wrap">
-                <img src="{{ get_image($contact->photo) }}"
-                    alt="{{ $contact->name }}"
-                    class="msg-contact-avatar">
+                @if (!empty($contact->photo))
+                    <img src="{{ get_image($contact->photo) }}" alt="{{ $contact->name }}" class="msg-contact-avatar">
+                @else
+                    <span class="msg-contact-avatar-fallback">{{ mb_strtoupper(mb_substr($contact->name, 0, 1)) }}</span>
+                @endif
             </div>
 
             <div class="msg-contact-body">
                 <div class="msg-contact-top">
-                    <h6 class="msg-contact-name">{{ ucfirst($contact->name) }}</h6>
+                    <h6 class="msg-contact-name">{{ $contact->name }}</h6>
                     <span class="msg-contact-role-badge {{ $contact->role }}">
-                        {{ ucfirst($contact->role) }}
+                        {{ $roleLabel }}
                     </span>
                 </div>
                 <div class="msg-contact-bottom">
-                    <p class="msg-contact-preview">{{ get_phrase('Tap to start a conversation') }}</p>
+                    <p class="msg-contact-preview">Iniciar uma conversa</p>
                 </div>
             </div>
 

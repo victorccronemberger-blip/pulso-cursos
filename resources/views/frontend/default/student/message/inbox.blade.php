@@ -15,7 +15,11 @@ $contact_details = App\Models\User::where('id', $contact_id)->first();
                 <div class="ins-nav w-100">
                     <div class="ins-left">
                         <div class="header-image">
-                            <img src="{{ get_image($contact_details->photo) }}" alt="contact-photo">
+                            @if (!empty($contact_details->photo))
+                                <img src="{{ get_image($contact_details->photo) }}" alt="{{ $contact_details->name }}">
+                            @else
+                                <span class="msg-header-avatar-fallback">{{ mb_strtoupper(mb_substr($contact_details->name, 0, 1)) }}</span>
+                            @endif
                         </div>
                         <div class="ins-figure">
                             <h4>{{ $contact_details->name }}</h4>

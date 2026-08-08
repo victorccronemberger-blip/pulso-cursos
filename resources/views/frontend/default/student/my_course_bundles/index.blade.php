@@ -13,7 +13,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{{ route('home') }}">{{ get_phrase('Home') }}</a>
+                                <a href="{{ route('my.courses') }}">Área do aluno</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 {{ get_phrase('My Course Bundles') }}
@@ -167,8 +167,14 @@
 
                     @else
 
-                    <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                        @include('frontend.default.empty')
+                    <div class="col-12">
+                        @include('frontend.default.student.empty_state', [
+                            'icon' => 'fi-rr-books',
+                            'title' => 'Você ainda não possui pacotes de cursos.',
+                            'message' => 'Quando um pacote for adquirido, os cursos incluídos aparecerão aqui.',
+                            'actionUrl' => route('courses'),
+                            'actionLabel' => 'Explorar cursos',
+                        ])
                     </div>
 
                     @endif

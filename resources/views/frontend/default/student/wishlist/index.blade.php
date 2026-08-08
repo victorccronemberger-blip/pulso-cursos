@@ -12,7 +12,7 @@
                 <div class="eNtry-breadcum">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Wishlist') }}</li>
                         </ol>
                     </nav>
@@ -74,7 +74,6 @@
                                         @endif
                                         @endif
                                     </h4>
-                                    <p><span>4.8</span><i class="fa fa-star"></i></p>
                                 </div>
 
                                 <a href="{{ route('course.details', $wishitem->slug) }}" class="eBtn learn-btn w-100 text-center mt-20 f-500">
@@ -87,8 +86,14 @@
                     @endforeach
 
                     @if ($wishlist->count() == 0)
-                    <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                        @include('frontend.default.empty')
+                    <div class="col-12">
+                        @include('frontend.default.student.empty_state', [
+                            'icon' => 'fi-rr-heart',
+                            'title' => 'Sua lista de desejos está vazia.',
+                            'message' => 'Salve cursos para comparar e decidir qual certificação iniciar depois.',
+                            'actionUrl' => route('courses'),
+                            'actionLabel' => 'Explorar cursos',
+                        ])
                     </div>
                     @endif
 

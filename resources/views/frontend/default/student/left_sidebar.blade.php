@@ -3,11 +3,13 @@
     $items = [
         ['routes' => ['my.courses'], 'route' => 'my.courses', 'icon' => 'fi-rr-book-open-cover', 'label' => 'Meus cursos'],
         ['routes' => ['my.exams', 'my.exam.details'], 'route' => 'my.exams', 'icon' => 'fi-rr-document', 'label' => 'Simulados e provas'],
+        ['routes' => ['my.course.bundles', 'my.course.bundle.details', 'my.course.bundle.invoice'], 'route' => 'my.course.bundles', 'icon' => 'fi-rr-books', 'label' => 'Pacotes de cursos'],
         ['routes' => ['wishlist'], 'route' => 'wishlist', 'icon' => 'fi-rr-heart', 'label' => 'Lista de desejos'],
         ['routes' => ['purchase.history', 'invoice'], 'route' => 'purchase.history', 'icon' => 'fi-rr-receipt', 'label' => 'Compras e faturas'],
         ['routes' => ['message', 'message.inbox'], 'route' => 'message', 'icon' => 'fi-rr-comment-alt', 'label' => 'Mensagens'],
         ['routes' => ['support.ticket.index', 'support.ticket.create', 'support.ticket.message'], 'route' => 'support.ticket.index', 'icon' => 'fi-rr-headset', 'label' => 'Suporte'],
         ['routes' => ['my.profile'], 'route' => 'my.profile', 'icon' => 'fi-rr-user', 'label' => 'Meu perfil'],
+        ['routes' => ['become.instructor'], 'route' => 'become.instructor', 'icon' => 'fi-rr-chalkboard-user', 'label' => 'Quero ensinar'],
     ];
 @endphp
 
@@ -37,12 +39,5 @@
                 @endif
             @endforeach
         </ul>
-
-        @if (auth()->user()->role === 'student' && Route::has('become.instructor'))
-            <a class="pf-portal-secondary-link {{ $currentRoute === 'become.instructor' ? 'active' : '' }}" href="{{ route('become.instructor') }}">
-                <i class="fi-rr-chalkboard-user" aria-hidden="true"></i>
-                Tornar-se instrutor
-            </a>
-        @endif
     </nav>
 </aside>

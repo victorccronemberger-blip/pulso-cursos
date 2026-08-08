@@ -11,7 +11,7 @@
                 <div class="eNtry-breadcum">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Exam Details') }}</li>
                         </ol>
                     </nav>
@@ -90,12 +90,12 @@
                             </div>
                             <div class="exam-info-cell">
                                 <span class="exam-info-cell-label">{{ get_phrase('Start Time') }}</span>
-                                <span class="exam-info-cell-value">{{ date('d M Y, h:i A', strtotime($exam->start_at)) }}</span>
+                                <span class="exam-info-cell-value">{{ \Carbon\Carbon::parse($exam->start_at)->format('d/m/Y, H:i') }}</span>
                             </div>
                             <div class="exam-info-cell">
                                 <span class="exam-info-cell-label">{{ get_phrase('End Time') }}</span>
                                 <span class="exam-info-cell-value">
-                                    {{ $exam->end_at ? date('d M Y, h:i A', strtotime($exam->end_at)) : get_phrase('No deadline') }}
+                                    {{ $exam->end_at ? \Carbon\Carbon::parse($exam->end_at)->format('d/m/Y, H:i') : get_phrase('No deadline') }}
                                 </span>
                             </div>
                         </div>
@@ -222,7 +222,7 @@
                             </svg>
                             <div>
                                 <h5>{{ get_phrase('Answer Script Submitted') }}</h5>
-                                <p>{{ get_phrase('Submitted on') }}: {{ date('d M Y, h:i A', strtotime($submission->created_at)) }}</p>
+                                <p>{{ get_phrase('Submitted on') }}: {{ \Carbon\Carbon::parse($submission->created_at)->format('d/m/Y, H:i') }}</p>
                             </div>
                         </div>
                     </div>
