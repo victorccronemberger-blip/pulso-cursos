@@ -3,29 +3,13 @@
 @push('meta')@endpush
 @section('content')
 
-<!------------------- Breadcum Area Start  ------>
-<section class="breadcum-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Exam Details') }}</li>
-                        </ol>
-                    </nav>
-                    <div class="row row-gap-3">
-                        <div class="col-auto col-md-4 col-lg-3">
-                            <h3 class="g-title mt-4">{{ get_phrase('Exam Details') }}</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!------------------- Breadcum Area End  --------->
+@include('frontend.default.student.page_header', [
+    'title' => 'Detalhes da prova',
+    'current' => 'Detalhes da prova',
+    'parentUrl' => route('my.exams'),
+    'parentLabel' => 'Simulados e provas',
+    'description' => $exam->course->title,
+])
 
 <!-------------- List Item Start   --------------->
 <div class="eNtery-item">

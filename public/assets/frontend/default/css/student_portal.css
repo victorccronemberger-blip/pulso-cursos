@@ -18,6 +18,16 @@
 .pf-student-app .pf-portal-main { min-height: calc(100vh - 64px); }
 .pf-student-app .pf-portal-main > section { background: transparent; }
 
+.pf-portal-page-header { background: transparent; padding: 26px 0 17px; }
+.pf-portal-page-header .breadcrumb { margin: 0 0 8px; }
+.pf-portal-page-header .breadcrumb-item,
+.pf-portal-page-header .breadcrumb-item a { color: var(--pf-slate); font-size: 12px; text-decoration: none; }
+.pf-portal-page-title-row { align-items: end; display: flex; gap: 24px; justify-content: space-between; }
+.pf-portal-page-title-row h1 { color: var(--pf-ink); font: 700 25px/1.15 "Space Grotesk", sans-serif !important; letter-spacing: -.025em; margin: 0; }
+.pf-portal-page-title-row p { color: var(--pf-slate); font-size: 12px; margin: 6px 0 0; }
+.pf-portal-page-action { align-items: center; background: var(--pf-orange); border: 1px solid var(--pf-orange); border-radius: 7px; color: #fff; display: inline-flex; font-size: 13px; font-weight: 700; gap: 7px; padding: 10px 14px; text-decoration: none; white-space: nowrap; }
+.pf-portal-page-action:hover { background: #e85b29; color: #fff; }
+
 .pf-portal-header {
     background: #fff;
     border-bottom: 1px solid var(--pf-border);
@@ -54,6 +64,8 @@
 }
 
 .pf-student-app .eNtry-breadcum { background: transparent; border: 0; padding: 0; }
+.pf-student-app .eNtry-breadcum > .row { margin-left: 0; margin-right: 0; }
+.pf-student-app .eNtry-breadcum > .row > [class*="col-"]:first-child { padding-left: 0; }
 .pf-student-app .breadcrumb { margin: 0 0 7px; }
 .pf-student-app .breadcrumb-item,
 .pf-student-app .breadcrumb-item a { color: var(--pf-slate); font-size: 12px; }
@@ -95,8 +107,6 @@
 .pf-portal-secondary-link.active { color: var(--pf-green-dark); }
 
 .pf-student-app .my-panel,
-.pf-student-app .message-panel,
-.pf-student-app .bg-white,
 .pf-student-app .pf-learning-card,
 .pf-student-app .pf-student-empty {
     background: var(--pf-card) !important;
@@ -117,6 +127,9 @@
 .pf-student-app .lms-form-control,
 .pf-student-app select { border: 1px solid #cfd9dd; border-radius: 7px; color: var(--pf-ink); font-size: 13px; min-height: 42px; }
 .pf-student-app textarea.form-control { min-height: 118px; padding: 12px; }
+.pf-student-app .my-panel form > .row { margin-left: 0; margin-right: 0; }
+.pf-student-app .my-panel form > .row > [class*="col-"]:first-child { padding-left: 0; }
+.pf-student-app .my-panel form > .row > [class*="col-"]:last-child { padding-right: 0; }
 .pf-student-app .form-control:focus,
 .pf-student-app .lms-form-control:focus,
 .pf-student-app select:focus { border-color: var(--pf-green); box-shadow: 0 0 0 3px rgba(0,168,132,.11); }
@@ -176,6 +189,14 @@
 .pf-ticket-form-intro { border-bottom: 1px solid var(--pf-border); margin: -2px 0 20px; padding-bottom: 17px; }
 .pf-ticket-form-intro h2 { font: 700 19px/1.2 "Space Grotesk", sans-serif; margin: 0 0 5px; }
 .pf-ticket-form-intro p { color: var(--pf-slate); font-size: 12px; margin: 0; }
+.pf-form-help { color: var(--pf-slate); display: block; font-size: 11px; line-height: 1.45; margin-top: 7px; padding: 0; }
+.pf-ticket-thread-panel .message-right { padding: 18px 20px 20px; }
+.pf-ticket-meta { display: flex; gap: 28px; }
+.pf-ticket-meta div { min-width: 110px; }
+.pf-ticket-meta span { color: var(--pf-slate); display: block; font-size: 10px; font-weight: 700; letter-spacing: .04em; margin-bottom: 4px; text-transform: uppercase; }
+.pf-ticket-meta strong { color: var(--pf-ink); font-size: 12px; }
+.pf-ticket-thread-panel .message-header { border-bottom: 1px solid var(--pf-border); margin-bottom: 12px; padding-bottom: 14px !important; }
+.pf-ticket-thread-panel .message-send-option { border-top: 1px solid var(--pf-border); margin-top: 16px; padding-top: 16px !important; }
 
 /* Desktop portal consistency: neutralize legacy LMS components. */
 .pf-student-app .container { max-width: 1240px; }
@@ -351,7 +372,8 @@
 }
 .pf-portal-empty-action:hover { background: #e85b29; color: #fff; }
 
-.pf-student-app .message-panel { padding: 0; overflow: hidden; }
+.pf-student-app .pf-message-panel,
+.pf-student-app .pf-ticket-thread-panel { padding: 0; overflow: hidden; }
 .pf-message-layout { min-height: 470px; }
 .pf-message-layout > div:first-child { border-right: 1px solid var(--pf-border); }
 .pf-student-app .msg-sidebar { border: 0; min-height: 470px; }
@@ -395,6 +417,99 @@
     justify-content: center;
     padding: 0 !important;
     width: 36px;
+}
+
+.pf-panel-heading { align-items: center; border-bottom: 1px solid var(--pf-border); display: flex; justify-content: space-between; margin-bottom: 2px; padding: 0 0 15px; }
+.pf-panel-heading h2 { font-size: 18px; margin: 0; }
+.pf-panel-heading span { color: var(--pf-slate); font-size: 12px; }
+.pf-cart-layout { align-items: start; display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) 320px; }
+.pf-student-app .pf-cart-list { padding: 20px; }
+.pf-cart-item { align-items: center; border-bottom: 1px solid var(--pf-border); display: grid; gap: 16px; grid-template-columns: 150px minmax(0, 1fr) 36px; padding: 16px 0; }
+.pf-cart-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.pf-cart-item-image { align-items: center; background: #eef3f3; border-radius: 8px; display: flex; height: 96px; justify-content: center; overflow: hidden; }
+.pf-cart-item-image img { height: 100%; object-fit: contain; width: 100%; }
+.pf-cart-item-content { min-width: 0; }
+.pf-cart-item-content h3 { font-size: 16px; line-height: 1.3; margin: 0 0 6px; }
+.pf-cart-item-content h3 a { color: var(--pf-ink); text-decoration: none; }
+.pf-cart-item-content p { color: var(--pf-slate); font-size: 12px; line-height: 1.45; margin: 0 0 9px; }
+.pf-cart-item-content strong { color: var(--pf-green-dark); font: 700 14px/1 "Space Grotesk", sans-serif; }
+.pf-cart-remove { align-items: center; border: 1px solid var(--pf-border); border-radius: 7px; color: var(--pf-slate); display: inline-flex; height: 36px; justify-content: center; text-decoration: none; width: 36px; }
+.pf-cart-remove:hover { border-color: #d66b57; color: #b43e28; }
+.pf-student-app .pf-cart-summary { padding: 20px; position: sticky; top: 86px; }
+.pf-cart-summary h2 { border-bottom: 1px solid var(--pf-border); font-size: 18px; margin: 0 0 15px; padding-bottom: 15px; }
+.pf-cart-summary dl { margin: 0 0 18px; }
+.pf-cart-summary dl div { align-items: center; display: flex; justify-content: space-between; padding: 7px 0; }
+.pf-cart-summary dt { color: var(--pf-slate); font-size: 12px; font-weight: 500; }
+.pf-cart-summary dd { color: var(--pf-ink); font-size: 12px; font-weight: 700; margin: 0; }
+.pf-cart-summary .pf-cart-total { border-top: 1px solid var(--pf-border); margin-top: 7px; padding-top: 14px; }
+.pf-cart-summary .pf-cart-total dt,
+.pf-cart-summary .pf-cart-total dd { color: var(--pf-ink); font: 700 16px/1.2 "Space Grotesk", sans-serif; }
+.pf-coupon-applied { align-items: center; background: #eaf8f4; border: 1px solid #bfe3d9; border-radius: 7px; color: var(--pf-green-dark); display: flex; font-size: 12px; font-weight: 700; justify-content: space-between; margin-bottom: 14px; padding: 9px 10px; }
+.pf-coupon-applied a { color: inherit; }
+.pf-coupon-field label { color: #3c4c5f; display: block; font-size: 12px; font-weight: 700; margin-bottom: 7px; }
+.pf-coupon-field > div { display: flex; }
+.pf-coupon-field .form-control { border-radius: 7px 0 0 7px; min-width: 0; }
+.pf-coupon-field button { background: #fff; border: 1px solid var(--pf-green); border-left: 0; border-radius: 0 7px 7px 0; color: var(--pf-green-dark); font-size: 12px; font-weight: 700; padding: 0 13px; }
+.pf-gift-check { align-items: center; display: flex; gap: 7px; margin: 16px 0 12px; }
+.pf-gift-check .form-check-input { margin: 0; }
+.pf-gift-check label { color: var(--pf-slate); font-size: 12px; }
+.pf-cart-checkout { background: var(--pf-orange); border: 1px solid var(--pf-orange); border-radius: 7px; color: #fff; font-size: 13px; font-weight: 700; margin-top: 14px; padding: 12px 14px; width: 100%; }
+.pf-cart-checkout:hover { background: #e85b29; }
+
+.pf-bundle-owned { padding: 20px !important; }
+.pf-bundle-owned-course { align-items: center; border-bottom: 1px solid var(--pf-border); display: grid; gap: 16px; grid-template-columns: 132px minmax(0, 1fr) auto; padding: 16px 0; }
+.pf-bundle-owned-course:last-child { border-bottom: 0; padding-bottom: 0; }
+.pf-bundle-owned-image { align-items: center; background: #eef3f3; border-radius: 8px; display: flex; height: 82px; overflow: hidden; }
+.pf-bundle-owned-image img { height: 100%; object-fit: contain; width: 100%; }
+.pf-bundle-owned-course > div { min-width: 0; }
+.pf-bundle-owned-course p { color: var(--pf-green-dark); font: 700 9px/1 "JetBrains Mono", monospace; letter-spacing: .06em; margin: 0 0 5px; text-transform: uppercase; }
+.pf-bundle-owned-course h3 { font-size: 16px; line-height: 1.3; margin: 0 0 5px; }
+.pf-bundle-owned-course span { color: var(--pf-slate); display: block; font-size: 12px; line-height: 1.4; }
+.pf-bundle-owned-action { border: 1px solid var(--pf-green); border-radius: 7px; color: var(--pf-green-dark); font-size: 12px; font-weight: 700; padding: 9px 12px; text-decoration: none; white-space: nowrap; }
+.pf-bundle-owned-action:hover { background: #eaf8f4; color: var(--pf-green-dark); }
+
+.pf-invoice { padding: 24px !important; }
+.pf-invoice-header { align-items: start; border-bottom: 1px solid var(--pf-border); display: flex; justify-content: space-between; padding-bottom: 20px; }
+.pf-invoice-header p,
+.pf-invoice-parties p { color: var(--pf-green-dark); font: 700 9px/1 "JetBrains Mono", monospace; letter-spacing: .07em; margin: 0 0 7px; text-transform: uppercase; }
+.pf-invoice-header h2 { font-size: 22px; margin: 0 0 5px; }
+.pf-invoice-header span,
+.pf-invoice-parties span { color: var(--pf-slate); display: block; font-size: 12px; margin-top: 3px; }
+.pf-invoice-header img { height: 34px; max-width: 150px; object-fit: contain; width: auto; }
+.pf-invoice-parties { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; padding: 20px 0; }
+.pf-invoice-parties strong { display: block; font-size: 14px; }
+.pf-invoice .table-responsive { border: 1px solid var(--pf-border); border-radius: 8px; }
+.pf-invoice-course-list { color: var(--pf-slate); font-size: 12px; line-height: 1.5; margin: 0; padding-left: 16px; }
+.pf-invoice-total { align-items: center; border-top: 1px solid var(--pf-border); display: flex; justify-content: flex-end; gap: 32px; margin-top: 18px; padding-top: 16px; }
+.pf-invoice-total span { color: var(--pf-slate); font-size: 12px; }
+.pf-invoice-total strong { font: 700 18px/1 "Space Grotesk", sans-serif; }
+.pf-invoice-actions { display: flex; gap: 9px; justify-content: flex-end; margin-top: 12px; }
+.pf-button-primary,
+.pf-button-secondary { align-items: center; border-radius: 7px; display: inline-flex; font-size: 12px; font-weight: 700; gap: 7px; padding: 10px 14px; text-decoration: none; }
+.pf-button-primary { background: var(--pf-orange); border: 1px solid var(--pf-orange); color: #fff; }
+.pf-button-secondary { background: #fff; border: 1px solid var(--pf-border); color: var(--pf-slate); }
+.pf-button-primary:hover { background: #e85b29; color: #fff; }
+.pf-button-secondary:hover { border-color: var(--pf-green); color: var(--pf-green-dark); }
+
+.pf-modal-history-head { align-items: center; border-bottom: 1px solid var(--pf-border); display: flex; justify-content: space-between; padding-bottom: 14px; }
+.pf-modal-history-head span,
+.pf-modal-history-row span { color: var(--pf-slate); display: block; font-size: 10px; font-weight: 700; letter-spacing: .04em; margin-bottom: 4px; text-transform: uppercase; }
+.pf-modal-history-head h3 { font-size: 18px; margin: 0; }
+.pf-modal-history-head > strong { background: #eaf8f4; border-radius: 20px; color: var(--pf-green-dark); font-size: 11px; padding: 5px 9px; }
+.pf-modal-history-row { align-items: center; border-bottom: 1px solid var(--pf-border); display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr) auto; padding: 14px 0; }
+.pf-modal-history-row strong { font-size: 12px; }
+.pf-modal-history-row a { color: var(--pf-green-dark); font-size: 12px; font-weight: 700; text-decoration: none; }
+.pf-modal-history-empty { color: var(--pf-slate); font-size: 13px; margin: 0; padding: 24px 0 8px; text-align: center; }
+
+@media print {
+    .pf-portal-header,
+    .pf-portal-page-header,
+    .pf-portal-sidebar,
+    .pf-invoice-actions { display: none !important; }
+    .pf-student-app,
+    .pf-student-app .pf-portal-main { background: #fff !important; }
+    .pf-student-app .eNtery-item > .container > .row > .col-lg-9 { padding: 0 !important; width: 100% !important; }
+    .pf-invoice { border: 0 !important; }
 }
 
 @media (min-width: 992px) {

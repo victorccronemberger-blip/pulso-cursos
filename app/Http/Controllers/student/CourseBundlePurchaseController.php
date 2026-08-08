@@ -12,6 +12,16 @@ use Illuminate\Support\Str;
 
 class CourseBundlePurchaseController extends Controller
 {
+    public function purchase_history()
+    {
+        return redirect()->route('my.course.bundles');
+    }
+
+    public function invoice($id)
+    {
+        return redirect()->route('my.course.bundle.invoice', $id);
+    }
+
     public function purchase($id)
     {
         $bundle = CourseBundle::where('id', $id)->first();

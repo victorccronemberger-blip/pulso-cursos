@@ -1,49 +1,13 @@
-<div class="row">
-    <div class="col-md-12">
-        <ul class="purchase-history-list">
-            <li class="purchase-history-list-header border-bottom-0">
-                <div class="row">
-                    <div class="col-md-12 py-3">
-                        <h4>
-                            {{ $bundle->title }}
-                        </h4>
-                    </div>
-                </div>
-            </li>
-            @foreach ($purchase_histories as $purchase)
-                <li class="purchase-history-items mb-2 border-bottom-0 border-top">
-                    <div class="row">
-
-                        <div class="col-md-12 py-3">
-                            <div class="row">
-                                <div class="col-sm-4">{{ get_phrase('Date') }}</div>
-                                <div class="col-sm-3">{{ get_phrase('Total price') }}</div>
-                                <div class="col-sm-3">{{ get_phrase('Payment type') }}</div>
-                                <div class="col-sm-2">{{ get_phrase('Actions') }}</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="col-md-12 py-3">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    {{ date('d M Y', $purchase->created_at->timestamp) }}
-                                </div>
-                                <div class="col-sm-3"><b>
-                                        {{ currency($purchase['amount']) }}
-                                    </b></div>
-                                <div class="col-sm-3">
-                                    {{ ucfirst($purchase['payment_method']) }}
-                                </div>
-                                <div class="col-sm-2">
-                                    <a href="{{ route('my.course.bundle.invoice', $bundle->id) }}">
-                                        {{ get_phrase('Invoice') }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-    </div>
+<div class="pf-modal-history">
+    <div class="pf-modal-history-head"><div><span>Pacote</span><h3>{{ $bundle->title }}</h3></div><strong>{{ $purchase_histories->count() }} {{ $purchase_histories->count() === 1 ? 'compra' : 'compras' }}</strong></div>
+    @forelse ($purchase_histories as $purchase)
+        <div class="pf-modal-history-row">
+            <div><span>Data</span><strong>{{ $purchase->created_at->format('d/m/Y') }}</strong></div>
+            <div><span>Valor</span><strong>{{ currency($purchase->amount) }}</strong></div>
+            <div><span>Pagamento</span><strong>{{ ucfirst($purchase->payment_method) }}</strong></div>
+            <a href="{{ route('my.course.bundle.invoice', $bundle->id) }}">Ver fatura</a>
+        </div>
+    @empty
+        <p class="pf-modal-history-empty">Nenhuma compra registrada para este pacote.</p>
+    @endforelse
 </div>

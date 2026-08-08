@@ -4,29 +4,11 @@
 @push('css')@endpush
 @section('content')
 
-<!------------------- Breadcum Area Start  ------>
-<section class="breadcum-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Become an instructor') }}</li>
-                        </ol>
-                    </nav>
-                    <div class="row row-gap-3">
-                        <div class="col-auto col-md-4 col-lg-3">
-                            <h3 class="g-title mt-4">{{ get_phrase('Become an instructor') }}</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!------------------- Breadcum Area End  --------->
+@include('frontend.default.student.page_header', [
+    'title' => 'Quero ensinar',
+    'current' => 'Quero ensinar',
+    'description' => 'Envie seus dados para análise da equipe acadêmica.',
+])
 
 <!-------------- List Item Start   --------------->
 <div class="eNtery-item">
@@ -58,7 +40,7 @@
                                         class="form-control @error('document') border border-danger @enderror"
                                         name="document"
                                         id="document">
-                                    <small class="ps-3 text-secondary">{{ get_phrase('Documents of qualification. Max-size : 5MB (DOC, DOCX, PDF, TXT, PNG, JPG, JPEG)') }}</small>
+                                    <small class="pf-form-help">Envie um documento de qualificação com até 5 MB nos formatos DOC, DOCX, PDF, TXT, PNG, JPG ou JPEG.</small>
                                 </div>
                             </div>
 

@@ -5,6 +5,7 @@
         ['routes' => ['my.exams', 'my.exam.details'], 'route' => 'my.exams', 'icon' => 'fi-rr-document', 'label' => 'Simulados e provas'],
         ['routes' => ['my.course.bundles', 'my.course.bundle.details', 'my.course.bundle.invoice'], 'route' => 'my.course.bundles', 'icon' => 'fi-rr-books', 'label' => 'Pacotes de cursos'],
         ['routes' => ['wishlist'], 'route' => 'wishlist', 'icon' => 'fi-rr-heart', 'label' => 'Lista de desejos'],
+        ['routes' => ['cart'], 'route' => 'cart', 'icon' => 'fi-rr-shopping-cart', 'label' => 'Carrinho'],
         ['routes' => ['purchase.history', 'invoice'], 'route' => 'purchase.history', 'icon' => 'fi-rr-receipt', 'label' => 'Compras e faturas'],
         ['routes' => ['message', 'message.inbox'], 'route' => 'message', 'icon' => 'fi-rr-comment-alt', 'label' => 'Mensagens'],
         ['routes' => ['support.ticket.index', 'support.ticket.create', 'support.ticket.message'], 'route' => 'support.ticket.index', 'icon' => 'fi-rr-headset', 'label' => 'Suporte'],

@@ -9,7 +9,7 @@
     }
 
     .search-item:hover {
-        background: #f4f7fd !important
+        background: #eaf8f4 !important
     }
 </style>
 
@@ -18,7 +18,11 @@
         <div class="ins-nav">
             <div class="ins-left">
                 <div class="active-image">
-                    <img src="{{ get_image($user_details->photo) }}" alt="user-photo">
+                    @if (!empty($user_details->photo))
+                        <img src="{{ get_image($user_details->photo) }}" alt="{{ $user_details->name }}">
+                    @else
+                        <span class="msg-header-avatar-fallback">{{ mb_strtoupper(mb_substr($user_details->name, 0, 1)) }}</span>
+                    @endif
                 </div>
                 <div class="ins-figure">
                     <h4>{{ $user_details->name }}</h4>

@@ -4,19 +4,11 @@
 @push('css')@endpush
 
 @section('content')
-<section class="breadcum-area">
-    <div class="container">
-        <div class="eNtry-breadcum">
-            <nav aria-label="Navegação estrutural">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Mensagens</li>
-                </ol>
-            </nav>
-            <h1 class="g-title mt-4">Mensagens</h1>
-        </div>
-    </div>
-</section>
+@include('frontend.default.student.page_header', [
+    'title' => 'Mensagens',
+    'current' => 'Mensagens',
+    'description' => 'Converse com instrutores e com a equipe da plataforma.',
+])
 
 <div class="eNtery-item">
     <div class="container">
@@ -24,7 +16,7 @@
             @include('frontend.default.student.left_sidebar')
 
             <div class="col-lg-9 col-md-8">
-                <div class="my-panel message-panel">
+                <div class="my-panel message-panel pf-message-panel">
                     <div class="row g-0 pf-message-layout">
                         <div class="col-lg-4">
                             @include('frontend.default.student.message.sidebar')

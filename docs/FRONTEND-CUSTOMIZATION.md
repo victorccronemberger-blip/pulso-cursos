@@ -58,8 +58,14 @@ público. A detecção fica em `layouts/default.blade.php`; o cabeçalho, a
 navegação e os estilos compartilhados ficam em:
 
 - `frontend/default/student/portal_header.blade.php`;
+- `frontend/default/student/page_header.blade.php`;
 - `frontend/default/student/left_sidebar.blade.php`;
 - `public/assets/frontend/default/css/student_portal.css`.
+
+O carrinho autenticado também usa esse shell. Cabeçalhos internos devem usar
+`student/page_header.blade.php`, evitando recriar grids e breadcrumbs do
+template legado. Faturas de cursos e pacotes possuem estilos de impressão no
+próprio `student_portal.css` e não carregam o CSS do painel administrativo.
 
 O painel administrativo preserva a estrutura operacional do template e recebe
 a identidade Pulso por `public/assets/backend/css/pulso_admin.css`. Textos de

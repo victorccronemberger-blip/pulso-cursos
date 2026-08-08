@@ -43,7 +43,7 @@
         <form action="{{ route('course.bundle.rating.store', ['bundle_id' => $bundle->id]) }}" method="POST">
             @csrf
             <div class="form-group mb-3">
-                <select id="user_bundle_rating" name="rating" class="form-control" required style="background: #261954; color: #fff;">
+                <select id="user_bundle_rating" name="rating" class="form-control" required>
                     <option value="">{{ get_phrase('Select rating') }}</option>
                     @for ($i = 1; $i <= 5; $i++)
                         <option value="{{ $i }}">{{ $i }} {{ get_phrase('out of') }} 5</option>
@@ -51,7 +51,7 @@
                 </select>
             </div>
             <div class="form-group mb-3">
-                <textarea id="user_bundle_comment" class="form-control" name="comment" style="background: #261954; color: #fff;" required></textarea>
+                <textarea id="user_bundle_comment" class="form-control" name="comment" placeholder="Conte como foi sua experiência com o pacote" required></textarea>
             </div>
             <div class="row">
                 <div class="col-md-12">

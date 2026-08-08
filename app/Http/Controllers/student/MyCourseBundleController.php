@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class MyCourseBundleController extends Controller
 {
-    public function __construct()
-    {
-        date_default_timezone_set('Asia/Dhaka');
-    }
     public function index()
     {
         $page_data['my_course_bundles'] = BundlePayment::join('course_bundles', 'bundle_payments.bundle_id', 'course_bundles.id')
@@ -37,6 +33,11 @@ class MyCourseBundleController extends Controller
             Session::flash('error', get_phrase('Data not found.'));
             return redirect()->back();
         }
+        $courseIds = json_decode($page_data['course_bundle']->course_ids, true) ?: [];
+        $page_data['courses'] = Course::whereIn('id', $courseIds)
+            ->where('status', 'active')
+            ->get();
+
         return view(theme_path() . 'student.my_course_bundles.details', $page_data);
     }
 

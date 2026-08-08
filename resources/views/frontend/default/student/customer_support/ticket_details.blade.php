@@ -19,35 +19,13 @@
 @endpush
 @section('content')
 
-<!------------------- Breadcum Area Start  ------>
-<section class="breadcum-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('support.ticket.index') }}">{{ get_phrase('Customer Support') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $ticket_details->subject }}</li>
-                        </ol>
-                    </nav>
-                    <div class="row row-gap-3 align-items-center mt-4">
-                        <div class="col-auto">
-                            <h3 class="g-title mb-0">{{ get_phrase('Ticket Subject') }} : {{ $ticket_details->subject }}</h3>
-                        </div>
-                        <div class="col-auto ms-auto">
-                            <a href="{{ route('support.ticket.index') }}" class="eBtn gradient d-flex align-items-center text-nowrap">
-                                <i class="fi-rr-arrow-alt-left me-2"></i> {{ get_phrase('Back') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!------------------- Breadcum Area End  --------->
+@include('frontend.default.student.page_header', [
+    'title' => $ticket_details->subject,
+    'current' => 'Detalhes do chamado',
+    'parentUrl' => route('support.ticket.index'),
+    'parentLabel' => 'Suporte',
+    'description' => '#' . $ticket_details->code,
+])
 
 <!-------------- List Item Start   --------------->
 <div class="eNtery-item">
@@ -57,7 +35,7 @@
 
             <div class="col-lg-9 col-md-8">
 
-                <div class="my-panel message-panel">
+                <div class="my-panel message-panel pf-ticket-thread-panel">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="message-right position-relative">
@@ -72,10 +50,10 @@
 
                                         <div class="message-header d-flex justify-content-between align-items-center pb-20">
                                             <div class="ins-nav w-100 align-items-center">
-                                                <div class="ins-left flex-wrap">
-                                                    <h4><span class="g-title fs-4">Situação: </span> {{ get_phrase($ticket_details->status?->title ?? 'Novo') }}</h4> |
-                                                    <h4><span class="g-title fs-4">Prioridade: </span> {{ get_phrase($ticket_details->priority?->title ?? 'Normal') }}</h4> |
-                                                    <h4><span class="g-title fs-4">Categoria: </span> {{ get_phrase($ticket_details->category?->title ?? 'Outros') }}</h4>
+                                                <div class="pf-ticket-meta">
+                                                    <div><span>Situação</span><strong>{{ get_phrase($ticket_details->status?->title ?? 'Novo') }}</strong></div>
+                                                    <div><span>Prioridade</span><strong>{{ get_phrase($ticket_details->priority?->title ?? 'Normal') }}</strong></div>
+                                                    <div><span>Categoria</span><strong>{{ get_phrase($ticket_details->category?->title ?? 'Outros') }}</strong></div>
                                                 </div>
                                             </div>
                                         </div>
