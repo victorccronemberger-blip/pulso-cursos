@@ -57,11 +57,11 @@ class MyExamController extends Controller
         $now = Carbon::now();
 
         if ($exam->start_at && $now->lt(Carbon::parse($exam->start_at))) {
-            return back()->with('error', 'Exam has not started yet.');
+            return back()->with('error', 'Esta prova ainda não começou.');
         }
 
         if ($exam->end_at && $now->gt(Carbon::parse($exam->end_at))) {
-            return back()->with('error', 'Exam submission time is over.');
+            return back()->with('error', 'O prazo para entregar esta prova terminou.');
         }
 
         $alreadySubmitted = Submission::where('exam_id', $exam->id)
@@ -69,7 +69,7 @@ class MyExamController extends Controller
             ->exists();
 
         if ($alreadySubmitted) {
-            return back()->with('error', 'You have already submitted this exam.');
+            return back()->with('error', 'Você já entregou esta prova.');
         }
 
         $request->validate([
@@ -91,6 +91,6 @@ class MyExamController extends Controller
 
         return redirect()
             ->route('my.exam.details', $exam->id)
-            ->with('success', 'Exam submitted successfully.');
+            ->with('success', 'Prova entregue com sucesso.');
     }
 }

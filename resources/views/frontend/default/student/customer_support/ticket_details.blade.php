@@ -73,9 +73,9 @@
                                         <div class="message-header d-flex justify-content-between align-items-center pb-20">
                                             <div class="ins-nav w-100 align-items-center">
                                                 <div class="ins-left flex-wrap">
-                                                    <h4><span class="g-title fs-4">{{ get_phrase('Status') }} : </span> {{ $ticket_details->status->title }}</h4> |
-                                                    <h4><span class="g-title fs-4">{{ get_phrase('Priority') }} : </span> {{ $ticket_details->priority->title }}</h4> |
-                                                    <h4><span class="g-title fs-4">{{ get_phrase('Category') }} : </span> {{ $ticket_details->category->title }}</h4>
+                                                    <h4><span class="g-title fs-4">Situação: </span> {{ get_phrase($ticket_details->status?->title ?? 'Novo') }}</h4> |
+                                                    <h4><span class="g-title fs-4">Prioridade: </span> {{ get_phrase($ticket_details->priority?->title ?? 'Normal') }}</h4> |
+                                                    <h4><span class="g-title fs-4">Categoria: </span> {{ get_phrase($ticket_details->category?->title ?? 'Outros') }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +98,7 @@
                                                         <input type="hidden" name="sender_id" value="{{ auth()->user()->id }}">
                                                         <input type="hidden" name="receiver_id" value="{{ $ticket_details->creator_id }}">
                                                         <input type="hidden" name="ticket_thread_code" value="{{ $ticket_details->code }}">
-                                                        <textarea class="form-control message-box" id="type-msg" name="message" placeholder="Type your message here..."></textarea>
+                                                        <textarea class="form-control message-box" id="type-msg" name="message" placeholder="Escreva sua mensagem..."></textarea>
                                                     </div>
                                                     <ul class="ic-control d-flex">
                                                         <li>
@@ -163,7 +163,7 @@
             var fileCount = $(this)[0].files.length;
             if (fileCount > 0) {
                 $('.count-files').removeClass('d-none');
-                $('.count-files p').text(fileCount + ' files selected');
+                $('.count-files p').text(fileCount + (fileCount === 1 ? ' arquivo selecionado' : ' arquivos selecionados'));
                 $(this).attr('name', 'file[]');
             }
         });
@@ -192,11 +192,11 @@
             if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileType)) {
                 content = `<img src="${fileUrl}" class="img-fluid rounded" style="max-height:80vh;">`;
             } else if (['mp4', 'webm', 'ogg'].includes(fileType)) {
-                content = `<video controls class="img-fluid rounded" style="max-height:80vh;"><source src="${fileUrl}" type="video/${fileType}">Your browser does not support the video tag.</video>`;
+                content = `<video controls class="img-fluid rounded" style="max-height:80vh;"><source src="${fileUrl}" type="video/${fileType}">Seu navegador não consegue reproduzir este vídeo.</video>`;
             } else if (fileType === 'pdf') {
                 content = `<iframe src="${fileUrl}" style="width:100%; height:80vh;" frameborder="0"></iframe>`;
             } else {
-                content = `<p>Preview not available. Please download the file.</p>`;
+                content = `<p>Pré-visualização indisponível. Baixe o arquivo para abri-lo.</p>`;
             }
 
             $('#fileContent').html(content);

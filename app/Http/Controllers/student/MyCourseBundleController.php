@@ -52,7 +52,7 @@ class MyCourseBundleController extends Controller
         $data['created_at'] = now();
         BundleRating::insert($data);
 
-        Session::flash('success', 'Rating has been submitted successfully!');
+        Session::flash('success', 'Avaliação enviada com sucesso.');
         return redirect()->back();
     }
 
@@ -69,7 +69,7 @@ class MyCourseBundleController extends Controller
 
         BundleRating::where('id', $id)->update($data);
 
-        Session::flash('success', 'Rating has been updated successfully!');
+        Session::flash('success', 'Avaliação atualizada com sucesso.');
         return redirect()->back();
 
     }

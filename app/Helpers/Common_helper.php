@@ -817,8 +817,9 @@ if (! function_exists('get_all_language')) {
 if (! function_exists('get_phrase')) {
     function get_phrase($phrase = '', $value_replace = [])
     {
+        $active_lan = session('language') ?? get_settings('language');
+
         try {
-            $active_lan    = session('language') ?? get_settings('language');
             $active_lan_id = DB::table('languages')->where('name', 'like', $active_lan)->value('id');
             $lan_phrase    = DB::table('language_phrases')->where('language_id', $active_lan_id)->where('phrase', $phrase)->first();
 
@@ -834,6 +835,11 @@ if (! function_exists('get_phrase')) {
         } catch (\Exception $e) {
             // Tables don't exist — return the phrase as-is
             $translated = $phrase;
+        }
+
+        if (str_contains(strtolower((string) $active_lan), 'portugu')) {
+            $portuguese = config('pulso_translations.pt_BR', []);
+            $translated = $portuguese[$phrase] ?? $translated;
         }
 
         if (! is_array($value_replace)) {

@@ -1,5 +1,19 @@
+@php
+    $isStudentPortal = auth()->check() && request()->is(
+        'my-courses',
+        'my-course-bundles*',
+        'my-exams*',
+        'my-profile',
+        'wishlist',
+        'purchase-history',
+        'invoice/*',
+        'message*',
+        'support/ticket*',
+        'become-an-instructor'
+    );
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     @include('layouts.seo')
@@ -73,10 +87,13 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/course_detail.css') }}?v=20260807-2">
     @endif
 
-    @if (Route::currentRouteName() == 'my.courses')
-    <!-- Student Dashboard Style -->
+    @if ($isStudentPortal)
+    <!-- Student Portal Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/toro_home_v2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/student_dashboard.css') }}?v=20260807-1">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/student_portal.css') }}?v=20260807-1">
     @endif
 
     @if (Route::currentRouteName() == 'login' || request()->is('login'))
@@ -103,7 +120,7 @@
 
 </head>
 
-<body>
+<body class="{{ $isStudentPortal ? 'pf-student-app' : '' }}">
     @php $current_route_name = Route::currentRouteName(); @endphp
     @php
         if (session('home')) {
@@ -115,6 +132,11 @@
 
     @if (in_array($current_route_name, ['login', 'register.form']) || request()->is('login', 'register'))
         <main class="pf-auth-page">
+            @yield('content')
+        </main>
+    @elseif ($isStudentPortal)
+        @include('frontend.default.student.portal_header')
+        <main class="pf-portal-main">
             @yield('content')
         </main>
     @elseif ($home_page->is_permanent == 1)

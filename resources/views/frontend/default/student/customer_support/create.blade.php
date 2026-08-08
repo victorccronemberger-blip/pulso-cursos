@@ -1,128 +1,30 @@
 @extends('layouts.default')
-@push('title', get_phrase('Add New Ticket'))
-@push('meta')@endpush
-@push('css')@endpush
+@push('title', 'Abrir chamado')
 @section('content')
-
-<!------------------- Breadcum Area Start  ------>
 <section class="breadcum-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('support.ticket.index') }}">{{ get_phrase('Customer Support') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Add New Ticket') }}</li>
-                        </ol>
-                    </nav>
-                    <div class="row row-gap-3 align-items-center mt-4">
-                        <div class="col-auto col-md-4 col-lg-3">
-                            <h3 class="g-title mb-0">{{ get_phrase('Ticket Form') }}</h3>
-                        </div>
-                        <div class="col-auto ms-auto">
-                            <a href="{{ route('support.ticket.index') }}" class="eBtn gradient d-flex align-items-center text-nowrap">
-                                <i class="fi-rr-arrow-alt-left me-2"></i> {{ get_phrase('Back') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="container"><div class="eNtry-breadcum">
+        <nav aria-label="Navegação estrutural"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ route('support.ticket.index') }}">Suporte</a></li><li class="breadcrumb-item active">Novo chamado</li></ol></nav>
+        <div class="row align-items-center mt-4"><div class="col"><h1 class="g-title">Abrir chamado</h1></div><div class="col-auto"><a href="{{ route('support.ticket.index') }}" class="pf-ticket-back"><i class="fi-rr-arrow-left me-1"></i>Voltar</a></div></div>
+    </div></div>
 </section>
-<!------------------- Breadcum Area End  --------->
 
-<!-------------- List Item Start   --------------->
-<div class="eNtery-item">
-    <div class="container">
-        <div class="row">
-            @include('frontend.default.student.left_sidebar')
-
-            <div class="col-lg-9 col-md-8">
-
-                <div class="my-panel message-panel edit_profile mb-4">
-                    <form action="{{ route('support.ticket.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-
-                        @php
-                        use App\Models\User;
-                        $creatorId = is_root_admin() ? auth()->user()->id : User::orderBy('id', 'asc')->value('id');
-                        @endphp
-
-                        <input type="hidden" name="admin_id" value="{{ $creatorId }}">
-
-                        <div class="row">
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="subject" class="form-label">{{ get_phrase('Subject') }}</label>
-                                    <input type="text" class="form-control" name="subject" id="subject" required>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="select_category_id" class="form-label">{{ get_phrase('Category') }}</label>
-                                    <select class="lms-select lms-form-control lms-md-select" name="category_id" id="select_category_id" required>
-                                        <option value="">{{ get_phrase('Select a category') }}</option>
-                                        @php $all_categories = App\Models\TicketCategory::where('status', 1)->get(); @endphp
-                                        @foreach ($all_categories as $all_category)
-                                        <option value="{{ $all_category->id }}">{{ $all_category->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="select_status_id" class="form-label">{{ get_phrase('Status') }}</label>
-                                    <select class="lms-select lms-form-control lms-md-select" name="status_id" id="select_status_id" required>
-                                        <option value="">{{ get_phrase('Select a status') }}</option>
-                                        @php $all_statuses = App\Models\TicketStatus::where('status', 1)->get(); @endphp
-                                        @foreach ($all_statuses as $all_status)
-                                        <option value="{{ $all_status->id }}">{{ $all_status->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="select_priority_id" class="form-label">{{ get_phrase('Priority') }}</label>
-                                    <select class="lms-select lms-form-control lms-md-select" name="priority_id" id="select_priority_id" required>
-                                        <option value="">{{ get_phrase('Select a priority') }}</option>
-                                        @php $all_priorities = App\Models\TicketPriority::where('status', 1)->get(); @endphp
-                                        @foreach ($all_priorities as $all_priority)
-                                        <option value="{{ $all_priority->id }}">{{ $all_priority->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="messageInput" class="form-label">{{ get_phrase('Message') }}</label>
-                                    <textarea name="message" class="form-control" id="messageInput" cols="30" rows="5" placeholder="Type your message here..." required></textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <input type="file" name="file[]" multiple class="form-control ol-form-control" id="file">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="eBtn btn gradient mt-10">{{ get_phrase('Submit') }}</button>
-                    </form>
+<div class="eNtery-item"><div class="container"><div class="row">
+    @include('frontend.default.student.left_sidebar')
+    <div class="col-lg-9 col-md-8">
+        <div class="my-panel pf-ticket-form">
+            <div class="pf-ticket-form-intro"><h2>Como podemos ajudar?</h2><p>Descreva o que aconteceu com detalhes. A situação do chamado será atualizada pela equipe durante o atendimento.</p></div>
+            <form action="{{ route('support.ticket.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3"><label for="subject" class="form-label">Assunto</label><input type="text" class="form-control" name="subject" id="subject" maxlength="160" value="{{ old('subject') }}" placeholder="Resuma sua solicitação" required></div>
+                <div class="row">
+                    <div class="col-md-7 mb-3"><label for="category_id" class="form-label">Categoria</label><select class="form-control" name="category_id" id="category_id" required><option value="">Selecione</option>@foreach ($categories as $category)<option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ get_phrase($category->title) }}</option>@endforeach</select></div>
+                    <div class="col-md-5 mb-3"><label for="priority_id" class="form-label">Prioridade</label><select class="form-control" name="priority_id" id="priority_id" required><option value="">Selecione</option>@foreach ($priorities as $priority)<option value="{{ $priority->id }}" @selected(old('priority_id') == $priority->id)>{{ get_phrase($priority->title) }}</option>@endforeach</select></div>
                 </div>
-
-            </div>
+                <div class="mb-3"><label for="messageInput" class="form-label">Mensagem</label><textarea name="message" class="form-control" id="messageInput" rows="6" maxlength="10000" placeholder="Conte o que você estava tentando fazer e o que ocorreu" required>{{ old('message') }}</textarea></div>
+                <div class="mb-4"><label for="file" class="form-label">Anexos <span class="text-muted fw-normal">(opcional, até 10 MB por arquivo)</span></label><input type="file" name="file[]" multiple class="form-control" id="file"></div>
+                <button class="eBtn gradient" type="submit">Enviar chamado</button>
+            </form>
         </div>
     </div>
-</div>
-<!-------------- List Item End  --------------->
-
+</div></div></div>
 @endsection
-@push('js')@endpush

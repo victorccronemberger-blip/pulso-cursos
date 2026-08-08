@@ -47,7 +47,7 @@ $contact_details = App\Models\User::where('id', $contact_id)->first();
             var fileCount = $(this)[0].files.length;
             if (fileCount > 0) {
                 $('.count-files').removeClass('d-none');
-                $('.count-files p').text(fileCount + ' files selected');
+                $('.count-files p').text(fileCount + (fileCount === 1 ? ' arquivo selecionado' : ' arquivos selecionados'));
                 $(this).attr('name', 'media_files[]');
             }
         });

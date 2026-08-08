@@ -46,7 +46,7 @@
                                     $all_categories = App\Models\TicketCategory::where('status', 1)->get();
                                 @endphp
                                 @foreach ($all_categories as $all_category)
-                                    <option value="{{ $all_category->id }}">{{ $all_category->title }}</option>
+                                    <option value="{{ $all_category->id }}">{{ get_phrase($all_category->title) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -76,7 +76,7 @@
                                     $all_statuses = App\Models\TicketStatus::where('status', 1)->get();
                                 @endphp
                                 @foreach ($all_statuses as $all_status)
-                                    <option value="{{ $all_status->id }}">{{ $all_status->title }}</option>
+                                    <option value="{{ $all_status->id }}">{{ get_phrase($all_status->title) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -91,7 +91,7 @@
                                     $all_priorities = App\Models\TicketPriority::where('status', 1)->get();
                                 @endphp
                                 @foreach ($all_priorities as $all_priority)
-                                    <option value="{{ $all_priority->id }}">{{ $all_priority->title }}</option>
+                                    <option value="{{ $all_priority->id }}">{{ get_phrase($all_priority->title) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -100,7 +100,7 @@
                     <div class="row mb-3">
                         <label class="form-label ol-form-label col-sm-2 col-form-label" for="messageInput">{{ get_phrase('Message') }}<span class="text-danger ms-1">*</span></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control ol-form-control" id="messageInput" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                            <textarea class="form-control ol-form-control" id="messageInput" name="message" rows="6" placeholder="Escreva a mensagem..." required></textarea>
                         </div>
                     </div>
                     <div class="row mb-3">

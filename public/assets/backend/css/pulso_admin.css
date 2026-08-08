@@ -1,0 +1,52 @@
+:root {
+    --pf-admin-ink: #0a1628;
+    --pf-admin-slate: #627285;
+    --pf-admin-surface: #f4f6f7;
+    --pf-admin-border: #dce4e7;
+    --pf-admin-green: #00a884;
+    --pf-admin-orange: #ff6b35;
+}
+
+.pf-admin-app { background: var(--pf-admin-surface); color: var(--pf-admin-ink); }
+.pf-admin-app .ol-sidebar { background: #071525; border-right: 1px solid rgba(255,255,255,.08); }
+.pf-admin-app .sidebar-logo-area { border-bottom: 1px solid rgba(255,255,255,.08); min-height: 66px; }
+.pf-admin-app .sidebar-logo-lg { max-height: 34px; max-width: 142px; object-fit: contain; }
+.pf-admin-app .sidebar-title { color: #7f93a6; font-size: 9px !important; letter-spacing: .12em; }
+.pf-admin-app .sidebar-first-li > a { border-radius: 6px; color: #aebbc7; font-size: 12px; min-height: 40px; }
+.pf-admin-app .sidebar-first-li > a .icon { font-size: 16px; }
+.pf-admin-app .sidebar-first-li.active > a,
+.pf-admin-app .sidebar-first-li > a:hover { background: rgba(0,168,132,.14); color: #fff; }
+.pf-admin-app .sidebar-first-li.active > a { box-shadow: inset 2px 0 var(--pf-admin-green); }
+.pf-admin-app .first-sub-menu,
+.pf-admin-app .second-sub-menu { background: #0b1c2e; }
+.pf-admin-app .sidebar-second-li a,
+.pf-admin-app .sidebar-third-li a { color: #9babb9; font-size: 12px; }
+.pf-admin-app .sidebar-second-li.active > a,
+.pf-admin-app .sidebar-third-li.active > a { color: #4cd2af; }
+
+.pf-admin-app .ol-header { background: #fff; border-bottom: 1px solid var(--pf-admin-border); box-shadow: none; min-height: 66px; }
+.pf-admin-app .main-header-title .page-title { color: var(--pf-admin-ink); font-size: 15px !important; }
+.pf-admin-app .ol-body-content { background: var(--pf-admin-surface); padding-top: 22px; }
+.pf-admin-app .ol-card { border: 1px solid var(--pf-admin-border); border-radius: 9px; box-shadow: none; }
+.pf-admin-app .ol-card-body { color: var(--pf-admin-ink); }
+.pf-admin-app .title { color: var(--pf-admin-ink); }
+.pf-admin-app .ol-btn-primary,
+.pf-admin-app .btn-primary { background: var(--pf-admin-orange); border-color: var(--pf-admin-orange); border-radius: 6px; box-shadow: none; }
+.pf-admin-app .ol-btn-primary:hover,
+.pf-admin-app .btn-primary:hover { background: #e85b29; border-color: #e85b29; }
+.pf-admin-app .form-control,
+.pf-admin-app .ol-form-control,
+.pf-admin-app .form-select { border-color: #ccd7dc; border-radius: 6px; font-size: 13px; }
+.pf-admin-app .form-control:focus,
+.pf-admin-app .ol-form-control:focus,
+.pf-admin-app .form-select:focus { border-color: var(--pf-admin-green); box-shadow: 0 0 0 3px rgba(0,168,132,.1); }
+.pf-admin-app .table thead th { background: #f7f9fa; color: #647486; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
+.pf-admin-app .table tbody td { border-color: #e9eef0; color: #34465a; font-size: 12px; }
+.pf-admin-app .badge { border-radius: 4px; font-weight: 700; }
+.pf-admin-app .page-title { letter-spacing: -.015em; }
+.pf-admin-app .rev-card,
+.pf-admin-app .dash-stat-card { border-color: var(--pf-admin-border) !important; border-radius: 9px !important; box-shadow: none !important; }
+
+@media (max-width: 991px) {
+    .pf-admin-app .ol-body-content { padding-top: 16px; }
+}

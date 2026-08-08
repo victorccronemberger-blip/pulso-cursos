@@ -75,14 +75,14 @@ class MyProfileController extends Controller
 
         // Check if the current password is correct
         if (!Auth::attempt(['email' => auth()->user()->email, 'password' => $request->current_password])) {
-            Session::flash('error', 'Current password is incorrect.');
+            Session::flash('error', 'A senha atual está incorreta.');
             return redirect()->back();
         }
 
         // Update password
         auth()->user()->update(['password' => Hash::make($request->new_password)]);
 
-        Session::flash('success', 'Password changed successfully.');
+        Session::flash('success', 'Senha alterada com sucesso.');
         return redirect()->back();
     }
 }

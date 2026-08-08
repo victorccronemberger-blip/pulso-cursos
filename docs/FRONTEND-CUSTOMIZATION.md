@@ -51,6 +51,25 @@ o download autenticado é feito por `course.material.download`. Quizzes
 importados continuam sendo `lessons.lesson_type = quiz`, preservando o fluxo
 nativo de progresso e submissões.
 
+### Áreas autenticadas
+
+As rotas de conta do aluno usam um shell compacto, sem cabeçalho/rodapé do site
+público. A detecção fica em `layouts/default.blade.php`; o cabeçalho, a
+navegação e os estilos compartilhados ficam em:
+
+- `frontend/default/student/portal_header.blade.php`;
+- `frontend/default/student/left_sidebar.blade.php`;
+- `public/assets/frontend/default/css/student_portal.css`.
+
+O painel administrativo preserva a estrutura operacional do template e recebe
+a identidade Pulso por `public/assets/backend/css/pulso_admin.css`. Textos de
+interface em português que ainda chegam ao `get_phrase()` por chaves inglesas
+são normalizados em `config/pulso_translations.php`.
+
+O suporte usa as tabelas nativas de tickets. `SupportDefaultsSeeder` instala,
+de forma idempotente, as categorias, prioridades e situações mínimas. O aluno
+não escolhe a situação inicial e só pode abrir conversas dos próprios chamados.
+
 ### Importação modular de conteúdo
 
 O mesmo manifesto usado por `courses:sync-videos` aceita `curriculum.sort_step`

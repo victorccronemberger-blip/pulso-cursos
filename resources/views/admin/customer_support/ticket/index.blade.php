@@ -88,13 +88,13 @@
                                             {{ $ticket->user->name }}
                                         </td>
                                         <td>
-                                            <span class="badge" style="background-color: {{ $ticket->status->color }}">{{ $ticket->status->title }}</span>
+                                            <span class="badge" style="background-color: {{ $ticket->status?->color ?? '#64748b' }}">{{ get_phrase($ticket->status?->title ?? 'New') }}</span>
                                         </td>
                                         <td>
-                                            {{ $ticket->priority->title }}
+                                            {{ get_phrase($ticket->priority?->title ?? 'Normal') }}
                                         </td>
                                         <td>
-                                            {{ $ticket->category->title }}
+                                            {{ get_phrase($ticket->category?->title ?? 'Outros') }}
                                         </td>
 
                                         <td class="print-d-none">

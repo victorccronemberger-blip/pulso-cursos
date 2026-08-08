@@ -245,7 +245,7 @@
                         <div class="d-flex justify-content-between mb-4">
                             <h6 class="sidebar-title ">{{ get_phrase('Ticket Type') }}</h6>
                             <p>
-                                <span class="open">{{ $ticket_details->status?->title ?? get_phrase('New') }}</span>
+                                <span class="open">{{ get_phrase($ticket_details->status?->title ?? 'New') }}</span>
                             </p>
                         </div>
                         @isset($ticket_details->creator_id)
@@ -347,7 +347,7 @@
                                                 @endphp
                                                 @foreach ($all_statuses as $all_status)
                                                     <option value="{{ $all_status->id }}" {{ $ticket_details->status_id == $all_status->id ? 'selected' : '' }}>
-                                                        {{ $all_status->title }}
+                                                        {{ get_phrase($all_status->title) }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -362,7 +362,7 @@
                                                 @endphp
                                                 @foreach ($all_priorities as $all_priority)
                                                     <option value="{{ $all_priority->id }}" {{ $ticket_details->priority_id == $all_priority->id ? 'selected' : '' }}>
-                                                        {{ $all_priority->title }}
+                                                        {{ get_phrase($all_priority->title) }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -376,7 +376,7 @@
                                                 @endphp
                                                 @foreach ($all_categories as $all_category)
                                                     <option value="{{ $all_category->id }}" {{ $ticket_details->category_id == $all_category->id ? 'selected' : '' }}>
-                                                        {{ $all_category->title }}
+                                                        {{ get_phrase($all_category->title) }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -533,7 +533,7 @@
                         <input type="hidden" name="ticket_thread_code" value="{{ $ticket_details->code }}">
 
                         <div class="messenger-footer-inner d-flex align-items-end">
-                            <textarea class="form-control form-control-message" id="messageInput" name="message" rows="6" cols="50" placeholder="Type your message here..."></textarea>
+                            <textarea class="form-control form-control-message" id="messageInput" name="message" rows="6" cols="50" placeholder="Escreva sua resposta..."></textarea>
 
                             <div class="drop-zone cursor-pointer" id="dropZone">
                                 <span>
@@ -602,12 +602,12 @@
                 } else if (['mp4', 'webm', 'ogg'].includes(fileType)) {
                     content = `<video controls class="img-fluid rounded" style="max-height:80vh;">
                            <source src="${fileUrl}" type="video/${fileType}">
-                           Your browser does not support the video tag.
+                           Seu navegador não consegue reproduzir este vídeo.
                        </video>`;
                 } else if (fileType === 'pdf') {
                     content = `<iframe src="${fileUrl}" style="width:100%; height:80vh;" frameborder="0"></iframe>`;
                 } else {
-                    content = `<p>Preview not available. Please download the file.</p>`;
+                    content = `<p>Pré-visualização indisponível. Baixe o arquivo para abri-lo.</p>`;
                 }
 
                 $('#fileContent').html(content);

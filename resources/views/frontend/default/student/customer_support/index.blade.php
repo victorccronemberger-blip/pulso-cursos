@@ -1,105 +1,53 @@
 @extends('layouts.default')
-@push('title', get_phrase('Customer Support'))
-@push('meta')@endpush
-@push('css')@endpush
+@push('title', 'Suporte')
 @section('content')
-
-<!------------------- Breadcum Area Start  ------>
 <section class="breadcum-area">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="eNtry-breadcum">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ get_phrase('Home') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ get_phrase('Customer Support') }}</li>
-                        </ol>
-                    </nav>
-                    <div class="row row-gap-3 align-items-center mt-4">
-                        <div class="col-auto col-md-4 col-lg-3">
-                            <h3 class="g-title mb-0">{{ get_phrase('Ticket List') }}</h3>
-                        </div>
-                        <div class="col-auto ms-auto">
-                            <a href="{{ route('support.ticket.create') }}" class="eBtn gradient ">
-                                <i class="fi fi-rr-plus"></i> {{ get_phrase('Add New Ticket') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <div class="eNtry-breadcum">
+            <nav aria-label="Navegação estrutural">
+                <ol class="breadcrumb"><li class="breadcrumb-item"><a href="{{ route('my.courses') }}">Área do aluno</a></li><li class="breadcrumb-item active">Suporte</li></ol>
+            </nav>
+            <div class="row align-items-center mt-4">
+                <div class="col"><h1 class="g-title">Chamados de suporte</h1></div>
+                <div class="col-auto"><a href="{{ route('support.ticket.create') }}" class="eBtn gradient"><i class="fi fi-rr-plus me-1"></i>Abrir chamado</a></div>
             </div>
         </div>
     </div>
 </section>
-<!------------------- Breadcum Area End  --------->
 
-<!-------------- List Item Start   --------------->
 <div class="eNtery-item">
-    <div class="container">
-        <div class="row">
-            @include('frontend.default.student.left_sidebar')
-
-            <div class="col-lg-9 col-md-8">
-                @if ($tickets->count() > 0)
-                <div class="my-panel">
-
+    <div class="container"><div class="row">
+        @include('frontend.default.student.left_sidebar')
+        <div class="col-lg-9 col-md-8">
+            <div class="my-panel">
+                @if ($tickets->count())
                     <div class="table-responsive">
                         <table class="table eTable">
-                            <thead>
-                                <tr>
-                                    <th>{{ get_phrase('Subject') }}</th>
-                                    <th>{{ get_phrase('Status') }}</th>
-                                    <th>{{ get_phrase('Priority') }}</th>
-                                    <th>{{ get_phrase('Category') }}</th>
-                                    <th>{{ get_phrase('Options') }}</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th>Chamado</th><th>Situação</th><th>Prioridade</th><th>Categoria</th><th class="text-end">Ação</th></tr></thead>
                             <tbody>
-                                @foreach ($tickets as $ticket)
+                            @foreach ($tickets as $ticket)
                                 <tr>
-                                    <td>
-                                        <a href="{{ route('support.ticket.message', $ticket->code) }}">{{ $ticket->subject }}</a>
-                                    </td>
-                                    <td>{{ $ticket->status->title }}</td>
-                                    <td>{{ $ticket->priority->title }}</td>
-                                    <td>{{ $ticket->category->title }}</td>
-                                    <td>
-                                        <a href="{{ route('support.ticket.message', $ticket->code) }}"
-                                            class="d-flex align-items-center justify-content-center btn btn-primary text-18 text-white py-3"
-                                            data-bs-toggle="tooltip"
-                                            data-bs-title="{{ get_phrase('View Ticket') }}">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M3 21.75C2.903 21.75 2.80589 21.731 2.71289 21.693C2.43289 21.577 2.25 21.303 2.25 21V6C2.25 3.582 3.582 2.25 6 2.25H18C20.418 2.25 21.75 3.582 21.75 6V15C21.75 17.418 20.418 18.75 18 18.75H6.31104L3.53101 21.53C3.38701 21.674 3.195 21.75 3 21.75ZM6 3.75C4.423 3.75 3.75 4.423 3.75 6V19.189L5.46997 17.469C5.61097 17.328 5.801 17.249 6 17.249H18C19.577 17.249 20.25 16.576 20.25 14.999V5.99902C20.25 4.42202 19.577 3.74902 18 3.74902H6V3.75ZM16.75 8.5C16.75 8.086 16.414 7.75 16 7.75H8C7.586 7.75 7.25 8.086 7.25 8.5C7.25 8.914 7.586 9.25 8 9.25H16C16.414 9.25 16.75 8.914 16.75 8.5ZM13.75 12.5C13.75 12.086 13.414 11.75 13 11.75H8C7.586 11.75 7.25 12.086 7.25 12.5C7.25 12.914 7.586 13.25 8 13.25H13C13.414 13.25 13.75 12.914 13.75 12.5Z" fill="#fff" />
-                                            </svg>
-                                        </a>
-                                    </td>
+                                    <td><a href="{{ route('support.ticket.message', $ticket->code) }}">{{ $ticket->subject }}</a><small class="d-block text-muted mt-1">#{{ $ticket->code }}</small></td>
+                                    <td><span class="pf-ticket-status" style="--ticket-color: {{ $ticket->status?->color ?? '#64748b' }}">{{ get_phrase($ticket->status?->title ?? 'Novo') }}</span></td>
+                                    <td>{{ get_phrase($ticket->priority?->title ?? 'Normal') }}</td>
+                                    <td>{{ get_phrase($ticket->category?->title ?? 'Outros') }}</td>
+                                    <td class="text-end"><a class="pf-ticket-open" href="{{ route('support.ticket.message', $ticket->code) }}">Abrir</a></td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
-
-                </div>
                 @else
-                <div class="col-12 bg-white radius-10 py-5 shadow-lg">
-                    @include('frontend.default.empty')
-                </div>
+                    <div class="pf-ticket-empty">
+                        <i class="fi-rr-headset" aria-hidden="true"></i>
+                        <h2>Você ainda não abriu nenhum chamado.</h2>
+                        <p>Quando precisar de ajuda com acesso, pagamento ou conteúdo, fale com nossa equipe por aqui.</p>
+                        <a href="{{ route('support.ticket.create') }}" class="eBtn gradient">Abrir primeiro chamado</a>
+                    </div>
                 @endif
-                <!-- Pagination -->
-                @if (count($tickets) > 0)
-                <div class="entry-pagination">
-                    <nav aria-label="Page navigation example">
-                        {{ $tickets->links() }}
-                    </nav>
-                </div>
-                @endif
-                <!-- Pagination -->
-
             </div>
+            @if ($tickets->hasPages())<div class="entry-pagination">{{ $tickets->links() }}</div>@endif
         </div>
-    </div>
+    </div></div>
 </div>
-<!-------------- List Item End  --------------->
-
 @endsection
-@push('js')@endpush

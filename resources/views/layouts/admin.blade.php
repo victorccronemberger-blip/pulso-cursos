@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-BR">
 
 <head>
     {{ config(['app.name' => get_settings('system_title')]) }}
@@ -48,13 +48,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/pulso_admin.css') }}?v=20260807-1">
 
     @stack('css')
 
     <script type="text/javascript" src="{{ asset('assets/backend/js/jquery-3.7.1.min.js') }}"></script>
 </head>
 
-<body>
+<body class="pf-admin-app">
     <main class="d-flex">
         <!-- Sidebar Navigation -->
         <div class="ol-sidebar">
