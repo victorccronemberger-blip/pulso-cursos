@@ -6,7 +6,10 @@
         "courses:manifest": "powershell -ExecutionPolicy Bypass -File scripts/course-imports/Build-SourceManifests.ps1",
         "courses:upload": "node scripts/course-imports/upload-bunny.mjs",
         "courses:finalize": "node scripts/course-imports/finalize-manifests.mjs",
-        "courses:sync-ready": "powershell -ExecutionPolicy Bypass -File scripts/course-imports/Sync-ReadyCourses.ps1"
+        "courses:sync-ready": "powershell -ExecutionPolicy Bypass -File scripts/course-imports/Sync-ReadyCourses.ps1",
+        "courses:audit-bunny": "node scripts/course-imports/audit-bunny.mjs",
+        "courses:audit-videos": "node scripts/course-imports/audit-video-streams.mjs",
+        "courses:cleanup-bunny": "node scripts/course-imports/cleanup-bunny-orphans.mjs"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

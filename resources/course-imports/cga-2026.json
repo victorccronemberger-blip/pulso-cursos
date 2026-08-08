@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-cga-certificacao-gestores-anbima"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m8",
+    "section_overrides": {
+      "CGAREVS1": "m8",
+      "CGAREVS2": "m8",
+      "CGAREVS3": "m8",
+      "CGASIM1": "m8",
+      "CGASIM2": "m8",
+      "CGASIM3": "m8",
+      "CGASIM4": "m8",
+      "CGASIM5": "m8",
+      "CGASIM6": "m8",
+      "QMAISCAIRAMCGARV": "m2",
+      "QMAISCAIRAMCGARF": "m3",
+      "QMAISCAIRAMCGAINVEXT": "m4",
+      "QMAISCAIRAMCGAAVALDES": "m5",
+      "QMAISCAIRAMCGARISK": "m6",
+      "QMAISCAIRAMCGALEG": "m7",
+      "CGAQUESTOESTREINAR": "m8"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Introdução ao CGA",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Renda variável e alocação de ativos",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Gestão de carteiras de renda fixa",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Investimentos no exterior",
+      "sort": 4
+    },
+    {
+      "key": "m5",
+      "title": "Módulo 5 · Avaliação de desempenho",
+      "sort": 5
+    },
+    {
+      "key": "m6",
+      "title": "Módulo 6 · Gestão de riscos",
+      "sort": 6
+    },
+    {
+      "key": "m7",
+      "title": "Módulo 7 · Fundos e código de gestão de recursos",
+      "sort": 7
+    },
+    {
+      "key": "m8",
+      "title": "Módulo 8 · Revisões e simulados",
+      "sort": 8
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CGA-INTRO_Introdução CGA.mp4",
+      "provider_id": "0ce112ea-cd1b-4527-bbfd-8370a0620b8a",
+      "title": "Introdução CGA",
+      "description": "<p>Bem-vindo ao curso preparatório para o CGA da Academia Rafael Toro!</p>\n<p>Acesse o calendário do curso <a href=\"https://drive.google.com/file/d/11JPFjxLNITRgF2V4NufaaKwGem7E_gi_/view?usp=sharing\" target=\"_self\">Aqui.</a><br><br>Baixe a Apostila para o CGA <a href=\"https://drive.google.com/file/d/1FUgNo3p-aMQAQI41eH-enDe_yY5ibdSg/view?usp=sharing\" target=\"_blank\">Aqui.</a>&nbsp;</p>\n<p>Baixe os Simulados da CGA <a href=\"https://drive.google.com/file/d/1TM724ZIysjAXev4F5Kx2XWeb_ZHSCI2t/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Baixe os Exercícios Totais do CGA <a href=\"https://drive.google.com/file/d/1IQNW5hZ1LiBhy4axwC_CjuAxSDaciy6B/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Baixe as Questões que Mais Caíram na Prova CGA <a href=\"https://drive.google.com/file/d/15MTYMOyy-KPtBbxxL9kep7Lii3nPjIiX/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Acesse o grupo do WhatsApp <a href=\"https://chat.whatsapp.com/K9w4AiJjhbW5HiQeOKm3Ih?mode=hq2tcli\" target=\"_self\">Aqui.</a></p>\n<p>Acesse o grupo do Telegram <a href=\"https://t.me/+ui28-4KZzDA2ZDA5\" target=\"_self\">Aqui</a>.</p>\n<p>Acesse a Lista de Fórmulas oficial do exame (será disponibilizada no dia da prova) <a href=\"https://drive.google.com/file/d/19wH9dW5khB5Ik6LVzAPjmlFDVUZNxDmE/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Acesse o arquivo com a Lista Complementar de Fórmulas (não será disponibilizada no dia da prova) <a href=\"https://drive.google.com/file/d/1McZcoaqfUNFndxZd7ciTPD1yD9yNSbT-/view?usp=drive_link\" target=\"_self\">Aqui</a><a href=\"https://drive.google.com/file/d/1gwe2RtvX386HgcQKAR6LX4L9-Fd5H8z4/view?usp=sharing\" target=\"_self\">.</a></p>",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:30:46",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CGA-RV1_Gestão de Carteiras de Renda Variável I.mp4",
+      "provider_id": "e3e7bb64-8d29-445a-b59e-fe02e30c1c62",
+      "title": "Gestão de Carteiras de Renda Variável I",
+      "description": "<p>Matéria com peso relevante no exame e com questões médias e difíceis. Aproveite para ganhar pontos nos temas de Replicação (total, amostragem e otimizada) e em Total Return Equity Swap.</p>",
+      "section": "m2",
+      "sort": 1,
+      "duration": "00:55:36",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CGA-RV2_Gestão de Carteiras de Renda Variável II.mp4",
+      "provider_id": "5cab5962-69ae-4eb0-a414-92baa39dd823",
+      "title": "Gestão de Carteiras de Renda Variável II",
+      "description": "<p><span style=\"color: rgba(0,0,0,0.85);background-color: rgb(255,255,255);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\">Ponto principal: Estratégias Ativas e Agnósticas. Foque em Value, Growth e Long and Short. Mais para o final, o tema de análise top-down e bottom-up também costuma ser pedido. Bons estudos!</span></p>",
+      "section": "m2",
+      "sort": 2,
+      "duration": "01:07:46",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CGA-RVREV_Revisão - Gestão de Carteiras de Renda Variável.mp4",
+      "provider_id": "105e449f-902b-43c6-9641-0fda370f25d9",
+      "title": "Revisão - Gestão de Carteiras de Renda Variável",
+      "description": "",
+      "section": "m2",
+      "sort": 3,
+      "duration": "01:06:45",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CGA-AAL_Alocação de Ativos e Rebalanceamento de Carteiras.mp4",
+      "provider_id": "663ebf30-6c50-40b1-a7b0-37b61a779115",
+      "title": "Alocação de Ativos e Rebalanceamento de Carteiras",
+      "description": "",
+      "section": "m2",
+      "sort": 4,
+      "duration": "00:50:14",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CGA-RF1_Gestão de Carteiras de Renda Fixa I (C2).mp4",
+      "provider_id": "a312e00e-e014-4296-bb78-075b8e63d528",
+      "title": "Gestão de Carteiras de Renda Fixa I (C2) Â· Parte 1",
+      "description": "",
+      "section": "m3",
+      "sort": 1,
+      "duration": "00:38:02",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CGA-RF1_Gestão de Carteiras de Renda Fixa I (C2)__2.mp4",
+      "provider_id": "c1b9b967-791e-4c16-9c8a-a010ec85adef",
+      "title": "Gestão de Carteiras de Renda Fixa I (C2) Â· Parte 2",
+      "description": "",
+      "section": "m3",
+      "sort": 2,
+      "duration": "00:15:12",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CGA-RF2_Gestão de Carteiras de Renda Fixa II (C2).mp4",
+      "provider_id": "e6dfd469-c2dd-4440-9df8-6c4f68db2a72",
+      "title": "Gestão de Carteiras de Renda Fixa II (C2)",
+      "description": "<p>Tema com peso relativamente alto na prova e questões de complexidade média e alta. Foque nas estratégias Barbell, Bullet e Ladder, além de convexidade, imunização e nas teorias de formação de curva de juros.</p>",
+      "section": "m3",
+      "sort": 3,
+      "duration": "01:09:48",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CGA-RFREV_Revisão - Gestão de Carteiras de Renda Fixa (C2)__2.mp4",
+      "provider_id": "e24ce98a-535e-4eb5-9bab-04b9d7be9e21",
+      "title": "Revisão - Gestão de Carteiras de Renda Fixa (C2)",
+      "description": "",
+      "section": "m3",
+      "sort": 4,
+      "duration": "00:42:57",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CGA-EXT_Investimentos no Exterior (C3).mp4",
+      "provider_id": "e45b4c38-fad0-469d-901c-0942b4822d06",
+      "title": "Investimentos no Exterior (C3)",
+      "description": "<p><span style=\"color: rgba(0,0,0,0.85);background-color: rgb(255,255,255);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\">Tema considerado fácil no exame CGA. Aproveite para estudar bastante e garantir essas questões na prova!</span></p>",
+      "section": "m4",
+      "sort": 1,
+      "duration": "01:14:10",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CGA-EXTREV_Revisão - Investimentos no Exterior (C3).mp4",
+      "provider_id": "3d079d44-3cf0-4f17-be35-f18c7ab1dc49",
+      "title": "Revisão - Investimentos no Exterior (C3)",
+      "description": "<p>Revisão dos tópicos mais importantes de Investimentos no Exterior.</p>",
+      "section": "m4",
+      "sort": 2,
+      "duration": "00:47:59",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CGA-DES_Avaliação de Desempenho (C4).mp4",
+      "provider_id": "dd3be264-8866-4f62-8edb-b8c2495b133f",
+      "title": "Avaliação de Desempenho (C4)",
+      "description": "",
+      "section": "m5",
+      "sort": 1,
+      "duration": "01:31:21",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CGA-DESREV_Revisão - Avaliação de Desempenho (C4).mp4",
+      "provider_id": "87740df8-9528-4df5-a630-40800626c537",
+      "title": "Revisão - Avaliação de Desempenho (C4)",
+      "description": "",
+      "section": "m5",
+      "sort": 2,
+      "duration": "00:48:03",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CGA-RISK_Gestão de Riscos (C5).mp4",
+      "provider_id": "2bef732f-bcfe-49d9-bc59-e353d0a589ec",
+      "title": "Gestão de Riscos (C5)",
+      "description": "<p>Tema de relevância média para a prova, mas que pode proporicionar pontos relativamente fáceis. Foque na Resolução CMN 4.557, Value at Risk (VaR), VaR de uma carteira de dois ativos, Orçamento de Riscos, CDS e Perda Esperada.</p>",
+      "section": "m6",
+      "sort": 1,
+      "duration": "01:19:10",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CGA-RISKREV_Revisão - Gestão de Riscos (C5).mp4",
+      "provider_id": "6eb85274-c1f4-4d9d-8547-cd7ae70adb89",
+      "title": "Revisão - Gestão de Riscos (C5)",
+      "description": "",
+      "section": "m6",
+      "sort": 2,
+      "duration": "00:57:55",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CGA-175_Fundos de Investimento (Resolução CVM 175).mp4",
+      "provider_id": "10be11bd-62aa-4a71-8c48-70d8db9f0025",
+      "title": "Fundos de Investimento (Resolução CVM 175)",
+      "description": "",
+      "section": "m7",
+      "sort": 1,
+      "duration": "01:07:19",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CGA-FUNDAN1_Fundos de Investimento - Anexo Normativo 1 (C6).mp4",
+      "provider_id": "791fd7b6-36d3-4f06-bd11-d9faa650e9ee",
+      "title": "Fundos de Investimento - Anexo Normativo 1 (C6) Â· Parte 1",
+      "description": "<p>Fundos (Anexo Normativo I da Resolução CVM 175) e tributação. Estude bastante para garantir pontos fáceis na prova!</p>",
+      "section": "m7",
+      "sort": 2,
+      "duration": "00:55:20",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CGA-FUNDAN1_Fundos de Investimento - Anexo Normativo 1 (C6)__2.mp4",
+      "provider_id": "e4457307-5478-4d3f-b2e7-cfc42afaef6d",
+      "title": "Fundos de Investimento - Anexo Normativo 1 (C6) Â· Parte 2",
+      "description": "<p>Fundos (Anexo Normativo I da Resolução CVM 175) e tributação. Estude bastante para garantir pontos fáceis na prova!</p>",
+      "section": "m7",
+      "sort": 3,
+      "duration": "00:14:00",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CGA-FUNDAN1REV_Revisão - Fundos de Investimento - Anexo Normativo 1 (C6).mp4",
+      "provider_id": "7302b4a3-ef72-4dc7-9d0b-20aed7715209",
+      "title": "Revisão - Fundos de Investimento - Anexo Normativo 1 (C6)",
+      "description": "",
+      "section": "m7",
+      "sort": 4,
+      "duration": "00:36:37",
+      "is_free": false
+    },
+    {
+      "source_file": "21_CGA-AGRT_Código Anbima de Administração e Gestão de Recursos de Terceiros.mp4",
+      "provider_id": "eef94567-1172-483e-a661-fa16a42a2f3a",
+      "title": "Código Anbima de Administração e Gestão de Recursos de Terceiros",
+      "description": "<p>Os Códigos Anbima passaram, a partir do final de 2023, a serem constituídos por princípios. As regras mais específicas passaram a constar do documento chamado <strong>Regras e Procedimentos</strong> disponível para download <a href=\"https://www.anbima.com.br/data/files/AA/43/0C/17/5139C8101063E8C8B82BA2A8/1.%20RP%20do%20Codigo%20de%20AGRT_vigente_30.11.23.pdf\" target=\"_self\">aqui.</a></p>\n<p><strong>A prova pode abordar temas da Parte Geral e dos Anexos II a IV.</strong></p>\n<p>Como o documento é muito extenso, detalhamos abaixo os pontos que consideramos mais importantes.</p>\n<p>- Manual de apreçamento - página 20</p>\n<p>- Rateio de ordens para os veículos de investimento - página 31</p>\n<p>- Gestão de risco dos veículos de investimento - página 32</p>\n<p>- Apreçamento - página 57</p>\n<p>- Contratação de terceiros - página 59</p>\n<p>- Obrigações gerais dos prestadores de serviços essenciais - página 79</p>\n<p>- Supervisão baseada em risco para os terceiros contratados - página 88</p>\n<p>- Barreiras aos resgates - página 108</p>\n<p>- Side pockets - página 109</p>\n<p>- Fundos sustentáveis - página 111</p>\n<p>- Responsabilidade do gestor de recursos - página 148</p>\n<p>- Classificação das Classes dos FIFs - página 154</p>",
+      "section": "m7",
+      "sort": 5,
+      "duration": "00:28:32",
+      "is_free": false
+    }
+  ]
+}
