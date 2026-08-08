@@ -21,7 +21,7 @@ class FileController extends Controller
         abort_unless($courseAccess->allows(auth()->user(), $material->course_id), 403);
 
         $fallbackName = Str::ascii($material->file_name);
-        $disposition = ResponseHeaderBag::makeDisposition('attachment', $material->file_name, $fallbackName);
+        $disposition = (new ResponseHeaderBag)->makeDisposition('attachment', $material->file_name, $fallbackName);
 
         return response()->stream(function () use ($material): void {
             $chunkSize = 4 * 1024 * 1024;
