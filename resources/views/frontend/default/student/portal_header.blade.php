@@ -8,7 +8,11 @@
         <div class="pf-portal-header-actions">
             <a class="pf-portal-catalog" href="{{ route('courses') }}">Ver catálogo</a>
             <a class="pf-portal-user" href="{{ route('my.profile') }}">
-                <img src="{{ get_image(auth()->user()->photo) }}" alt="">
+                @if (auth()->user()->photo)
+                    <img src="{{ get_image(auth()->user()->photo) }}" alt="">
+                @else
+                    <span class="pf-portal-avatar-fallback" aria-hidden="true">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
+                @endif
                 <span>{{ auth()->user()->name }}</span>
             </a>
             <form action="{{ route('logout') }}" method="POST">

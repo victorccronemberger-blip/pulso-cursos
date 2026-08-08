@@ -14,7 +14,11 @@
 <aside class="col-lg-3 col-md-4 pf-portal-sidebar-column">
     <nav class="pf-portal-sidebar" aria-label="Navegação da área do aluno">
         <div class="pf-portal-profile">
-            <img src="{{ get_image(auth()->user()->photo) }}" alt="">
+            @if (auth()->user()->photo)
+                <img src="{{ get_image(auth()->user()->photo) }}" alt="">
+            @else
+                <span class="pf-portal-avatar-fallback" aria-hidden="true">{{ mb_strtoupper(mb_substr(auth()->user()->name, 0, 1)) }}</span>
+            @endif
             <div>
                 <strong>{{ auth()->user()->name }}</strong>
                 <span>{{ auth()->user()->email }}</span>
