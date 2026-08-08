@@ -190,7 +190,13 @@
     .pf-portal-brand img { max-width: 110px; }
     .pf-student-app .breadcum-area { padding-top: 22px; }
     .pf-student-app .my-panel { padding: 16px; }
-    .pf-portal-sidebar ul { grid-template-columns: 1fr; }
+    .pf-portal-profile,
+    .pf-portal-secondary-link { display: none; }
+    .pf-portal-sidebar { overflow-x: auto; }
+    .pf-portal-sidebar ul { display: flex; gap: 3px; min-width: max-content; padding: 6px; }
+    .pf-portal-sidebar li { flex: 0 0 auto; }
+    .pf-portal-sidebar li a { padding: 9px 11px; }
+    .pf-portal-sidebar li.active a { box-shadow: inset 0 -2px var(--pf-green); }
     .pf-student-pagehead { align-items: start; flex-direction: column; gap: 7px; padding-top: 22px; }
     .pf-student-pagehead h1 { font-size: 24px; }
     .pf-learning-card { grid-template-columns: 1fr; }
