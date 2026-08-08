@@ -28,10 +28,14 @@ class MyExamController extends Controller
         $quizCatalog = new StudentQuizCatalog((int) auth()->id(), $courseIds);
         $quizCourses = $quizCatalog->courses();
         $activeCourseId = $quizCatalog->resolveCourseId($request->integer('course') ?: null);
-        $activeQuizCourse = $quizCatalog->course(
-            $activeCourseId,
-            $request->filled('search') ? trim((string) $request->search) : null,
-        );
+        $selectedQuizCourse = $quizCourses->firstWhere('id', $activeCourseId);
+        $showActiveCourse = $request->boolean('show') && $activeCourseId !== null;
+        $activeQuizCourse = $showActiveCourse
+            ? $quizCatalog->course(
+                $activeCourseId,
+                $request->filled('search') ? trim((string) $request->search) : null,
+            )
+            : null;
 
         $exams = Exam::with(['course', 'creator', 'mySubmission'])
             ->whereIn('course_id', $courseIds)
@@ -44,13 +48,15 @@ class MyExamController extends Controller
             'courses' => $quizCourses->count(),
             'quizzes' => $quizCourses->sum('quiz_count'),
             'attempted' => $quizCourses->sum('attempted_count'),
-            'active_passed' => $activeQuizCourse['passed_count'] ?? 0,
+            'active_passed' => $activeQuizCourse['passed_count'] ?? null,
         ];
 
         return view('frontend.default.student.my_exam.index', compact(
             'quizCourses',
+            'selectedQuizCourse',
             'activeQuizCourse',
             'activeCourseId',
+            'showActiveCourse',
             'exams',
             'summary',
         ));

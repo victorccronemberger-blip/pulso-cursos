@@ -94,6 +94,10 @@ contagens gerais vêm de uma consulta agregada e a montagem modular fica em
 `App\Support\StudentQuizCatalog`, evitando uma página e uma consulta que crescem
 com todo o catálogo matriculado.
 
+Por padrão, a relação de módulos permanece recolhida. Ela só é consultada e
+renderizada quando o aluno envia `show=1` pelo botão **Exibir simulados**; o
+link **Ocultar simulados** remove esse estado novamente.
+
 Sempre execute o comando com `--dry-run` antes da carga real. O relatório
 precisa terminar com zero arquivos não resolvidos.
 

@@ -22,7 +22,7 @@
                         <div><span>Cursos com prática</span><strong>{{ $summary['courses'] }}</strong></div>
                         <div><span>Simulados no total</span><strong>{{ $summary['quizzes'] }}</strong></div>
                         <div><span>Já realizados</span><strong>{{ $summary['attempted'] }}</strong></div>
-                        <div><span>Aprovados neste curso</span><strong>{{ $summary['active_passed'] }}</strong></div>
+                        <div><span>Aprovados neste curso</span><strong>{{ $summary['active_passed'] ?? '—' }}</strong></div>
                     </section>
 
                     @if ($quizCourses->isNotEmpty())
@@ -33,13 +33,13 @@
                             </div>
 
                             @php
-                                $activeProgress = $activeQuizCourse['quiz_count'] > 0
-                                    ? (int) round(($activeQuizCourse['attempted_count'] / $activeQuizCourse['quiz_count']) * 100)
+                                $activeProgress = $selectedQuizCourse['quiz_count'] > 0
+                                    ? (int) round(($selectedQuizCourse['attempted_count'] / $selectedQuizCourse['quiz_count']) * 100)
                                     : 0;
                             @endphp
                             <form class="pf-course-switcher" action="{{ route('my.exams') }}" method="GET">
                                 <div class="pf-course-switcher-preview">
-                                    <img src="{{ get_image($activeQuizCourse['thumbnail']) }}" alt="">
+                                    <img src="{{ get_image($selectedQuizCourse['thumbnail']) }}" alt="">
                                 </div>
                                 <div class="pf-course-switcher-control">
                                     <label for="assessment-course">Curso em exibição</label>
@@ -51,25 +51,29 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <button type="submit">Carregar</button>
+                                        <button type="submit" name="show" value="1">Exibir simulados <i class="fi fi-rr-angle-small-down" aria-hidden="true"></i></button>
                                     </div>
                                     <small>{{ $quizCourses->count() }} {{ $quizCourses->count() === 1 ? 'curso disponível' : 'cursos disponíveis' }} com simulados</small>
                                 </div>
                                 <div class="pf-course-switcher-progress">
-                                    <div><span>Progresso no curso</span><strong>{{ $activeQuizCourse['attempted_count'] }}/{{ $activeQuizCourse['quiz_count'] }}</strong></div>
+                                    <div><span>Progresso no curso</span><strong>{{ $selectedQuizCourse['attempted_count'] }}/{{ $selectedQuizCourse['quiz_count'] }}</strong></div>
                                     <div class="pf-course-progress-track" aria-label="{{ $activeProgress }}% dos simulados realizados"><span style="width: {{ $activeProgress }}%"></span></div>
                                     <small>{{ $activeProgress }}% realizados</small>
                                 </div>
                             </form>
 
-                            <article class="pf-quiz-course">
+                            @if ($showActiveCourse && $activeQuizCourse)
+                            <article class="pf-quiz-course" id="course-simulations">
                                 <header class="pf-quiz-course-head">
                                     <div class="pf-quiz-course-copy">
                                         <span>Curso selecionado</span>
                                         <h3>{{ $activeQuizCourse['title'] }}</h3>
                                         <p>{{ $activeQuizCourse['modules']->count() }} módulos · {{ $activeQuizCourse['quiz_count'] }} simulados disponíveis</p>
                                     </div>
-                                    <a href="{{ route('course.player', ['slug' => $activeQuizCourse['slug']]) }}" class="pf-quiz-course-link">Abrir curso <i class="fi fi-rr-arrow-small-right"></i></a>
+                                    <div class="pf-quiz-course-actions">
+                                        <a href="{{ route('my.exams', ['course' => $activeCourseId]) }}" class="pf-quiz-course-hide">Ocultar simulados <i class="fi fi-rr-angle-small-up"></i></a>
+                                        <a href="{{ route('course.player', ['slug' => $activeQuizCourse['slug']]) }}" class="pf-quiz-course-link">Abrir curso <i class="fi fi-rr-arrow-small-right"></i></a>
+                                    </div>
                                 </header>
 
                                 <div class="pf-quiz-modules">
@@ -128,6 +132,12 @@
                                     @endforeach
                                 </div>
                             </article>
+                            @else
+                                <div class="pf-course-reveal-hint">
+                                    <i class="fi fi-rr-angle-small-down" aria-hidden="true"></i>
+                                    <p><strong>Os simulados estão recolhidos.</strong> Selecione um curso e clique em “Exibir simulados”.</p>
+                                </div>
+                            @endif
                         </section>
                     @endif
 
@@ -175,12 +185,6 @@
 @push('js')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const courseSwitcher = document.querySelector('[data-course-switcher]');
-        courseSwitcher?.form.classList.add('is-enhanced');
-        courseSwitcher?.addEventListener('change', function () {
-            this.form.requestSubmit();
-        });
-
         document.querySelectorAll('.pf-quiz-module').forEach(function (module) {
             module.addEventListener('toggle', function () {
                 if (!this.open) return;
