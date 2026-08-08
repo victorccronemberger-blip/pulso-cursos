@@ -8,7 +8,7 @@
     <div class="write-review mb-5">
         <form action="{{ route('course.review.update', $id) }}" method="POST">@csrf
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="description">{{ get_phrase('Rate this course : ') }}</p>
+                <p class="description">Avalie este curso</p>
                 <div class="d-flex align-items-center justify-content-end gap-4">
                     <ul class="d-flex gap-1 rating-stars">
                         @for ($i = 1; $i <= 5; $i++)
@@ -17,18 +17,18 @@
                             </li>
                         @endfor
                     </ul>
-                    <span class="gradient" id="remove-stars">{{ get_phrase('Remove all') }}</span>
+                    <span class="gradient" id="remove-stars">Limpar avaliação</span>
                 </div>
             </div>
 
             <input type="hidden" name="rating" value="{{ $review->rating }}">
             <input type="hidden" name="course_id" value="{{ $review->course_id }}">
-            <textarea type="text" name="review" class="form-control mb-3" rows="5" placeholder="{{ get_phrase('Write a reveiw ...') }}"required>{{ $review->review }}</textarea>
-            <input type="submit" class="eBtn gradient border-none w-100" value="{{ get_phrase('Update') }}">
+            <textarea type="text" name="review" class="form-control mb-3" rows="5" placeholder="Escreva sua avaliação" required>{{ $review->review }}</textarea>
+            <input type="submit" class="eBtn gradient border-none w-100" value="Atualizar avaliação">
         </form>
     </div>
 @else
-    <p class="text-center">{{ get_phrase('Data not found.') }}</p>
+    <p class="text-center">Avaliação não encontrada.</p>
 @endif
 
 <!-- Jquery Js -->

@@ -15,7 +15,7 @@
 @endphp
 
 <div class="ps-box p-0 shadow-none">
-    <h4 class="g-title text-dark mb-20">{{ get_phrase('Reviews') }}</h4>
+    <h4 class="g-title text-dark mb-20">Avaliações</h4>
     <div class="review">
 
         @if (!$user_review)
@@ -23,7 +23,7 @@
                 <form action="{{ route('course.review.store') }}" method="POST">@csrf
 
                     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                        <p class="description">{{ get_phrase('Rate this course : ') }}</p>
+                        <p class="description">Avalie este curso</p>
                         <div class="d-flex flex-wrap align-items-center justify-content-end gap-4">
                             <ul class="d-flex gap-1 rating-stars">
                                 @for ($i = 1; $i <= 5; $i++)
@@ -32,14 +32,14 @@
                                     </li>
                                 @endfor
                             </ul>
-                            <span class="gradient" id="remove-stars">{{ get_phrase('Remove all') }}</span>
+                            <span class="gradient" id="remove-stars">Limpar avaliação</span>
                         </div>
                     </div>
 
                     <input type="hidden" name="rating" value="0">
                     <input type="hidden" name="course_id" value="{{ $course_details->id }}">
-                    <textarea type="text" name="review" class="form-control mb-3" rows="5" placeholder="{{ get_phrase('Write a reveiw ...') }}" required></textarea>
-                    <input type="submit" class="eBtn gradient border-none w-100">
+                    <textarea type="text" name="review" class="form-control mb-3" rows="5" placeholder="Escreva sua avaliação" required></textarea>
+                    <input type="submit" class="eBtn gradient border-none w-100" value="Enviar avaliação">
                 </form>
             </div>
         @endif
@@ -72,11 +72,11 @@
                                 @endphp
                                 @if (auth()->user()->id == $review->user_id)
                                     <div class="d-flex align-items-center gap-3">
-                                        <a onclick="ajaxModal('{{ route('modal', ['frontend.default.course.review_edit', 'id' => $review]) }}', '{{ get_phrase('Add new category') }}')" class="" href="javascript: void(0);">{{ get_phrase('Edit') }}</a>
-                                        <a onclick="confirmModal('{{ route('course.review.delete', $review->id) }}')" class="@isset($status->disliked) active @endisset" data-bs-toggle="tooltip" title="{{ get_phrase('Delete') }}" href="javascript: void(0);">{{ get_phrase('Delete') }}</a>
+                                        <a onclick="ajaxModal('{{ route('modal', ['frontend.default.course.review_edit', 'id' => $review]) }}', 'Editar avaliação')" class="" href="javascript: void(0);">Editar</a>
+                                        <a onclick="confirmModal('{{ route('course.review.delete', $review->id) }}')" class="@isset($status->disliked) active @endisset" data-bs-toggle="tooltip" title="Excluir" href="javascript: void(0);">Excluir</a>
                                     </div>
                                 @elseif (auth()->user()->role == 'admin')
-                                    <a onclick="confirmModal('{{ route('course.review.delete', $review->id) }}')" class="@isset($status->disliked) active @endisset" data-bs-toggle="tooltip" title="{{ get_phrase('Delete') }}" href="javascript: void(0);">{{ get_phrase('Delete') }}</a>
+                                    <a onclick="confirmModal('{{ route('course.review.delete', $review->id) }}')" class="@isset($status->disliked) active @endisset" data-bs-toggle="tooltip" title="Excluir" href="javascript: void(0);">Excluir</a>
                                 @endif
 
                             @endauth
@@ -117,7 +117,7 @@
         </div>
         @if ($reviews->count() > 6)
             <a href="javascript: void(0);" class="see-more d-inline-block mt-4" id="see-more">
-                {{ get_phrase('See More') }}<i class="fa-solid fa-angle-right me-2"></i>
+                Ver mais<i class="fa-solid fa-angle-right me-2"></i>
             </a>
         @endif
     </div>

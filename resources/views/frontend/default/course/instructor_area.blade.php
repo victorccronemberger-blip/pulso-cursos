@@ -4,7 +4,7 @@
 
 @foreach ($instructors as $instructor)
     <div class="ps-box p-0 shadow-none eInstructor">
-        <h4 class="g-title text-dark mb-20">{{ get_phrase('Instructor') }}</h4>
+        <h4 class="g-title text-dark mb-20">Instrutor</h4>
         <div class="istructor-info">
             <div class="ins-left">
                 <img src="{{ get_image($instructor->photo) }}" alt="...">
@@ -49,6 +49,6 @@
         <p class="description mt-20 mb-5">
             {{ ucfirst($instructor->about) }}
         </p>
-        <a href="{{ route('instructor.details', ['name' => slugify($instructor->name), 'id' => $instructor->id]) }}" class="eBtn gradient">{{ get_phrase('View Details') }}</a>
+        <a href="{{ route('instructor.details', ['name' => slugify($instructor->name), 'id' => $instructor->id]) }}" class="eBtn gradient">Ver perfil</a>
     </div>
 @endforeach

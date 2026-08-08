@@ -1,5 +1,5 @@
 <div class="ps-box p-0 shadow-none">
-    <h4 class="g-title text-dark mb-15">{{ get_phrase('Course curriculum') }}</h4>
+    <h4 class="g-title text-dark mb-15">Conteúdo do curso</h4>
     <div class="lesson-play-list p-0">
         @if ($sections->count() > 0)
             <div class="accordion" id="accordionExample">
@@ -51,7 +51,7 @@
                 @endforeach
             </div>
         @else
-            <p class="text-center">{{ get_phrase('Course curriculum Empty') }}</p>
+            <p class="text-center">O conteúdo deste curso ainda não está disponível.</p>
         @endif
     </div>
 </div>
