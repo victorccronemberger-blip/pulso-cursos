@@ -16,16 +16,40 @@ class MyProfileController extends Controller
 {
     public function index()
     {
-        $page_data['user_details'] = User::find(auth()->user()->id);
+        $user = User::findOrFail(auth()->id());
+        $fullName = trim((string) $user->name);
+        $lastName = trim((string) $user->last_name);
+        $firstName = $fullName;
+
+        if ($lastName !== '' && Str::endsWith($fullName, ' ' . $lastName)) {
+            $firstName = trim(Str::beforeLast($fullName, ' ' . $lastName));
+        } elseif ($lastName === '' && $fullName !== '') {
+            $nameParts = preg_split('/\s+/', $fullName, 2);
+            $firstName = $nameParts[0];
+            $lastName = $nameParts[1] ?? '';
+        }
+
+        $page_data['user_details'] = $user;
+        $page_data['first_name'] = $firstName;
+        $page_data['last_name'] = $lastName;
         $view_path                 = 'frontend.' . get_frontend_settings('theme') . '.student.my_profile.index';
         return view($view_path, $page_data);
     }
 
     public function update(Request $request, $user_id)
     {
+        abort_unless((int) $user_id === (int) auth()->id(), 403);
+
+        $linkedin = trim((string) $request->input('linkedin'));
+        if ($linkedin !== '' && !Str::startsWith($linkedin, ['http://', 'https://'])) {
+            $request->merge(['linkedin' => 'https://' . $linkedin]);
+        }
+
         $rules = [
-            'name'  => 'required',
-            'email' => 'required|email|unique:users,email,' . $user_id,
+            'name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:120',
+            'phone' => 'nullable|string|max:30',
+            'linkedin' => 'nullable|url|max:255',
         ];
         $validator = Validator::make($request->all(), $rules);
 
@@ -33,18 +57,17 @@ class MyProfileController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data['name']      = $request->name;
-        $data['email']     = $request->email;
-        $data['phone']     = $request->phone;
-        $data['website']   = $request->website;
-        $data['facebook']  = $request->facebook;
-        $data['twitter']   = $request->twitter;
-        $data['linkedin']  = $request->linkedin;
-        $data['skills']    = $request->skills;
-        $data['biography'] = $request->biography;
+        $firstName = trim((string) $request->name);
+        $lastName = trim((string) $request->last_name);
+        $data = [
+            'name' => trim($firstName . ' ' . $lastName),
+            'last_name' => $lastName,
+            'phone' => trim((string) $request->phone) ?: null,
+            'linkedin' => trim((string) $request->linkedin) ?: null,
+        ];
 
-        User::where('id', $user_id)->update($data);
-        Session::flash('success', get_phrase('Profile updated successfully.'));
+        User::where('id', auth()->id())->update($data);
+        Session::flash('success', 'Perfil atualizado com sucesso.');
         return redirect()->back();
     }
 

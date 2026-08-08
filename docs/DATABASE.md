@@ -12,7 +12,7 @@ Modelos Eloquent correspondentes em `app/Models/`.
 
 | Tabela | Modelo | Observações |
 | ------ | ------ | ----------- |
-| `users` | `User` | Campo `role` = `admin` / `instructor` / `student` |
+| `users` | `User` | Campo `role` = `admin` / `instructor` / `student`; identificação inclui `last_name` e `cpf` (CPF protegido no perfil do aluno) |
 | `personal_access_tokens` | — | Tokens do Sanctum (API mobile) |
 | `password_reset_tokens` | — | Reset de senha |
 | `permissions` | `Permission` | Permissões/roles |

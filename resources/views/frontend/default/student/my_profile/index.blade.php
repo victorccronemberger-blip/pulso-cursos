@@ -1,125 +1,103 @@
 @extends('layouts.default')
-@push('title', get_phrase('My profile'))
+@push('title', 'Meu perfil')
 @push('meta')@endpush
 @push('css')@endpush
+
 @section('content')
+@php
+    $cpfDigits = preg_replace('/\D+/', '', (string) $user_details->cpf);
+    $cpfDisplay = strlen($cpfDigits) === 11
+        ? preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpfDigits)
+        : ((string) $user_details->cpf ?: 'Não cadastrado');
+@endphp
 
 @include('frontend.default.student.page_header', [
     'title' => 'Meu perfil',
     'current' => 'Meu perfil',
-    'description' => 'Mantenha seus dados e sua senha atualizados.',
+    'description' => 'Consulte seus dados de identificação e mantenha seus contatos atualizados.',
 ])
 
-<!-------------- List Item Start   --------------->
 <div class="eNtery-item">
     <div class="container">
         <div class="row">
             @include('frontend.default.student.left_sidebar')
 
             <div class="col-lg-9 col-md-8">
-
-                <!-- Personal Information -->
-                <div class="my-panel message-panel edit_profile pf-form-panel mb-4">
+                <section class="my-panel message-panel edit_profile pf-form-panel pf-profile-panel mb-4" aria-labelledby="profile-data-title">
                     <div class="pf-panel-intro">
-                        <h2>Dados pessoais</h2>
-                        <p>Atualize as informações usadas na sua conta e na comunicação com a equipe acadêmica.</p>
+                        <h2 id="profile-data-title">Dados cadastrais</h2>
+                        <p>As informações protegidas identificam sua conta. Os demais dados podem ser atualizados quando necessário.</p>
                     </div>
-                    <form action="{{ route('update.profile', $user_details->id) }}" method="POST">@csrf
+
+                    <div class="pf-identity-grid" aria-label="Dados protegidos da conta">
+                        <div class="pf-readonly-field">
+                            <div class="pf-readonly-label"><span>E-mail</span><strong>Protegido</strong></div>
+                            <p>{{ $user_details->email ?: 'Não cadastrado' }}</p>
+                            <small>Usado para acesso e comunicações da plataforma.</small>
+                        </div>
+                        <div class="pf-readonly-field">
+                            <div class="pf-readonly-label"><span>CPF</span><strong>Protegido</strong></div>
+                            <p>{{ $cpfDisplay }}</p>
+                            <small>Alterações exigem validação da equipe de suporte.</small>
+                        </div>
+                    </div>
+
+                    <div class="pf-profile-editable-head">
+                        <h3>Informações editáveis</h3>
+                        <p>Esses dados aparecem no atendimento e nas comunicações sobre seus cursos.</p>
+                    </div>
+
+                    <form action="{{ route('update.profile', $user_details->id) }}" method="POST">
+                        @csrf
                         <div class="row">
-                            <div class="col-lg-12 mb-20">
+                            <div class="col-lg-6 mb-20">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">{{ get_phrase('Full Name') }}</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $user_details->name }}" id="name">
+                                    <label for="name" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" name="name" value="{{ old('name', $first_name) }}" id="name" autocomplete="given-name" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 mb-20">
                                 <div class="form-group">
-                                    <label for="email" class="form-label">{{ get_phrase('Email Address') }}</label>
-                                    <input type="email" class="form-control" name="email" value="{{ $user_details->email }}" id="email">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-20">
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">{{ get_phrase('Phone Number') }}</label>
-                                    <input type="tel" class="form-control" name="phone" value="{{ $user_details->phone }}" id="phone">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-20">
-                                <div class="form-group">
-                                    <label for="website" class="form-label">{{ get_phrase('Website') }}</label>
-                                    <input type="text" class="form-control" name="website" value="{{ $user_details->website }}" id="website">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-20">
-                                <div class="form-group">
-                                    <label for="facebook" class="form-label">{{ get_phrase('Facebook') }}</label>
-                                    <input type="text" class="form-control" name="facebook" value="{{ $user_details->facebook }}" id="facebook">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-20">
-                                <div class="form-group">
-                                    <label for="twitter" class="form-label">{{ get_phrase('Twitter') }}</label>
-                                    <input type="text" class="form-control" name="twitter" value="{{ $user_details->twitter }}" id="twitter">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mb-20">
-                                <div class="form-group">
-                                    <label for="linkedin" class="form-label">{{ get_phrase('Linkedin') }}</label>
-                                    <input type="text" class="form-control" name="linkedin" value="{{ $user_details->linkedin }}" id="linkedin">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="skills" class="form-label">{{ get_phrase('Skills') }}</label>
-                                    <input type="text" class="form-control tagify" name="skills" data-role="tagsinput" value="{{ $user_details->skills }}" id="skills">
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label for="biography" class="form-label">{{ get_phrase('Biography') }}</label>
-                                    <textarea name="biography" class="form-control" id="biography" cols="30" rows="5">{{ $user_details->biography }}</textarea>
+                                    <label for="last_name" class="form-label">Sobrenome</label>
+                                    <input type="text" class="form-control" name="last_name" value="{{ old('last_name', $last_name) }}" id="last_name" autocomplete="family-name" required>
                                 </div>
                             </div>
                         </div>
-                        <button class="eBtn btn gradient mt-10">{{ get_phrase('Save Changes') }}</button>
+                        <div class="row">
+                            <div class="col-lg-6 mb-20">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Número de celular</label>
+                                    <input type="tel" class="form-control" name="phone" value="{{ old('phone', $user_details->phone) }}" id="phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mb-20">
+                                <div class="form-group">
+                                    <label for="linkedin" class="form-label">LinkedIn</label>
+                                    <input type="url" class="form-control" name="linkedin" value="{{ old('linkedin', $user_details->linkedin) }}" id="linkedin" autocomplete="url" placeholder="linkedin.com/in/seu-perfil">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="eBtn btn gradient mt-10" type="submit">Salvar alterações</button>
                     </form>
-                </div>
+                </section>
 
-                <!-- Change Password -->
-                <div class="my-panel message-panel edit_profile pf-form-panel pf-security-panel">
+                <section class="my-panel message-panel edit_profile pf-form-panel pf-security-panel" aria-labelledby="security-title">
                     <div class="pf-panel-intro">
-                        <h2>Segurança da conta</h2>
+                        <h2 id="security-title">Segurança da conta</h2>
                         <p>Use uma senha exclusiva para proteger seus cursos, certificados e dados pessoais.</p>
                     </div>
-                    <form action="{{ route('password.change') }}" method="POST">@csrf
+                    <form action="{{ route('password.change') }}" method="POST">
+                        @csrf
                         <div class="row">
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label class="form-label">{{ get_phrase('Current password') }}</label>
-                                    <input type="password" class="form-control" name="current_password" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label class="form-label">{{ get_phrase('New password') }}</label>
-                                    <input type="password" class="form-control" name="new_password" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-20">
-                                <div class="form-group">
-                                    <label class="form-label">{{ get_phrase('Confirm password') }}</label>
-                                    <input type="password" class="form-control" name="confirm_password" required>
-                                </div>
-                            </div>
+                            <div class="col-lg-12 mb-20"><label class="form-label" for="current_password">Senha atual</label><input type="password" class="form-control" id="current_password" name="current_password" autocomplete="current-password" required></div>
+                            <div class="col-lg-12 mb-20"><label class="form-label" for="new_password">Nova senha</label><input type="password" class="form-control" id="new_password" name="new_password" autocomplete="new-password" required></div>
+                            <div class="col-lg-12 mb-20"><label class="form-label" for="confirm_password">Confirmar nova senha</label><input type="password" class="form-control" id="confirm_password" name="confirm_password" autocomplete="new-password" required></div>
                         </div>
-                        <button class="eBtn btn gradient mt-10">{{ get_phrase('Update password') }}</button>
+                        <button class="eBtn btn gradient mt-10" type="submit">Atualizar senha</button>
                     </form>
-                </div>
-
+                </section>
             </div>
         </div>
     </div>
 </div>
-<!-------------- List Item End  --------------->
-
 @endsection
