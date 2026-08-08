@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-cge-certificacao-gestores-anbima-fundos-estruturados"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m9",
+    "section_overrides": {
+      "CGETAB": "m8",
+      "CGEREVS1": "m9",
+      "CGEREVS2": "m9",
+      "CGESIM1": "m9",
+      "CGESIM2": "m9",
+      "CGESIM3": "m9",
+      "CGESIM4": "m9",
+      "CGESIM5": "m9",
+      "CGESIM6": "m9",
+      "CGESIM7": "m9",
+      "QMAISCAIRAMCGEIMOB": "m2",
+      "QMAISCAIRAMCGEPE": "m3",
+      "QMAISCAIRAMCGESEC": "m4",
+      "QMAISCAIRAMCGEIND": "m5",
+      "QMAISCAIRAMCGEINVEXT": "m6",
+      "QMAISCAIRAMCGEAVAL": "m7",
+      "QMAISCAIRAMCGERISK": "m7",
+      "QMAISCAIRAMCGEFIAGRO": "m8",
+      "QMAISCAIRAMCGELEG": "m8",
+      "CGEQUESTOESTREINAR": "m9"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Introdução ao CGE",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Investimentos imobiliários",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Private equity",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Securitização de recebíveis",
+      "sort": 4
+    },
+    {
+      "key": "m5",
+      "title": "Módulo 5 · Fundos de índice",
+      "sort": 5
+    },
+    {
+      "key": "m6",
+      "title": "Módulo 6 · Investimentos no exterior",
+      "sort": 6
+    },
+    {
+      "key": "m7",
+      "title": "Módulo 7 · Desempenho e gestão de riscos",
+      "sort": 7
+    },
+    {
+      "key": "m8",
+      "title": "Módulo 8 · Fundos, FIAGRO e código de gestão",
+      "sort": 8
+    },
+    {
+      "key": "m9",
+      "title": "Módulo 9 · Revisões e simulados",
+      "sort": 9
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CGE-INTRO2026_Introdução CGE.mp4",
+      "provider_id": "f2809919-4c2c-43cb-ad8c-25da8cd6aa79",
+      "title": "Introdução CGE",
+      "description": "<p>Bem-vindo ao curso preparatório para o exame CGE da Academia Rafael Toro!</p>\n<p>Acesse: <br>Grupo de WhatsApp <a href=\"https://chat.whatsapp.com/KxBKlgzerWDFofetuWHsVx?mode=gi_t\" target=\"_self\">Aqui.</a></p>\n<p>Grupo do Telegram <a href=\"https://t.me/+H1w7sQN7RXZmODUx\" target=\"_blank\">Aqui.</a> <br>Calendário das aulas do curso <a href=\"https://drive.google.com/file/d/1Cz28t5vvH4CYm8XuAT-olJWRes9pASXK/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Baixe os Exercícios Totais (caderno de exercícios) CGE <a href=\"https://drive.google.com/file/d/1Bv5Gkm2WeFiGA_PkE8jqU3egPJ1wqMOX/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Apostila CGE <a href=\"https://drive.google.com/file/d/16NTfQ5k7zOyaqYFPqMlVu7BHYhniK2MS/view?usp=sharing\" target=\"_self\">Aqui.</a><br>Baixe os Simulados CGE <a href=\"https://drive.google.com/file/d/1HjE5ruDP-Y20kizpTXsYY1wMd7AbViri/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Questões que Mais Caíram na Prova da CGE <a href=\"https://drive.google.com/file/d/14IUaVpmSeAA1JiaiMpvR0xbN3SWA059h/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Acesse a Lista de Fórmulas oficial do exame (será disponibilizada no dia da prova) <a href=\"https://drive.google.com/file/d/19wH9dW5khB5Ik6LVzAPjmlFDVUZNxDmE/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Acesse o arquivo com a Lista Complementar de Fórmulas (não será disponibilizada no dia da prova) <a href=\"https://drive.google.com/file/d/1P-MfE0qDXC8J0KTcYr2kYwQh8gQAL63G/view?usp=sharing\" target=\"_self\">Aqui.</a></p>",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:29:13",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CGE-IMOB_Investimentos Imobiliários (C1).mp4",
+      "provider_id": "e5d748e7-814c-449a-bd80-a78f9d5c6450",
+      "title": "Investimentos Imobiliários (C1)",
+      "description": "",
+      "section": "m2",
+      "sort": 1,
+      "duration": "01:18:18",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CGE-IMOBREV_Revisão - Investimentos Imobiliários (C1).mp4",
+      "provider_id": "90f1695c-1c7a-4962-b1ed-b2f619efdb0d",
+      "title": "Revisão - Investimentos Imobiliários (C1)",
+      "description": "",
+      "section": "m2",
+      "sort": 2,
+      "duration": "00:41:46",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CGE-PE_Private Equity (C2).mp4",
+      "provider_id": "b12ceed4-9ed4-4acd-8df5-0f96cda4d326",
+      "title": "Private Equity (C2)",
+      "description": "",
+      "section": "m3",
+      "sort": 1,
+      "duration": "01:18:15",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CGE-PEREV_Revisão - Private Equity (C2).mp4",
+      "provider_id": "cd502efe-1b69-4964-9279-12b580542340",
+      "title": "Revisão - Private Equity (C2)",
+      "description": "",
+      "section": "m3",
+      "sort": 2,
+      "duration": "00:39:42",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CGE-SEC_Securitização de Recebíveis.mp4",
+      "provider_id": "baba9582-8c4f-4469-a1eb-206bd41d62e5",
+      "title": "Securitização de Recebíveis",
+      "description": "",
+      "section": "m4",
+      "sort": 1,
+      "duration": "01:12:49",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CGE-SECREV_Revisão - Securitização de Recebíveis (C3).mp4",
+      "provider_id": "9cab22e2-656a-47f3-ad86-47ecc8181266",
+      "title": "Revisão - Securitização de Recebíveis (C3)",
+      "description": "",
+      "section": "m4",
+      "sort": 2,
+      "duration": "00:37:11",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CGE-IND_Fundo de Índice (C4).mp4",
+      "provider_id": "d3b69b7e-a3df-480c-bd72-d58b079be783",
+      "title": "Fundo de Índice (C4)",
+      "description": "",
+      "section": "m5",
+      "sort": 1,
+      "duration": "01:21:18",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CGE-INDREV_Fundo de Índice - Revisão (C4).mp4",
+      "provider_id": "c7d8d8e9-d466-47b2-8b77-e0564a276d27",
+      "title": "Fundo de Índice - Revisão (C4)",
+      "description": "",
+      "section": "m5",
+      "sort": 2,
+      "duration": "00:50:11",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CGE-INVEXT_Investimentos no Exterior (C5).mp4",
+      "provider_id": "49db1e8a-0aeb-41d2-8361-63d4edff50e1",
+      "title": "Investimentos no Exterior (C5)",
+      "description": "",
+      "section": "m6",
+      "sort": 1,
+      "duration": "00:59:53",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CGE-INVEXTREV_Revisão - Investimentos no Exterior (C5).mp4",
+      "provider_id": "f7a70141-e42f-4e49-829a-6906d6713a01",
+      "title": "Revisão - Investimentos no Exterior (C5)",
+      "description": "",
+      "section": "m6",
+      "sort": 2,
+      "duration": "00:35:45",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CGE-AVAL_Avaliação de Desempenho e Gestão de Riscos (C6).mp4",
+      "provider_id": "bf295226-ca8a-4178-a7f5-59412fd38e8e",
+      "title": "Avaliação de Desempenho e Gestão de Riscos (C6)",
+      "description": "",
+      "section": "m7",
+      "sort": 1,
+      "duration": "01:13:14",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CGE-AVALREV_Revisão - Avaliação de Desempenho e Gestão de Riscos (C6).mp4",
+      "provider_id": "e1c7f09a-ab86-447c-b75e-1d35ca710289",
+      "title": "Revisão - Avaliação de Desempenho e Gestão de Riscos (C6)",
+      "description": "",
+      "section": "m7",
+      "sort": 2,
+      "duration": "00:32:02",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CGE-175_Fundos de Investimento (Resolução CVM 175).mp4",
+      "provider_id": "02ee9cf6-0d4f-4205-877c-65ca32aca696",
+      "title": "Fundos de Investimento (Resolução CVM 175)",
+      "description": "",
+      "section": "m8",
+      "sort": 1,
+      "duration": "01:07:19",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CGE-AGRT_Código Anbima de Administração e Gestão de Recursos de Terceiros.mp4",
+      "provider_id": "f50a044c-bc84-463a-94e3-538921cbbc50",
+      "title": "Código Anbima de Administração e Gestão de Recursos de Terceiros",
+      "description": "<p>Os Códigos Anbima passaram, a partir do final de 2023, a serem constituídos por princípios. As regras mais específicas passaram a constar do documento chamado <strong>Regras e Procedimentos</strong> disponível para download <a href=\"https://www.anbima.com.br/data/files/AA/43/0C/17/5139C8101063E8C8B82BA2A8/1.%20RP%20do%20Codigo%20de%20AGRT_vigente_30.11.23.pdf\" target=\"_self\">aqui.</a></p>\n<p><strong>A prova pode abordar temas da Parte Geral e dos Anexos IV a VIII.</strong></p>\n<p>Como o documento é muito extenso, detalhamos abaixo os pontos que consideramos mais importantes.</p>\n<p>- Manual de apreçamento - página 20;</p>\n<p>- Rateio de ordens para os veículos de investimento - página 31;</p>\n<p>- Gestão de risco dos veículos de investimento - página 32;</p>\n<p>- Limites de Investimento das Classes - página 138;</p>\n<p>- Responsabilidade do Administrador Fiduciário - página 145;</p>\n<p>- Responsabilidade do Gestor de Recursos - página 148;</p>\n<p>- Contratação de Terceiros - página 189;</p>\n<p>- Provisão de Perdas dos Direitos Creditórios - página 196;</p>\n<p>- Apreçamento dos Ativos Imobiliários - página 235;</p>\n<p>- Contratação de Terceiros (FIP) - página 251; e</p>\n<p>- Limites de Investimento das Classes - página 251</p>",
+      "section": "m8",
+      "sort": 2,
+      "duration": "00:28:32",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CGE-FIAGRO_FIAGRO.mp4",
+      "provider_id": "db91fbf8-c0f5-4073-9467-bd5c28b0a226",
+      "title": "FIAGRO",
+      "description": "",
+      "section": "m8",
+      "sort": 3,
+      "duration": "00:43:10",
+      "is_free": false
+    }
+  ]
+}

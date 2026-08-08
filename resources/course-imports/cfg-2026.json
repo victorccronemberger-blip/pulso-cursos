@@ -1,0 +1,421 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-cfg-fundamentos-gestao-risco"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m11",
+    "section_overrides": {
+      "CFGREV1": "m11",
+      "CFGREV2": "m11",
+      "CFGREV3": "m11",
+      "CFGREV4": "m11",
+      "CFGSIM1": "m11",
+      "CFGSIM2": "m11",
+      "CFGSIM3": "m11",
+      "CFGSIM4": "m11",
+      "CFGSIM5": "m11",
+      "CFGSIM6": "m11",
+      "QMAISCAIRAMCFGMQ": "m2",
+      "QMAISCAIRAMCFGECO": "m3",
+      "QMAISCAIRAMCFGCONT": "m4",
+      "QMAISCAIRAMCFGCORP": "m4",
+      "QMAISCAIRAMCFGMERC": "m5",
+      "QMAISCAIRAMCFGCART": "m6",
+      "QMAISCAIRAMCFGFINCOMP": "m7",
+      "QMAISCAIRAMCFGIPS": "m6",
+      "QMAISCAIRAMCFGAAL": "m6",
+      "QMAISCAIRAMCFGNTEC": "m10",
+      "QMAISCAIRAMCFGREG": "m10",
+      "QMAISCAIRAMCFGLEG": "m10",
+      "CFGEXTRA2026": "m11"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Boas-vindas e estratégia de prova",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Métodos quantitativos",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Macroeconomia e microeconomia",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Gestão financeira e análise de projetos",
+      "sort": 4
+    },
+    {
+      "key": "m5",
+      "title": "Módulo 5 · Mercados e instrumentos financeiros",
+      "sort": 5
+    },
+    {
+      "key": "m6",
+      "title": "Módulo 6 · Carteiras e política de investimentos",
+      "sort": 6
+    },
+    {
+      "key": "m7",
+      "title": "Módulo 7 · Finanças comportamentais e SFN",
+      "sort": 7
+    },
+    {
+      "key": "m8",
+      "title": "Módulo 8 · Fundos de investimento",
+      "sort": 8
+    },
+    {
+      "key": "m9",
+      "title": "Módulo 9 · ASG",
+      "sort": 9
+    },
+    {
+      "key": "m10",
+      "title": "Módulo 10 · Regulação, códigos e inovação",
+      "sort": 10
+    },
+    {
+      "key": "m11",
+      "title": "Módulo 11 · Revisões e simulados",
+      "sort": 11
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CFG-INTRO_ASSISTA!! Rumo à aprovação!.mp4",
+      "provider_id": "58c64e0e-3289-4834-9fd7-94f4a040cdf6",
+      "title": "ASSISTA!! Rumo à aprovação!",
+      "description": "<p>Bem-vindo ao curso preparatório do CFG! Assista ao vídeo introdutório para saber mais sobre o curso e sobre a certificação. Bons estudos!</p>\n<p>Acesse: Calendário das aulas do curso <a href=\"https://drive.google.com/file/d/1f2EUowMzlCLIFaySKUnRCNaAHq13MhxC/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Acesse: A Apostila para o CFG <a href=\"https://drive.google.com/file/d/1tBLLXjxYJYmx0EJiOD965u8K53mIq-Ho/view?usp=sharing\" target=\"_blank\">Aqui</a> .</p>\n<p>Acesse: Os Simulados para o CFG <a href=\"https://drive.google.com/file/d/1p06M0SItNdUKAH55EXE1pmKpWtrZnw0n/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Acesse: Exercícios Totais (caderno de exercícios) <a href=\"https://drive.google.com/file/d/1h6fn6g2Cc-DgLrObIscZzJuPMmjxGQb9/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Acesse: As Questões que Mais Caíram na prova CFG <a href=\"https://drive.google.com/file/d/1m97GyjW_oXJdgf5Nyj8CBu73spY_vxZu/view?usp=sharing\" target=\"_self\">Aqui</a>.</p>\n<p>Acesse: Grupo do WhatsApp <a href=\"https://chat.whatsapp.com/LPtz3gazJJ3KJbt4EUEZ9s\" target=\"_self\">Aqui</a> .</p>\n<p>Acesse: Grupo do Telegram <a href=\"https://t.me/+SvMFGFnM3u1iZTE5\" target=\"_self\">Aqui</a> .</p>\n<p>Lista de Fórmulas (será fornecida no exame) <a href=\"https://drive.google.com/file/d/19wH9dW5khB5Ik6LVzAPjmlFDVUZNxDmE/view?usp=sharing\" target=\"_self\">Aqui.</a></p>\n<p>Lista de Fórmulas Complementares (NÃO será fornecida no exame) <a href=\"https://drive.google.com/file/d/1N_YXrNFzaa92d86ne5VGTl4WXpIEu9-x/view?usp=sharing\" target=\"_self\">Aqui.</a></p>",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:31:32",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CFG-MQ1_Métodos Quantitativos 1 (C1).mp4",
+      "provider_id": "80f7f792-9d4d-499a-8af2-7570ea5d6224",
+      "title": "Métodos Quantitativos 1 (C1)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Tributação RF e RV</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: Arial;\">Considerando as 2 aulas de Métodos Quantitativos, você deve enfrentar 6 questões no exame.</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: Arial;\"><strong>Principais pontos</strong></span></p>\n<p><span style=\"font-family: Arial;\">- Medidas de Posição Central (média, mediana, moda)</span></p>\n<p><span style=\"font-family: Arial;\">- Variância e Desvio Padrão - entendimento conceitual e prático (cálculos)</span></p>\n<p><span style=\"font-family: Arial;\">- Covariância e Coeficiente de Correlação - entendimento conceitual e prático (cálculos), principalmente da equação do Coeficiente de Correlação a partir da Covariância</span></p>\n<p></p>",
+      "section": "m2",
+      "sort": 1,
+      "duration": "01:02:23",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CFG-MQ2_Métodos Quantitativos 2 (C1).mp4",
+      "provider_id": "39b1126f-b907-4128-9d27-1b395b260e3f",
+      "title": "Métodos Quantitativos 2 (C1)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Renda Fixa</span></p>\n<p><span style=\"font-family: Arial;\">Considerando as 2 aulas de Métodos Quantitativos, você deve enfrentar 6 questões no exame.</span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos</strong></span></p>\n<p><span style=\"font-family: Arial;\">- Curva Normal e Intervalo de Confiança</span></p>\n<p><span style=\"font-family: Arial;\">- Risco e Retorno Esperado</span></p>\n<p><span style=\"font-family: Arial;\">- Regressão Linear Simples e Regressão Múltipla - entendimento conceitual, incluindo Coeficiente de Determinação (R2)</span></p>\n<p><span style=\"font-family: Arial;\">- Teste de Hipóteses</span></p>",
+      "section": "m2",
+      "sort": 2,
+      "duration": "00:57:51",
+      "is_free": false
+    },
+    {
+      "source_file": "27_CFG-REVASGMQ_Revisão ASG & Métodos Quantiativos.mp4",
+      "provider_id": "c9038721-6eed-4081-a043-628e85f9912a",
+      "title": "Revisão ASG & Métodos Quantiativos Â· Parte 1",
+      "description": "",
+      "section": "m2",
+      "sort": 3,
+      "duration": "00:28:45",
+      "is_free": false
+    },
+    {
+      "source_file": "27_CFG-REVASGMQ_Revisão ASG & Métodos Quantiativos__2.mp4",
+      "provider_id": "185432d7-be03-4308-b2f3-0ba688d01a1c",
+      "title": "Revisão ASG & Métodos Quantiativos Â· Parte 2",
+      "description": "",
+      "section": "m2",
+      "sort": 4,
+      "duration": "00:27:12",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CFG-ECO_Macroeconomia (C2).mp4",
+      "provider_id": "dbf285df-3d80-4918-95ca-a00499ca434b",
+      "title": "Macroeconomia (C2)",
+      "description": "<p><strong>Áudio</strong>: Sistema Financeiro Nacional</p>\n<p>Geralmente são cobradas 1 ou 2 questões no exame.</p>\n<p><strong>Principais pontos</strong></p>\n<p>- PIB, Selic Meta e Over, Taxa DI, Ptax, IPCA e IGP-M e TLP;</p>\n<p>- Política Monetária, Fiscal e Cambial</p>\n<p><strong>Novidades: Curva de Phillips, Curva de</strong> <strong>Laffer, Efeito</strong> <strong>Crowding Out</strong></p>\n<p><strong>Importante</strong>: Balança de Pagamentos – quando um país emite um título no exterior, em qual conta do balanço entram os recursos da captação e por qual conta saem os valores para pagamento dos cupons.</p>",
+      "section": "m3",
+      "sort": 1,
+      "duration": "01:13:39",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CFG-MICRO_Microeconomia (C2).mp4",
+      "provider_id": "a3fa5db0-690e-4926-9b5e-388b6a3c9910",
+      "title": "Microeconomia (C2)",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\"><strong>Áudio</strong>: Finanças Comportamentais</span></p>\n<p><span style=\"color: rgba(0,0,0,0.85);background-color: rgb(255,255,255);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\">Geralmente 2 questões na prova.</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\"><strong>Principais pontos</strong>:</span>&nbsp;</p>\n<p>- Estruturas de Mercado (Competição Perfeita, Competição Monopolística e Monopólio);</p>\n<p>- Saiba resolver as equações de demanda e oferta;&nbsp;</p>\n<p>- Lembre-se da maximização do lucro (Receita Marginal = Custo Marginal); e&nbsp;</p>\n<p>- Estude elasticidade!</p>",
+      "section": "m3",
+      "sort": 2,
+      "duration": "01:06:53",
+      "is_free": false
+    },
+    {
+      "source_file": "26_CFG-REVECO_Revisão Macro & Microeconomia.mp4",
+      "provider_id": "f9bd04e1-9f88-43bd-b8e2-44a0d30eb623",
+      "title": "Revisão Macro & Microeconomia Â· Parte 1",
+      "description": "",
+      "section": "m3",
+      "sort": 3,
+      "duration": "00:41:54",
+      "is_free": false
+    },
+    {
+      "source_file": "26_CFG-REVECO_Revisão Macro & Microeconomia__2.mp4",
+      "provider_id": "f15adda6-4d0c-4044-b79e-088af3b74404",
+      "title": "Revisão Macro & Microeconomia Â· Parte 2",
+      "description": "",
+      "section": "m3",
+      "sort": 4,
+      "duration": "00:33:37",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CFG-GFIN_Gestão Financeira (C3).mp4",
+      "provider_id": "30ca3f13-2d57-49b3-9560-d91ed4850886",
+      "title": "Gestão Financeira (C3)",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Áudio</span><span style=\"color: rgb(0,0,0);font-size: medium;font-family: Times New Roman\", serif;\">: Política de Investimentos</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Geralmente são cobradas 3 questões no exame.</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Principais pontos</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Estrutura Geral do Balanço, da DRE e do Demonstrativo do Fluxo de Caixa - compreenda bem os conceitos e saiba fazer os lançamento no demonstrativo correto;</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Foco em Fluxo de Caixa - impacto no caixa em função de variações de rubricas contábeis; e</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Índices de Liquidez, Solvência e Rentabilidade - saiba as fórmulas e como utilizá-los.</span></p>",
+      "section": "m4",
+      "sort": 1,
+      "duration": "00:56:23",
+      "is_free": false
+    },
+    {
+      "source_file": "30_CFG-REVGFINANP_Revisão Gestão Financeira & Análise de Projetos.mp4",
+      "provider_id": "f3c52d3d-2822-4edf-bf7c-ab6b8ae1dbdb",
+      "title": "Revisão Gestão Financeira & Análise de Projetos Â· Parte 1",
+      "description": "<p></p>",
+      "section": "m4",
+      "sort": 2,
+      "duration": "00:31:24",
+      "is_free": false
+    },
+    {
+      "source_file": "30_CFG-REVGFINANP_Revisão Gestão Financeira & Análise de Projetos__2.mp4",
+      "provider_id": "cc660400-cd98-4d68-994d-be7cf2779dcf",
+      "title": "Revisão Gestão Financeira & Análise de Projetos Â· Parte 2",
+      "description": "<p></p>",
+      "section": "m4",
+      "sort": 3,
+      "duration": "00:25:32",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CFG-RV1_Renda Variável 1 (C5).mp4",
+      "provider_id": "102a6de1-1d49-40f2-993d-8dc6a588ed75",
+      "title": "Renda Variável 1 (C5)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Códigos Anbima</span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos (considerando as duas aulas de RV, você deve enfrentar entre 3 e 4 questõesna prova)</strong></span></p>\n<p><span style=\"font-family: Arial;\">- Características ADRs e BDRs;</span></p>\n<p><span style=\"font-family: Arial;\">- Níveis de Governança Corporativa Diferenciada da B3 (Nível 1, 2 e Novo Mercado) – principais características;</span></p>\n<p><span style=\"font-family: Arial;\">- Teorias sobre Política de Dividendos;</span></p>\n<p><span style=\"font-family: Arial;\">- Direito de subscrição – exemplo de cálculo;</span></p>\n<p><span style=\"font-family: Arial;\">- Bonificação – <strong>Importante: não afeta o caixa da empresa!</strong></span></p>\n<p><span style=\"font-family: Arial;\">- Split (Desdobramento) e Inplit (Grupamento)</span></p>",
+      "section": "m5",
+      "sort": 1,
+      "duration": "00:57:44",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CFG-RV2_Renda Variável 2 (C5).mp4",
+      "provider_id": "b82da76b-a0eb-4d2c-90aa-42cd0780f676",
+      "title": "Renda Variável 2 (C5)",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Áudio: Investimentos Alternativos</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Principais pontos (considerando as duas aulas de RV, você deve enfrentar entre 3 e 4 questõesna prova)</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Tipos de colocação IPO – foco em Bookbuiling, Garantia firme e Melhores Esforços;</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Índice de bolsa de valores –</span> <span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Importante: critérios de ponderação – IBrX (valor de mercado do free float); IEE (pesos iguais); Dow Jones (ponderação por preço); Ibovespa (valor de mercado com limite baseado na liquidez);</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Múltiplos, com destaque para P/L</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- FCFF e FCFE – entendimento conceitual</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Modelo de Gordon – treine bastante!</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Proposições de Modigliani-Miller – entendimento conceitual.</span></p>",
+      "section": "m5",
+      "sort": 2,
+      "duration": "00:52:01",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CFG-RF_Renda Fixa (C5).mp4",
+      "provider_id": "3bd6f5a6-0c41-40c3-8be4-f4586a309910",
+      "title": "Renda Fixa (C5)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Renda Variável</span></p>\n<p><span style=\"font-family: Arial;\">Tema com baixo peso no exame. Geralmente são cobradas de 1 a 2 questões. </span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos</strong></span></p>\n<p><span style=\"font-family: Arial;\">No vídeo, trouxemos um resumo dos principais produtos de Renda Fixa. No pdf, também incluímos uma última sessão sobre Índice Anbima, tema frequentemente cobrado na prova. </span></p>",
+      "section": "m5",
+      "sort": 3,
+      "duration": "01:05:29",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CFG-DER1_Derivativos 1 (C5).mp4",
+      "provider_id": "a0466c3a-0ac9-43f9-9114-7c068f3cd6c8",
+      "title": "Derivativos 1 (C5)",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Áudio</span><span style=\"color: rgb(0,0,0);font-size: medium;font-family: Times New Roman\", serif;\">: Política de Investimentos</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Considerando as 2 aulas de Derivativos, você deve enfrentar de 2 a 3 questões no exame.</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">Principais pontos</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgb(0,0,0);font-size: 10.5pt;font-family: Segoe UI\", sans-serif;\">- Futuros, Termos, Swap e Opções, com foco em opções!</span></p>",
+      "section": "m5",
+      "sort": 4,
+      "duration": "01:22:31",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CFG-DER2_Derivativos 2 (C5).mp4",
+      "provider_id": "954ea1e5-a9f8-4874-aa12-0df1bd26dbd7",
+      "title": "Derivativos 2 (C5)",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\"><strong>Áudio</strong>: Novas Tecnologias em Finanças &amp; Open Banking</span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\">Considerando as 2 aulas de Derivativos, você deve enfrentar de 2 a 3 questões no exame. </span></p>\n<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\"><strong>Principais pontos</strong></span></p>\n<p>- Operações com opções. Foque em entender o gráfico das opções e as estruturas ficarão muito mais claras!</p>",
+      "section": "m5",
+      "sort": 5,
+      "duration": "01:04:25",
+      "is_free": false
+    },
+    {
+      "source_file": "22_CFG-OP_Ofertas Públicas.mp4",
+      "provider_id": "4beae4a4-26a6-4fd8-89f4-7a4d818d6318",
+      "title": "Ofertas Públicas",
+      "description": "<p><strong>Áudio</strong>: Renda Variável</p>\n<p>Tema que inclui a Resolução CVM 160, sobre Ofertas Públicas, que passou a ser cobrado a partir de julho/2023.</p>\n<p><strong>Principais pontos</strong>:</p>\n<p>- Ritos Automático e Ordinário;</p>\n<p>- Período de Silêncio;</p>\n<p>- Pilot Fishing;</p>\n<p>- Hot Issue (Lote Adicional) e Green Shoe (Lote Suplementar); e</p>\n<p>- Tratamento de Conflitos de Interesse.</p>",
+      "section": "m5",
+      "sort": 6,
+      "duration": "01:01:06",
+      "is_free": false
+    },
+    {
+      "source_file": "25_CFG-REVRVGCART_Revisão Renda Variável & Gestão de Carteiras.mp4",
+      "provider_id": "6af38ad0-c268-4856-bfbb-0e5e414954db",
+      "title": "Revisão Renda Variável & Gestão de Carteiras Â· Parte 1",
+      "description": "",
+      "section": "m5",
+      "sort": 7,
+      "duration": "00:44:03",
+      "is_free": false
+    },
+    {
+      "source_file": "25_CFG-REVRVGCART_Revisão Renda Variável & Gestão de Carteiras__2.mp4",
+      "provider_id": "98e748f9-05bf-432b-8cb6-4ec1162bd540",
+      "title": "Revisão Renda Variável & Gestão de Carteiras Â· Parte 2",
+      "description": "",
+      "section": "m5",
+      "sort": 8,
+      "duration": "00:18:15",
+      "is_free": false
+    },
+    {
+      "source_file": "29_CFG-REVRFDER_Revisão Renda Fixa & Derivativos.mp4",
+      "provider_id": "11334650-ff4d-4c3e-b1ca-dd2b430861c8",
+      "title": "Revisão Renda Fixa & Derivativos",
+      "description": "",
+      "section": "m5",
+      "sort": 9,
+      "duration": "00:48:54",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CFG-CART_Teoria Moderna de Carteiras (C6).mp4",
+      "provider_id": "b9ecfab5-940b-4f5b-bae2-92239368bcd5",
+      "title": "Teoria Moderna de Carteiras (C6)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Microeconomia</span></p>\n<p><span style=\"font-family: Arial;\">Geralmente são cobradas 6 questões na prova! Tema muito relevante para o exame!</span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos</strong>:</span></p>\n<p><span style=\"font-family: Arial;\">- Fronteira Eficiente;</span></p>\n<p><span style=\"font-family: Arial;\">- CML e SML; </span></p>\n<p><span style=\"font-family: Arial;\">- Tipos de riscos (saiba calcular o risco de uma carteira com 2 ativos)</span></p>\n<p><span style=\"font-family: Arial;\">- CAPM e APT</span></p>",
+      "section": "m6",
+      "sort": 1,
+      "duration": "01:00:50",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CFG-IPS_Política de Investimentos & Investimentos Alternativos (C9).mp4",
+      "provider_id": "5c82bb9f-bb2a-4e13-a050-0ec38442179e",
+      "title": "Política de Investimentos & Investimentos Alternativos (C9) Â· Parte 1",
+      "description": "",
+      "section": "m6",
+      "sort": 2,
+      "duration": "00:44:42",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CFG-IPS_Política de Investimentos & Investimentos Alternativos (C9)__2.mp4",
+      "provider_id": "0289566a-873c-4148-9d73-f227a3f75697",
+      "title": "Política de Investimentos & Investimentos Alternativos (C9) Â· Parte 2",
+      "description": "",
+      "section": "m6",
+      "sort": 3,
+      "duration": "00:20:56",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CFG-FCOMPSFN_Finanças Comportamentais & SFN (C7).mp4",
+      "provider_id": "42096341-5bc9-4b1d-9a70-01e59b9d8711",
+      "title": "Finanças Comportamentais & SFN (C7) Â· Parte 1",
+      "description": "<p><strong>Áudio</strong>: Macroeconomia</p>\n<p><strong>Finanças Comportamentais</strong>: geralmente são cobradas 3 questões no exame. Principais pontos: aversão ao arrependimento, aversão a perdas e diferenças entre as Finanças Tradicionais e as Finanças Comportamentais.</p>\n<p><strong>Sistema Financeiro Nacional</strong>: geralmente é cobrada 1 questão no exame. Principais pontos: estrutura geral do SFN e participantes do mercado.</p>",
+      "section": "m7",
+      "sort": 1,
+      "duration": "00:41:17",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CFG-FCOMPSFN_Finanças Comportamentais & SFN (C7)__2.mp4",
+      "provider_id": "274243d1-23b9-4824-80bc-1dcc3974c039",
+      "title": "Finanças Comportamentais & SFN (C7) Â· Parte 2",
+      "description": "<p><strong>Áudio</strong>: Macroeconomia</p>\n<p><strong>Finanças Comportamentais</strong>: geralmente são cobradas 3 questões no exame. Principais pontos: aversão ao arrependimento, aversão a perdas e diferenças entre as Finanças Tradicionais e as Finanças Comportamentais.</p>\n<p><strong>Sistema Financeiro Nacional</strong>: geralmente é cobrada 1 questão no exame. Principais pontos: estrutura geral do SFN e participantes do mercado.</p>",
+      "section": "m7",
+      "sort": 2,
+      "duration": "00:31:38",
+      "is_free": false
+    },
+    {
+      "source_file": "24_CFG-175_Fundos de Investimento (Resolução CVM 175).mp4",
+      "provider_id": "1715053b-2242-433d-a6d4-dcb178c2a005",
+      "title": "Fundos de Investimento (Resolução CVM 175)",
+      "description": "",
+      "section": "m8",
+      "sort": 1,
+      "duration": "01:07:19",
+      "is_free": false
+    },
+    {
+      "source_file": "13_CFG-ASG_ASG (Ambiental, Social e Governança).mp4",
+      "provider_id": "d64f5a99-5f0f-40de-b61c-fbd3b66a49cf",
+      "title": "ASG (Ambiental, Social e Governança)",
+      "description": "<p><strong>Áudio</strong>: ASG 1</p>\n<p>Você deve enfrentar de 4 a 7 questões desse tema no exame. O foco do primeiro vídeo é falar sobre ASG e, do segundo, sobre Regulação e Autorregulação ASG.</p>\n<p><strong>Principais pontos</strong>:</p>\n<p>- Estratégias de Investimento ASG;</p>\n<p>- PRI (<em>Principles for Responsible Investiment</em>);</p>\n<p>- Código Brasileiro de Stewardship;</p>\n<p>- Títulos ASG;</p>\n<p>- Greenwashing;</p>\n<p>- Identificação de fundos IS;</p>\n<p>- PRSAC e GRSAC.</p>",
+      "section": "m9",
+      "sort": 1,
+      "duration": "01:21:07",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CFG-ANB_Códigos Anbima (C11).mp4",
+      "provider_id": "7bf04ce2-e981-4152-aabf-1b29368a09ad",
+      "title": "Códigos Anbima (C11)",
+      "description": "<p><strong>Áudio</strong>: Finanças Comportamentais</p>\n<p>Os Códigos Anbima passaram, a partir do final de 2023, a serem constituídos por princípios. As regras mais específicas passaram a constar do documento chamado <strong>Regras e Procedimentos</strong>. Recomendamos a leitura desse documento referente ao <strong>Código de Administração e Gestão de Recursos de Terceiros</strong>, disponível para download <a href=\"https://www.anbima.com.br/data/files/AA/43/0C/17/5139C8101063E8C8B82BA2A8/1.%20RP%20do%20Codigo%20de%20AGRT_vigente_30.11.23.pdf\" target=\"_self\">aqui.</a></p>\n<p>Para o exame do CFG, são cobradas a Parte Geral do arquivo e mais alguns tópicos selecionados dos Anexos Complementares I a IV.</p>\n<p>Como o documento é muito extenso, listamos a seguir alguns dos pontos mais importantes para você focar seus estudos:</p>\n<p>- Manual de Apreçamento (pg. 20);</p>\n<p>- Rateio de Ordens para os Veículos de Investimento (pg. 31);</p>\n<p>- Gestão de Riscos dos Veículos de Investimento (pg. 32);</p>\n<p>- Obrigações Gerais do Administrador e do Gestor (pgs. 81 a 83);</p>\n<p>- Contratação de Terceiros em nome dos Fundos (pgs 84 a 87);</p>\n<p>- Supervisão Baseada em Risco para os Terceiros Contratados (pg. 88);</p>\n<p>- Exercício de Direito de Voto em Assembleias (pg. 90);&nbsp;</p>\n<p>- Conselho Consultivo ou Comitê (pg. 125); e</p>\n<p><span style=\"color: rgba(0,0,0,0.85);background-color: rgb(255,255,255);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji;\">- Classificação das Classes dos FIFs (pg. 154).</span></p>",
+      "section": "m10",
+      "sort": 1,
+      "duration": "00:51:01",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CFG-NTEC_Novas Tecnologias em Finanças e Open Banking (C12).mp4",
+      "provider_id": "5f55b339-d067-4c74-8ceb-69522f716ba2",
+      "title": "Novas Tecnologias em Finanças e Open Banking (C12)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Microeconomia</span></p>\n<p><span style=\"font-family: Arial;\">Geralmente são cobradas 3 questões na prova. </span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos</strong></span></p>\n<p><span style=\"font-family: Arial;\">- Blockchain e Bitcoin;</span></p>\n<p><span style=\"font-family: Arial;\">- Open Banking;</span></p>\n<p><span style=\"font-family: Arial;\">- Fintechs; e</span></p>\n<p><span style=\"font-family: Arial;\">- Sandbox Regulatório.</span></p>",
+      "section": "m10",
+      "sort": 2,
+      "duration": "01:05:19",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CFG-TRIB_Tributação (C12).mp4",
+      "provider_id": "129b9e70-2004-4a37-b7d3-bb684ff904f0",
+      "title": "Tributação (C12)",
+      "description": "<p><span style=\"font-family: Arial;\"><strong>Áudio</strong>: Tributação de RF e RV</span></p>\n<p><span style=\"font-family: Arial;\">Tema simples, com geralmente 2 questões fáceis no exame.</span></p>\n<p><span style=\"font-family: Arial;\"><strong>Principais pontos</strong>:</span></p>\n<p><span style=\"font-family: Arial;\">- Tributação de ações (mercado à vista); e </span></p>\n<p><span style=\"font-family: Arial;\">- Tributação de títulos públicos e privados de renda fixa. </span></p>",
+      "section": "m10",
+      "sort": 3,
+      "duration": "00:35:18",
+      "is_free": false
+    },
+    {
+      "source_file": "23_CFG-LEG_Legislação e Compliance (C12).mp4",
+      "provider_id": "71dd8b2b-4a68-4a14-9c0a-904517973e4b",
+      "title": "Legislação e Compliance (C12)",
+      "description": "<p><strong>Áudio</strong>: Novas Tecnologias em Finanças</p>\n<p>Sobre esse tema, você deve enfrentar de 1 a 2 questões na prova. É importante ter uma visão geral, sem se preocupar em ficar decorando detalhes ou valores muito específicos.</p>",
+      "section": "m10",
+      "sort": 4,
+      "duration": "01:05:19",
+      "is_free": false
+    }
+  ]
+}
