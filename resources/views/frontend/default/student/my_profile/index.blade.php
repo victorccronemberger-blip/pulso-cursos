@@ -19,8 +19,11 @@
             <div class="col-lg-9 col-md-8">
 
                 <!-- Personal Information -->
-                <div class="my-panel message-panel edit_profile mb-4">
-                    <h4 class="g-title mb-5">{{ get_phrase('Personal Information') }}</h4>
+                <div class="my-panel message-panel edit_profile pf-form-panel mb-4">
+                    <div class="pf-panel-intro">
+                        <h2>Dados pessoais</h2>
+                        <p>Atualize as informações usadas na sua conta e na comunicação com a equipe acadêmica.</p>
+                    </div>
                     <form action="{{ route('update.profile', $user_details->id) }}" method="POST">@csrf
                         <div class="row">
                             <div class="col-lg-12 mb-20">
@@ -83,8 +86,11 @@
                 </div>
 
                 <!-- Change Password -->
-                <div class="my-panel message-panel edit_profile">
-                    <h4 class="g-title mb-5">{{ get_phrase('Change Password') }}</h4>
+                <div class="my-panel message-panel edit_profile pf-form-panel pf-security-panel">
+                    <div class="pf-panel-intro">
+                        <h2>Segurança da conta</h2>
+                        <p>Use uma senha exclusiva para proteger seus cursos, certificados e dados pessoais.</p>
+                    </div>
                     <form action="{{ route('password.change') }}" method="POST">@csrf
                         <div class="row">
                             <div class="col-lg-12 mb-20">

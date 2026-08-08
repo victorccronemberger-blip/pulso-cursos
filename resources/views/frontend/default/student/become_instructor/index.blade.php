@@ -18,7 +18,11 @@
 
             <div class="col-lg-9 col-md-8">
 
-                <div class="my-panel message-panel edit_profile">
+                <div class="my-panel message-panel edit_profile pf-form-panel pf-application-panel">
+                    <div class="pf-panel-intro">
+                        <h2>Informações da candidatura</h2>
+                        <p>Apresente sua experiência e envie um documento que ajude nossa equipe a avaliar seu perfil.</p>
+                    </div>
                     <form action="{{ route('become.instructor.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">

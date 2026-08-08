@@ -15,7 +15,11 @@
     <div class="eNtery-item pf-student-content"><div class="container"><div class="row">
         @include('frontend.default.student.left_sidebar')
         <div class="col-lg-9 col-md-8">
-            <div class="my-panel pf-ticket-form">
+            <div class="my-panel pf-ticket-form pf-form-panel">
+                <div class="pf-panel-intro">
+                    <h2>Detalhes do chamado</h2>
+                    <p>Inclua o contexto necessário para que a equipe consiga entender e resolver sua solicitação.</p>
+                </div>
                 <form action="{{ route('support.ticket.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3"><label for="subject" class="form-label">Assunto</label><input type="text" class="form-control" name="subject" id="subject" maxlength="160" value="{{ old('subject') }}" placeholder="Resuma sua solicitação" required></div>
