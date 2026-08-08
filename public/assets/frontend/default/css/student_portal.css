@@ -186,7 +186,7 @@
 .pf-ticket-empty > i { align-items: center; background: #eaf8f4; border-radius: 50%; color: var(--pf-green-dark); display: inline-flex; font-size: 24px; height: 58px; justify-content: center; width: 58px; }
 .pf-ticket-empty h2 { font: 700 21px/1.2 "Space Grotesk", sans-serif; margin: 15px 0 7px; }
 .pf-ticket-empty p { color: var(--pf-slate); font-size: 13px; margin: 0 auto 19px; max-width: 470px; }
-.pf-ticket-form { max-width: 760px; }
+.pf-ticket-form { max-width: none; width: 100%; }
 .pf-ticket-form-intro { border-bottom: 1px solid var(--pf-border); margin: -2px 0 20px; padding-bottom: 17px; }
 .pf-ticket-form-intro h2 { font: 700 19px/1.2 "Space Grotesk", sans-serif; margin: 0 0 5px; }
 .pf-ticket-form-intro p { color: var(--pf-slate); font-size: 12px; margin: 0; }

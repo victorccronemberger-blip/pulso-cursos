@@ -94,7 +94,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/toro_home_v2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/student_portal.css') }}?v=20260808-4">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/default/css/student_portal.css') }}?v=20260808-5">
     @endif
 
     @if (Route::currentRouteName() == 'login' || request()->is('login'))
