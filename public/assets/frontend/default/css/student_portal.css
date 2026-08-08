@@ -184,15 +184,16 @@
 
 @media (max-width: 767px) {
     .pf-portal-header { height: 58px; }
-    .pf-portal-brand span,
-    .pf-portal-user span,
+    .pf-portal-brand > span,
+    .pf-portal-user > span:not(.pf-portal-avatar-fallback),
     .pf-portal-catalog { display: none; }
     .pf-portal-brand img { max-width: 110px; }
     .pf-student-app .breadcum-area { padding-top: 22px; }
     .pf-student-app .my-panel { padding: 16px; }
     .pf-portal-profile,
     .pf-portal-secondary-link { display: none; }
-    .pf-portal-sidebar { overflow-x: auto; }
+    .pf-portal-sidebar { overflow-x: auto; scrollbar-width: none; }
+    .pf-portal-sidebar::-webkit-scrollbar { display: none; }
     .pf-portal-sidebar ul { display: flex; gap: 3px; min-width: max-content; padding: 6px; }
     .pf-portal-sidebar li { flex: 0 0 auto; }
     .pf-portal-sidebar li a { padding: 9px 11px; }
