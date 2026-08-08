@@ -63,10 +63,6 @@
                         @include('course_player.player_page')
                     @endif
                     @include('course_player.lesson_tools')
-                    <!-- Tab -->
-                    <div class="course-video-navtab">
-                        @include('course_player.tab_bar')
-                    </div>
                 </div>
                 <div class="col-lg-4" id="player_side_bar">
                     @include('course_player.side_bar')

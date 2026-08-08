@@ -122,12 +122,6 @@
 .pf-outline-badge { background: #fff0ea; color: #c84a1d; display: inline-block; font: 700 7.5px/1 "JetBrains Mono", monospace; letter-spacing: .04em; margin: 3px 3px 0 0; padding: 4px 5px; text-transform: uppercase; }
 .pf-outline-badge-pdf { background: #e7faf4; color: #08775f; }
 
-.pf-player .course-video-navtab { background: #fff; border: 1px solid var(--pf-border); margin-top: 16px; padding: 0 24px 24px; }
-.pf-player .course-video-navtab .nav-pills { border-bottom: 1px solid var(--pf-border); column-gap: 23px; overflow-x: auto; padding-top: 3px; }
-.pf-player .course-video-navtab .nav-pills .nav-link { color: #657687; font: 600 11px/1 "IBM Plex Sans", sans-serif; padding: 17px 0 13px; white-space: nowrap; }
-.pf-player .course-video-navtab .nav-pills .nav-link.active { color: var(--pf-midnight); }
-.pf-player .course-video-navtab .nav-pills .nav-link.active::after { background: var(--pf-terminal); height: 2px; }
-
 .pf-quiz-shell { min-height: 520px; padding: clamp(28px, 4vw, 54px); }
 .pf-quiz-intro { border-bottom: 1px solid var(--pf-border); padding-bottom: 22px; }
 .pf-quiz-kicker { color: var(--pf-terminal-dark); font: 700 10px/1 "JetBrains Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
@@ -229,7 +223,6 @@
     .pf-context-action > b { grid-column: 2; }
     .pf-module-practice-list a { grid-template-columns: 23px minmax(0,1fr) 14px; }
     .pf-module-practice-list a > small { display: none; }
-    .pf-player .course-video-navtab { padding: 0 16px 18px; }
     .pf-quiz-shell { padding: 25px 17px; }
     .pf-quiz-metrics { grid-template-columns: 1fr 1fr; }
     .pf-quiz-metrics > div { padding: 2px 10px; }
