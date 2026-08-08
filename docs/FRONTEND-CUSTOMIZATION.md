@@ -83,6 +83,11 @@ e `content`. O comando `courses:sync-content` recebe pastas de PDFs e JSONs,
 associa códigos equivalentes à aula, cria quizzes nativos e registra o contexto
 em `course_quiz_contexts`.
 
+A central do aluno em `/my-exams` consulta esses quizzes nativos diretamente
+pelas matrículas válidas, agrupa por curso e seção e combina o histórico de
+`quiz_submissions`. A tabela `exams` permanece reservada às avaliações formais
+com envio de arquivo e aparece em uma seção separada na mesma página.
+
 Sempre execute o comando com `--dry-run` antes da carga real. O relatório
 precisa terminar com zero arquivos não resolvidos.
 

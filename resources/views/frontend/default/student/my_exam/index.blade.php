@@ -1,151 +1,139 @@
 @extends('layouts.default')
 
-@push('title', get_phrase('My Exams'))
+@push('title', 'Simulados e provas')
 @push('meta')@endpush
 @push('css')@endpush
 
 @section('content')
-
 @include('frontend.default.student.page_header', [
     'title' => 'Simulados e provas',
     'current' => 'Simulados e provas',
-    'description' => 'Acompanhe avaliações liberadas nos seus cursos.',
+    'description' => 'Pratique por módulo, acompanhe suas tentativas e acesse avaliações dos seus cursos.',
 ])
 
-
-<!-------------- List Item Start   --------------->
 <div class="eNtery-item">
     <div class="container">
         <div class="row">
-
-            {{-- Left Sidebar --}}
             @include('frontend.default.student.left_sidebar')
 
-            {{-- Main Content --}}
-            <div class="col-lg-9 col-md-8">
-                <div class="row">
+            <main class="col-lg-9 col-md-8">
+                @if ($quizCourses->isNotEmpty() || $exams->isNotEmpty())
+                    <section class="pf-assessment-overview" aria-label="Resumo dos simulados">
+                        <div><span>Cursos com prática</span><strong>{{ $summary['courses'] }}</strong></div>
+                        <div><span>Simulados disponíveis</span><strong>{{ $summary['quizzes'] }}</strong></div>
+                        <div><span>Já realizados</span><strong>{{ $summary['attempted'] }}</strong></div>
+                        <div><span>Aprovados</span><strong>{{ $summary['passed'] }}</strong></div>
+                    </section>
 
-                    @forelse ($exams as $exam)
-
-                    @php
-                    $now = now();
-                    $hasStarted = $exam->start_at && $now >= \Carbon\Carbon::parse($exam->start_at);
-                    $hasExpired = $exam->end_at && $now > \Carbon\Carbon::parse($exam->end_at);
-                    $submission = $exam->mySubmission;
-                    $isEvaluated = $submission && (isset($submission->obtained_marks) || isset($submission->annotated_pdf));
-                    @endphp
-
-                    <div class="col-lg-12 col-md-12 col-sm-6 mb-30">
-                        <div class="single-feature w-100 position-relative">
-
-                            {{-- Badge --}}
-                            @if($isEvaluated)
-                            <span class="badge bg-success position-absolute" style="top:12px; right:12px; z-index:1; font-size:11px; padding:5px 10px;">
-                                {{ get_phrase('Evaluated') }}
-                            </span>
-                            @elseif($hasExpired)
-                            <span class="badge bg-danger position-absolute" style="top:12px; right:12px; z-index:1; font-size:11px; padding:5px 10px;">
-                                {{ get_phrase('Expired') }}
-                            </span>
-                            @endif
-
-                            <div class="row align-items-center">
-
-                                {{-- Thumbnail --}}
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="courses-img">
-                                        <img src="{{ get_image($exam->course->thumbnail) }}" alt="course-thumbnail">
-                                    </div>
-                                </div>
-
-                                {{-- Content --}}
-                                <div class="col-lg-8 col-md-8">
-                                    <div class="entry-details">
-
-                                        <div class="entry-title en-title">
-                                            <h3 class="ellipsis-2">{{ $exam->title }}</h3>
-                                        </div>
-
-                                        <ul>
-                                            <li>
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7385" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                                    <polyline points="14 2 14 8 20 8" />
-                                                </svg>
-                                                {{ $exam->marks }} {{ get_phrase('Marks') }}
-                                            </li>
-                                            <li>
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6B7385" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="12 6 12 12 16 14" />
-                                                </svg>
-                                                {{ $exam->duration }} {{ get_phrase('min') }}
-                                            </li>
-                                        </ul>
-
-
-                                        <div class="mb-5">
-                                            <h3 class="ellipsis-2">
-                                                {{ $exam->course->title }}
-                                            </h3>
-
-                                        </div>
-
-                                        <div class="learn-creator">
-                                            <div class="creator">
-                                                <img src="{{ get_image($exam->creator->photo ?? null) }}" alt="instructor">
-                                                <p><span>{{ $exam->creator->name }}</span></p>
-                                            </div>
-                                            <div>
-                                                @if(!$hasStarted)
-                                                <span class="badge bg-warning text-dark" style="padding:8px 14px; font-size:12px;">
-                                                    {{ get_phrase('Not Started') }}
-                                                </span>
-                                                @else
-                                                <a href="{{ route('my.exam.details', $exam->id) }}" class="learn-more">
-                                                    {{ get_phrase('View Details') }} <i class="fa-solid fa-arrow-right-long ms-2"></i>
-                                                </a>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
+                    @if ($quizCourses->isNotEmpty())
+                        <section class="pf-assessment-section" aria-labelledby="interactive-quizzes-title">
+                            <div class="pf-assessment-heading">
+                                <div><span>Prática interativa</span><h2 id="interactive-quizzes-title">Simulados dos seus cursos</h2></div>
+                                <p>Resultados imediatos e novas tentativas conforme a configuração de cada simulado.</p>
                             </div>
-                        </div>
-                    </div>
 
-                    @empty
+                            @foreach ($quizCourses as $course)
+                                <article class="pf-quiz-course">
+                                    <header class="pf-quiz-course-head">
+                                        <div class="pf-quiz-course-image"><img src="{{ get_image($course['thumbnail']) }}" alt="{{ $course['title'] }}"></div>
+                                        <div class="pf-quiz-course-copy">
+                                            <span>Curso matriculado</span>
+                                            <h3>{{ $course['title'] }}</h3>
+                                            <p>{{ $course['attempted_count'] }} de {{ $course['quiz_count'] }} simulados realizados</p>
+                                        </div>
+                                        <a href="{{ route('course.player', ['slug' => $course['slug']]) }}" class="pf-quiz-course-link">Abrir curso <i class="fi fi-rr-arrow-small-right"></i></a>
+                                    </header>
 
-                    <div class="col-12">
-                        @include('frontend.default.student.empty_state', [
-                            'icon' => 'fi-rr-document',
-                            'title' => 'Nenhuma prova disponível.',
-                            'message' => 'As provas e avaliações liberadas para seus cursos aparecerão aqui.',
-                            'actionUrl' => route('my.courses'),
-                            'actionLabel' => 'Voltar aos meus cursos',
-                        ])
-                    </div>
+                                    <div class="pf-quiz-modules">
+                                        @foreach ($course['modules'] as $module)
+                                            <details class="pf-quiz-module" @if($loop->first) open @endif>
+                                                <summary>
+                                                    <span class="pf-quiz-module-index">{{ str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                                                    <span class="pf-quiz-module-title"><strong>{{ $module['title'] }}</strong><small>{{ $module['quizzes']->count() }} simulados</small></span>
+                                                    <i class="fi fi-rr-angle-small-down" aria-hidden="true"></i>
+                                                </summary>
 
-                    @endforelse
+                                                <div class="pf-quiz-list">
+                                                    @foreach ($module['quizzes'] as $quiz)
+                                                        @php
+                                                            $kindLabel = match($quiz->context_kind) {
+                                                                'final' => 'Revisão final',
+                                                                'module' => 'Simulado do módulo',
+                                                                default => 'Prática do conteúdo',
+                                                            };
+                                                            $statusLabel = match($quiz->status_key) {
+                                                                'passed' => 'Aprovado',
+                                                                'in_progress' => 'Em andamento',
+                                                                'finished' => 'Tentativas concluídas',
+                                                                default => 'Não iniciado',
+                                                            };
+                                                            $duration = array_values(array_filter(explode(':', (string) $quiz->duration), fn($part) => $part !== '00'));
+                                                            $durationLabel = $duration ? implode('h ', array_slice($duration, 0, 1)) . (count($duration) > 1 ? $duration[1] . 'min' : 'min') : 'Tempo livre';
+                                                        @endphp
+                                                        <div class="pf-quiz-row">
+                                                            <div class="pf-quiz-kind pf-quiz-kind-{{ $quiz->context_kind }}"><i class="fi fi-rr-document"></i><span>{{ $kindLabel }}</span></div>
+                                                            <div class="pf-quiz-main">
+                                                                <h4>{{ $quiz->title }}</h4>
+                                                                <div class="pf-quiz-meta">
+                                                                    <span>{{ $quiz->question_count }} questões</span>
+                                                                    <span>{{ $durationLabel }}</span>
+                                                                    <span>Aprovação: {{ $quiz->pass_percentage }}%</span>
+                                                                    <span>Tentativas: {{ $quiz->attempt_count }}/{{ $quiz->retake }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pf-quiz-result">
+                                                                <span class="pf-quiz-status pf-quiz-status-{{ $quiz->status_key }}">{{ $statusLabel }}</span>
+                                                                @if($quiz->best_score !== null)<small>Melhor nota: {{ $quiz->best_score }}%</small>@else<small>{{ $quiz->remaining_attempts }} tentativas disponíveis</small>@endif
+                                                            </div>
+                                                            <a class="pf-quiz-open" href="{{ route('course.player', ['slug' => $course['slug'], 'id' => $quiz->id]) }}">{{ $quiz->attempt_count ? 'Abrir' : 'Iniciar' }} <i class="fi fi-rr-arrow-small-right"></i></a>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </details>
+                                        @endforeach
+                                    </div>
+                                </article>
+                            @endforeach
+                        </section>
+                    @endif
 
-                </div>
-            </div>
-
-            <!-- Pagination -->
-            @if ($exams->count() > 0)
-            <div class="entry-pagination">
-                <nav aria-label="Page navigation example">
-                    {{ $exams->links() }}
-                </nav>
-            </div>
-            @endif
-
+                    @if ($exams->isNotEmpty())
+                        <section class="pf-assessment-section" aria-labelledby="submitted-exams-title">
+                            <div class="pf-assessment-heading">
+                                <div><span>Avaliação formal</span><h2 id="submitted-exams-title">Provas com entrega</h2></div>
+                                <p>Arquivos enviados para correção e acompanhamento da equipe acadêmica.</p>
+                            </div>
+                            <div class="pf-formal-exam-list">
+                                @foreach ($exams as $exam)
+                                    @php
+                                        $now = now();
+                                        $hasStarted = !$exam->start_at || $now >= $exam->start_at;
+                                        $hasExpired = $exam->end_at && $now > $exam->end_at;
+                                        $submission = $exam->mySubmission;
+                                    @endphp
+                                    <article class="pf-formal-exam">
+                                        <div><span>{{ $exam->course->title }}</span><h3>{{ $exam->title }}</h3><p>{{ $exam->marks }} pontos · {{ $exam->duration }} minutos</p></div>
+                                        <div class="pf-formal-exam-action">
+                                            @if($submission)<span class="pf-quiz-status pf-quiz-status-in_progress">Entregue</span>@elseif($hasExpired)<span class="pf-quiz-status pf-quiz-status-finished">Encerrada</span>@elseif(!$hasStarted)<span class="pf-quiz-status">Agendada</span>@endif
+                                            <a href="{{ route('my.exam.details', $exam->id) }}">Ver detalhes <i class="fi fi-rr-arrow-small-right"></i></a>
+                                        </div>
+                                    </article>
+                                @endforeach
+                            </div>
+                            @if($exams->hasPages())<div class="entry-pagination">{{ $exams->links() }}</div>@endif
+                        </section>
+                    @endif
+                @else
+                    @include('frontend.default.student.empty_state', [
+                        'icon' => 'fi-rr-document',
+                        'title' => 'Nenhum simulado disponível.',
+                        'message' => 'Os simulados vinculados aos seus cursos aparecerão aqui automaticamente.',
+                        'actionUrl' => route('my.courses'),
+                        'actionLabel' => 'Voltar aos meus cursos',
+                    ])
+                @endif
+            </main>
         </div>
     </div>
 </div>
-<!-------------- List Item End  --------------->
-
 @endsection
-@push('js')@endpush
