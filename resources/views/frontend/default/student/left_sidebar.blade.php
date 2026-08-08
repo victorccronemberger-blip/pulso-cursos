@@ -10,7 +10,7 @@
         ['routes' => ['message', 'message.inbox'], 'route' => 'message', 'icon' => 'fi-rr-comment-alt', 'label' => 'Mensagens'],
         ['routes' => ['support.ticket.index', 'support.ticket.create', 'support.ticket.message'], 'route' => 'support.ticket.index', 'icon' => 'fi-rr-headset', 'label' => 'Suporte'],
         ['routes' => ['my.profile'], 'route' => 'my.profile', 'icon' => 'fi-rr-user', 'label' => 'Meu perfil'],
-        ['routes' => ['become.instructor'], 'route' => 'become.instructor', 'icon' => 'fi-rr-chalkboard-user', 'label' => 'Quero ensinar'],
+        ['routes' => ['become.instructor'], 'route' => 'become.instructor', 'icon' => 'fi-rr-user-add', 'label' => 'Quero ensinar'],
     ];
 @endphp
 
