@@ -78,6 +78,13 @@
       "catalog": {
         "title": "Preparatório CGA Certificação de Gestores ANBIMA",
         "short_description": "Domine a gestão profissional de carteiras, renda fixa, renda variável, riscos e avaliação de desempenho com preparação completa para a CGA.",
+        "description": "<p>Construa uma preparação consistente para o CGA com uma sequência que conecta os conceitos cobrados na certificação à tomada de decisão do gestor.</p><p>A trilha percorre renda variável e alocação de ativos, gestão de carteiras de renda fixa, investimentos no exterior, avaliação de desempenho, gestão de riscos, fundos de investimento e o código de gestão de recursos.</p><p>Cada módulo reúne videoaulas, materiais em PDF e simulados para você revisar o conteúdo, identificar lacunas e acompanhar sua evolução dentro da plataforma.</p>",
+        "meta_description": "Preparatório CGA com videoaulas, apostilas em PDF, revisões e simulados organizados por módulo para a certificação de gestores ANBIMA.",
+        "faqs": [
+          {"title": "Como o conteúdo do CGA está organizado?", "description": "O curso está dividido em módulos temáticos, com videoaulas, materiais em PDF e simulados associados aos respectivos conteúdos."},
+          {"title": "Onde encontro as apostilas e os simulados?", "description": "Após acessar o curso, os materiais e simulados ficam disponíveis no painel do aluno e vinculados ao módulo correspondente."},
+          {"title": "Consigo acompanhar meu progresso?", "description": "Sim. A plataforma registra seu avanço nas aulas e organiza os simulados para facilitar revisões ao longo da preparação."}
+        ],
         "category": {"title": "CGA", "slug": "cga", "sort": 8},
         "level": "advanced",
         "price": 2490,
@@ -116,6 +123,13 @@
       "catalog": {
         "title": "Preparatório CGE Certificação de Gestores ANBIMA para Fundos Estruturados",
         "short_description": "Prepare-se para gerir fundos estruturados com domínio de FII, FIDC, FIP, FIAGRO, índices, securitização, governança e riscos.",
+        "description": "<p>Prepare-se para o CGE com uma trilha focada nos instrumentos, estruturas e decisões que fazem parte da gestão de fundos estruturados.</p><p>O conteúdo abrange investimentos imobiliários, private equity, securitização de recebíveis, fundos de índice, investimentos no exterior, avaliação de desempenho, gestão de riscos, FIAGRO e o código de administração e gestão de recursos de terceiros.</p><p>As videoaulas são complementadas por apostilas em PDF, revisões e simulados organizados por módulo, para transformar estudo em prática e tornar sua evolução mais objetiva.</p>",
+        "meta_description": "Preparatório CGE com videoaulas, PDFs, revisões e simulados sobre fundos estruturados, FIAGRO, securitização, riscos e gestão ANBIMA.",
+        "faqs": [
+          {"title": "Quais temas fazem parte da preparação para o CGE?", "description": "A trilha reúne investimentos imobiliários, private equity, securitização, fundos de índice, investimentos no exterior, riscos, FIAGRO e regras de gestão de recursos."},
+          {"title": "Os materiais acompanham os módulos do curso?", "description": "Sim. Apostilas e simulados são vinculados aos respectivos módulos para facilitar o estudo e a revisão de cada tema."},
+          {"title": "Como acesso o conteúdo após a compra?", "description": "Após a confirmação, o curso aparece no painel do aluno com aulas, materiais e simulados centralizados na plataforma."}
+        ],
         "category": {"title": "CGE", "slug": "cge", "sort": 9},
         "level": "advanced",
         "price": 2490,

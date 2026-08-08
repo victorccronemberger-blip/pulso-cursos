@@ -35,6 +35,9 @@ $average_rating = $rating / $total;
 
 $display_price = $course_details->discount_flag == 1 ? $course_details->discounted_price : $course_details->price;
 $installment_price = $display_price > 0 ? $display_price / 12 : 0;
+$display_language = strtolower((string) $course_details->language) === 'portuguese'
+    ? 'Português'
+    : ucfirst((string) $course_details->language);
 @endphp
 
 @section('content')
@@ -46,7 +49,7 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
     <div class="container">
         {{-- Breadcrumb --}}
         <div class="course-detail-breadcrumb">
-            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('home') }}">Início</a>
             <span class="separator">/</span>
             <a href="{{ route('courses') }}">Cursos</a>
             <span class="separator">/</span>
@@ -88,7 +91,7 @@ $installment_price = $display_price > 0 ? $display_price / 12 : 0;
                         <span class="course-stat-label">Aulas</span>
                     </div>
                     <div class="course-stat">
-                        <span class="course-stat-value">{{ ucfirst($course_details->language) }}</span>
+                        <span class="course-stat-value">{{ $display_language }}</span>
                         <span class="course-stat-label">Idioma</span>
                     </div>
                 </div>

@@ -12,7 +12,8 @@ class EnsureCourseImportCatalog extends Command
     protected $signature = 'courses:ensure-import-catalog
         {catalog=resources/course-imports/source-catalog-2026.json : Catálogo JSON de origem}
         {--dry-run : Apenas audita cursos existentes e ausentes}
-        {--create-missing : Cria somente cursos ausentes que tenham metadados catalog}';
+        {--create-missing : Cria somente cursos ausentes que tenham metadados catalog}
+        {--sync-metadata : Atualiza os campos editoriais declarados no catálogo}';
 
     protected $description = 'Audita e, com autorização explícita, cria cursos ausentes do catálogo de importação.';
 
@@ -59,9 +60,23 @@ class EnsureCourseImportCatalog extends Command
             $existing = DB::table('courses')->where('slug', $slug)->first();
             if ($existing) {
                 $state = 'existente';
-                if ($categoryId && (int) $existing->category_id !== (int) $categoryId && $this->option('create-missing') && ! $this->option('dry-run')) {
-                    DB::table('courses')->where('id', $existing->id)->update(['category_id' => $categoryId, 'updated_at' => now()]);
-                    $state = 'existente (categoria atualizada)';
+                $updates = [];
+                if ($categoryId && (int) $existing->category_id !== (int) $categoryId && ($this->option('create-missing') || $this->option('sync-metadata'))) {
+                    $updates['category_id'] = $categoryId;
+                }
+                if ($this->option('sync-metadata')) {
+                    foreach ($this->metadataPayload($metadata) as $column => $value) {
+                        if ((string) ($existing->{$column} ?? '') !== (string) $value) {
+                            $updates[$column] = $value;
+                        }
+                    }
+                }
+                if ($updates !== []) {
+                    $state = $this->option('dry-run') ? 'existente (atualização pendente)' : 'existente (metadados atualizados)';
+                    if (! $this->option('dry-run')) {
+                        $updates['updated_at'] = now();
+                        DB::table('courses')->where('id', $existing->id)->update($updates);
+                    }
                 }
                 $rows[] = [$course['key'], $slug, $state, $existing->id];
 
@@ -88,7 +103,7 @@ class EnsureCourseImportCatalog extends Command
             $id = DB::transaction(function () use ($slug, $metadata, $defaults, $categoryId): int {
                 $now = now();
 
-                return DB::table('courses')->insertGetId([
+                return DB::table('courses')->insertGetId(array_merge([
                     'title' => $metadata['title'],
                     'slug' => $slug,
                     'short_description' => $metadata['short_description'],
@@ -107,7 +122,7 @@ class EnsureCourseImportCatalog extends Command
                     'average_rating' => 0,
                     'created_at' => $now,
                     'updated_at' => $now,
-                ]);
+                ], $this->metadataPayload($metadata)));
             });
             $rows[] = [$course['key'], $slug, 'criado', $id];
         }
@@ -115,5 +130,35 @@ class EnsureCourseImportCatalog extends Command
         $this->table(['Origem', 'Slug', 'Estado', 'ID'], $rows);
 
         return $missingWithoutMetadata ? self::FAILURE : self::SUCCESS;
+    }
+
+    private function metadataPayload(array $metadata): array
+    {
+        $payload = [];
+        $columns = [
+            'title',
+            'short_description',
+            'description',
+            'meta_description',
+            'level',
+            'price',
+            'discounted_price',
+            'thumbnail',
+            'requirements',
+            'outcomes',
+            'faqs',
+        ];
+
+        foreach ($columns as $column) {
+            if (! array_key_exists($column, $metadata)) {
+                continue;
+            }
+            $value = $metadata[$column];
+            $payload[$column] = is_array($value)
+                ? json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+                : $value;
+        }
+
+        return $payload;
     }
 }

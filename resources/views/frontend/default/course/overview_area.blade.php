@@ -1,18 +1,17 @@
 <div class="ps-box p-0 shadow-none">
-    <h4 class="g-title text-dark">{{ get_phrase('Course Overview') }}</h4>
+    <h4 class="g-title text-dark">Visão geral do curso</h4>
     <div class="editor-content description ellipsis-4" id="ellipsis-4">
-        @if (isset($course_details->description))
+        @if (filled($course_details->description))
             {!! removeScripts($course_details->description) !!}
         @else
-            <p class="text-center">{{ get_phrase('No Course Description') }}</p>
+            <p>{{ $course_details->short_description }}</p>
+            <p>Avance por uma trilha organizada de videoaulas, materiais em PDF e simulados vinculados aos respectivos módulos.</p>
         @endif
     </div>
-    @if (isset($course_details->description))
+    @if (filled($course_details->description))
         <a href="#" class="s_stext" id="more_description">
-            {{ get_phrase('See more') }} <i class="fa-solid fa-angle-right me-2"></i>
+            Ver descrição completa <i class="fa-solid fa-angle-right me-2"></i>
         </a>
     @endif
-
-
 </div>
 @include('frontend.default.course.faq_area')
