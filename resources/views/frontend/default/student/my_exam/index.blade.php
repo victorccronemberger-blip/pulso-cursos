@@ -67,8 +67,15 @@
                                                                 'finished' => 'Tentativas concluídas',
                                                                 default => 'Não iniciado',
                                                             };
-                                                            $duration = array_values(array_filter(explode(':', (string) $quiz->duration), fn($part) => $part !== '00'));
-                                                            $durationLabel = $duration ? implode('h ', array_slice($duration, 0, 1)) . (count($duration) > 1 ? $duration[1] . 'min' : 'min') : 'Tempo livre';
+                                                            $durationParts = array_map('intval', explode(':', (string) $quiz->duration));
+                                                            [$durationHours, $durationMinutes, $durationSeconds] = count($durationParts) === 3
+                                                                ? $durationParts
+                                                                : [0, $durationParts[0] ?? 0, $durationParts[1] ?? 0];
+                                                            $durationLabel = collect([
+                                                                $durationHours > 0 ? $durationHours . 'h' : null,
+                                                                $durationMinutes > 0 ? $durationMinutes . 'min' : null,
+                                                                $durationHours === 0 && $durationMinutes === 0 && $durationSeconds > 0 ? $durationSeconds . 's' : null,
+                                                            ])->filter()->implode(' ') ?: 'Tempo livre';
                                                         @endphp
                                                         <div class="pf-quiz-row">
                                                             <div class="pf-quiz-kind pf-quiz-kind-{{ $quiz->context_kind }}"><i class="fi fi-rr-document"></i><span>{{ $kindLabel }}</span></div>
