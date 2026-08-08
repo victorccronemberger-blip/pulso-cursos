@@ -184,7 +184,7 @@
 .pf-student-app h3,
 .pf-student-app h4,
 .pf-student-app h5,
-.pf-student-app h6 { color: var(--pf-ink); font-family: "Space Grotesk", sans-serif; }
+.pf-student-app h6 { color: var(--pf-ink); font-family: "Space Grotesk", sans-serif !important; }
 .pf-student-app button,
 .pf-student-app input,
 .pf-student-app select,
