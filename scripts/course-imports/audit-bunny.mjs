@@ -25,18 +25,21 @@ async function mapConcurrent(items, concurrency, callback) {
 const env = { ...loadEnv(resolve('.env')), ...process.env };
 const apiKey = env.BUNNY_STREAM_API_KEY;
 if (!apiKey) throw new Error('BUNNY_STREAM_API_KEY não configurada.');
+const detailed = process.argv.includes('--details');
 
 const libraryId = 723013;
 const stateRoot = resolve('storage/app/course-imports/upload-state');
 for (const name of readdirSync(stateRoot).filter((file) => file.endsWith('.json')).sort()) {
     const state = JSON.parse(readFileSync(join(stateRoot, name), 'utf8'));
-    const uploaded = Object.values(state.files).filter((file) => file.status === 'uploaded' && file.video_id);
+    const uploaded = Object.entries(state.files)
+        .filter(([, file]) => file.status === 'uploaded' && file.video_id)
+        .map(([sourcePath, file]) => ({ ...file, sourcePath }));
     const videos = await mapConcurrent(uploaded, 8, async (file) => {
         const response = await fetch(`https://video.bunnycdn.com/library/${libraryId}/videos/${file.video_id}`, {
             headers: { Accept: 'application/json', AccessKey: apiKey },
         });
-        if (!response.ok) return { status: -1, encodeProgress: 0, hasOriginal: false };
-        return response.json();
+        if (!response.ok) return { status: -1, encodeProgress: 0, hasOriginal: false, sourcePath: file.sourcePath };
+        return { ...await response.json(), sourcePath: file.sourcePath };
     });
 
     const counts = {};
@@ -62,5 +65,12 @@ for (const name of readdirSync(stateRoot).filter((file) => file.endsWith('.json'
             ? video.transcodingMessages.map((item) => item.message || item.value).filter(Boolean).join('; ')
             : '';
         process.stdout.write(`  FALHA ${video.guid || '?'} ${video.title || '?'}${message ? `: ${message}` : ''}\n`);
+    }
+    if (detailed) {
+        for (const video of videos.filter((item) => ![3, 4, 5, 8].includes(item.status)).slice(0, 3)) {
+            process.stdout.write(
+                `  FILA status=${video.status} progresso=${video.encodeProgress || 0}% ${video.sourcePath}\n`,
+            );
+        }
     }
 }

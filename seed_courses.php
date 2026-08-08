@@ -1,9 +1,20 @@
 <?php
 // Seed: categorias + cursos estilo Toro (certificações financeiras)
+
+require __DIR__.'/vendor/autoload.php';
+Dotenv\Dotenv::createImmutable(__DIR__)->safeLoad();
+
+$required = ['DB_HOST', 'DB_PORT', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'];
+foreach ($required as $key) {
+    if (empty($_ENV[$key])) {
+        throw new RuntimeException("Variável obrigatória ausente: {$key}");
+    }
+}
+
 $pdo = new PDO(
-    "mysql:host=212.85.6.130;port=3306;dbname=u291739043_pulsefire;charset=utf8mb4",
-    "u291739043_pulsefire",
-    "@Exbom512758",
+    "mysql:host={$_ENV['DB_HOST']};port={$_ENV['DB_PORT']};dbname={$_ENV['DB_DATABASE']};charset=utf8mb4",
+    $_ENV['DB_USERNAME'],
+    $_ENV['DB_PASSWORD'],
     [PDO::ATTR_TIMEOUT => 15]
 );
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
