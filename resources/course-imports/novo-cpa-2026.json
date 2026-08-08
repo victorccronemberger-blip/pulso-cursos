@@ -1,0 +1,389 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-cpa-20-certificacao-anbima"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m6",
+    "section_overrides": {
+      "CPASIM01": "m6",
+      "CPASIM02": "m6",
+      "CPASIM03": "m6",
+      "CPASIM04": "m6",
+      "CPASIM05": "m6",
+      "CPASIMOFICIAL01": "m6"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Mercado financeiro, regulação e ética",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Economia e finanças",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Produtos, fundos e mercado de capitais",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Previdência, seguros, crédito e planejamento",
+      "sort": 4
+    },
+    {
+      "key": "m5",
+      "title": "Módulo 5 · Atendimento, compliance e inovação",
+      "sort": 5
+    },
+    {
+      "key": "m6",
+      "title": "Módulo 6 · Simulados e estratégia de prova",
+      "sort": 6
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CPA-Intro_Introdução CPA.mp4",
+      "provider_id": "96b5685b-bbc6-46d2-ae85-b88e924fc4ff",
+      "title": "Introdução CPA",
+      "description": "<p style=\"text-align:start;\"><span style=\"color: rgba(0,0,0,0.85);background-color: rgb(255,255,255);font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:47:14",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CPA-SFN_MERCADO FINANCEIRO & SISTEMA FINANCEIRO NACIONAL.mp4",
+      "provider_id": "7eefe8c0-6281-4d97-8191-1808d103da00",
+      "title": "MERCADO FINANCEIRO & SISTEMA FINANCEIRO NACIONAL",
+      "description": "",
+      "section": "m1",
+      "sort": 2,
+      "duration": "00:41:23",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CPA-OPER_OPERADORES & PARTICIPANTES DO SFN.mp4",
+      "provider_id": "5f3da58d-1526-44f2-aefd-4049cc77e3fc",
+      "title": "OPERADORES & PARTICIPANTES DO SFN",
+      "description": "",
+      "section": "m1",
+      "sort": 3,
+      "duration": "00:52:08",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CPA-REGUL_REGULAÇÃO & INFRAESTRUTURA DO MERCADO FINANCEIRO.mp4",
+      "provider_id": "559577a0-1c92-4e45-8031-c2b6676c5d91",
+      "title": "REGULAÇÃO & INFRAESTRUTURA DO MERCADO FINANCEIRO",
+      "description": "",
+      "section": "m1",
+      "sort": 4,
+      "duration": "00:38:44",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CPA-DPI_ANBIMA - CÓDIGO DPI (DISTRIBUIÇÃO DE PRODUTOS DE INVESTIMENTOS).mp4",
+      "provider_id": "4b0fa3bd-42aa-4317-9ae4-b4bb9b9493c3",
+      "title": "ANBIMA - CÓDIGO DPI (DISTRIBUIÇÃO DE PRODUTOS DE INVESTIMENTOS)",
+      "description": "",
+      "section": "m1",
+      "sort": 5,
+      "duration": "00:44:07",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CPA-ETICA_ANBIMA - CÓDIGO DE ÉTICA.mp4",
+      "provider_id": "027e7bb2-9033-4c29-9cad-478fc6b98eab",
+      "title": "ANBIMA - CÓDIGO DE ÉTICA",
+      "description": "",
+      "section": "m1",
+      "sort": 6,
+      "duration": "00:22:08",
+      "is_free": false
+    },
+    {
+      "source_file": "07_CPA-ECO1_ECONOMIA - PRINCIPAIS INDICADORES.mp4",
+      "provider_id": "a600a69b-08fc-4d59-bb9d-117ee675f6eb",
+      "title": "ECONOMIA - PRINCIPAIS INDICADORES",
+      "description": "",
+      "section": "m2",
+      "sort": 1,
+      "duration": "00:49:42",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CPA-ECO2_ECONOMIA - POLÍTICA ECONÔMICA.mp4",
+      "provider_id": "660dded8-2feb-4826-849a-cf2d09df2ae0",
+      "title": "ECONOMIA - POLÍTICA ECONÔMICA",
+      "description": "",
+      "section": "m2",
+      "sort": 2,
+      "duration": "01:03:34",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CPA-RET_FINANÇAS - TAXAS & RETORNOS.mp4",
+      "provider_id": "d6004953-3c53-425d-afdd-34cf66cec398",
+      "title": "FINANÇAS - TAXAS & RETORNOS",
+      "description": "",
+      "section": "m2",
+      "sort": 3,
+      "duration": "00:54:30",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CPA-FIN_FINANÇAS - MATEMÁTICA FINANCEIRA.mp4",
+      "provider_id": "1a267447-a5f4-4ac8-853a-bec1449639c6",
+      "title": "FINANÇAS - MATEMÁTICA FINANCEIRA",
+      "description": "",
+      "section": "m2",
+      "sort": 4,
+      "duration": "01:18:11",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CPA-INV_FINANÇAS - AVALIAÇÃO DE INVESTIMENTOS.mp4",
+      "provider_id": "3fa65921-7a71-41e8-8092-b66087ac23e5",
+      "title": "FINANÇAS - AVALIAÇÃO DE INVESTIMENTOS",
+      "description": "",
+      "section": "m2",
+      "sort": 5,
+      "duration": "00:28:09",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CPA-RF_RENDA FIXA & SEUS INSTRUMENTOS.mp4",
+      "provider_id": "a601c421-89c2-49de-a2a4-cb8146bb708e",
+      "title": "RENDA FIXA & SEUS INSTRUMENTOS",
+      "description": "",
+      "section": "m3",
+      "sort": 1,
+      "duration": "01:06:11",
+      "is_free": false
+    },
+    {
+      "source_file": "13_CPA-MC_ESTRUTURA EMPRESARIAL E DINÂMICA DO MERCADO DE CAPITAIS.mp4",
+      "provider_id": "51057e8b-166a-4aa2-932d-5f28044c4f6b",
+      "title": "ESTRUTURA EMPRESARIAL E DINÂMICA DO MERCADO DE CAPITAIS",
+      "description": "",
+      "section": "m3",
+      "sort": 2,
+      "duration": "00:43:00",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CPA-ECGC_EVENTOS CORPORATIVOS & GOVERNANÇA CORPORATIVA.mp4",
+      "provider_id": "20fad8f4-bdad-4569-b6c2-5e644e2014ab",
+      "title": "EVENTOS CORPORATIVOS & GOVERNANÇA CORPORATIVA",
+      "description": "<p></p>",
+      "section": "m3",
+      "sort": 3,
+      "duration": "00:57:13",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CPA-FUND01_FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS.mp4",
+      "provider_id": "4fcf7687-4dbc-4473-8161-38517814a445",
+      "title": "FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS",
+      "description": "",
+      "section": "m3",
+      "sort": 4,
+      "duration": "00:54:37",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CPA-FUND02_FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM.mp4",
+      "provider_id": "1b8c6ab8-9112-45b2-92e3-fbb4dba87f80",
+      "title": "FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM",
+      "description": "",
+      "section": "m3",
+      "sort": 5,
+      "duration": "00:46:18",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CPA-TRIB_TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS.mp4",
+      "provider_id": "70ceb855-4fe1-4ec8-a11d-197b770eec8b",
+      "title": "TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS",
+      "description": "",
+      "section": "m3",
+      "sort": 6,
+      "duration": "01:00:48",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CPA-RISK_RISCO NO MERCADO FINANCEIRO.mp4",
+      "provider_id": "21f4234f-d02c-4cb2-8a0c-68d05663aa28",
+      "title": "RISCO NO MERCADO FINANCEIRO",
+      "description": "",
+      "section": "m3",
+      "sort": 7,
+      "duration": "00:44:26",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CPA-PREV01_PREVIDÊNCIA PRIVADA - ASPECTOS GERAIS.mp4",
+      "provider_id": "00494125-68e4-447f-9778-3624f52ffde0",
+      "title": "PREVIDÊNCIA PRIVADA - ASPECTOS GERAIS",
+      "description": "",
+      "section": "m4",
+      "sort": 1,
+      "duration": "00:56:45",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CPA-PREV02_PREVIDÊNCIA PRIVADA - PRODUTOS & TRIBUTAÇÃO.mp4",
+      "provider_id": "6e3567aa-cf16-47f2-94d5-2b9eaa8213b1",
+      "title": "PREVIDÊNCIA PRIVADA - PRODUTOS & TRIBUTAÇÃO",
+      "description": "",
+      "section": "m4",
+      "sort": 2,
+      "duration": "01:00:09",
+      "is_free": false
+    },
+    {
+      "source_file": "21_CPA-SB_SERVIÇOS BANCÁRIOS.mp4",
+      "provider_id": "95a9abc8-8847-414c-82ba-3a2d0f204794",
+      "title": "SERVIÇOS BANCÁRIOS",
+      "description": "",
+      "section": "m4",
+      "sort": 3,
+      "duration": "00:39:52",
+      "is_free": false
+    },
+    {
+      "source_file": "22_CPA-SEG_SEGUROS DE VIDA & PATRIMONIAIS.mp4",
+      "provider_id": "954252dc-e40e-4014-b9f3-957aaa4f4bf7",
+      "title": "SEGUROS DE VIDA & PATRIMONIAIS",
+      "description": "",
+      "section": "m4",
+      "sort": 4,
+      "duration": "00:19:27",
+      "is_free": false
+    },
+    {
+      "source_file": "23_CPA-PROD_PRODUTOS DE FINANCIAMENTO.mp4",
+      "provider_id": "f4c6175f-1906-4691-bf22-cf6bef780a7d",
+      "title": "PRODUTOS DE FINANCIAMENTO",
+      "description": "",
+      "section": "m4",
+      "sort": 5,
+      "duration": "00:41:24",
+      "is_free": false
+    },
+    {
+      "source_file": "24_CPA-GF_FINANÇAS PESSOAIS.mp4",
+      "provider_id": "038addbf-dce6-4978-962c-7c076dbd0812",
+      "title": "FINANÇAS PESSOAIS",
+      "description": "",
+      "section": "m4",
+      "sort": 6,
+      "duration": "00:45:44",
+      "is_free": false
+    },
+    {
+      "source_file": "25_CPA-PF_PLANEJAMENTO FINANCEIRO.mp4",
+      "provider_id": "a6838f3f-90ff-4ad7-a9c3-31dbd836b63e",
+      "title": "PLANEJAMENTO FINANCEIRO",
+      "description": "",
+      "section": "m4",
+      "sort": 7,
+      "duration": "00:46:10",
+      "is_free": false
+    },
+    {
+      "source_file": "26_CPA-BPA_BOAS PRÁTICAS DE ATENDIMENTO.mp4",
+      "provider_id": "9b5ef62c-8d54-450f-bc0e-eefd7686e0fc",
+      "title": "BOAS PRÁTICAS DE ATENDIMENTO",
+      "description": "",
+      "section": "m5",
+      "sort": 1,
+      "duration": "00:33:17",
+      "is_free": false
+    },
+    {
+      "source_file": "27_CPA-PLD_PLD-FT & LGPD.mp4",
+      "provider_id": "bfb6978b-b7d3-4aa6-9ffa-ac7884dbb29b",
+      "title": "PLD-FT & LGPD",
+      "description": "",
+      "section": "m5",
+      "sort": 2,
+      "duration": "00:58:24",
+      "is_free": false
+    },
+    {
+      "source_file": "28_CPA-CRIME_DOS CRIMES E DOS ILÍTICOS CONTRA O MERCADO DE CAPITAIS.mp4",
+      "provider_id": "6b02c91f-57c5-4d59-8e68-f254a38c670b",
+      "title": "DOS CRIMES E DOS ILÍTICOS CONTRA O MERCADO DE CAPITAIS",
+      "description": "",
+      "section": "m5",
+      "sort": 3,
+      "duration": "00:23:42",
+      "is_free": false
+    },
+    {
+      "source_file": "29_CPA-ASG_ASG - AMBIENTAL, SOCIAL & GOVERNANÇA.mp4",
+      "provider_id": "0fccf9a9-e597-42c1-b3f9-ea0843addf1b",
+      "title": "ASG - AMBIENTAL, SOCIAL & GOVERNANÇA",
+      "description": "",
+      "section": "m5",
+      "sort": 4,
+      "duration": "00:33:05",
+      "is_free": false
+    },
+    {
+      "source_file": "30_CPA-FD_FINANÇAS DESCENTRALIZADAS.mp4",
+      "provider_id": "cd55a4a1-3b06-41b2-8abd-3122fd559ed6",
+      "title": "FINANÇAS DESCENTRALIZADAS",
+      "description": "",
+      "section": "m5",
+      "sort": 5,
+      "duration": "00:36:26",
+      "is_free": false
+    },
+    {
+      "source_file": "31_CPA-OF_OPEN FINANCE.mp4",
+      "provider_id": "3c3dfc21-27bb-44c1-9f64-8fc8276e71c4",
+      "title": "OPEN FINANCE",
+      "description": "",
+      "section": "m5",
+      "sort": 6,
+      "duration": "00:29:32",
+      "is_free": false
+    },
+    {
+      "source_file": "32_CPA-IA_INTELIGÊNCIA ARTIFICIAL.mp4",
+      "provider_id": "b99c87e5-bb2f-4a97-ae7e-26f020165db3",
+      "title": "INTELIGÊNCIA ARTIFICIAL",
+      "description": "",
+      "section": "m5",
+      "sort": 7,
+      "duration": "00:37:48",
+      "is_free": false
+    },
+    {
+      "source_file": "39_ANB-DICAS_Dicas de Provas.mp4",
+      "provider_id": "3c82176d-7b9c-4dfc-a339-0008d48c0072",
+      "title": "Dicas de Provas",
+      "description": "",
+      "section": "m6",
+      "sort": 1,
+      "duration": "00:22:04",
+      "is_free": false
+    }
+  ]
+}

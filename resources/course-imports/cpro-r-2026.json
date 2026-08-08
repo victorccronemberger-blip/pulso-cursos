@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "course": {
+    "slug": "preparatorio-c-pro-r-certificacao-agentes-autonomos"
+  },
+  "provider": {
+    "driver": "bunny_stream",
+    "library_id": 723013
+  },
+  "curriculum": {
+    "sort_step": 100
+  },
+  "content": {
+    "quiz_attempts": 5,
+    "final_section": "m4",
+    "section_overrides": {
+      "CPRORSIMULADO1": "m4",
+      "CPRORSIMULADO2": "m4",
+      "CPRORSIMULADO3": "m4",
+      "CPRORSIMULADO4": "m4",
+      "CPRORSIMOFICIAL01": "m4"
+    }
+  },
+  "sections": [
+    {
+      "key": "m1",
+      "title": "Módulo 1 · Relacionamento, perfil e planejamento do investidor",
+      "sort": 1
+    },
+    {
+      "key": "m2",
+      "title": "Módulo 2 · Produtos e instrumentos de investimento",
+      "sort": 2
+    },
+    {
+      "key": "m3",
+      "title": "Módulo 3 · Previdência, alocação e gestão de carteiras",
+      "sort": 3
+    },
+    {
+      "key": "m4",
+      "title": "Módulo 4 · Simulados e estratégia de prova",
+      "sort": 4
+    }
+  ],
+  "lessons": [
+    {
+      "source_file": "01_CPROR-INTRO_Introdução a C-PRO R.mp4",
+      "provider_id": "36d81212-8b01-4cd7-942f-ad4d992101e9",
+      "title": "Introdução a C-PRO R",
+      "description": "<p><strong>Aplicativo Quiz ART — Pratique de onde estiver</strong></p>\n<p>Para reforçar seu aprendizado e treinar com questões a qualquer momento, disponibilizamos o aplicativo <strong>Quiz ART</strong>.</p>\n<p>Baixe agora pelo seu dispositivo:</p>\n<p><strong>Android:</strong> <a href=\"https://play.google.com/store/apps/details?id=com.firedevsolutionsit.quizart\" target=\"_self\">Quiz Art - Google Play</a></p>\n<p><strong>iOS:</strong> <a href=\"https://apps.apple.com/br/app/quiz-art/id1586341362\" target=\"_self\">Quiz ART - App Store</a></p>\n<p></p>\n<p><strong>Canal do Telegram</strong></p>\n<p>Abaixo você encontra o link de acesso ao nosso canal no Telegram, onde compartilhamos avisos, materiais complementares e atualizações importantes do curso.&nbsp;</p>\n<p><a href=\"https://t.me/academiarafaeltoroCPROR\" target=\"_self\">Telegram: View @academiarafaeltoroCPROR</a>&nbsp;</p>",
+      "section": "m1",
+      "sort": 1,
+      "duration": "00:47:14",
+      "is_free": false
+    },
+    {
+      "source_file": "02_CPROR-FIN1_FINANÇAS COMPORTAMENTAIS.mp4",
+      "provider_id": "29ae1f06-359f-4136-86c4-4ba98f65b449",
+      "title": "FINANÇAS COMPORTAMENTAIS",
+      "description": "",
+      "section": "m1",
+      "sort": 2,
+      "duration": "00:59:42",
+      "is_free": false
+    },
+    {
+      "source_file": "03_CPROR-CARAC_CARACTERÍSTICAS DA PESSOA INVESTIDORA NO BRASIL.mp4",
+      "provider_id": "5945a2f0-ac26-4be0-8c0b-6d204387470b",
+      "title": "CARACTERÍSTICAS DA PESSOA INVESTIDORA NO BRASIL",
+      "description": "",
+      "section": "m1",
+      "sort": 3,
+      "duration": "01:03:47",
+      "is_free": false
+    },
+    {
+      "source_file": "04_CPROR-PROS_PROSPECÇÃO & HABILIDADES COMERCIAIS.mp4",
+      "provider_id": "76127d5c-3f24-4822-aca6-e17fb309676e",
+      "title": "PROSPECÇÃO & HABILIDADES COMERCIAIS",
+      "description": "",
+      "section": "m1",
+      "sort": 4,
+      "duration": "00:49:10",
+      "is_free": false
+    },
+    {
+      "source_file": "05_CPROR-API_ANALISE DO PERFIL DO INVESTIDOR.mp4",
+      "provider_id": "3d403ca4-1185-4dbd-a1f5-785a1e6f9b52",
+      "title": "ANALISE DO PERFIL DO INVESTIDOR",
+      "description": "",
+      "section": "m1",
+      "sort": 5,
+      "duration": "00:50:07",
+      "is_free": false
+    },
+    {
+      "source_file": "06_CPROR-COD_CÓDIGO ANBIMA_ DPI (DISTRIBUIÇÃO DE PRODUTOS DE INVESTIMENTOS).mp4",
+      "provider_id": "91a76db2-de5c-428f-87fa-cb783118602e",
+      "title": "CÓDIGO ANBIMA_ DPI (DISTRIBUIÇÃO DE PRODUTOS DE INVESTIMENTOS)",
+      "description": "",
+      "section": "m1",
+      "sort": 6,
+      "duration": "00:44:07",
+      "is_free": false
+    },
+    {
+      "source_file": "07_CPROR-GEST1_GESTÃO FINANCEIRA PESSOA FÍSICA.mp4",
+      "provider_id": "a69cb019-73d2-4065-9190-c3c4c98da5e9",
+      "title": "GESTÃO FINANCEIRA PESSOA FÍSICA",
+      "description": "",
+      "section": "m1",
+      "sort": 7,
+      "duration": "00:28:19",
+      "is_free": false
+    },
+    {
+      "source_file": "08_CPROR-FIXA_RENDA FIXA & SEUS INTRUMENTOS.mp4",
+      "provider_id": "e085f40a-e9d4-415a-8b13-9d7a88616e41",
+      "title": "RENDA FIXA & SEUS INTRUMENTOS",
+      "description": "",
+      "section": "m2",
+      "sort": 1,
+      "duration": "01:06:11",
+      "is_free": false
+    },
+    {
+      "source_file": "09_CPROR-RV1_RENDA VARIÁVEL I.mp4",
+      "provider_id": "1e426745-de3f-4fc2-8996-83c6045f5333",
+      "title": "RENDA VARIÁVEL I",
+      "description": "",
+      "section": "m2",
+      "sort": 2,
+      "duration": "00:58:18",
+      "is_free": false
+    },
+    {
+      "source_file": "10_CPROR-RV2_RENDA VARIÁVEL II.mp4",
+      "provider_id": "49ded003-763d-44bd-bb05-dc84d0fae47f",
+      "title": "RENDA VARIÁVEL II",
+      "description": "",
+      "section": "m2",
+      "sort": 3,
+      "duration": "01:20:17",
+      "is_free": false
+    },
+    {
+      "source_file": "11_CPROR-DERIV_DERIVATIVOS.mp4",
+      "provider_id": "1002f0d1-c7ea-4442-8670-9e22026d6c4f",
+      "title": "DERIVATIVOS",
+      "description": "",
+      "section": "m2",
+      "sort": 4,
+      "duration": "01:24:35",
+      "is_free": false
+    },
+    {
+      "source_file": "12_CPROR-FUN1_FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS.mp4",
+      "provider_id": "2809bf66-dc07-45ea-91ef-04828cdafe27",
+      "title": "FUNDOS DE INVESTIMENTOS - ASPECTOS GERAIS",
+      "description": "",
+      "section": "m2",
+      "sort": 5,
+      "duration": "00:54:37",
+      "is_free": false
+    },
+    {
+      "source_file": "13_CPROR-FUN2_FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM.mp4",
+      "provider_id": "5380f636-f148-48e2-93b8-3ad8498d1b35",
+      "title": "FUNDOS DE INVESTIMENTOS - CLASSIFICAÇÃO CVM",
+      "description": "",
+      "section": "m2",
+      "sort": 6,
+      "duration": "00:46:18",
+      "is_free": false
+    },
+    {
+      "source_file": "14_CPROR-TRIBU1_TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS.mp4",
+      "provider_id": "40bb4fc2-e6cd-4434-8c46-8d2e705f6ff7",
+      "title": "TRIBUTAÇÃO EM APLICAÇÕES FINANCEIRAS",
+      "description": "",
+      "section": "m2",
+      "sort": 7,
+      "duration": "01:00:48",
+      "is_free": false
+    },
+    {
+      "source_file": "15_CPROR-INST_INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR.mp4",
+      "provider_id": "ad40984b-5bf8-479c-9f0e-6479601449ff",
+      "title": "INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR",
+      "description": "",
+      "section": "m2",
+      "sort": 8,
+      "duration": "00:31:14",
+      "is_free": false
+    },
+    {
+      "source_file": "16_CPROR-TRIBU2_TRIBUTAÇÃO - INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR.mp4",
+      "provider_id": "2dd63d59-36dc-4bef-9aaf-012d7f956e6f",
+      "title": "TRIBUTAÇÃO - INSTRUMENTOS DE INVESTIMENTOS NO EXTERIOR",
+      "description": "",
+      "section": "m2",
+      "sort": 9,
+      "duration": "00:07:39",
+      "is_free": false
+    },
+    {
+      "source_file": "17_CPROR-CRIPTO_CRIPTOATIVOS.mp4",
+      "provider_id": "3e99a274-7b4a-4568-9132-a993ac47d4d0",
+      "title": "CRIPTOATIVOS",
+      "description": "",
+      "section": "m2",
+      "sort": 10,
+      "duration": "00:33:18",
+      "is_free": false
+    },
+    {
+      "source_file": "18_CPROR-PREV1_PREVIDÊNCIA PRIVADA I.mp4",
+      "provider_id": "b4c80a6e-36ee-4b47-a2cd-c5850d2b9ca1",
+      "title": "PREVIDÊNCIA PRIVADA I",
+      "description": "",
+      "section": "m3",
+      "sort": 1,
+      "duration": "01:15:25",
+      "is_free": false
+    },
+    {
+      "source_file": "19_CPROR-PREV2_PREVIDÊNCIA PRIVADA II.mp4",
+      "provider_id": "aa916d98-3e68-4498-9c29-256edc79f7b1",
+      "title": "PREVIDÊNCIA PRIVADA II",
+      "description": "",
+      "section": "m3",
+      "sort": 2,
+      "duration": "01:05:41",
+      "is_free": false
+    },
+    {
+      "source_file": "20_CPROR-POLIT_POLÍTICA DE INVESTIMENTOS.mp4",
+      "provider_id": "19a6c7d1-b6bd-4f50-94e7-98dd8dd7c8ca",
+      "title": "POLÍTICA DE INVESTIMENTOS",
+      "description": "",
+      "section": "m3",
+      "sort": 3,
+      "duration": "00:50:00",
+      "is_free": false
+    },
+    {
+      "source_file": "21_CPROR-ESTRA_ESTRATÉGIAS DE REBALANCEAMENTO.mp4",
+      "provider_id": "6219ad5e-b308-4c63-b9db-3c04eba9508f",
+      "title": "ESTRATÉGIAS DE REBALANCEAMENTO",
+      "description": "",
+      "section": "m3",
+      "sort": 4,
+      "duration": "00:29:54",
+      "is_free": false
+    },
+    {
+      "source_file": "22_CPROR-BOAS_BOAS PRÁTICAS DE REBALANCEAMENTO DA CARTEIRA.mp4",
+      "provider_id": "7a406aa4-5789-4e60-bcd1-e1f1805dfb6c",
+      "title": "BOAS PRÁTICAS DE REBALANCEAMENTO DA CARTEIRA",
+      "description": "",
+      "section": "m3",
+      "sort": 5,
+      "duration": "00:42:21",
+      "is_free": false
+    },
+    {
+      "source_file": "23_CPROR-GEST2_GESTÃO DE RISCO & DE PERFORMANCE.mp4",
+      "provider_id": "080500b9-b0ff-4898-8296-bb4ab93d23f6",
+      "title": "GESTÃO DE RISCO & DE PERFORMANCE",
+      "description": "",
+      "section": "m3",
+      "sort": 6,
+      "duration": "00:21:27",
+      "is_free": false
+    },
+    {
+      "source_file": "29_ANB-DICAS_Dicas de Provas.mp4",
+      "provider_id": "6df629c4-6b13-46f2-bcbd-7e40322df4b3",
+      "title": "Dicas de Provas",
+      "description": "",
+      "section": "m4",
+      "sort": 1,
+      "duration": "00:22:04",
+      "is_free": false
+    }
+  ]
+}

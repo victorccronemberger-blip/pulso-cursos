@@ -41,7 +41,12 @@ for (const name of readdirSync(stateRoot).filter((file) => file.endsWith('.json'
 
     const counts = {};
     for (const video of videos) counts[video.status] = (counts[video.status] || 0) + 1;
-    const finished = counts[3] || 0;
+    const ready = videos.filter((video) => (
+        [3, 4].includes(video.status)
+        && video.length > 0
+        && typeof video.availableResolutions === 'string'
+        && video.availableResolutions.length > 0
+    )).length;
     const failed = (counts[5] || 0) + (counts[8] || 0) + (counts[-1] || 0);
     const originals = videos.filter((video) => video.hasOriginal).length;
     const averageProgress = videos.length
@@ -49,7 +54,7 @@ for (const name of readdirSync(stateRoot).filter((file) => file.endsWith('.json'
         : 0;
     process.stdout.write(
         `${state.course.padEnd(10)} enviados=${String(uploaded.length).padStart(3)} `
-        + `finalizados=${String(finished).padStart(3)} processando=${String(uploaded.length - finished - failed).padStart(3)} `
+        + `prontos=${String(ready).padStart(3)} processando=${String(uploaded.length - ready - failed).padStart(3)} `
         + `falhas=${String(failed).padStart(2)} originais=${String(originals).padStart(3)} progresso_médio=${averageProgress}%\n`,
     );
     for (const video of videos.filter((item) => [5, 8, -1].includes(item.status))) {
