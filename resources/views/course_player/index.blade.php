@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-    <title>{{ get_phrase('Course Playing Page') }}| {{ config('app.name') }}</title>
+    <title>Aula | {{ config('app.name') }}</title>
     <!-- all the meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
