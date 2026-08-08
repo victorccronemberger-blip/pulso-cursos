@@ -27,10 +27,11 @@ class SyncCourseContent extends Command
             (bool) $this->option('prune'),
         );
 
-        $this->table(['Apostilas', 'Simulados', 'Questões', 'Não resolvidos'], [[
+        $this->table(['Apostilas', 'Simulados', 'Questões válidas', 'Questões ignoradas', 'Não resolvidos'], [[
             $report['materials'],
             $report['quizzes'],
             $report['questions'],
+            $report['skipped_questions'],
             count($report['unresolved']),
         ]]);
         foreach ($report['unresolved'] as $file) {

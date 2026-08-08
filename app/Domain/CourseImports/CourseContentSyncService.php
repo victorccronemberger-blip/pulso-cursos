@@ -8,6 +8,8 @@ use RuntimeException;
 
 class CourseContentSyncService
 {
+    public function __construct(private readonly QuestionBankNormalizer $questionBankNormalizer) {}
+
     public function sync(
         CourseVideoManifest $manifest,
         ?string $materialsDirectory,
@@ -23,13 +25,14 @@ class CourseContentSyncService
         $sections = $this->sections($manifest, (int) $course->id);
         $lessons = $this->lessonIndex($manifest, (int) $course->id, $sections);
         $content = $manifest->content();
-        $report = ['materials' => 0, 'quizzes' => 0, 'questions' => 0, 'unresolved' => []];
+        $report = ['materials' => 0, 'quizzes' => 0, 'questions' => 0, 'skipped_questions' => 0, 'unresolved' => []];
 
         if ($materialsDirectory) {
             foreach ($this->files($materialsDirectory, 'pdf') as $file) {
                 $metadata = $this->resolve($file, null, $content, $sections, $lessons);
                 if (! $metadata) {
                     $report['unresolved'][] = basename($file);
+
                     continue;
                 }
                 $report['materials']++;
@@ -46,12 +49,23 @@ class CourseContentSyncService
                 $payload = json_decode((string) file_get_contents($file), true);
                 if (! is_array($payload) || empty($payload['titulo']) || empty($payload['questions'])) {
                     $report['unresolved'][] = basename($file);
+
+                    continue;
+                }
+
+                $sourceQuestions = is_array($payload['questions']) ? $payload['questions'] : [];
+                $payload['questions'] = $this->questionBankNormalizer->normalize($sourceQuestions);
+                $report['skipped_questions'] += count($sourceQuestions) - count($payload['questions']);
+                if ($payload['questions'] === []) {
+                    $report['unresolved'][] = basename($file);
+
                     continue;
                 }
 
                 $metadata = $this->resolve($file, (string) $payload['titulo'], $content, $sections, $lessons);
                 if (! $metadata) {
                     $report['unresolved'][] = basename($file);
+
                     continue;
                 }
 
@@ -86,6 +100,7 @@ class CourseContentSyncService
             }
             $result[$section['key']] = (int) $id;
         }
+
         return $result;
     }
 
@@ -108,6 +123,7 @@ class CourseContentSyncService
             $byTitle[$this->normal((string) $lesson['title'])] = $item;
             $byId[$item['id']] = $item;
         }
+
         return compact('byCode', 'byTitle', 'byId');
     }
 
@@ -160,6 +176,7 @@ class CourseContentSyncService
             'module' => 70,
             default => 40,
         };
+
         return (int) $max + $base + $offset;
     }
 
@@ -185,7 +202,7 @@ class CourseContentSyncService
 
     private function upsertQuiz(int $courseId, int $userId, string $file, array $payload, array $metadata, array $content): void
     {
-        DB::transaction(function () use ($courseId, $userId, $file, $payload, $metadata, $content) {
+        DB::transaction(function () use ($courseId, $userId, $payload, $metadata, $content) {
             $source = 'question-bank:'.$metadata['source_key'];
             $questionCount = count($payload['questions']);
             $minutes = max(10, min(120, $questionCount));
@@ -213,19 +230,12 @@ class CourseContentSyncService
 
             $rows = [];
             foreach ($payload['questions'] as $index => $question) {
-                $answers = collect($question['answers'] ?? []);
-                $options = $answers->pluck('resposta')->map(fn ($value) => $this->plainText((string) $value))->filter()->values();
-                $correct = $answers->filter(fn ($answer) => (int) ($answer['correta'] ?? 0) === 1)
-                    ->map(fn ($answer) => $this->plainText((string) ($answer['resposta'] ?? '')))->filter()->values();
-                if ($options->isEmpty() || $correct->isEmpty()) {
-                    continue;
-                }
                 $rows[] = [
                     'quiz_id' => $quizId,
-                    'title' => $this->plainText((string) ($question['enunciado'] ?? '')),
+                    'title' => $question['title'],
                     'type' => 'mcq',
-                    'answer' => $correct->toJson(JSON_UNESCAPED_UNICODE),
-                    'options' => $options->toJson(JSON_UNESCAPED_UNICODE),
+                    'answer' => json_encode($question['correct'], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+                    'options' => json_encode($question['options'], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
                     'sort' => $index + 1,
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -276,6 +286,7 @@ class CourseContentSyncService
         }
         $files = glob(rtrim($directory, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'*.'.$extension) ?: [];
         natsort($files);
+
         return array_values($files);
     }
 
@@ -284,6 +295,7 @@ class CourseContentSyncService
         $name = pathinfo($path, PATHINFO_FILENAME);
         $name = preg_replace('/^\d+_/', '', $name);
         $code = explode('_', (string) $name, 2)[0];
+
         return Str::upper(preg_replace('/[^A-Z0-9]+/i', '', $code));
     }
 
@@ -295,6 +307,7 @@ class CourseContentSyncService
     private function plainText(string $value): string
     {
         $value = preg_replace('/<\s*\/?(?:p|div|li|ul|ol|br|h[1-6]|tr|td|th)[^>]*>/iu', ' ', $value);
+
         return trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($value), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
     }
 

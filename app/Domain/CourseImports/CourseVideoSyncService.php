@@ -96,6 +96,9 @@ class CourseVideoSyncService
                     'status' => 1,
                     'updated_at' => now(),
                 ];
+                if (array_key_exists('description', $lesson)) {
+                    $values['description'] = $this->description((string) $lesson['description']);
+                }
 
                 $existing = DB::table('lessons')->where($identity)->exists();
                 if ($existing) {
@@ -115,5 +118,10 @@ class CourseVideoSyncService
 
             return $report;
         });
+    }
+
+    private function description(string $value): string
+    {
+        return trim(strip_tags($value, '<p><br><strong><b><em><i><ul><ol><li>'));
     }
 }

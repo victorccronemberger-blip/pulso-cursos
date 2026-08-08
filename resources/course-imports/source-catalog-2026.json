@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "library_id": 723013,
+  "course_defaults": {
+    "user_id": 4,
+    "course_type": "general",
+    "status": "active",
+    "language": "portuguese",
+    "is_paid": 1,
+    "discount_flag": 1,
+    "instructor_ids": "[4]"
+  },
+  "courses": [
+    {
+      "key": "ANCORD",
+      "collection_id": "f818c880-1c5e-4aa1-a4cb-80e6121946a3",
+      "course_slug": "preparatorio-ancord-agentes-autonomos",
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Mercado financeiro, economia e finanças", "sort": 1, "lesson_numbers": [1, 2, 3]},
+        {"key": "m2", "title": "Módulo 2 · Conduta e atividade do assessor", "sort": 2, "lesson_numbers": [4, 5]},
+        {"key": "m3", "title": "Módulo 3 · Renda fixa e renda variável", "sort": 3, "lesson_numbers": [7, 8, 9]},
+        {"key": "m4", "title": "Módulo 4 · Fundos e tributação", "sort": 4, "lesson_numbers": [10, 11, 13]},
+        {"key": "m5", "title": "Módulo 5 · Derivativos e administração de riscos", "sort": 5, "lesson_numbers": [14, 15, 16]},
+        {"key": "m6", "title": "Módulo 6 · Revisões e simulados", "sort": 6, "lesson_numbers": []}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m6",
+        "section_overrides": {
+          "ANCORDREV1": "m6", "ANCORDREV3": "m6", "ANCORDSIMULADO01": "m6", "ANCORDSIMULADO02": "m6",
+          "ANCORDSIMULADO03": "m6", "ANCORDSIMULADO04": "m6", "ANCORDSIMULADO05": "m6", "ANCORDSIMULADO06": "m6",
+          "ANCORDNOVA": "m6", "ANCORD50MAISCOBRADAS": "m6", "ANCORDQUESTOESDECISIVAS": "m6",
+          "ANCORDQUESTOESJOGOPROVA": "m6", "ANCORDQUESTOESNAOPODEERRAR": "m6"
+        }
+      },
+      "exclude_files": []
+    },
+    {
+      "key": "CFG",
+      "collection_id": "ba778293-c226-4a33-8228-c82c923c4411",
+      "course_slug": "preparatorio-cfg-fundamentos-gestao-risco",
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Boas-vindas e estratégia de prova", "sort": 1, "lesson_numbers": [1]},
+        {"key": "m2", "title": "Módulo 2 · Métodos quantitativos", "sort": 2, "lesson_numbers": [8, 9, 27]},
+        {"key": "m3", "title": "Módulo 3 · Macroeconomia e microeconomia", "sort": 3, "lesson_numbers": [2, 17, 26]},
+        {"key": "m4", "title": "Módulo 4 · Gestão financeira e análise de projetos", "sort": 4, "lesson_numbers": [11, 30]},
+        {"key": "m5", "title": "Módulo 5 · Mercados e instrumentos financeiros", "sort": 5, "lesson_numbers": [4, 5, 10, 15, 16, 22, 25, 29]},
+        {"key": "m6", "title": "Módulo 6 · Carteiras e política de investimentos", "sort": 6, "lesson_numbers": [18, 19]},
+        {"key": "m7", "title": "Módulo 7 · Finanças comportamentais e SFN", "sort": 7, "lesson_numbers": [6]},
+        {"key": "m8", "title": "Módulo 8 · Fundos de investimento", "sort": 8, "lesson_numbers": [24]},
+        {"key": "m9", "title": "Módulo 9 · ASG", "sort": 9, "lesson_numbers": [13]},
+        {"key": "m10", "title": "Módulo 10 · Regulação, códigos e inovação", "sort": 10, "lesson_numbers": [3, 12, 20, 23]},
+        {"key": "m11", "title": "Módulo 11 · Revisões e simulados", "sort": 11, "lesson_numbers": []}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m11",
+        "section_overrides": {
+          "CFGREV1": "m11", "CFGREV2": "m11", "CFGREV3": "m11", "CFGREV4": "m11",
+          "CFGSIM1": "m11", "CFGSIM2": "m11", "CFGSIM3": "m11", "CFGSIM4": "m11", "CFGSIM5": "m11", "CFGSIM6": "m11",
+          "QMAISCAIRAMCFGMQ": "m2", "QMAISCAIRAMCFGECO": "m3", "QMAISCAIRAMCFGCONT": "m4", "QMAISCAIRAMCFGCORP": "m4",
+          "QMAISCAIRAMCFGMERC": "m5", "QMAISCAIRAMCFGCART": "m6", "QMAISCAIRAMCFGFINCOMP": "m7", "QMAISCAIRAMCFGIPS": "m6",
+          "QMAISCAIRAMCFGAAL": "m6", "QMAISCAIRAMCFGNTEC": "m10", "QMAISCAIRAMCFGREG": "m10", "QMAISCAIRAMCFGLEG": "m10",
+          "CFGEXTRA2026": "m11"
+        }
+      },
+      "exclude_files": [
+        "27_CFG-REVASGMQ_Revisão ASG & Métodos Quantiativos__3.mp4",
+        "29_CFG-REVRFDER_Revisão Renda Fixa & Derivativos__2.mp4",
+        "30_CFG-REVGFINANP_Revisão Gestão Financeira & Análise de Projetos.fhls-fastly_skyfire-514.mp4"
+      ]
+    },
+    {
+      "key": "CGA",
+      "collection_id": "7f89186d-cbd2-4890-a382-fc80e560ef7c",
+      "course_slug": "preparatorio-cga-certificacao-gestores-anbima",
+      "catalog": {
+        "title": "Preparatório CGA Certificação de Gestores ANBIMA",
+        "short_description": "Domine a gestão profissional de carteiras, renda fixa, renda variável, riscos e avaliação de desempenho com preparação completa para a CGA.",
+        "category_id": 6,
+        "level": "advanced",
+        "price": 2490,
+        "discounted_price": 1990,
+        "thumbnail": "uploads/course-thumbnail/card-cga.png"
+      },
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Introdução ao CGA", "sort": 1, "lesson_numbers": [1]},
+        {"key": "m2", "title": "Módulo 2 · Renda variável e alocação de ativos", "sort": 2, "lesson_numbers": [3, 4, 14, 20]},
+        {"key": "m3", "title": "Módulo 3 · Gestão de carteiras de renda fixa", "sort": 3, "lesson_numbers": [10, 11, 16]},
+        {"key": "m4", "title": "Módulo 4 · Investimentos no exterior", "sort": 4, "lesson_numbers": [2, 12]},
+        {"key": "m5", "title": "Módulo 5 · Avaliação de desempenho", "sort": 5, "lesson_numbers": [9, 15]},
+        {"key": "m6", "title": "Módulo 6 · Gestão de riscos", "sort": 6, "lesson_numbers": [8, 17]},
+        {"key": "m7", "title": "Módulo 7 · Fundos e código de gestão de recursos", "sort": 7, "lesson_numbers": [5, 6, 18, 21]},
+        {"key": "m8", "title": "Módulo 8 · Revisões e simulados", "sort": 8, "lesson_numbers": []}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m8",
+        "section_overrides": {
+          "CGAREVS1": "m8", "CGAREVS2": "m8", "CGAREVS3": "m8", "CGASIM1": "m8", "CGASIM2": "m8", "CGASIM3": "m8",
+          "CGASIM4": "m8", "CGASIM5": "m8", "CGASIM6": "m8", "QMAISCAIRAMCGARV": "m2", "QMAISCAIRAMCGARF": "m3",
+          "QMAISCAIRAMCGAINVEXT": "m4", "QMAISCAIRAMCGAAVALDES": "m5", "QMAISCAIRAMCGARISK": "m6",
+          "QMAISCAIRAMCGALEG": "m7", "CGAQUESTOESTREINAR": "m8"
+        }
+      },
+      "exclude_files": [
+        "16_CGA-RFREV_Revisão - Gestão de Carteiras de Renda Fixa (C2).fhls-fastly_skyfire-903.mp4",
+        "16_CGA-RFREV_Revisão - Gestão de Carteiras de Renda Fixa (C2).mp4"
+      ]
+    },
+    {
+      "key": "CGE",
+      "collection_id": "06856967-e5f3-4599-b2ea-ab4ea298aceb",
+      "course_slug": "preparatorio-cge-certificacao-gestores-anbima-fundos-estruturados",
+      "catalog": {
+        "title": "Preparatório CGE Certificação de Gestores ANBIMA para Fundos Estruturados",
+        "short_description": "Prepare-se para gerir fundos estruturados com domínio de FII, FIDC, FIP, FIAGRO, índices, securitização, governança e riscos.",
+        "category_id": 6,
+        "level": "advanced",
+        "price": 2490,
+        "discounted_price": 1990,
+        "thumbnail": "uploads/course-thumbnail/card-cge.png"
+      },
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Introdução ao CGE", "sort": 1, "lesson_numbers": [1]},
+        {"key": "m2", "title": "Módulo 2 · Investimentos imobiliários", "sort": 2, "lesson_numbers": [4, 11]},
+        {"key": "m3", "title": "Módulo 3 · Private equity", "sort": 3, "lesson_numbers": [8, 15]},
+        {"key": "m4", "title": "Módulo 4 · Securitização de recebíveis", "sort": 4, "lesson_numbers": [5, 14]},
+        {"key": "m5", "title": "Módulo 5 · Fundos de índice", "sort": 5, "lesson_numbers": [3, 10]},
+        {"key": "m6", "title": "Módulo 6 · Investimentos no exterior", "sort": 6, "lesson_numbers": [6, 12]},
+        {"key": "m7", "title": "Módulo 7 · Desempenho e gestão de riscos", "sort": 7, "lesson_numbers": [9, 16]},
+        {"key": "m8", "title": "Módulo 8 · Fundos, FIAGRO e código de gestão", "sort": 8, "lesson_numbers": [2, 17, 18]},
+        {"key": "m9", "title": "Módulo 9 · Revisões e simulados", "sort": 9, "lesson_numbers": []}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m9",
+        "section_overrides": {
+          "CGETAB": "m8", "CGEREVS1": "m9", "CGEREVS2": "m9", "CGESIM1": "m9", "CGESIM2": "m9", "CGESIM3": "m9",
+          "CGESIM4": "m9", "CGESIM5": "m9", "CGESIM6": "m9", "CGESIM7": "m9", "QMAISCAIRAMCGEIMOB": "m2",
+          "QMAISCAIRAMCGEPE": "m3", "QMAISCAIRAMCGESEC": "m4", "QMAISCAIRAMCGEIND": "m5", "QMAISCAIRAMCGEINVEXT": "m6",
+          "QMAISCAIRAMCGEAVAL": "m7", "QMAISCAIRAMCGERISK": "m7", "QMAISCAIRAMCGEFIAGRO": "m8",
+          "QMAISCAIRAMCGELEG": "m8", "CGEQUESTOESTREINAR": "m9"
+        }
+      },
+      "exclude_files": [
+        "18_CGE-FIAGRO_FIAGRO.fhls-fastly_skyfire-1130.mp4",
+        "18_CGE-FIAGRO_FIAGRO__2.mp4"
+      ]
+    },
+    {
+      "key": "CPRO-I",
+      "collection_id": "3fa35332-0d87-43ed-8500-302cbbb5b401",
+      "course_slug": "preparatorio-c-pro-i-certificacao-agentes-autonomos",
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Produtos e instrumentos de investimento", "sort": 1, "lesson_numbers": [1, 2, 3, 4, 5, 6, 7, 8]},
+        {"key": "m2", "title": "Módulo 2 · Fundos, tributação e investimentos alternativos", "sort": 2, "lesson_numbers": [9, 10, 11, 12, 13, 14, 15, 16]},
+        {"key": "m3", "title": "Módulo 3 · Previdência, carteiras e gestão de riscos", "sort": 3, "lesson_numbers": [17, 18, 19, 20, 21, 22, 23]},
+        {"key": "m4", "title": "Módulo 4 · Revisões, simulados e estratégia de prova", "sort": 4, "lesson_numbers": [31]}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m4",
+        "section_overrides": {
+          "CPROIEXTRA01": "m4", "CPROISIMULADO1": "m4", "CPROISIMULADO2": "m4", "CPROISIMULADO3": "m4",
+          "CPROISIMULADO4": "m4", "CPROISIMULADO5": "m4", "CPROISIMOFICIAL01": "m4"
+        }
+      },
+      "exclude_files": []
+    },
+    {
+      "key": "CPRO-R",
+      "collection_id": "a2e8f04d-3230-4085-a0fa-5a5ebbd50bee",
+      "course_slug": "preparatorio-c-pro-r-certificacao-agentes-autonomos",
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Relacionamento, perfil e planejamento do investidor", "sort": 1, "lesson_numbers": [1, 2, 3, 4, 5, 6, 7]},
+        {"key": "m2", "title": "Módulo 2 · Produtos e instrumentos de investimento", "sort": 2, "lesson_numbers": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17]},
+        {"key": "m3", "title": "Módulo 3 · Previdência, alocação e gestão de carteiras", "sort": 3, "lesson_numbers": [18, 19, 20, 21, 22, 23]},
+        {"key": "m4", "title": "Módulo 4 · Simulados e estratégia de prova", "sort": 4, "lesson_numbers": [29]}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m4",
+        "section_overrides": {
+          "CPRORSIMULADO1": "m4", "CPRORSIMULADO2": "m4", "CPRORSIMULADO3": "m4", "CPRORSIMULADO4": "m4",
+          "CPRORSIMOFICIAL01": "m4"
+        }
+      },
+      "exclude_files": []
+    },
+    {
+      "key": "NOVO-CPA",
+      "collection_id": "1f27a58b-284a-499b-9def-b7cd1367928d",
+      "course_slug": "preparatorio-cpa-20-certificacao-anbima",
+      "sections": [
+        {"key": "m1", "title": "Módulo 1 · Mercado financeiro, regulação e ética", "sort": 1, "lesson_numbers": [1, 2, 3, 4, 5, 6]},
+        {"key": "m2", "title": "Módulo 2 · Economia e finanças", "sort": 2, "lesson_numbers": [7, 8, 9, 10, 11]},
+        {"key": "m3", "title": "Módulo 3 · Produtos, fundos e mercado de capitais", "sort": 3, "lesson_numbers": [12, 13, 14, 15, 16, 17, 18]},
+        {"key": "m4", "title": "Módulo 4 · Previdência, seguros, crédito e planejamento", "sort": 4, "lesson_numbers": [19, 20, 21, 22, 23, 24, 25]},
+        {"key": "m5", "title": "Módulo 5 · Atendimento, compliance e inovação", "sort": 5, "lesson_numbers": [26, 27, 28, 29, 30, 31, 32]},
+        {"key": "m6", "title": "Módulo 6 · Simulados e estratégia de prova", "sort": 6, "lesson_numbers": [39]}
+      ],
+      "content": {
+        "quiz_attempts": 5,
+        "final_section": "m6",
+        "section_overrides": {
+          "CPASIM01": "m6", "CPASIM02": "m6", "CPASIM03": "m6", "CPASIM04": "m6", "CPASIM05": "m6",
+          "CPASIMOFICIAL01": "m6"
+        }
+      },
+      "exclude_files": []
+    }
+  ]
+}
